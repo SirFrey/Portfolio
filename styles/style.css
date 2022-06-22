@@ -11,6 +11,8 @@ li{
 header{
     display: flex;
     justify-content: end;
+    background: #48e;
+    /* box-shadow: 0px 2px 56px 0px rgba(0,0,0,0.75); */
 }
 
 .container_bar{
@@ -23,6 +25,8 @@ header{
     top: 0;
     right: 0;
     transition: right 0.5s ease-in-out;
+    background: #48e;
+    box-shadow: 0px 2px 56px 0px rgba(0,0,0,0.75);
 }
 
 /* responsive menu */
@@ -38,15 +42,22 @@ header{
     flex-direction: column;
     width: 250px;
     height: 100vh;
-    background-color: aqua;
     }
 i{
     font-size: 30px;
 }
+/* Con JS */
+.shadow{
+    filter: blur(10px) sepia(100%);
 
+}
+.body_secondary{
+    transition: filter .4s ease-in-out;
+}
+/* Scroll Bar */
 body::-webkit-scrollbar {
     width: 10px;
-    height: 10px;;
+    height: 10px;
 }
 body::-webkit-scrollbar-thumb {
     background-color: #ccc;
