@@ -1,18 +1,27 @@
-html{
-    font-family: 'Segoe UI', Tahoma;
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+
+
+body{
+    background-color: navy; /* temporal */
+    font-family: 'Orbitron',sans-serif;
+    color: aliceblue ;
+    font-size: 16px;
 }
 h1{
     text-align: center;
-    font-size: 2em;
+    font-size: 2rem;
+
 }
 li{
     list-style: none;
+    margin: 1rem;
 }
-header{
-    display: flex;
-    justify-content: end;
-    background: #48e;
-    /* box-shadow: 0px 2px 56px 0px rgba(0,0,0,0.75); */
+
+:visited{
+    color: #b1b1b1;
+}
+a{
+    text-decoration: none;
 }
 
 .container_bar{
@@ -20,53 +29,92 @@ header{
     height: 30px;
     display: inline-block;
 }
+
 .principal_nav{
+    width: 18.75em;
+    height: 100%;
     position: fixed;
     top: 0;
-    right: 0;
+    right: -300px;
     transition: right 0.5s ease-in-out;
-    background: #48e;
-    box-shadow: 0px 2px 56px 0px rgba(0,0,0,0.75);
+    background: rgb(2,0,36);
+    background: linear-gradient(137deg, rgba(2,0,36,1) 18%, rgba(64,1,58,1) 45%, rgba(0,212,255,1) 100%);
+    box-shadow: 0 2px 56px 0 rgba(0,0,0,0.75);
+    display: inline-flex;
+    z-index: 20;
+}
+
+.background{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    background: rgb(2,0,36);
+    background: linear-gradient(137deg, rgba(2,0,36,1) 18%, rgba(64,1,58,1) 45%, rgba(0,212,255,1) 100%);
+    padding: 1rem;
+    transition: filter .4s ease-in-out;
+    /* border-radius: 50px; */
+}
+.principal_icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.tag_title{
+    margin: .4rem;
+    font-weight: bold;
 }
 
 /* responsive menu */
-.moved_nav{
-    right: -250px;
-}
+
 .container_bar{
     text-align: right;
 }
 .ul{
-    margin: 0;
     display: flex;
     flex-direction: column;
     width: 250px;
-    height: 100vh;
-    }
-i{
-    font-size: 30px;
+    align-self: center;
+    padding: 0;
 }
-/* Con JS */
-.shadow{
-    filter: blur(10px) sepia(100%);
+i{
+    font-size: 2rem;
+    width: fit-content;
+    height: fit-content;
+}
+.x{
+    margin: 1rem;
+}
 
+.principal_nav .li{
+    border-bottom: 3px solid #fff2;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    width: fit-content;
 }
 .body_secondary{
-    transition: filter .4s ease-in-out;
+    transition: filter .3s ease-in;
 }
+/* Article */
+
+
+
+
+
 /* Scroll Bar */
 body::-webkit-scrollbar {
     width: 10px;
     height: 10px;
 }
 body::-webkit-scrollbar-thumb {
-    background-color: #ccc;
+    background-color: #aaa;
     border-radius: 10px;
 }
 body::-webkit-scrollbar-thumb:hover {
-    background-color: #aaa;
+    background-color: #999;
 }
 body::-webkit-scrollbar-track {
     background-color: #fff;
     border-radius: 10px;
 }
+
