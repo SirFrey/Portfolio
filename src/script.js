@@ -1,22 +1,41 @@
-'use strict';
+import Typed from '../node_modules/typed.js/src/typed.js';
 
-const dom = document;
-const bar = dom.querySelector('.bar');
-const x = dom.querySelector('.x');
-const principal_nav = dom.querySelector('.principal_nav');
-const div = dom.querySelector('.body_secondary');
-const background_bar = dom.querySelector('.background');
+var options = {
+	strings: ['Moises Castellanos'],
+	typeSpeed: 50,
+	backSpeed: 50,
+	loop: true,
+	startDelay: 1000,
+	backDelay: 1000,
+};
 
-bar.addEventListener('click', () => {
+new Typed('.tag_title', options);
+
+const bar = document.querySelector('.bar');
+const x = document.querySelector('.x');
+const principal_nav = document.querySelector('.principal_nav');
+const bg = document.getElementById('bg');
+
+// Styles to show and unshow NavBar
+
+const showNav = () => {
 	principal_nav.classList.replace('no_active', 'active');
-	principal_nav.style.right = '0';
-	div.style.filter = 'blur(2px)';
-	background_bar.style.filter = 'blur(2px)';
-});
-
-x.addEventListener('click', (e) => {
+	principal_nav.style.transform = 'translate(-18.75rem)';
+	document.body.classList.add('scroll');
+	bg.classList.toggle('bg_dark');
+};
+const unShowNav = () => {
 	principal_nav.classList.replace('active', 'no_active');
-	principal_nav.style.right = '-300px';
-	div.style.filter = 'none';
-	background_bar.style.filter = 'none';
+	principal_nav.style.transform = 'translate(18.75rem)';
+	document.body.classList.remove('scroll');
+	bg.classList.toggle('bg_dark');
+};
+
+bar.addEventListener('click', showNav);
+x.addEventListener('click', unShowNav);
+
+bg.addEventListener('click', () => {
+	principal_nav.style.transform = 'translate(18.75em)';
+	bg.classList.toggle('bg_dark');
+	document.body.classList.remove('scroll');
 });
