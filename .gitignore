@@ -1,0 +1,4 @@
+# unnecesary files
+
+node_modules
+.eslintrc.json
