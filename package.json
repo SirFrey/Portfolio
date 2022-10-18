@@ -1,8 +1,23 @@
 {
-  "dependencies": {
-    "typed.js": "^2.0.12"
-  },
-  "devDependencies": {
-    "eslint": "^8.23.0"
-  }
+	"dependencies": {
+		"core-js": "^3.25.1",
+		"gh-pages": "^4.0.0",
+		"html-webpack-plugin": "^5.5.0",
+		"typed.js": "2.0.12",
+		"victormono": "^1.5.4"
+	},
+	"scripts": {
+		"dev": "webpack serve",
+		"publish": "gh-pages -d ./dist",
+		"build": "webpack build"
+	},
+	"devDependencies": {
+		"css-loader": "^6.7.1",
+		"eslint": "^8.23.0",
+		"html-webpack-harddisk-plugin": "^2.0.0",
+		"style-loader": "^3.3.1",
+		"webpack": "^5.74.0",
+		"webpack-cli": "^4.10.0",
+		"webpack-dev-server": "^4.11.1"
+	}
 }

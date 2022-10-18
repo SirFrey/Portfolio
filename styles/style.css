@@ -1,6 +1,12 @@
+@import 'victormono';
+html {
+	scroll-behavior: smooth;
+}
+
 :root {
 	--principalColor: #495c83;
 	--secondaryColor: #7a86b6;
+	--principalColorAlpha: #495c83aa;
 }
 h1,
 h2,
@@ -18,6 +24,7 @@ body {
 	color: aliceblue;
 	font-size: 17px;
 	text-align: center;
+
 }
 
 h1 {
@@ -53,7 +60,7 @@ a {
 	top: 0;
 	right: -18.75rem;
 	/* right: -300px; */
-	transition: transform 0.5s ease-in-out;
+	transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
 	background: var(--secondaryColor);
 	display: inline-flex;
 	z-index: 30;
@@ -67,10 +74,12 @@ a {
 	padding: 1rem;
 	position: fixed;
 	z-index: 20;
-	box-shadow: 0 0 50px 0 #495c83aa;
+	box-shadow: 0 0 50px 0 var(--principalColorAlpha);
+	transform: translateY(-64.33px);
+	transition: transform 1s ease;
 }
 .bg_blur {
-	background: #495c8399;
+	background: var(--principalColorAlpha);
 	width: 100%;
 	height: 100%;
 	position: absolute;
@@ -105,12 +114,12 @@ a {
 }
 i.fa-light,
 i.fa-solid,
-.x {
+.fa-x {
 	font-size: 2rem;
 	width: fit-content;
 	height: fit-content;
 }
-.x {
+.fa-x {
 	margin: 17px;
 }
 
@@ -132,7 +141,7 @@ i.fa-solid,
 
 .bg_dark {
 	width: 100vw;
-	height: 100vh;
+	/* height: 100vh; */
 	background: rgba(0, 0, 0, 0.7);
 	position: fixed;
 	top: 0;
@@ -150,7 +159,7 @@ i.fa-solid,
 .lang-list i,
 .tool-list i,
 .other-list i {
-	font-size: 6.25rem;
+	font-size: 4.25rem;
 }
 .tag-title-list {
 	font-weight: 900;
@@ -196,7 +205,7 @@ section:nth-child(1) {
 }
 
 section:nth-child(even):not(:first-child) {
-	background: #7a86b6;
+	background: var(--secondaryColor);
 }
 
 section > h1 {
@@ -205,6 +214,33 @@ section > h1 {
 }
 
 h1 {
-	border: 2px solid #495c83aa;
+	border: 2px solid var(--principalColorAlpha);
 	border-radius: 10px;
+}
+@keyframes show {
+	0% {
+		height: 100vh;
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+@keyframes unShow {
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 0;
+		height: 0;
+	}
+}
+
+@media (max-width: 300px) {
+	body {
+		background: #333;
+	}
 }
