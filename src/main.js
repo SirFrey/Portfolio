@@ -1,5 +1,4 @@
 import Typed from 'typed.js';
-import '../styles/prism.css';
 import '../styles/normalize.css';
 import '../styles/style.css';
 
@@ -42,7 +41,7 @@ new Typed('.tag_title', options);
 const showNav = () => {
 	principal_nav.classList.replace('no_active', 'active');
 	principal_nav.style.transform = 'translate(-18.75rem)';
-	bg.style.height = '100vh';
+	bg.style.display = 'inline'
 	bar.style.visibility = 'hidden';
 	bg.style.animation = 'show 0.6s forwards';
 };
@@ -50,7 +49,7 @@ const unShowNav = () => {
 	principal_nav.classList.replace('active', 'no_active');
 	principal_nav.style.transform = 'translate(18.75rem)';
 	bar.style.visibility = 'visible';
-	bg.style.animation = 'unShow .6s both';
+	bg.style.animation = 'unShow .3s both';
 	document.body.style.overflow = 'visible';
 
 	// bg.classList.toggle('bg_dark');
@@ -62,7 +61,10 @@ x.addEventListener('click', unShowNav);
 bg.addEventListener('click', () => {
 	principal_nav.classList.replace('active', 'no_active');
 	principal_nav.style.transform = 'translate(18.75rem)';
-	bg.style.animation = 'unShow .6s both';
+	bg.style.animation = 'unShow .3s both';
+	setTimeout(() => {
+		bg.style.display = 'none'
+	}, 300);
 	bar.style.visibility = 'visible';
 	document.body.style.overflow = 'visible';
 });
