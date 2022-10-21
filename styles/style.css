@@ -125,7 +125,9 @@ a {
 	display: grid;
 	place-content: center;
 }
-
+.container_bar .bar {
+	font-size: 1.5em;
+}
 .principal_nav .li {
 	width: fit-content;
 	width: -moz-fit-content;
@@ -231,6 +233,8 @@ section > h1 {
 	align-items: center;
 	justify-content: center;
 	height: 100%;
+	gap: 10px;
+	font-size: 2em;
 }
 h1 {
 	border: 2px solid var(--principalColorAlpha);

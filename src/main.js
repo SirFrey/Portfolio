@@ -1,7 +1,7 @@
 import Typed from 'typed.js';
 import '../styles/normalize.css';
 import '../styles/style.css';
-
+/** @type {HTMLDivElement} **/
 const bar = document.querySelector('.bar');
 const x = document.querySelector('.x');
 const principal_nav = document.querySelector('.principal_nav');
@@ -11,17 +11,15 @@ const nav_fixed = document.querySelector('.nav_fixed');
 
 const showNavFixed = () => {
 	nav_fixed.style.transform = 'translateY(-64px)translateY(64px)';
-}
+};
 const unShowNavFixed = () => {
 	nav_fixed.style.transform = 'translateY(-64px)translateY(-64.33px)';
-}
+};
 const callback = (entries) => {
-	entries.forEach(entry => {
-		(entry.isIntersecting === false)
-			? unShowNavFixed()
-			: showNavFixed()
-	})
-}
+	entries.forEach((entry) => {
+		entry.isIntersecting === false ? unShowNavFixed() : showNavFixed();
+	});
+};
 const observer = new IntersectionObserver(callback);
 observer.observe(section);
 
@@ -41,7 +39,7 @@ new Typed('.tag_title', options);
 const showNav = () => {
 	principal_nav.classList.replace('no_active', 'active');
 	principal_nav.style.transform = 'translate(-18.75rem)';
-	bg.style.display = 'inline'
+	bg.style.display = 'inline';
 	bar.style.visibility = 'hidden';
 	bg.style.animation = 'show 0.6s forwards';
 };
@@ -63,7 +61,7 @@ bg.addEventListener('click', () => {
 	principal_nav.style.transform = 'translate(18.75rem)';
 	bg.style.animation = 'unShow .3s both';
 	setTimeout(() => {
-		bg.style.display = 'none'
+		bg.style.display = 'none';
 	}, 300);
 	bar.style.visibility = 'visible';
 	document.body.style.overflow = 'visible';
