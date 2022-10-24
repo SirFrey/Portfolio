@@ -1,6 +1,7 @@
 # unnecesary files
-
 node_modules
+dist
+.git_old
 .eslintrc.json
 .yarn
 .vscode

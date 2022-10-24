@@ -1,25 +1,53 @@
 import Typed from 'typed.js';
 import '../styles/normalize.css';
 import '../styles/style.css';
+
 /** @type {HTMLDivElement} **/
 const bar = document.querySelector('.bar');
+
+/** @type {HTMLDivElement} **/
 const x = document.querySelector('.x');
+
+/** @type {HTMLDivElement} **/
 const principal_nav = document.querySelector('.principal_nav');
+
+/** @type {HTMLDivElement} **/
 const bg = document.querySelector('#bg');
+
+/** @type {HTMLDivElement} **/
 const section = document.querySelector('section:first-child');
-const nav_fixed = document.querySelector('.nav_fixed');
+
+/** @type {HTMLDivElement} **/
+const navFixed = document.querySelector('.nav_fixed');
 
 const showNavFixed = () => {
-	nav_fixed.style.transform = 'translateY(-64px)translateY(64px)';
+	navFixed.style.transform = 'translateY(-64px)translateY(64px)';
 };
 const unShowNavFixed = () => {
-	nav_fixed.style.transform = 'translateY(-64px)translateY(-64.33px)';
+	navFixed.style.transform = 'translateY(-64px)translateY(-64.33px)';
 };
+
+let scrollval = 0;
+const scrollEvent = () => {
+	if (scrollval > window.scrollY) {
+		showNavFixed();
+	} else {
+		unShowNavFixed();
+	}
+	scrollval = window.scrollY;
+};
+
 const callback = (entries) => {
 	entries.forEach((entry) => {
+		if (entry.isIntersecting === false) {
+			window.addEventListener('scroll', scrollEvent);
+		} else {
+			window.removeEventListener('scroll', scrollEvent);
+		}
 		entry.isIntersecting === false ? unShowNavFixed() : showNavFixed();
 	});
 };
+
 const observer = new IntersectionObserver(callback);
 observer.observe(section);
 
@@ -47,10 +75,8 @@ const unShowNav = () => {
 	principal_nav.classList.replace('active', 'no_active');
 	principal_nav.style.transform = 'translate(18.75rem)';
 	bar.style.visibility = 'visible';
-	bg.style.animation = 'unShow .3s both';
+	bg.style.animation = 'unShow .6s both';
 	document.body.style.overflow = 'visible';
-
-	// bg.classList.toggle('bg_dark');
 };
 
 bar.addEventListener('click', showNav);
@@ -59,7 +85,7 @@ x.addEventListener('click', unShowNav);
 bg.addEventListener('click', () => {
 	principal_nav.classList.replace('active', 'no_active');
 	principal_nav.style.transform = 'translate(18.75rem)';
-	bg.style.animation = 'unShow .3s both';
+	bg.style.animation = 'unShow .6s both';
 	setTimeout(() => {
 		bg.style.display = 'none';
 	}, 300);
