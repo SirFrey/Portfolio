@@ -7,10 +7,7 @@ html {
 	--principalColor: #495c83;
 	--secondaryColor: #7a86b6;
 	--principalColorAlpha: #495c83aa;
-<<<<<<< HEAD
-=======
 	--secondaryColorAlpha: #7a86b6aa;
->>>>>>> 40e5796 (bug fixed)
 }
 h1,
 h2,
@@ -28,10 +25,6 @@ body {
 	color: aliceblue;
 	font-size: 17px;
 	text-align: center;
-<<<<<<< HEAD
-
-=======
->>>>>>> 40e5796 (bug fixed)
 }
 
 h1 {
@@ -44,7 +37,6 @@ ul {
 }
 li {
 	list-style: none;
-	margin: 1rem;
 }
 
 nav a:visited {
@@ -63,20 +55,15 @@ a {
 .principal_nav {
 	width: 18.75rem;
 	height: 100%;
+	display: grid;
+	grid-template-rows: 36px 1fr;
 	position: fixed;
 	top: 0;
 	right: -18.75rem;
-<<<<<<< HEAD
-	/* right: -300px; */
-	transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-	background: var(--secondaryColor);
-=======
-	transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
 	background: var(--secondaryColorAlpha);
 	backdrop-filter: blur(10px);
->>>>>>> 40e5796 (bug fixed)
-	display: inline-flex;
 	z-index: 30;
+	transition: transform 0.3s ease;
 }
 
 .nav_fixed {
@@ -84,33 +71,14 @@ a {
 	height: 64px;
 	display: flex;
 	justify-content: space-between;
-<<<<<<< HEAD
-	/* background: var(--principalColor); */
-=======
 	background: var(--principalColorAlpha);
->>>>>>> 40e5796 (bug fixed)
 	padding: 1rem;
 	position: fixed;
 	z-index: 20;
 	box-shadow: 0 0 50px 0 var(--principalColorAlpha);
-<<<<<<< HEAD
-	transform: translateY(-64.33px);
-	transition: transform 1s ease;
-}
-.bg_blur {
-	background: var(--principalColorAlpha);
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	inset: 0;
-	backdrop-filter: blur(5px);
-	-webkit-backdrop-filter: blur(5px);
-	z-index: -1;
-=======
 	backdrop-filter: blur(3px);
+	transition: transform 1s ease;
 	transform: translateY(-64.33px);
-	transition: transform 1s ease-in-out;
->>>>>>> 40e5796 (bug fixed)
 }
 
 .principal_icon {
@@ -129,12 +97,22 @@ a {
 .container_bar {
 	text-align: right;
 }
-.ul {
+.nav_fixed_ul {
 	display: flex;
 	flex-direction: column;
-	width: 250px;
 	align-self: center;
 	padding: 0;
+	margin: 0;
+}
+.nav_fixed_li a {
+	width: 100%;
+	display: inline-block;
+	padding: 20px;
+	transition: all 0.2s steps(60);
+	border-radius: 5px;
+}
+.nav_fixed_li a:hover {
+	background-color: #fff3;
 }
 .fa-x {
 	font-size: 2rem;
@@ -144,34 +122,15 @@ a {
 .fa-x {
 	margin: 17px;
 }
-<<<<<<< HEAD
-.container_bar{
-=======
 .container_bar {
->>>>>>> 40e5796 (bug fixed)
 	display: grid;
 	place-content: center;
 }
 .container_bar .bar {
 	font-size: 1.5em;
 }
-.principal_nav .li {
-	width: fit-content;
-	width: -moz-fit-content;
-	border-bottom: 3px solid #fff2;
-	border-bottom-left-radius: 10px;
-	border-bottom-right-radius: 10px;
-}
-<<<<<<< HEAD
-.body_secondary {
-	transition: filter 0.3s ease-in;
-}
-/* bg_dark */
-
-=======
 
 /* bg_dark */
->>>>>>> 40e5796 (bug fixed)
 
 .bg_dark {
 	width: 100vw;
@@ -191,13 +150,14 @@ a {
 	place-content: center;
 	align-items: center;
 }
+.lang-list li,
+.tool-list li,
+.other-list li {
+	margin: 1em;
+}
 .lang-list i,
 .tool-list i,
-<<<<<<< HEAD
-.other-list i{
-=======
 .other-list i {
->>>>>>> 40e5796 (bug fixed)
 	font-size: 4.25rem;
 }
 .tag-title-list {
@@ -251,26 +211,12 @@ section > h1 {
 	margin: 0;
 	padding: 16px 30px;
 }
-<<<<<<< HEAD
-.footer_final{
-=======
 .footer_final {
->>>>>>> 40e5796 (bug fixed)
 	background: #222;
 	width: 100%;
 	height: fit-content;
 	padding: 30px;
 }
-<<<<<<< HEAD
-.title_footer{
-	margin: 0;
-}
-.footer_final .ul_footer, .ul_footer li {
-	margin: 0;
-}
-
-.ul_footer{
-=======
 .title_footer {
 	margin: 0;
 }
@@ -280,7 +226,6 @@ section > h1 {
 }
 
 .ul_footer {
->>>>>>> 40e5796 (bug fixed)
 	display: flex;
 	align-items: center;
 	justify-content: center;

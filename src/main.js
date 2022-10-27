@@ -20,6 +20,15 @@ const section = document.querySelector('section:first-child');
 /** @type {HTMLDivElement} **/
 const navFixed = document.querySelector('.nav_fixed');
 
+/** @type {HTMLDivElement} **/
+const navFixedUl = document.querySelector('.nav_fixed_ul');
+
+navFixedUl.addEventListener('click', (e) => {
+	if (e.target.tagName === 'A') {
+		unShowNav();
+	}
+});
+
 const showNavFixed = () => {
 	navFixed.style.transform = 'translateY(-64px)translateY(64px)';
 };
@@ -56,8 +65,8 @@ const options = {
 	typeSpeed: 50,
 	backSpeed: 50,
 	loop: true,
-	startDelay: 1000,
-	backDelay: 1000,
+	startDelay: 2000,
+	backDelay: 2000,
 };
 
 new Typed('.tag_title', options);
@@ -70,6 +79,7 @@ const showNav = () => {
 	bg.style.display = 'inline';
 	bar.style.visibility = 'hidden';
 	bg.style.animation = 'show 0.6s forwards';
+	document.body.style.overflow = 'hidden';
 };
 const unShowNav = () => {
 	principal_nav.classList.replace('active', 'no_active');
@@ -92,3 +102,12 @@ bg.addEventListener('click', () => {
 	bar.style.visibility = 'visible';
 	document.body.style.overflow = 'visible';
 });
+
+bg.onanimationend = () => {
+	console.log(bg.style.animation);
+	console.log('ocultar animación');
+};
+bg.onanimationcancel = () => {
+	console.log(bg.style.animation);
+	console.log('ocultar bg');
+};
