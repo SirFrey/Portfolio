@@ -5,6 +5,7 @@ html {
 
 :root {
 	--principalColor: #495c83;
+	--principalColorDark: #0b1a38;
 	--secondaryColor: #7a86b6;
 	--principalColorAlpha: #495c83aa;
 	--secondaryColorAlpha: #7a86b6aa;
@@ -18,7 +19,11 @@ h6 {
 	margin: 0;
 	padding: 1rem;
 }
-
+h2:not(h2:last-child) {
+	/* color: var(--principalColorDark); */
+	text-decoration: underline;
+	text-decoration-style: double;
+}
 body {
 	background: var(--principalColor);
 	font-family: 'Victor Mono', sans-serif;
@@ -48,28 +53,6 @@ a {
 
 /* bg_dark */
 
-.footer_final {
-	background: #000000;
-	width: 100%;
-	height: fit-content;
-	padding: 30px;
-}
-.title_footer {
-	margin: 0;
-}
-.footer_final .ul_footer,
-.ul_footer li {
-	margin: 0;
-}
-
-.ul_footer {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	height: 100%;
-	gap: 10px;
-	font-size: 2em;
-}
 h1 {
 	border: 2px solid var(--principalColorAlpha);
 	border-radius: 10px;

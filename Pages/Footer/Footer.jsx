@@ -1,10 +1,10 @@
+import s from './Footer.module.css';
+console.log(s);
 const Footer = () => {
 	return (
-		<footer className='footer_final'>
-			<h2 className='title_footer' id='Contacto'>
-				Contactame
-			</h2>
-			<ul className='ul_footer'>
+		<footer className={`${s.footer_final}`}>
+			<h2 id='Contacto'>Contactame</h2>
+			<ul className={`${s.ul_footer}`}>
 				<li>
 					<a href='#'>
 						<i className='fa-brands fa-linkedin'></i>

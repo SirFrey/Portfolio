@@ -1,6 +1,6 @@
-import s from './Header.module.css';
+import { useEffect, useRef } from 'react';
 import Typed from 'react-typed';
-import { useEffect, useRef, useState } from 'react';
+import s from './Header.module.css';
 const Header = () => {
 	const elementRef = useRef();
 	const bgDark = useRef();
@@ -66,15 +66,12 @@ const Header = () => {
 						<i className={`fa-solid fa-bars ${s.bar}`}></i>
 					</div>
 				</nav>
-				<nav
-					ref={navFixedBar}
-					className={`${s.principal_nav}`}
-				>
+				<nav ref={navFixedBar} className={`${s.principal_nav}`}>
 					<a
 						onClick={() => {
 							navFixedBar.current.style.transform = 'translate(18.75rem)';
 							bgDark.current.style.animation = 'unShow .3s backwards';
-							
+
 							setTimeout(() => {
 								bgDark.current.style.display = 'none';
 							}, 300);
@@ -86,19 +83,18 @@ const Header = () => {
 							if (target.nodeName == 'A') {
 								navFixedBar.current.style.transform = 'translate(18.75rem)';
 								bgDark.current.style.animation = 'unShow .3s backwards';
-
 							}
 						}}
 						className={`${s.nav_fixed_ul}`}
 					>
 						<li className={`${s.nav_fixed_li}`}>
-							<a href='#Portfolio'>Portfolio</a>
-						</li>
-						<li className={`${s.nav_fixed_li}`}>
-							<a href='#Contacto'>Contactame</a>
+							<a href='#Portfolio'>Proyectos</a>
 						</li>
 						<li className={`${s.nav_fixed_li}`}>
 							<a href='#About_me'>Sobre mi</a>
+						</li>
+						<li className={`${s.nav_fixed_li}`}>
+							<a href='#Contacto'>Contactame</a>
 						</li>
 					</ul>
 				</nav>
@@ -120,4 +116,5 @@ const Header = () => {
 		</>
 	);
 };
+
 export default Header;

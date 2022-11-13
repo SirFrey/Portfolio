@@ -5,21 +5,12 @@
 	place-content: center;
 	align-items: center;
 }
-.lang_list li,
-.tool_list li,
-.other_list li {
-	margin: 0 1em;
+:is(.lang_list, .tool_list, .other_list) li {
+	margin: 0 0.8em;
 }
-.lang_list i,
-.tool_list i,
-.other_list i {
-	font-size: 4.25rem;
-}
-.tag_title_list {
-	font-weight: 900;
-}
+
 p {
-	max-width: 750px;
+	max-width: clamp(45ch, 50%, 75ch);
 	font-size: 1.2em;
 }
 section {
@@ -76,13 +67,12 @@ section > h1 {
 	opacity: 0;
 	transform: translateX(-100%);
 	filter: blur(5px);
-	transition: all 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
 }
 .show {
 	opacity: 1;
 	transform: translateX(0);
 	filter: blur(0);
-	transition: all 1s;
+	transition: transform 1s, filter 1s, opacity 1s;
 }
 
 .lang_list li:nth-child(1) {
@@ -112,12 +102,19 @@ section > h1 {
 	transition-delay: 400ms;
 }
 
-.lang_list svg, .tool_list svg, .other_list svg {
+:is(.lang_list, .tool_list, .other_list) svg {
 	width: 4.25rem;
 	height: 4.25rem;
 }
 @media (prefers-reduced-motion) {
 	.hidden {
 		transition: none;
+	}
+}
+
+@media (max-width: 417px) {
+	:is(.lang_list, .tool_list, .other_list) svg {
+		width: 4rem;
+		height: 4rem;
 	}
 }

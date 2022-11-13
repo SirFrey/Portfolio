@@ -32,7 +32,7 @@ const Articles = () => {
 				</section>
 				<section className={`${s.hidden}`}>
 					<h2 className={s.hidden} id='Portfolio'>
-						Mis Proyectos:
+						Proyectos:
 					</h2>
 					<h4 className={s.hidden}>No publicados...</h4>
 				</section>
@@ -41,19 +41,15 @@ const Articles = () => {
 					<h4>De lenguajes:</h4>
 					<ul className={`${s.lang_list}`}>
 						<li className={s.hidden}>
-							{/* <i className='fa-brands fa-html5'></i> */}
 							<Html />
 						</li>
 						<li className={s.hidden}>
-							{/* <i className='fa-brands fa-css3-alt'></i> */}
 							<CssLogo />
 						</li>
 						<li className={s.hidden}>
-							{/* <i className='fa-brands fa-js'></i> */}
 							<Js />
 						</li>
 						<li className={s.hidden}>
-							{/* <i className='fa-brands fa-react'></i> */}
 							<ReactLogo />
 						</li>
 					</ul>
@@ -61,21 +57,17 @@ const Articles = () => {
 					<ul className={`${s.tool_list}`}>
 						<li className={s.hidden}>
 							<Git />
-							{/* <i className='fa-brands fa-git'></i> */}
 						</li>
 						<li className={s.hidden}>
-							{/* <i className='fa-brands fa-github'></i> */}
 							<Github />
 						</li>
 						<li className={s.hidden}>
-							{/* <i className='fa-solid fa-terminal'></i> */}
 							<Terminal />
 						</li>
 					</ul>
 					<h4>Otros:</h4>
 					<ul className={`${s.other_list}`}>
 						<li className={s.hidden}>
-							{/* <i className='fa-solid fa-flag-usa'></i> */}
 							<UsaLogo classname={`${s.fdd}`} />
 							<br />
 						</li>
