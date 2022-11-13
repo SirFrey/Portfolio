@@ -1,0 +1,21 @@
+.footer_final {
+	background: var(--principalColorDark);
+	width: 100%;
+	height: fit-content;
+	padding: 30px;
+}
+.footer_final .ul_footer,
+.ul_footer li {
+	margin: 0;
+}
+.ul_footer a {
+	color: #ddd;
+}
+.ul_footer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	gap: 10px;
+	font-size: 2em;
+}
