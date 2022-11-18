@@ -6,7 +6,7 @@ import {
 	createRoutesFromElements,
 	Route,
 } from 'react-router-dom';
-import '../styles/index.css';
+import '../styles/global.css';
 
 const router = createBrowserRouter(
 	createRoutesFromElements(<Route path={'/'} element={<App />} />)

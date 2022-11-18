@@ -19,10 +19,11 @@ h6 {
 	margin: 0;
 	padding: 1rem;
 }
-h2:not(h2:last-child) {
+h2:not(section:first-child h2, footer h2) {
 	/* color: var(--principalColorDark); */
 	text-decoration: underline;
 	text-decoration-style: double;
+	color: #0b1a38;
 }
 body {
 	background: var(--principalColor);
@@ -30,6 +31,7 @@ body {
 	color: aliceblue;
 	font-size: 17px;
 	text-align: center;
+	-webkit-overflow-scrolling: touch;
 }
 
 h1 {
@@ -57,6 +59,19 @@ h1 {
 	border: 2px solid var(--principalColorAlpha);
 	border-radius: 10px;
 }
+
+.hidden {
+	opacity: 0;
+	transform: translateX(-100%);
+	filter: blur(5px);
+}
+.show {
+	opacity: 1;
+	transform: translateX(0);
+	filter: blur(0);
+	transition: transform 1s, filter 1.1s, opacity 1s;
+}
+
 @keyframes show {
 	0% {
 		opacity: 0;
@@ -83,4 +98,15 @@ h1 {
 	section > h1 {
 		max-width: 450px;
 	}
+}
+input,
+textarea,
+button,
+select,
+a {
+	-webkit-tap-highlight-color: transparent;
+}
+
+body {
+	overscroll-behavior: contain;
 }
