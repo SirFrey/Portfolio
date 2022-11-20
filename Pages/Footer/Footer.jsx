@@ -1,22 +1,9 @@
 import s from './Footer.module.css';
-import { useEffect } from 'react';
 
 console.log(s);
 const Footer = () => {
-	// useEffect(() => {
-	// 	const observer = new IntersectionObserver(entries => {
-	// 		entries.forEach(entry => {
-	// 			if (entry.isIntersecting) {
-	// 				entry.target.classList.add('show');
-	// 			} else {
-	// 				entry.target.classList.remove('show');
-	// 			}
-	// 		});
-	// 	});
-	// 	const sections = document.querySelectorAll(`.hidden`);
-	// 	sections.forEach(el => observer.observe(el));
-	// }, []);
 	return (
+		
 		<footer className={`${s.footer_final}`}>
 			<h2 id='Contacto' className='hidden'>
 				Contacto
@@ -37,8 +24,8 @@ const Footer = () => {
 						<i className='fa-brands fa-instagram '></i>
 					</a>
 				</li>
-				<li className='hidden' alt='mail' title='Mail'>
-					<a href='#'>
+				<li className='hidden'>
+					<a href='#' alt='mail' title='Mail'>
 						<i className='fa-solid fa-envelope '></i>
 					</a>
 				</li>

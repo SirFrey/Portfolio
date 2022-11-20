@@ -4,9 +4,6 @@ import Header from '../Pages/Header/Header';
 import { useEffect } from 'react';
 const App = () => {
 	useEffect(() => {
-
-	});
-	useEffect(() => {
 		const observer = new IntersectionObserver(entries => {
 			entries.forEach(entry => {
 				if (entry.isIntersecting) {

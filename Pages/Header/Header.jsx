@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import Typed from 'react-typed';
 import s from './Header.module.css';
+import X from '../../assets/X';
 const Header = () => {
 	const elementRef = useRef();
 	const bgDark = useRef();
@@ -125,8 +126,10 @@ const Header = () => {
 								bgDark.current.style.display = 'none';
 							}, 300);
 						}}
-						className={`fa-light fa-x ${s.x}`}
-					></a>
+						className={`${s.x}`}
+					>
+						<X />
+					</a>
 					<ul
 						onClick={({ target }) => {
 							if (target.nodeName === 'A') {

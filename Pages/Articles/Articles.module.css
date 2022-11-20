@@ -14,7 +14,7 @@ p {
 	font-size: 1.2em;
 }
 section {
-	padding: 30px;
+	/* padding: 30px; */
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -106,4 +106,29 @@ section > h1 {
 		width: 4rem;
 		height: 4rem;
 	}
+}
+
+.marginContainer {
+	margin: 20px;
+	width: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.wave2 {
+	width: 100%;
+	overflow: hidden;
+	line-height: 0;
+	transform: rotate(180deg);
+}
+
+.wave2 svg {
+	position: relative;
+	display: block;
+	width: calc(100% + 1.3px);
+	height: 72px;
+}
+
+.wave2 .shapeFill {
+	fill: #0b1a38;
 }
