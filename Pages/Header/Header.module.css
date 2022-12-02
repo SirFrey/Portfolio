@@ -1,21 +1,22 @@
 .container_bar {
-	width: 30px;
-	height: 30px;
+	/* width: 30px; */
+	/* height: 30px; */
 	display: inline-block;
 }
 
 .principal_nav {
-	width: 18.75rem;
+	width: min(100vw, 350px);
 	height: 100%;
 	display: grid;
 	grid-template-rows: 36px 1fr;
 	position: fixed;
 	top: 0;
-	right: -18.75rem;
+	right: 0;
 	background: var(--secondaryColorAlpha);
 	backdrop-filter: blur(10px);
 	z-index: 30;
-	transition: transform 0.3s ease;
+	transition: translate 0.3s ease;
+	translate: 100vw;
 }
 .principal_nav a {
 	color: #fff;
@@ -45,13 +46,19 @@
 .tag_title {
 	margin: 0.4rem;
 	font-weight: bold;
+	font-size: clamp(1rem, 4vw, 1.5rem);
 }
 
 /* responsive aside */
 
 .container_bar {
 	text-align: right;
+	font-size: clamp(1rem, 4vw, 1.7rem);
 }
+.bar {
+	font-size: clamp(1rem, 4vw, 1.3rem);
+}
+
 .nav_fixed_ul {
 	display: flex;
 	flex-direction: column;
@@ -84,9 +91,6 @@
 .container_bar {
 	display: grid;
 	place-content: center;
-}
-.container_bar .bar {
-	font-size: 1.5em;
 }
 
 .bg_dark {

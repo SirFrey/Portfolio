@@ -3,7 +3,7 @@ import Typed from 'react-typed';
 import s from './Header.module.css';
 import X from '../../assets/X';
 const Header = () => {
-	const elementRef = useRef();
+	const navFixed = useRef();
 	const bgDark = useRef();
 	const navFixedBar = useRef();
 	let offsetY;
@@ -16,7 +16,7 @@ const Header = () => {
 			top: -${offsetY}px`;
 			document.body.style.cssText = `overflow-Y: scroll;`;
 
-			elementRef.current.style.cssText = `
+			navFixed.current.style.cssText = `
 			transform: translateY(-64px)translateY(64.33px);
 			position:absolute;
 			top: ${offsetY}px`;
@@ -33,24 +33,24 @@ const Header = () => {
 			top: offsetY,
 			behavior: 'instant',
 		});
-		elementRef.current.style.cssText = `
+		navFixed.current.style.cssText = `
 		transform: translateY(-64px)translateY(64.33px);
 		position:fixed;`;
 	};
 	useEffect(() => {
-		elementRef.current.style.transform = 'translateY(-64px)translateY(64.33px)';
+		navFixed.current.style.transform = 'translateY(-64px)translateY(64.33px)';
 		// if () {
-		// 	elementRef.current.style.cssText = `
+		// 	navFixed.current.style.cssText = `
 		// 	position:absolute;
 		// 	top: calc(100vh + 31px)`;
 		// }
 		// let scrollval = 0;
 		// const scrollEvent = () => {
 		// 	if (scrollval > window.scrollY) {
-		// 		elementRef.current.style.transform =
+		// 		navFixed.current.style.transform =
 		// 			'translateY(-64px)translateY(64px)';
 		// 	} else {
-		// 		elementRef.current.style.transform =
+		// 		navFixed.current.style.transform =
 		// 			'translateY(-64px)translateY(-64.33px)';
 		// 	}
 		// 	scrollval = window.scrollY;
@@ -60,17 +60,16 @@ const Header = () => {
 		// 		if (isIntersecting === false) {
 		// 			// No mostrar nav
 		// 			window.addEventListener('scroll', scrollEvent);
-		// 			elementRef.current.style.transform =
+		// 			navFixed.current.style.transform =
 		// 				'translateY(-64px)translateY(-64.33px)';
 		// 		} else {
 		// 			// Mostrar nav
 		// 			window.removeEventListener('scroll', scrollEvent);
-		// 			elementRef.current.style.transform =
+		// 			navFixed.current.style.transform =
 		// 				'translateY(-64px)translateY(64px)';
 		// 		}
 		// 	});
 		// };
-
 		// const observer = new IntersectionObserver(callback);
 		// observer.observe(document.querySelector('section:first-child'));
 	}, []);
@@ -91,7 +90,7 @@ const Header = () => {
 	return (
 		<>
 			<header>
-				<nav ref={elementRef} className={`${s.nav_fixed}`}>
+				<nav ref={navFixed} className={`${s.nav_fixed}`}>
 					<div className={s.principal_icon}>
 						<i className='fa-solid fa-code'></i>
 						<Typed
@@ -106,7 +105,7 @@ const Header = () => {
 					</div>
 					<div
 						onClick={() => {
-							navFixedBar.current.style.transform = 'translate(-18.75rem)';
+							navFixedBar.current.style.translate = '0';
 							bgDark.current.style.display = 'inline-block';
 							bgDark.current.style.animation = 'show .3s forwards';
 							blockScroll(true);
@@ -119,7 +118,7 @@ const Header = () => {
 				<aside ref={navFixedBar} className={`${s.principal_nav}`}>
 					<a
 						onClick={() => {
-							navFixedBar.current.style.transform = 'translate(18.75rem)';
+							navFixedBar.current.style.translate = '100vw';
 							bgDark.current.style.animation = 'unShow .3s backwards';
 							unblockScroll();
 							setTimeout(() => {
@@ -133,7 +132,7 @@ const Header = () => {
 					<ul
 						onClick={({ target }) => {
 							if (target.nodeName === 'A') {
-								navFixedBar.current.style.transform = 'translate(18.75rem)';
+								navFixedBar.current.style.translate = '100vw';
 								bgDark.current.style.animation = 'unShow .3s backwards';
 								unblockScroll();
 								setTimeout(() => {
@@ -158,7 +157,7 @@ const Header = () => {
 			{/* <!-- background dark --> */}
 			<div
 				onClick={({ target }) => {
-					navFixedBar.current.style.transform = 'translate(18.75rem)';
+					navFixedBar.current.style.translate = '100vw';
 					target.style.animation = 'unShow .3s forwards';
 					bgDark.current.style.animation = 'unShow .3s backwards';
 					unblockScroll();

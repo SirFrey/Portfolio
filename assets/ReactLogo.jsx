@@ -1,5 +1,3 @@
-import React from 'react';
-
 function ReactLogo() {
 	return (
 		<svg xmlns='http://www.w3.org/2000/svg' viewBox='-11.5 -10.232 23 20.463'>

@@ -1,8 +1,11 @@
 @import 'victormono';
 html {
+	all: initial;
 	scroll-behavior: smooth;
 }
-
+body {
+	scroll-margin-top: 100px;
+}
 :root {
 	--principalColor: #495c83;
 	--principalColorDark: #0b1a38;
@@ -19,27 +22,35 @@ h6 {
 	margin: 0;
 	padding: 1rem;
 }
+:target {
+	scroll-margin-top: 64px;
+}
 
 h2:not(section:first-child h2, footer h2) {
-	/* color: var(--principalColorDark); */
 	text-decoration: underline;
-	text-decoration-style: double;
 	color: #0b1a38;
 }
 body {
-	background: var(--principalColor);
 	font-family: 'Victor Mono', sans-serif;
 	color: aliceblue;
 	font-size: 17px;
+	/* font-size: clamp(12px, 3vw, 36px); */
 	text-align: center;
 	-webkit-overflow-scrolling: touch;
+	overflow: auto;
+	overscroll-behavior-y: none;
 }
 
 h1 {
 	text-align: center;
-	font-size: 2em;
+	font-size: clamp(1.3rem, 4vw, 2.25rem);
 }
-
+h2 {
+	font-size: clamp(1.2rem, 2.5vw, 2.25rem);
+}
+h4 {
+	font-size: clamp(1.1rem, 2vw, 2.25rem);
+}
 ul {
 	padding: 0;
 }
@@ -53,8 +64,6 @@ nav a:visited {
 a {
 	text-decoration: none;
 }
-
-/* bg_dark */
 
 h1 {
 	border: 2px solid var(--principalColorAlpha);
@@ -90,16 +99,6 @@ h1 {
 	}
 }
 
-@media (max-width: 417px) {
-	body {
-		font-size: 14px;
-	}
-}
-@media (max-width: 675px) {
-	section > h1 {
-		max-width: 450px;
-	}
-}
 input,
 textarea,
 button,
@@ -108,26 +107,22 @@ a {
 	-webkit-tap-highlight-color: transparent;
 }
 
-body {
-	overscroll-behavior: contain;
+body.scroll::-webkit-scrollbar {
+	display: none;
 }
-.wave {
-	/* position: absolute; */
-	bottom: 0;
-	left: 0;
-	width: 100%;
-	overflow: hidden;
-	line-height: 0;
-	transform: rotate(180deg);
+body::-webkit-scrollbar {
+	width: 10px;
 }
-
-.wave svg {
-	position: relative;
-	display: block;
-	width: calc(116% + 1.3px);
-	height: 163px;
+body::-webkit-scrollbar-thumb {
+	background-color: #aaa;
 }
-
-.wave .shape-fill {
-	fill: #7a86b6;
+body::-webkit-scrollbar-thumb:hover {
+	background-color: #999;
+}
+body::-webkit-scrollbar-track {
+	background-color: #fff;
+	border-radius: 10px;
+}
+.fa-solid:not(footer i.fa-solid) {
+	font-size: clamp(1rem, 4vw, 1.3rem);
 }

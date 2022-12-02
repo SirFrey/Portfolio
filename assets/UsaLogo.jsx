@@ -1,7 +1,6 @@
-function UsaLogo({ classname }) {
+function UsaLogo() {
 	return (
 		<svg
-			className={classname}
 			xmlns='http://www.w3.org/2000/svg'
 			enableBackground='new 0 0 34 34'
 			viewBox='0 0 34 34'
