@@ -1,6 +1,7 @@
 import Articles from '../Pages/Articles/Articles';
 import Footer from '../Pages/Footer/Footer';
 import Header from '../Pages/Header/Header';
+// import ProgressBar from ''
 import { useEffect } from 'react';
 const App = () => {
 	useEffect(() => {

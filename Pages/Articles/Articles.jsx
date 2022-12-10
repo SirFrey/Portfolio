@@ -63,7 +63,7 @@ const Articles = () => {
 						<h2 className={'hidden'} id='Portfolio'>
 							Proyectos:
 						</h2>
-						<h4 className={'hidden'}>No publicados...</h4>
+						<h4 className={'hidden'}>Por publicar...</h4>
 					</div>
 				</section>
 				<section>
@@ -146,7 +146,7 @@ const Articles = () => {
 							Soy Autodidacta, Atleta y aún Bachiller. Provengo de
 							Caracas-Venezuela, con aspiraciones de poder viajar a temprana
 							edad y tengo el objetivo de llegar a pequeñas y grandes empresas
-							con este portfolio, acepto todo tipo de feedback por parte del los
+							con este portfolio, acepto todo tipo de feedback por parte de los
 							visitantes para este portfolio web y también para mis perfiles.
 						</p>
 					</div>
@@ -167,12 +167,12 @@ const Articles = () => {
 
 				<section>
 					<div className={`${s.marginContainer}`}>
-						<h2 className='hidden'>Lo que voy aprender</h2>
+						<h2 className='hidden'>Habilidades a Desarrollar...</h2>
 						<p className={'hidden'}>
-							En un futuro no muy lejano, voy a aprender algunos frameworks y
-							librerías como Next, voy a aprender Node para el backend,
-							aprender&eacute; m&aacute;s ingles hasta llegar a un nivel C1-B2,
-							y, voy a convertirme en un Individual Contributer Experto.
+							Voy a aprender algunos frameworks y librerías como Next, Node para
+							el backend, aprender&eacute; m&aacute;s ingles hasta llegar a un
+							nivel C1-B2, y, voy a convertirme en un Individual Contributer
+							Experto.
 						</p>
 					</div>
 				</section>

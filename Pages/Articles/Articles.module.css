@@ -83,21 +83,14 @@ section > h1 {
 }
 
 :is(.lang_list, .tool_list, .other_list) svg {
-	width: clamp(2rem, 10vw, 5rem);
-	height: clamp(2rem, 10vw, 5rem);
+	width: clamp(2rem, 15vw, 5rem);
+	height: clamp(2rem, 15vw, 5rem);
 }
 @media (prefers-reduced-motion) {
 	.hidden {
 		transition: none;
 	}
 }
-
-/* @media (max-width: 417px) {
-	:is(.lang_list, .tool_list, .other_list) svg {
-		width: 4rem;
-		height: 4rem;
-	}
-} */
 
 .marginContainer {
 	margin: 20px;
@@ -107,7 +100,6 @@ section > h1 {
 	align-items: center;
 }
 .wave {
-	/* position: absolute; */
 	bottom: 0;
 	left: 0;
 	width: 100%;
@@ -199,8 +191,8 @@ section > h1 {
 .wave5 .shapeFill {
 	fill: #495c83;
 }
-/* @media (max-width: 657px) {
+@media (width <= 457px) {
 	section h1.titleH1 {
-		max-width: max(450px);
+		max-width: 345px;
 	}
-} */
+}
