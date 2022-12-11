@@ -7,6 +7,8 @@ import ReactLogo from '../../assets/ReactLogo';
 import Git from '../../assets/Git';
 import Github from '../../assets/GitHubLogo';
 import Terminal from '../../assets/Terminal';
+// Components
+import SliderCard from '../../components/SliderCard/SliderCard';
 
 import { useEffect } from 'react';
 
@@ -63,7 +65,8 @@ const Articles = () => {
 						<h2 className={'hidden'} id='Portfolio'>
 							Proyectos:
 						</h2>
-						<h4 className={'hidden'}>Por publicar...</h4>
+						{/* <h4 className={'hidden'}>Por publicar...</h4> */}
+						<SliderCard />
 					</div>
 				</section>
 				<section>
