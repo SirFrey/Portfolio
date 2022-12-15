@@ -9,7 +9,7 @@ import Github from '../../assets/GitHubLogo';
 import Terminal from '../../assets/Terminal';
 // Components
 import SliderCard from '../../components/SliderCard/SliderCard';
-
+import TextIcon from '../../components/TextIcon/TextIcon';
 import { useEffect } from 'react';
 
 const Articles = () => {
@@ -34,6 +34,7 @@ const Articles = () => {
 						<h1 className={`hidden ${s.titleH1}`}>
 							Bienvenido a mi portfolio web
 						</h1>
+
 						<h2 className={'hidden'}>Frontend Developer</h2>
 					</div>
 					<div className={s.wave4}>
@@ -65,7 +66,6 @@ const Articles = () => {
 						<h2 className={'hidden'} id='Portfolio'>
 							Proyectos:
 						</h2>
-						{/* <h4 className={'hidden'}>Por publicar...</h4> */}
 						<SliderCard />
 					</div>
 				</section>
@@ -86,38 +86,46 @@ const Articles = () => {
 					<div className={`${s.marginContainer}`}>
 						<div className='hidden'>
 							<h2>Conocimientos:</h2>
-							<h4>Lenguajes, frameworks y librerías:</h4>
+							<h4>Lenguajes, Frameworks y Librerías:</h4>
 						</div>
 						<ul className={`${s.lang_list}`}>
 							<li className={'hidden'}>
 								<Html />
+								<TextIcon text='HTML' />
 							</li>
 							<li className={'hidden'}>
 								<CssLogo />
+								<TextIcon text='CSS' />
 							</li>
 							<li className={'hidden'}>
 								<Js />
+								<TextIcon text='Javascript' />
 							</li>
 							<li className={'hidden'}>
 								<ReactLogo />
+								<TextIcon text='React' />
 							</li>
 						</ul>
 						<h4 className='hidden'>Herramientas:</h4>
 						<ul className={`${s.tool_list}`}>
 							<li className={'hidden'}>
 								<Git />
+								<TextIcon text='Git' />
 							</li>
 							<li className={'hidden'}>
 								<Github />
+								<TextIcon text='Github' />
 							</li>
 							<li className={'hidden'}>
 								<Terminal />
+								<TextIcon text='Linux - Terminal' />
 							</li>
 						</ul>
 						<h4 className='hidden'>Otros:</h4>
 						<ul className={`${s.other_list}`}>
 							<li className={'hidden'}>
 								<UsaLogo />
+								<TextIcon text='Ingles (A2)' />
 							</li>
 						</ul>
 					</div>
@@ -173,9 +181,8 @@ const Articles = () => {
 						<h2 className='hidden'>Habilidades a Desarrollar...</h2>
 						<p className={'hidden'}>
 							Voy a aprender algunos frameworks y librerías como Next, Node para
-							el backend, aprender&eacute; m&aacute;s ingles hasta llegar a un
-							nivel C1-B2, y, voy a convertirme en un Individual Contributer
-							Experto.
+							el backend, consolidare mi ingles hasta llegar a un nivel C1-B2,
+							y, voy a convertirme en un Individual Contributer Experto.
 						</p>
 					</div>
 				</section>

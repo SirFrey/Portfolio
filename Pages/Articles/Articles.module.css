@@ -196,3 +196,14 @@ section > h1 {
 		max-width: 345px;
 	}
 }
+
+li svg[data-text] {
+	position: relative;
+}
+li svg[data-text]::after {
+	content: '';
+	position: absolute;
+	width: 200px;
+	height: 200px;
+	background-color: red;
+}
