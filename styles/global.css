@@ -2,9 +2,11 @@
 html {
 	all: initial;
 	scroll-behavior: smooth;
+	background: var(--principalColor);
 }
 body {
 	scroll-margin-top: 100px;
+	width: 100vw - 10px;
 }
 :root {
 	--principalColor: #495c83;
@@ -34,11 +36,10 @@ body {
 	font-family: 'Victor Mono', sans-serif;
 	color: aliceblue;
 	font-size: 17px;
-	/* font-size: clamp(12px, 3vw, 36px); */
 	text-align: center;
 	-webkit-overflow-scrolling: touch;
 	overflow: auto;
-	overscroll-behavior-y: none;
+	overscroll-behavior: none;
 }
 
 h1 {

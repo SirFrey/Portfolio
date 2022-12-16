@@ -1,3 +1,4 @@
+// Icons
 import s from './Articles.module.css';
 import UsaLogo from '../../assets/UsaLogo';
 import Html from '../../assets/Html';
@@ -60,6 +61,10 @@ const Articles = () => {
 							></path>
 						</svg>
 					</div>
+					<img
+						src='https://img.freepik.com/foto-gratis/diseno-concepto-plantilla-diseno-web-html_53876-120438.jpg?w=900&t=st=1660676885~exp=1660677485~hmac=2899e1383827e6af6608d048fbba3d6958763202894ec02e3e5bb4d598f6e3b5'
+						className={s.bgFixed}
+					></img>
 				</section>
 				<section>
 					<div className={`${s.marginContainer}`}>
