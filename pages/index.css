@@ -127,3 +127,66 @@ body::-webkit-scrollbar-track {
 .fa-solid:not(footer i.fa-solid) {
 	font-size: clamp(1rem, 4vw, 1.3rem);
 }
+/* Articles styles */
+
+p {
+	width: clamp(min(400px, 70vw), 70vw, 70vw);
+	font-size: clamp(1rem, 3vw, 1.3rem);
+}
+section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+/* Article */
+
+/* Scroll Bar */
+
+/* Sections */
+section:nth-child(1) {
+	display: grid;
+	place-content: center;
+	height: 100svh;
+	color: var(--principalColor);
+	position: relative;
+	/* background: var(--principalColor)
+		url(https://img.freepik.com/foto-gratis/diseno-concepto-plantilla-diseno-web-html_53876-120438.jpg?w=900&t=st=1660676885~exp=1660677485~hmac=2899e1383827e6af6608d048fbba3d6958763202894ec02e3e5bb4d598f6e3b5)
+		no-repeat 0 0;
+	background-size: cover;
+	background-attachment: fixed;
+	background-blend-mode: screen; */
+}
+
+section:first-child div.marginContainer {
+	mix-blend-mode: multiply;
+}
+
+section:nth-child(even):not(:first-child) {
+	background: var(--secondaryColor);
+}
+section:nth-child(odd):not(:first-child) {
+	background: var(--principalColor);
+}
+
+section > h1 {
+	margin: 0;
+	padding: 16px 30px;
+}
+
+li svg[data-text] {
+	position: relative;
+}
+li svg[data-text]::after {
+	content: '';
+	position: absolute;
+	width: 200px;
+	height: 200px;
+	background-color: red;
+}
+.marginContainer {
+	margin: 20px;
+	width: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}

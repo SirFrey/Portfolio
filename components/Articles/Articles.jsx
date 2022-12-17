@@ -31,7 +31,7 @@ const Articles = () => {
 		<>
 			<article>
 				<section>
-					<div className={s.marginContainer}>
+					<div className='marginContainer'>
 						<h1 className={`hidden ${s.titleH1}`}>
 							Bienvenido a mi portfolio web
 						</h1>
@@ -67,7 +67,7 @@ const Articles = () => {
 					></img>
 				</section>
 				<section>
-					<div className={`${s.marginContainer}`}>
+					<div className='marginContainer'>
 						<h2 className={'hidden'} id='Portfolio'>
 							Proyectos:
 						</h2>
@@ -88,7 +88,7 @@ const Articles = () => {
 							></path>
 						</svg>
 					</div>
-					<div className={`${s.marginContainer}`}>
+					<div className='marginContainer'>
 						<div className='hidden'>
 							<h2>Conocimientos:</h2>
 							<h4>Lenguajes, Frameworks y Librerías:</h4>
@@ -150,7 +150,7 @@ const Articles = () => {
 				</section>
 
 				<section>
-					<div className={`${s.marginContainer}`}>
+					<div className='marginContainer'>
 						<h2 id='About_me'>Sobre Mi</h2>
 						<p className={'hidden'}>
 							Desarrollador Frontend con conocimientos solidos en HTML5, CSS3 y
@@ -182,7 +182,7 @@ const Articles = () => {
 				</section>
 
 				<section>
-					<div className={`${s.marginContainer}`}>
+					<div className='marginContainer'>
 						<h2 className='hidden'>Habilidades a Desarrollar...</h2>
 						<p className={'hidden'}>
 							Voy a aprender algunos frameworks y librerías como Next, Node para

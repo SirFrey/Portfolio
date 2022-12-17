@@ -1,9 +1,12 @@
-import Articles from '../Pages/Articles/Articles';
-import Footer from '../Pages/Footer/Footer';
-import Header from '../Pages/Header/Header';
-// import ProgressBar from ''
+import Articles from '../components/Articles/Articles';
+import Footer from '../components/Footer/Footer';
+import Header from '../components/Header/Header';
+import './normalize.css';
+import './index.css';
+
 import { useEffect } from 'react';
-const App = () => {
+import IndexPage from '../components/IndexPage/IndexPage';
+const Index = () => {
 	useEffect(() => {
 		const observer = new IntersectionObserver(entries => {
 			entries.forEach(entry => {
@@ -19,6 +22,7 @@ const App = () => {
 	}, []);
 	return (
 		<>
+			<IndexPage />
 			<Header />
 			<Articles />
 			<Footer />
@@ -26,4 +30,4 @@ const App = () => {
 	);
 };
 
-export default App;
+export default Index;
