@@ -4,7 +4,7 @@ const Page = () => {
 		<>
 			<Html>
 				<Head>
-					<link rel='icon' href='/public/favicon.ico' />
+					<link rel='icon' href='/images/favicon.ico' />
 					<title>Moises&apos;s Portfolio</title>
 					<meta charset='UTF-8' />
 					<meta
