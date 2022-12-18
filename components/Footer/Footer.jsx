@@ -1,9 +1,6 @@
 import s from './Footer.module.css';
-
-console.log(s);
 const Footer = () => {
 	return (
-		
 		<footer className={`${s.footer_final}`}>
 			<h2 id='Contacto' className='hidden'>
 				Contacto

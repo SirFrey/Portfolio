@@ -3,7 +3,6 @@ import Footer from '../components/Footer/Footer';
 import Header from '../components/Header/Header';
 import './normalize.css';
 import './index.css';
-
 import { useEffect } from 'react';
 import IndexPage from '../components/IndexPage/IndexPage';
 const Index = () => {
@@ -22,7 +21,7 @@ const Index = () => {
 	}, []);
 	return (
 		<>
-			<IndexPage />
+			{/* <IndexPage /> */}
 			<Header />
 			<Articles />
 			<Footer />

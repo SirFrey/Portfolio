@@ -3,7 +3,7 @@ import Head from 'next/head';
 const IndexPage = () => {
 	return (
 		<Head>
-			<title>Moises's Portfolio</title>
+			<title>Moises&apos;s Portfolio</title>
 			<meta charset='UTF-8' />
 			<meta
 				name='description'
@@ -37,7 +37,6 @@ const IndexPage = () => {
 			/>
 			<meta itemProp='image' content='http://i.ibb.co/ScBCCz7/portfolio.jpg' />
 			<link rel='icon' href='./assets/favicon.ico' />
-			<link rel='stylesheet' href='./styles/normalize.css' />
 			<link
 				rel=' stylesheet'
 				href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css'
