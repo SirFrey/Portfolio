@@ -4,7 +4,7 @@ import Header from '../components/Header/Header';
 import './normalize.css';
 import './index.css';
 import { useEffect } from 'react';
-// import IndexPage from '../components/IndexPage/IndexPage';
+
 const Index = () => {
 	useEffect(() => {
 		const observer = new IntersectionObserver(entries => {
@@ -21,7 +21,6 @@ const Index = () => {
 	}, []);
 	return (
 		<>
-			{/* <IndexPage /> */}
 			<Header />
 			<Articles />
 			<Footer />

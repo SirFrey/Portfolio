@@ -11,6 +11,7 @@ import Terminal from '../../assets/Terminal';
 // Components
 import SliderCard from '../../components/SliderCard/SliderCard';
 import TextIcon from '../../components/TextIcon/TextIcon';
+import Cursor from '../Cursor/Cursor';
 import { useEffect } from 'react';
 
 const Articles = () => {
@@ -29,6 +30,7 @@ const Articles = () => {
 	}, []);
 	return (
 		<>
+			<Cursor />
 			<article>
 				<section>
 					<div className='marginContainer'>
