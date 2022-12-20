@@ -8,13 +8,6 @@ function hasTouch() {
 		navigator.msMaxTouchPoints > 0
 	); // current IE10
 }
-const eventHandler = evt => {
-	if (evt) {
-		return 'touchmove';
-	} else {
-		return 'mousemove';
-	}
-};
 const Cursor = () => {
 	useEffect(() => {
 		const circles = document.querySelectorAll(`.${s.circle}`);
