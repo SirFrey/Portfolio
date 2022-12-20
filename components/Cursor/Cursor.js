@@ -24,14 +24,14 @@ const Cursor = () => {
 			circle.y = 0;
 		});
 		const coords = { x: 0, y: 0 };
-		window.addEventListener(eventHandler(hasTouch()), e => {
-			const touch =
-				(e.touches && e.touches[0]) ||
-				(e.pointerType && e.pointerType === 'touch' && e);
-			const clientX = (touch || e).clientX;
-			const clientY = (touch || e).clientY;
-			coords.x = clientX;
-			coords.y = clientY;
+		window.addEventListener('mousemove', e => {
+			if (hasTouch()) {
+				circles.forEach(circle => {
+					circle.style.display = 'none';
+				});
+			}
+			coords.x = e.clientX;
+			coords.y = e.clientY;
 		});
 		const animateCircles = () => {
 			let x = coords.x;
@@ -45,8 +45,8 @@ const Cursor = () => {
 
 				circle.style.scale = (circles.length - index) / circles.length;
 				const nextCircle = circles[index + 1] || circles[0];
-				x += (nextCircle.x - x) * 0.1;
-				y += (nextCircle.y - y) * 0.1;
+				x += (nextCircle.x - x) * 0.2;
+				y += (nextCircle.y - y) * 0.2;
 			});
 			requestAnimationFrame(animateCircles);
 		};
