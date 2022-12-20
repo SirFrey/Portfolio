@@ -8,7 +8,7 @@ function hasTouch() {
 		navigator.msMaxTouchPoints > 0
 	); // current IE10
 }
-let eventHandler = evt => {
+const eventHandler = evt => {
 	if (evt) {
 		return 'touchmove';
 	} else {
@@ -25,11 +25,11 @@ const Cursor = () => {
 		});
 		const coords = { x: 0, y: 0 };
 		window.addEventListener(eventHandler(hasTouch()), e => {
-			let touch =
+			const touch =
 				(e.touches && e.touches[0]) ||
 				(e.pointerType && e.pointerType === 'touch' && e);
-			let clientX = (touch || e).clientX;
-			let clientY = (touch || e).clientY;
+			const clientX = (touch || e).clientX;
+			const clientY = (touch || e).clientY;
 			coords.x = clientX;
 			coords.y = clientY;
 		});
@@ -45,8 +45,8 @@ const Cursor = () => {
 
 				circle.style.scale = (circles.length - index) / circles.length;
 				const nextCircle = circles[index + 1] || circles[0];
-				x += (nextCircle.x - x) * 0.3;
-				y += (nextCircle.y - y) * 0.3;
+				x += (nextCircle.x - x) * 0.1;
+				y += (nextCircle.y - y) * 0.1;
 			});
 			requestAnimationFrame(animateCircles);
 		};
