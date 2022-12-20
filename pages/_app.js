@@ -1,8 +1,8 @@
 import Articles from '../components/Articles/Articles';
 import Footer from '../components/Footer/Footer';
 import Header from '../components/Header/Header';
-import './normalize.css';
-import './index.css';
+import '../styles/normalize.css';
+import '../styles/index.css';
 import { useEffect } from 'react';
 
 const Index = () => {

@@ -1,19 +1,20 @@
 import { useEffect } from 'react';
 import s from './Cursor.module.css';
-// const colors = [
-// 	'#495c83',
-// 	'#43567c',
-// 	'#3e4f75',
-// 	'#38496e',
-// 	'#324367',
-// 	'#2d3c60',
-// 	'#273659',
-// 	'#223052',
-// 	'#1c2b4b',
-// 	'#172545',
-// 	'#111f3e',
-// 	'#0b1a38',
-// ];
+
+function hasTouch() {
+	return (
+		'ontouchstart' in window || // html5 browsers
+		navigator.maxTouchPoints > 0 || // future IE
+		navigator.msMaxTouchPoints > 0
+	); // current IE10
+}
+let eventHandler = evt => {
+	if (evt) {
+		return 'touchmove';
+	} else {
+		return 'mousemove';
+	}
+};
 const Cursor = () => {
 	useEffect(() => {
 		const circles = document.querySelectorAll(`.${s.circle}`);
@@ -21,12 +22,16 @@ const Cursor = () => {
 		circles.forEach((circle, index) => {
 			circle.x = 0;
 			circle.y = 0;
-			// circle.style.backgroundColor = colors[index % colors.length];
 		});
 		const coords = { x: 0, y: 0 };
-		window.addEventListener('mousemove', e => {
-			coords.x = e.clientX;
-			coords.y = e.clientY;
+		window.addEventListener(eventHandler(hasTouch()), e => {
+			let touch =
+				(e.touches && e.touches[0]) ||
+				(e.pointerType && e.pointerType === 'touch' && e);
+			let clientX = (touch || e).clientX;
+			let clientY = (touch || e).clientY;
+			coords.x = clientX;
+			coords.y = clientY;
 		});
 		const animateCircles = () => {
 			let x = coords.x;
