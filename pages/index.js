@@ -44,6 +44,8 @@ const Index = () => {
 					property='og:image'
 					content='https://i.ibb.co/ScBCCz7/portfolio.jpg'
 				/>
+				<meta property='og:image:width' content='400' />
+				<meta property='og:image:height' content='300' />
 				<meta property='og:locale' content='es_ES' />
 				<meta name='theme-color' content='#495c83' />
 				<meta itemProp='name' content="Moises's Portfolio" />
