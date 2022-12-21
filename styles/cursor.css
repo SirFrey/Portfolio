@@ -10,6 +10,11 @@
 	pointer-events: none;
 	transition: background-color 0.4s;
 }
+.cursor::first-child {
+	width: 30px;
+	height: 30px;
+	background: red;
+}
 
 .cursor {
 	pointer-events: none;
