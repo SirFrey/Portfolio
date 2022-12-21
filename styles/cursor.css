@@ -1,0 +1,23 @@
+.circle {
+	position: fixed;
+	width: 24px;
+	height: 24px;
+	border-radius: 24px;
+	background: var(--principalColor);
+	top: 0;
+	left: 0;
+	z-index: 99999999999;
+	pointer-events: none;
+	transition: background-color 0.4s;
+}
+
+.cursor {
+	pointer-events: none;
+	position: fixed;
+	display: block;
+	border-radius: 0;
+	mix-blend-mode: multiply;
+	top: 0;
+	left: 0;
+	z-index: 9999999999999999;
+}
