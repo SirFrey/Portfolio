@@ -8,6 +8,7 @@ module.exports = {
 		'standard',
 		'plugin:react/jsx-runtime',
 		'eslint-config-prettier',
+		'plugin:@next/next/recommended',
 	],
 	parserOptions: {
 		ecmaFeatures: {

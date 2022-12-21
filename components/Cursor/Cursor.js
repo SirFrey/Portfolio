@@ -1,16 +1,20 @@
 import { useEffect } from 'react';
-import s from './Cursor.module.css';
-
+import handlerEventMouse from './script';
 function hasTouch() {
 	return (
-		'ontouchstart' in window || // html5 browsers
-		navigator.maxTouchPoints > 0 || // future IE
+		'ontouchstart' in window ||
+		navigator.maxTouchPoints > 0 ||
 		navigator.msMaxTouchPoints > 0
-	); // current IE10
+	);
 }
 const Cursor = () => {
 	useEffect(() => {
-		const circles = document.querySelectorAll(`.${s.circle}`);
+		const circles = document.querySelectorAll(`.circle`);
+		if (hasTouch()) {
+			circles.forEach(circle => {
+				circle.style.display = 'none';
+			});
+		}
 		console.log(circles);
 		circles.forEach((circle, index) => {
 			circle.x = 0;
@@ -18,11 +22,6 @@ const Cursor = () => {
 		});
 		const coords = { x: 0, y: 0 };
 		window.addEventListener('mousemove', e => {
-			if (hasTouch()) {
-				circles.forEach(circle => {
-					circle.style.display = 'none';
-				});
-			}
 			coords.x = e.clientX;
 			coords.y = e.clientY;
 		});
@@ -44,23 +43,24 @@ const Cursor = () => {
 			requestAnimationFrame(animateCircles);
 		};
 		animateCircles();
+		handlerEventMouse();
 	}, []);
 	return (
 		<>
-			<div className={s.cursor}>
-				<div className={s.circle}></div>
-				<div className={s.circle}></div>
-				<div className={s.circle}></div>
-				<div className={s.circle}></div>
-				<div className={s.circle}></div>
-				<div className={s.circle}></div>
-				<div className={s.circle}></div>
-				<div className={s.circle}></div>
-				<div className={s.circle}></div>
-				<div className={s.circle}></div>
-				<div className={s.circle}></div>
-				<div className={s.circle}></div>
-				<div className={s.circle}></div>
+			<div className={'cursor'}>
+				<div className={'circle'}></div>
+				<div className={'circle'}></div>
+				<div className={'circle'}></div>
+				<div className={'circle'}></div>
+				<div className={'circle'}></div>
+				<div className={'circle'}></div>
+				<div className={'circle'}></div>
+				<div className={'circle'}></div>
+				<div className={'circle'}></div>
+				<div className={'circle'}></div>
+				<div className={'circle'}></div>
+				<div className={'circle'}></div>
+				<div className={'circle'}></div>
 			</div>
 		</>
 	);

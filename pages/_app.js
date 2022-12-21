@@ -3,7 +3,9 @@ import Footer from '../components/Footer/Footer';
 import Header from '../components/Header/Header';
 import '../styles/normalize.css';
 import '../styles/index.css';
+import '../styles/cursor.css';
 import { useEffect } from 'react';
+import Head from 'next/head';
 
 const Index = () => {
 	useEffect(() => {
@@ -21,6 +23,13 @@ const Index = () => {
 	}, []);
 	return (
 		<>
+			<Head>
+				<title>Moises&apos;s Portfolio</title>
+				<meta
+					name='viewport'
+					content='width=device-width, initial-scale=1.0, maximum-scale=1.0'
+				/>
+			</Head>
 			<Header />
 			<Articles />
 			<Footer />

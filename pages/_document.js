@@ -5,16 +5,12 @@ const Page = () => {
 			<Html>
 				<Head>
 					<link rel='icon' href='/images/favicon.ico' />
-					<title>Moises&apos;s Portfolio</title>
-					<meta charset='UTF-8' />
+					<meta charSet='UTF-8' />
 					<meta
 						name='description'
 						content='Este es mi portfolio web, sientete libre de echarle un vistazo a mi pagina 😊'
 					/>
-					<meta
-						name='viewport'
-						content='width=device-width, initial-scale=1.0, maximum-scale=1.0'
-					/>
+
 					<meta name='keywords' content='Portfolio, SirFrey' />
 					<meta name='language' content='spanish' />
 					<meta name='audience' content='all' />
