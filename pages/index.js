@@ -22,6 +22,7 @@ const Index = () => {
 	return (
 		<>
 			<Head>
+				<title>Moises&apos;s Portfolio</title>
 				<link rel='icon' href='/images/favicon.ico' />
 				<meta charSet='UTF-8' />
 				<meta
@@ -32,31 +33,33 @@ const Index = () => {
 				<meta name='keywords' content='Portfolio, SirFrey' />
 				<meta name='language' content='spanish' />
 				<meta name='audience' content='all' />
+				<meta property='og:title' content='Bienvenido a mi web 🤓' />
 				<meta property='og:type' content='website' />
-				<meta property='og:title' content="Moises's Portfolio" />
 				<meta property='og:site_name' content='Portfolio' />
-				<meta property='og:url' content='https://sirfrey.github.io' />
+				<meta
+					property='og:url'
+					content='https://portfolio-sirfrey.vercel.app/'
+				/>
 				<meta
 					property='og:description'
-					content='This is my Website, here you have a little bit about me, my knowlegdes, and my projects.'
+					content='Siente libre de echarle un vistazo a mi web 😎.'
 				/>
 				<meta
 					property='og:image'
 					content='https://i.ibb.co/ScBCCz7/portfolio.jpg'
 				/>
-				<meta property='og:image:width' content='400' />
-				<meta property='og:image:height' content='300' />
-				<meta property='og:locale' content='es_ES' />
+				{/* <meta property='og:image:width' content='1200' />
+				<meta property='og:image:height' content='630' /> */}
 				<meta name='theme-color' content='#495c83' />
-				<meta itemProp='name' content="Moises's Portfolio" />
-				<meta
+				{/* <meta itemProp='name' content="Moises's Portfolio" /> */}
+				{/* <meta
 					itemProp='description'
 					content='Este es mi portfolio web, sientete libre de echarle un vistazo a mi pagina 😊'
 				/>
 				<meta
 					itemProp='image'
 					content='http://i.ibb.co/ScBCCz7/portfolio.jpg'
-				/>
+				/> */}
 				<link
 					rel=' stylesheet'
 					href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css'
