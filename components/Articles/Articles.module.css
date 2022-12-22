@@ -60,7 +60,6 @@
 	}
 }
 
-
 .wave {
 	bottom: 0;
 	left: 0;
@@ -93,7 +92,7 @@
 	position: relative;
 	display: block;
 	width: calc(100% + 1.3px);
-	height: clamp(100px, 20vw, 164px);
+	height: clamp(100px, 20vw, 120px);
 }
 
 .wave2 .shapeFill {

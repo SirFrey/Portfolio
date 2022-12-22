@@ -15,8 +15,7 @@ const Cursor = () => {
 				circle.style.display = 'none';
 			});
 		}
-		console.log(circles);
-		circles.forEach((circle, index) => {
+		circles.forEach(circle => {
 			circle.x = 0;
 			circle.y = 0;
 		});
@@ -24,6 +23,16 @@ const Cursor = () => {
 		window.addEventListener('mousemove', e => {
 			coords.x = e.clientX;
 			coords.y = e.clientY;
+		});
+		window.addEventListener('mouseout', e => {
+			circles.forEach(circle => {
+				circle.style.opacity = 0;
+			});
+		});
+		window.addEventListener('mouseover', () => {
+			circles.forEach(circle => {
+				circle.style.opacity = 1;
+			});
 		});
 		const animateCircles = () => {
 			let x = coords.x;
