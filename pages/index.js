@@ -27,7 +27,7 @@ const Index = () => {
 				<meta charSet='UTF-8' />
 				<meta
 					name='description'
-					content='Este es mi portfolio web, sientete libre de echarle un vistazo a mi pagina 😊'
+					content='Este es mi portfolio web, sientete libre de echarle un vistazo. 😊'
 				/>
 
 				<meta name='keywords' content='Portfolio, SirFrey' />
@@ -42,14 +42,14 @@ const Index = () => {
 				/>
 				<meta
 					property='og:description'
-					content='Siente libre de echarle un vistazo a mi web 😎.'
+					content='Sientete libre de echarle un vistazo. 😎'
 				/>
 				<meta
 					property='og:image'
 					content='https://i.ibb.co/ScBCCz7/portfolio.jpg'
 				/>
-				{/* <meta property='og:image:width' content='1200' />
-				<meta property='og:image:height' content='630' /> */}
+				<meta property='og:image:width' content='630' />
+				<meta property='og:image:height' content='630' />
 				<meta name='theme-color' content='#495c83' />
 				{/* <meta itemProp='name' content="Moises's Portfolio" /> */}
 				{/* <meta
