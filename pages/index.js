@@ -24,6 +24,10 @@ const Index = () => {
 			<Head>
 				<title>Moises&apos;s Portfolio</title>
 				<link rel='icon' href='/images/favicon.ico' />
+				<meta
+					name='google-site-verification'
+					content='aDQkkXcG9tmZTNfGzEx5FIGmfyaeoA6vrPn1rvJxNvM'
+				/>
 				<meta charSet='UTF-8' />
 				<meta
 					name='description'
