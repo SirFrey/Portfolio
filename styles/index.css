@@ -150,6 +150,7 @@ section {
 section:nth-child(1) {
 	display: grid;
 	place-content: center;
+	height: 100vh;
 	height: 100svh;
 	color: var(--principalColor);
 	position: relative;
