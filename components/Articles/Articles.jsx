@@ -13,9 +13,11 @@ import SliderCard from '../../components/SliderCard/SliderCard';
 import TextIcon from '../../components/TextIcon/TextIcon';
 import Cursor from '../Cursor/Cursor';
 import { useEffect } from 'react';
+import { textOpacityEffectDomino } from './script';
 
 const Articles = () => {
 	useEffect(() => {
+		textOpacityEffectDomino();
 		const observer = new IntersectionObserver(entries => {
 			entries.forEach(entry => {
 				if (entry.isIntersecting) {
@@ -30,7 +32,6 @@ const Articles = () => {
 	}, []);
 	return (
 		<>
-			<Cursor />
 			<article>
 				<section>
 					<div className='marginContainer'>

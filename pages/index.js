@@ -4,6 +4,7 @@ import Header from '../components/Header/Header';
 
 import { useEffect } from 'react';
 import Head from 'next/head';
+import Cursor from '../components/Cursor/Cursor';
 
 const Index = () => {
 	useEffect(() => {
@@ -72,6 +73,7 @@ const Index = () => {
 					referrerPolicy='no-referrer'
 				/>
 			</Head>
+			<Cursor />
 			<Header />
 			<Articles />
 			<Footer />

@@ -112,10 +112,10 @@ a {
 	-webkit-tap-highlight-color: transparent;
 }
 
-body.scroll::-webkit-scrollbar {
-	display: none;
-}
 body::-webkit-scrollbar {
+	/* display: none; */
+}
+/* body::-webkit-scrollbar {
 	width: 10px;
 }
 body::-webkit-scrollbar-thumb {
@@ -127,7 +127,7 @@ body::-webkit-scrollbar-thumb:hover {
 body::-webkit-scrollbar-track {
 	background-color: #fff;
 	border-radius: 10px;
-}
+} */
 .fa-solid:not(footer i.fa-solid) {
 	font-size: clamp(1rem, 4vw, 1.3rem);
 }

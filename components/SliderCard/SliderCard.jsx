@@ -6,7 +6,7 @@ import Slider from 'react-slick/lib/slider';
 const SliderCard = () => {
 	const settings = {
 		dots: true,
-		infinite: true,
+		// infinite: true,
 		speed: 500,
 		slidesToShow: 1,
 		slidesToScroll: 1,
@@ -18,10 +18,14 @@ const SliderCard = () => {
 		<>
 			<Slider {...settings}>
 				<div>
-					<h3>Por publicar...</h3>
+					<div className={s.card}>
+						<h3>Por publicar...</h3>
+					</div>
 				</div>
 				<div>
-					<h3>Por publicar...</h3>
+					<div className={s.card}>
+						<h3>Por publicar...</h3>
+					</div>
 				</div>
 			</Slider>
 		</>
