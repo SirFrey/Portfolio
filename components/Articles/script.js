@@ -11,6 +11,7 @@ export function textOpacityEffectDomino() {
 	const textSvgLi = document.querySelectorAll(`.${style.text}`);
 
 	setInterval(() => {
+		// eslint-disable-next-line array-callback-return
 		svgLiArr.some((_, index) => {
 			if (index === counter) {
 				textSvgLi[index].style.opacity = 1;
