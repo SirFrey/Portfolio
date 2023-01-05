@@ -9,11 +9,12 @@ export function textOpacityEffectDomino() {
 	const svgLiArr = Array.from(svgLi);
 	console.log(svgLiArr);
 	const textSvgLi = document.querySelectorAll(`.${style.text}`);
-
+	let isIntersecting = false;
 	// Code to move appear and dessappear the texts
 	const observer = new IntersectionObserver(entries => {
 		entries.forEach(entry => {
-			if (entry.isIntersecting) {
+			if (entry.isIntersecting && isIntersecting === false) {
+				isIntersecting = true;
 				setInterval(() => {
 					svgLiArr.some((_, index) => {
 						if (index === counter) {
@@ -24,11 +25,11 @@ export function textOpacityEffectDomino() {
 							counter = 0;
 							textSvgLi[index].style.opacity = 1;
 							textSvgLi[index].style.filter = 'blur(0)';
-							return null;
+							return;
 						} else {
 							textSvgLi[index].style.opacity = 0;
 							textSvgLi[index].style.filter = 'blur(4px)';
-							return null;
+							return;
 						}
 					});
 					counter++;
