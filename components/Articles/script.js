@@ -10,23 +10,31 @@ export function textOpacityEffectDomino() {
 	console.log(svgLiArr);
 	const textSvgLi = document.querySelectorAll(`.${style.text}`);
 
-	setInterval(() => {
-		svgLiArr.some((_, index) => {
-			if (index === counter) {
-				textSvgLi[index].style.opacity = 1;
-				textSvgLi[index].style.filter = 'blur(0)';
-				return index === counter;
-			} else if (counter === svgLi.length) {
-				counter = 0;
-				textSvgLi[index].style.opacity = 1;
-				textSvgLi[index].style.filter = 'blur(0)';
-				return;
-			} else {
-				textSvgLi[index].style.opacity = 0;
-				textSvgLi[index].style.filter = 'blur(4px)';
-				return;
+	// Code to move appear and dessappear the texts
+	const observer = new IntersectionObserver(entries => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				setInterval(() => {
+					svgLiArr.some((_, index) => {
+						if (index === counter) {
+							textSvgLi[index].style.opacity = 1;
+							textSvgLi[index].style.filter = 'blur(0)';
+							return index === counter;
+						} else if (counter === svgLi.length) {
+							counter = 0;
+							textSvgLi[index].style.opacity = 1;
+							textSvgLi[index].style.filter = 'blur(0)';
+							return null;
+						} else {
+							textSvgLi[index].style.opacity = 0;
+							textSvgLi[index].style.filter = 'blur(4px)';
+							return null;
+						}
+					});
+					counter++;
+				}, 1000);
 			}
 		});
-		counter++;
-	}, 1000);
+	});
+	observer.observe(svgLiArr[0]);
 }
