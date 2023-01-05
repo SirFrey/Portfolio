@@ -20,9 +20,11 @@ export function textOpacityEffectDomino() {
 				counter = 0;
 				textSvgLi[index].style.opacity = 1;
 				textSvgLi[index].style.filter = 'blur(0)';
+				return;
 			} else {
 				textSvgLi[index].style.opacity = 0;
 				textSvgLi[index].style.filter = 'blur(4px)';
+				return;
 			}
 		});
 		counter++;
