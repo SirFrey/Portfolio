@@ -7,29 +7,28 @@ export function textOpacityEffectDomino() {
 		`.${s.lang_list} li, .${s.tool_list} li, .${s.other_list} li`
 	);
 	const svgLiArr = Array.from(svgLi);
-	console.log(svgLiArr);
 	const textSvgLi = document.querySelectorAll(`.${style.text}`);
-	let isIntersecting = false;
+	let inView = false;
 	// Code to move appear and dessappear the texts
 	const observer = new IntersectionObserver(entries => {
-		entries.forEach(entry => {
-			if (entry.isIntersecting && isIntersecting === false) {
-				isIntersecting = true;
+		entries.forEach(({ isIntersecting }) => {
+			if (isIntersecting && inView === false) {
+				inView = true;
 				setInterval(() => {
 					svgLiArr.some((_, index) => {
 						if (index === counter) {
 							textSvgLi[index].style.opacity = 1;
 							textSvgLi[index].style.filter = 'blur(0)';
-							return index === counter;
+							return '';
 						} else if (counter === svgLi.length) {
 							counter = 0;
 							textSvgLi[index].style.opacity = 1;
 							textSvgLi[index].style.filter = 'blur(0)';
-							return null;
+							return '';
 						} else {
 							textSvgLi[index].style.opacity = 0;
 							textSvgLi[index].style.filter = 'blur(4px)';
-							return null;
+							return '';
 						}
 					});
 					counter++;

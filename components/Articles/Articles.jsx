@@ -35,7 +35,7 @@ const Articles = () => {
 				<section>
 					<div className='marginContainer'>
 						<h1 className={`hidden ${s.titleH1}`}>
-							Bienvenido a mi portfolio web
+							Bienvenido a mi Portfolio Web
 						</h1>
 
 						<h2 className={'hidden'}>Frontend Developer</h2>
@@ -77,7 +77,7 @@ const Articles = () => {
 				<section>
 					<div className='marginContainer'>
 						<h2 className={'hidden'} id='Portfolio'>
-							Proyectos:
+							Portfolio:
 						</h2>
 						<SliderCard />
 					</div>
@@ -167,11 +167,11 @@ const Articles = () => {
 							y manejo de proyectos en equipo con Notion y Github.
 						</p>
 						<p className='hidden'>
-							Soy Autodidacta, Atleta y aún Bachiller. Provengo de
-							Caracas-Venezuela, con aspiraciones de poder viajar a temprana
-							edad y tengo el objetivo de llegar a pequeñas y grandes empresas
-							con este portfolio, acepto todo tipo de feedback por parte de los
-							visitantes para este portfolio web y también para mis perfiles.
+							Provengo de Caracas-Venezuela, con aspiraciones de viajar a
+							temprana edad y tengo el objetivo de llegar a pequeñas y grandes
+							empresas con este portfolio, aceptando todo tipo de feedback por
+							parte de los visitantes para este portfolio web y también para mis
+							perfiles.
 						</p>
 					</div>
 					<div className={s.wave5}>
@@ -191,12 +191,12 @@ const Articles = () => {
 
 				<section>
 					<div className='marginContainer'>
-						<h2 className='hidden'>Habilidades a Desarrollar...</h2>
-						<p className={'hidden'}>
-							Voy a aprender algunos frameworks y librerías como Next, Node para
-							el backend, consolidare mi ingles hasta llegar a un nivel C1-B2,
-							y, voy a convertirme en un Individual Contributer Experto.
-						</p>
+						<h2 className='hidden'>Desarrollando...</h2>
+						<ul className=''>
+							<li>Next</li>
+							<li>Node</li>
+							<li>Ingles(C1-B2)</li>
+						</ul>
 					</div>
 				</section>
 				<div className={s.wave2}>

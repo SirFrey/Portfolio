@@ -1,5 +1,4 @@
 const handlerEventMouse = () => {
-	console.log('hola mundo');
 	const circles = document.querySelectorAll('.circle');
 	// const firstCircle = circles[0];
 

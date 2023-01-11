@@ -2,76 +2,15 @@ import { useEffect, useRef } from 'react';
 import Typed from 'react-typed';
 import s from './Header.module.css';
 import X from '../../assets/X';
+import { blockScroll, unblockScroll } from './scripts';
 const Header = () => {
 	const navFixed = useRef();
 	const bgDark = useRef();
 	const navFixedBar = useRef();
 	let offsetY;
 
-	const blockScroll = isBlock => {
-		if (isBlock) {
-			offsetY = window.scrollY;
-			document.documentElement.style.cssText = `
-			position: fixed;
-			top: -${offsetY}px`;
-			document.body.style.cssText = `overflow-Y: scroll;`;
-
-			navFixed.current.style.cssText = `
-			transform: translateY(-64px)translateY(64.33px);
-			position:absolute;
-			top: ${offsetY}px`;
-			return true;
-		}
-		return offsetY;
-	};
-
-	const unblockScroll = () => {
-		const offsetY = blockScroll(false);
-		document.documentElement.style.cssText = `
-			position: static`;
-		window.scrollBy({
-			top: offsetY,
-			behavior: 'instant',
-		});
-		navFixed.current.style.cssText = `
-		transform: translateY(-64px)translateY(64.33px);
-		position:fixed;`;
-	};
 	useEffect(() => {
 		navFixed.current.style.transform = 'translateY(-64px)translateY(64.33px)';
-		// if () {
-		// 	navFixed.current.style.cssText = `
-		// 	position:absolute;
-		// 	top: calc(100vh + 31px)`;
-		// }
-		// let scrollval = 0;
-		// const scrollEvent = () => {
-		// 	if (scrollval > window.scrollY) {
-		// 		navFixed.current.style.transform =
-		// 			'translateY(-64px)translateY(64px)';
-		// 	} else {
-		// 		navFixed.current.style.transform =
-		// 			'translateY(-64px)translateY(-64.33px)';
-		// 	}
-		// 	scrollval = window.scrollY;
-		// };
-		// const callback = entries => {
-		// 	entries.forEach(({ isIntersecting }) => {
-		// 		if (isIntersecting === false) {
-		// 			// No mostrar nav
-		// 			window.addEventListener('scroll', scrollEvent);
-		// 			navFixed.current.style.transform =
-		// 				'translateY(-64px)translateY(-64.33px)';
-		// 		} else {
-		// 			// Mostrar nav
-		// 			window.removeEventListener('scroll', scrollEvent);
-		// 			navFixed.current.style.transform =
-		// 				'translateY(-64px)translateY(64px)';
-		// 		}
-		// 	});
-		// };
-		// const observer = new IntersectionObserver(callback);
-		// observer.observe(document.querySelector('section:first-child'));
 	}, []);
 	useEffect(() => {
 		const observer = new IntersectionObserver(entries => {
@@ -108,7 +47,7 @@ const Header = () => {
 							navFixedBar.current.style.translate = '0';
 							bgDark.current.style.display = 'inline-block';
 							bgDark.current.style.animation = 'show .3s forwards';
-							blockScroll(true);
+							blockScroll({ element: navFixed, isBlock: true, offsetY });
 						}}
 						className={s.container_bar}
 					>
@@ -120,7 +59,7 @@ const Header = () => {
 						onClick={() => {
 							navFixedBar.current.style.translate = '100vw';
 							bgDark.current.style.animation = 'unShow .3s backwards';
-							unblockScroll();
+							unblockScroll({ element: navFixed });
 							setTimeout(() => {
 								bgDark.current.style.display = 'none';
 							}, 300);
@@ -134,7 +73,7 @@ const Header = () => {
 							if (target.nodeName === 'A') {
 								navFixedBar.current.style.translate = '100vw';
 								bgDark.current.style.animation = 'unShow .3s backwards';
-								unblockScroll();
+								unblockScroll({ element: navFixed });
 								setTimeout(() => {
 									bgDark.current.style.display = 'none';
 								}, 100);
@@ -160,7 +99,7 @@ const Header = () => {
 					navFixedBar.current.style.translate = '100vw';
 					target.style.animation = 'unShow .3s forwards';
 					bgDark.current.style.animation = 'unShow .3s backwards';
-					unblockScroll();
+					unblockScroll({ element: navFixed });
 					setTimeout(() => {
 						bgDark.current.style.display = 'none';
 					}, 300);
