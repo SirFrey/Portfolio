@@ -5,9 +5,12 @@ import Header from '../components/Header/Header';
 import { useEffect } from 'react';
 import Head from 'next/head';
 import Cursor from '../components/Cursor/Cursor';
-
+import { BlurryImageLoad } from '../public/scripts/blurry-image-load.min';
 const Index = () => {
 	useEffect(() => {
+		const blurryImageLoad = new BlurryImageLoad();
+		blurryImageLoad.load();
+		console.log(document);
 		const observer = new IntersectionObserver(entries => {
 			entries.forEach(entry => {
 				if (entry.isIntersecting) {
