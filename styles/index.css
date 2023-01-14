@@ -178,17 +178,6 @@ section > h1 {
 	margin: 0;
 	padding: 16px 30px;
 }
-
-li svg[data-text] {
-	position: relative;
-}
-li svg[data-text]::after {
-	content: '';
-	position: absolute;
-	width: 200px;
-	height: 200px;
-	background-color: red;
-}
 .marginContainer {
 	margin: 20px;
 	width: auto;

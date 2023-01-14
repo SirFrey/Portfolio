@@ -13,21 +13,12 @@ import SliderCard from '../../components/SliderCard/SliderCard';
 import TextIcon from '../../components/TextIcon/TextIcon';
 import { useEffect } from 'react';
 import { textOpacityEffectDomino } from './script';
+import Node from '../../assets/Node';
+import Next from '../../assets/Next';
 
 const Articles = () => {
 	useEffect(() => {
 		textOpacityEffectDomino();
-		const observer = new IntersectionObserver(entries => {
-			entries.forEach(entry => {
-				if (entry.isIntersecting) {
-					entry.target.classList.add('show');
-				} else {
-					entry.target.classList.remove('show');
-				}
-			});
-		});
-		const sections = document.querySelectorAll(`.hidden`);
-		sections.forEach(el => observer.observe(el));
 	}, []);
 	return (
 		<>
@@ -193,10 +184,19 @@ const Articles = () => {
 				<section>
 					<div className='marginContainer'>
 						<h2 className='hidden'>Desarrollando...</h2>
-						<ul className=''>
-							<li>Next</li>
-							<li>Node</li>
-							<li>Ingles(C1-B2)</li>
+						<ul className={s.developing_list}>
+							<li>
+								<Next />
+								<TextIcon text='Next' />
+							</li>
+							<li>
+								<Node />
+								<TextIcon text='Node' />
+							</li>
+							<li>
+								<UsaLogo />
+								<TextIcon text='Ingles (B1-B2)' />
+							</li>
 						</ul>
 					</div>
 				</section>
