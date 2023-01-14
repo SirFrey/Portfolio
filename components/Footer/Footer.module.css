@@ -10,6 +10,7 @@
 }
 .ul_footer a {
 	color: #ddd;
+	font-size: clamp(2rem, 3vw, 4rem);
 }
 .ul_footer {
 	display: flex;

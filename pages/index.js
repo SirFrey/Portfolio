@@ -10,12 +10,11 @@ const Index = () => {
 	useEffect(() => {
 		const blurryImageLoad = new BlurryImageLoad();
 		blurryImageLoad.load();
-		console.log(document);
 		const observer = new IntersectionObserver(entries => {
 			entries.forEach(entry => {
 				if (entry.isIntersecting) {
 					entry.target.classList.add('show');
-				} else {
+				} else if (entry.target.nodeName !== 'P') {
 					entry.target.classList.remove('show');
 				}
 			});
