@@ -18,7 +18,7 @@ const Footer = () => {
 				</li>
 				<li className='hidden'>
 					<a href='#' alt='instagram' title='Instagram'>
-						<i className='fa-brands fa-instagram '></i>
+						<i className='fa-brands fa-github'></i>
 					</a>
 				</li>
 				<li className='hidden'>

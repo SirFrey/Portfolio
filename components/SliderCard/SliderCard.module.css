@@ -1,5 +1,6 @@
 .slider {
-	width: min(500px, 70vw);
+	/* width: min(500px, 70vw); */
+	width: clamp(min(100vw - 55px, 500px), 20vw, 500px);
 	margin: 10px;
 }
 
