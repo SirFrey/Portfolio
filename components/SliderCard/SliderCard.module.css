@@ -11,3 +11,38 @@
 	display: grid;
 	place-content: center;
 }
+
+.slider button {
+	-webkit-appearance: none;
+	background: transparent;
+	border: 0;
+	outline: 0;
+}
+
+.arrow {
+	position: absolute;
+	width: 70px;
+	height: 90px;
+	z-index: 20;
+}
+.right {
+	right: 0;
+	bottom: calc(50% - 45px);
+}
+.left {
+	left: 0;
+	top: calc(50% - 45px);
+}
+:is(.left, .right):hover polyline,
+:is(.left, .right):focus polyline {
+	stroke-width: 3;
+}
+
+:is(.left, .right):active polyline {
+	stroke-width: 6;
+	transition: all 100ms ease-in-out;
+}
+
+.arrow polyline {
+	transition: all 250ms ease-in-out;
+}

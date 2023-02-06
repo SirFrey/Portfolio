@@ -5,6 +5,7 @@ specifiers:
   '@types/react': ^18.0.22
   '@types/react-dom': ^18.0.7
   '@vitejs/plugin-react': ^2.2.0
+  dotenv: ^16.0.3
   eslint: ^8.0.1
   eslint-config-prettier: ^8.5.0
   eslint-config-standard: ^17.0.0
@@ -26,6 +27,7 @@ specifiers:
   vite: ^3.2.4
 
 dependencies:
+  dotenv: 16.0.3
   next: 13.0.7_biqbaboplfbrettd7655fr4n2y
   octokit: 2.0.11
   react: 18.2.0
@@ -1246,6 +1248,11 @@ packages:
 
   /dom-confetti/0.1.2:
     resolution: {integrity: sha512-6Zo1pJEbEW1/GPgmk7uGWnPsoZ1E1vF7pmrPARnN3tp8L3ReMr/SIyLl6E8mGbu4DermzDWXfa+be77HehH2MA==}
+    dev: false
+
+  /dotenv/16.0.3:
+    resolution: {integrity: sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==}
+    engines: {node: '>=12'}
     dev: false
 
   /ecdsa-sig-formatter/1.0.11:

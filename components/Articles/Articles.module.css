@@ -180,6 +180,8 @@
 	right: 0;
 	margin: auto;
 }
+/* style of the first section from the arrow indicator */
+
 .chevron {
 	width: 28px;
 	height: 8px;
@@ -205,7 +207,6 @@
 	width: 51%;
 	background: #fff;
 }
-/* style of the first section from the arrow indicator */
 
 .chevron:before {
 	left: 0;
