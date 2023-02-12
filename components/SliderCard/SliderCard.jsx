@@ -1,9 +1,10 @@
-/* eslint-disable react/prop-types */ // TODO: upgrade to latest eslint tooling
+// TODO: upgrade to latest eslint tooling
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import s from './SliderCard.module.css';
 import Slider from 'react-slick/lib/slider';
+import Card from './Card';
 // Arrow button within the slider
 
 const NextArrow = ({ onClick }) => {
@@ -63,16 +64,12 @@ const SliderCard = () => {
 	return (
 		<>
 			<Slider {...settings}>
-				<div>
-					<div className={s.card}>
-						<h3>Por publicar...</h3>
-					</div>
-				</div>
-				<div>
-					<div className={s.card}>
-						<h3>Por publicar...</h3>
-					</div>
-				</div>
+				<Card>
+					<h3>Lorem, ipsum dolor.</h3>
+				</Card>
+				<Card>
+					<h3>Lorem, ipsum dolor.</h3>
+				</Card>
 			</Slider>
 		</>
 	);

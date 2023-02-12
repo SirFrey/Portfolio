@@ -152,13 +152,13 @@ const Articles = () => {
 				<section>
 					<div className='marginContainer'>
 						<h2 id='About_me'>Sobre Mi</h2>
-						<p className={'hidden'}>
+						<p className={'hidden p'}>
 							Desarrollador Frontend con conocimientos solidos en HTML5, CSS3 y
 							JavaScript, manejo tecnologías como React, Empaquetado de
 							aplicaciones web con Webpack y Vite, control de versiones con Git
 							y manejo de proyectos en equipo con Notion y Github.
 						</p>
-						<p className='hidden'>
+						<p className='hidden p'>
 							Provengo de Caracas-Venezuela, con aspiraciones de viajar a
 							temprana edad y tengo el objetivo de llegar a pequeñas y grandes
 							empresas con este portfolio, aceptando todo tipo de feedback por

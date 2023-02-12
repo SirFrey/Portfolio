@@ -25,7 +25,7 @@ const Index = () => {
 	return (
 		<>
 			<Head>
-				<title>Moises&apos;s Portfolio</title>
+				<title>Moises | Portfolio</title>
 				<link rel='icon' href='/images/favicon.ico' />
 				<meta
 					name='google-site-verification'

@@ -1,12 +1,22 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Typed from 'react-typed';
 import s from './Header.module.css';
 import X from '../../assets/X';
 import { blockScroll, unblockScroll } from './scripts';
+import { motion } from 'framer-motion';
+
+const variants = {
+	open: {
+		translate: '0',
+	},
+};
 const Header = () => {
 	const navFixed = useRef();
 	const bgDark = useRef();
 	const navFixedBar = useRef();
+	const [isSideBarShow, setIsSideBarShow] = useState(false);
+	const [isTransitionEnd, setIsTransitionEnd] = useState(false);
+
 	let offsetY;
 
 	useEffect(() => {
@@ -42,23 +52,35 @@ const Header = () => {
 							backDelay={2000}
 						/>
 					</div>
-					<div
+					<button
+						disabled={!!isSideBarShow}
 						onClick={() => {
-							navFixedBar.current.style.translate = '0';
 							bgDark.current.style.display = 'inline-block';
 							bgDark.current.style.animation = 'show .3s forwards';
 							blockScroll({ element: navFixed, isBlock: true, offsetY });
+							setIsSideBarShow(true);
 						}}
 						className={s.container_bar}
 					>
 						<i className={`fa-solid fa-bars ${s.bar}`}></i>
-					</div>
+					</button>
 				</nav>
-				<aside ref={navFixedBar} className={`${s.principal_nav}`}>
+				<motion.aside
+					onTransitionEnd={e => {
+						if (e.target.nodeName === 'ASIDE' && isSideBarShow) {
+							setIsTransitionEnd(true);
+						}
+					}}
+					animate={isSideBarShow ? 'open' : ''}
+					variants={variants}
+					ref={navFixedBar}
+					className={`${s.principal_nav}`}
+				>
 					<a
 						onClick={() => {
-							navFixedBar.current.style.translate = '100vw';
-							bgDark.current.style.animation = 'unShow .3s backwards';
+							setIsSideBarShow(false);
+							setIsTransitionEnd(false);
+							bgDark.current.style.animation = 'unShow .2s backwards';
 							unblockScroll({ element: navFixed });
 							setTimeout(() => {
 								bgDark.current.style.display = 'none';
@@ -71,8 +93,8 @@ const Header = () => {
 					<ul
 						onClick={({ target }) => {
 							if (target.nodeName === 'A') {
-								navFixedBar.current.style.translate = '100vw';
-								bgDark.current.style.animation = 'unShow .3s backwards';
+								setIsSideBarShow(false);
+								bgDark.current.style.animation = 'unShow .2s backwards';
 								unblockScroll({ element: navFixed });
 								setTimeout(() => {
 									bgDark.current.style.display = 'none';
@@ -91,14 +113,15 @@ const Header = () => {
 							<a href='#Contacto'>Contacto</a>
 						</li>
 					</ul>
-				</aside>
+				</motion.aside>
 			</header>
 			{/* <!-- background dark --> */}
 			<div
-				onClick={({ target }) => {
-					navFixedBar.current.style.translate = '100vw';
-					target.style.animation = 'unShow .3s forwards';
-					bgDark.current.style.animation = 'unShow .3s backwards';
+				style={{ pointerEvents: isTransitionEnd ? 'auto' : 'none' }}
+				onClick={() => {
+					setIsSideBarShow(false);
+					setIsTransitionEnd(false);
+					bgDark.current.style.animation = 'unShow .2s backwards';
 					unblockScroll({ element: navFixed });
 					setTimeout(() => {
 						bgDark.current.style.display = 'none';

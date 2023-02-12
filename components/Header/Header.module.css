@@ -1,7 +1,12 @@
 .container_bar {
-	/* width: 30px; */
-	/* height: 30px; */
 	display: inline-block;
+}
+.nav_fixed button {
+	-webkit-appearance: none;
+	background: transparent;
+	border: none;
+	outline: none;
+	color: #fff;
 }
 
 .principal_nav {
@@ -103,6 +108,7 @@
 	z-index: 20;
 	display: none;
 	opacity: 0;
+	pointer-events: none;
 }
 .hiddenRight {
 	opacity: 0;

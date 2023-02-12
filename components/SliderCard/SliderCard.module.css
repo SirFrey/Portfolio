@@ -10,6 +10,7 @@
 	background: #0003;
 	display: grid;
 	place-content: center;
+	padding: 34px;
 }
 
 .slider button {

@@ -113,28 +113,12 @@ a {
 	-webkit-tap-highlight-color: transparent;
 }
 
-body::-webkit-scrollbar {
-	/* display: none; */
-}
-/* body::-webkit-scrollbar {
-	width: 10px;
-}
-body::-webkit-scrollbar-thumb {
-	background-color: #aaa;
-}
-body::-webkit-scrollbar-thumb:hover {
-	background-color: #999;
-}
-body::-webkit-scrollbar-track {
-	background-color: #fff;
-	border-radius: 10px;
-} */
 .fa-solid:not(footer i.fa-solid) {
 	font-size: clamp(1rem, 4vw, 1.3rem);
 }
 /* Articles styles */
 
-p {
+section p.p {
 	width: clamp(min(400px, 70vw), 70vw, 70vw);
 	font-size: clamp(1rem, 3vw, 1.3rem);
 }
@@ -155,12 +139,6 @@ section:nth-child(1) {
 	height: 100svh;
 	color: var(--principalColor);
 	position: relative;
-	/* background: var(--principalColor)
-		url(https://img.freepik.com/foto-gratis/diseno-concepto-plantilla-diseno-web-html_53876-120438.jpg?w=900&t=st=1660676885~exp=1660677485~hmac=2899e1383827e6af6608d048fbba3d6958763202894ec02e3e5bb4d598f6e3b5)
-		no-repeat 0 0;
-	background-size: cover;
-	background-attachment: fixed;
-	background-blend-mode: screen; */
 }
 
 section:first-child div.marginContainer {
@@ -185,5 +163,3 @@ section > h1 {
 	flex-direction: column;
 	align-items: center;
 }
-
-/* arrow indicator */
