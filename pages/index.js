@@ -55,18 +55,8 @@ const Index = () => {
 					property='og:image'
 					content='https://i.ibb.co/ScBCCz7/portfolio.jpg'
 				/>
-				<meta property='og:image:width' content='630' />
-				<meta property='og:image:height' content='630' />
 				<meta name='theme-color' content='#495c83' />
-				{/* <meta itemProp='name' content="Moises's Portfolio" /> */}
-				{/* <meta
-					itemProp='description'
-					content='Este es mi portfolio web, sientete libre de echarle un vistazo a mi pagina 😊'
-				/>
-				<meta
-					itemProp='image'
-					content='http://i.ibb.co/ScBCCz7/portfolio.jpg'
-				/> */}
+				<meta name='twitter:card' content='summary_large_image' />
 				<link
 					rel=' stylesheet'
 					href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css'
