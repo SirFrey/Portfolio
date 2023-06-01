@@ -6,6 +6,10 @@
 	place-content: center;
 	align-items: center;
 }
+.knowledgeContainer {
+}
+.developingContainer {
+}
 .bgFixed {
 	width: 100%;
 	height: 100vh;

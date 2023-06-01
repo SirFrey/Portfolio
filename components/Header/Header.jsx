@@ -1,7 +1,9 @@
+'use client';
+
 import { useEffect, useRef, useState } from 'react';
 import Typed from 'react-typed';
 import s from './Header.module.css';
-import X from '../../assets/X';
+import X from '@assets/X';
 import { blockScroll, unblockScroll } from './scripts';
 import { motion } from 'framer-motion';
 

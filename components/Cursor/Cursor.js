@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect } from 'react';
 import handlerEventMouse from './script';
 function hasTouch() {

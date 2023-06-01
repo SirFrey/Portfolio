@@ -1,3 +1,5 @@
+'use client';
+
 import s from './Footer.module.css';
 const Footer = () => {
 	return (
@@ -7,7 +9,13 @@ const Footer = () => {
 			</h2>
 			<ul className={`${s.ul_footer} `}>
 				<li className='hidden'>
-					<a href='#' alt='linkedin' title='Linkedin'>
+					<a
+						href='https://linkedin.com/in/moisesln'
+						alt='linkedin'
+						title='Linkedin'
+						target='_blank'
+						rel='noreferrer'
+					>
 						<i className='fa-brands fa-linkedin '></i>
 					</a>
 				</li>
