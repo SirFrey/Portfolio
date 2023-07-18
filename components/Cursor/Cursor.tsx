@@ -50,8 +50,8 @@ const Cursor = () => {
 
 				circle.style.scale = `${(circles.length - index) / circles.length}`;
 				const nextCircle = circles[index + 1] || circles[0];
-				x += (nextCircle.x - x) * 0.2;
-				y += (nextCircle.y - y) * 0.2;
+				x += (nextCircle.x - x) * 0.16;
+				y += (nextCircle.y - y) * 0.16;
 			});
 			requestAnimationFrame(animateCircles);
 		};

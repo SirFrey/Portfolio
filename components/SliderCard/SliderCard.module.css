@@ -1,7 +1,6 @@
 .slider {
-	/* width: min(500px, 70vw); */
-	width: clamp(min(100vw - 55px, 500px), 20vw, 500px);
-	margin: 10px;
+	width: clamp(min(100vw - 30px, 500px), 20vw, 500px);
+	margin-block: 10px;
 }
 
 .slider .card {
@@ -11,6 +10,9 @@
 	display: grid;
 	place-content: center;
 	padding: 34px;
+}
+.slider h3 {
+	padding: 0;
 }
 
 .slider button {
