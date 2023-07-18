@@ -1,13 +1,15 @@
 // TODO: upgrade to latest eslint tooling
 
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import s from './SliderCard.module.css';
 import Slider from 'react-slick/lib/slider';
-import Card from './Card';
+import 'slick-carousel/slick/slick-theme.css';
+import 'slick-carousel/slick/slick.css';
+import Card from './Card.tsx';
+import s from './SliderCard.module.css';
 // Arrow button within the slider
-
-const NextArrow = ({ onClick }) => {
+interface Props {
+	onClick?: () => void;
+}
+const NextArrow = ({ onClick }: Props) => {
 	return (
 		<button className={`${s.arrow} ${s.left}`} onClick={onClick}>
 			<svg width='30px' height='80px' viewBox='0 0 50 80' xmlSpace='preserve'>
@@ -24,7 +26,7 @@ const NextArrow = ({ onClick }) => {
 		</button>
 	);
 };
-const PrevArrow = ({ onClick }) => {
+const PrevArrow = ({ onClick }: Props) => {
 	return (
 		<button className={`${s.arrow} ${s.right}`} onClick={onClick}>
 			<svg

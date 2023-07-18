@@ -1,7 +1,9 @@
 import s from './TextIcon.module.css';
 
-// eslint-disable-next-line react/prop-types
-function TextIcon({ text }) {
+interface Props {
+	text: string;
+}
+function TextIcon({ text }: Props) {
 	return <span className={s.text}>{text}</span>;
 }
 

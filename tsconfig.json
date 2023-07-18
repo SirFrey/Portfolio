@@ -17,16 +17,15 @@
       ]
     },
     "allowJs": true,
-    "strict": false,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "incremental": true,
+    "declaration": true,
     "esModuleInterop": true,
     "module": "ESNext",
-    "moduleResolution": "nodenext",
+    "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "resolvePackageJsonImports": true,
     "noImplicitAny": false,
     "noImplicitThis": true,
     "strictNullChecks": true,
@@ -37,14 +36,16 @@
         "name": "next"
       }
     ],
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "strict": false
   },
   "include": [
     "next-env.d.ts",
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx",
-    "next.config.js"
+    "next.config.js",
+    "components/Cursor/Cursor.tsxx"
   ],
   "exclude": [
     "node_modules"

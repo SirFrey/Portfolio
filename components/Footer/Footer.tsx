@@ -11,7 +11,6 @@ const Footer = () => {
 				<li className='hidden'>
 					<a
 						href='https://linkedin.com/in/moisesln'
-						alt='linkedin'
 						title='Linkedin'
 						target='_blank'
 						rel='noreferrer'
@@ -20,17 +19,17 @@ const Footer = () => {
 					</a>
 				</li>
 				<li className='hidden'>
-					<a href='#' alt='discord' title='Discord'>
+					<a href='#' title='Discord'>
 						<i className='fa-brands fa-discord'></i>
 					</a>
 				</li>
 				<li className='hidden'>
-					<a href='#' alt='instagram' title='Instagram'>
+					<a href='#' title='Instagram'>
 						<i className='fa-brands fa-github'></i>
 					</a>
 				</li>
 				<li className='hidden'>
-					<a href='#' alt='mail' title='Mail'>
+					<a href='#' title='Mail'>
 						<i className='fa-solid fa-envelope '></i>
 					</a>
 				</li>

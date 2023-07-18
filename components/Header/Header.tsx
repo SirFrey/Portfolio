@@ -1,11 +1,11 @@
 'use client';
 
+import X from '@assets/X';
+import { motion } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import Typed from 'react-typed';
 import s from './Header.module.css';
-import X from '@assets/X';
 import { blockScroll, unblockScroll } from './scripts';
-import { motion } from 'framer-motion';
 
 const variants = {
 	open: {
@@ -13,16 +13,16 @@ const variants = {
 	},
 };
 const Header = () => {
-	const navFixed = useRef();
-	const bgDark = useRef();
-	const navFixedBar = useRef();
-	const [isSideBarShow, setIsSideBarShow] = useState(false);
-	const [isTransitionEnd, setIsTransitionEnd] = useState(false);
-
-	let offsetY;
+	const navFixed = useRef<HTMLElement>(null);
+	const bgDark = useRef<HTMLDivElement>(null);
+	const navFixedBar = useRef<HTMLElement>(null);
+	const [isSideBarShow, setIsSideBarShow] = useState<boolean>(false);
+	const [isTransitionEnd, setIsTransitionEnd] = useState<boolean>(false);
 
 	useEffect(() => {
-		navFixed.current.style.transform = 'translateY(-64px)translateY(64.33px)';
+		if (navFixed.current !== null) {
+			navFixed.current.style.transform = 'translateY(-64px)translateY(64.33px)';
+		}
 	}, []);
 	useEffect(() => {
 		const observer = new IntersectionObserver(entries => {
@@ -57,10 +57,12 @@ const Header = () => {
 					<button
 						disabled={!!isSideBarShow}
 						onClick={() => {
-							bgDark.current.style.display = 'inline-block';
-							bgDark.current.style.animation = 'show .3s forwards';
-							blockScroll({ element: navFixed, isBlock: true, offsetY });
-							setIsSideBarShow(true);
+							if (bgDark.current !== null) {
+								bgDark.current.style.display = 'inline-block';
+								bgDark.current.style.animation = 'show .3s forwards';
+								blockScroll({ isBlock: true });
+								setIsSideBarShow(true);
+							}
 						}}
 						className={s.container_bar}
 					>
@@ -69,7 +71,8 @@ const Header = () => {
 				</nav>
 				<motion.aside
 					onTransitionEnd={e => {
-						if (e.target.nodeName === 'ASIDE' && isSideBarShow) {
+						const target = e.target as HTMLElement;
+						if (target.nodeName === 'ASIDE' && isSideBarShow) {
 							setIsTransitionEnd(true);
 						}
 					}}
@@ -80,26 +83,29 @@ const Header = () => {
 				>
 					<a
 						onClick={() => {
-							setIsSideBarShow(false);
-							setIsTransitionEnd(false);
-							bgDark.current.style.animation = 'unShow .2s backwards';
-							unblockScroll({ element: navFixed });
-							setTimeout(() => {
-								bgDark.current.style.display = 'none';
-							}, 300);
+							if (bgDark.current !== null) {
+								setIsSideBarShow(false);
+								setIsTransitionEnd(false);
+								bgDark.current.style.animation = 'unShow .2s backwards';
+								unblockScroll();
+								setTimeout(() => {
+									if (bgDark.current) bgDark.current.style.display = 'none';
+								}, 300);
+							}
 						}}
 						className={`${s.x}`}
 					>
 						<X />
 					</a>
 					<ul
-						onClick={({ target }) => {
-							if (target.nodeName === 'A') {
+						onClick={e => {
+							const target = e.target as HTMLUListElement;
+							if (target.nodeName === 'A' && bgDark.current) {
 								setIsSideBarShow(false);
 								bgDark.current.style.animation = 'unShow .2s backwards';
-								unblockScroll({ element: navFixed });
+								unblockScroll();
 								setTimeout(() => {
-									bgDark.current.style.display = 'none';
+									if (bgDark.current) bgDark.current.style.display = 'none';
 								}, 100);
 							}
 						}}
@@ -121,13 +127,15 @@ const Header = () => {
 			<div
 				style={{ pointerEvents: isTransitionEnd ? 'auto' : 'none' }}
 				onClick={() => {
-					setIsSideBarShow(false);
-					setIsTransitionEnd(false);
-					bgDark.current.style.animation = 'unShow .2s backwards';
-					unblockScroll({ element: navFixed });
-					setTimeout(() => {
-						bgDark.current.style.display = 'none';
-					}, 300);
+					if (bgDark.current) {
+						setIsSideBarShow(false);
+						setIsTransitionEnd(false);
+						bgDark.current.style.animation = 'unShow .2s backwards';
+						unblockScroll();
+						setTimeout(() => {
+							if (bgDark.current) bgDark.current.style.display = 'none';
+						}, 300);
+					}
 				}}
 				ref={bgDark}
 				id='bg'

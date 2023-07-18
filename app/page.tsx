@@ -2,9 +2,9 @@
 
 import { BlurryImageLoad } from '@assets/scripts/blurry-image-load.js';
 import Articles from '@components/Articles/Articles.tsx';
-import Cursor from '@components/Cursor/Cursor.js';
-import Footer from '@components/Footer/Footer.jsx';
-import Header from '@components/Header/Header.jsx';
+import Cursor from '@components/Cursor/Cursor';
+import Footer from '@components/Footer/Footer';
+import Header from '@components/Header/Header';
 import { useEffect } from 'react';
 
 const PortfolioPage = () => {

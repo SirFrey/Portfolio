@@ -24,9 +24,11 @@
 .titleH1 {
 	padding: 1rem 2rem;
 	width: clamp(min(40%) 50vw, 400px);
+	font-size: clamp(1.1rem, 4vw, 2.2rem);
+	text-wrap: balance;
 }
 :is(.lang_list, .tool_list, .other_list, .developing_list) li {
-	margin: 0 0.8em;
+	margin: 0 clamp(5px, 3vw, 17px);
 }
 
 .lang_list li:nth-child(1) {

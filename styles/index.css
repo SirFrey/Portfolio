@@ -36,6 +36,8 @@ h6 {
 h2:not(section:first-child h2, footer h2) {
 	text-decoration: underline;
 	color: #0b1a38;
+	padding: 0;
+	padding-block: 14px;
 }
 body {
 	font-family: 'Victor Mono', sans-serif;
@@ -43,19 +45,18 @@ body {
 	font-size: 17px;
 	text-align: center;
 	-webkit-overflow-scrolling: touch;
-	overflow: auto;
 	overscroll-behavior: none;
 }
 
 h1 {
 	text-align: center;
-	font-size: clamp(1.4rem, 4vw, 2.25rem);
+	font-size: clamp(1.4rem, 4vw, 1.8rem);
 }
 h2 {
-	font-size: clamp(1.3rem, 2.5vw, 2.25rem);
+	font-size: clamp(1.3rem, 2.5vw, 1.8rem);
 }
 h4 {
-	font-size: clamp(1.3rem, 2vw, 2.25rem);
+	font-size: clamp(0.95rem, 2vw, 1.4rem);
 }
 ul {
 	padding: 0;
@@ -162,5 +163,5 @@ section > h1 {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding-inline: 40px;
+	padding-inline: min(1vw, 40px);
 }

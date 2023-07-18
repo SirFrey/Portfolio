@@ -1,21 +1,21 @@
 'use client';
 // Icons
-import CssLogo from '@assets/CssLogo.jsx';
-import Git from '@assets/Git.jsx';
-import Github from '@assets/GitHubLogo.jsx';
-import Html from '@assets/Html.jsx';
-import Js from '@assets/Js.jsx';
-import ReactLogo from '@assets/ReactLogo.jsx';
-import Terminal from '@assets/Terminal.jsx';
-import UsaLogo from '@assets/UsaLogo.jsx';
+import CssLogo from '@assets/CssLogo';
+import Git from '@assets/Git';
+import Github from '@assets/GitHubLogo';
+import Html from '@assets/Html';
+import Js from '@assets/Js';
+import ReactLogo from '@assets/ReactLogo';
+import Terminal from '@assets/Terminal';
+import UsaLogo from '@assets/UsaLogo';
 import s from './Articles.module.css';
 // Components
-import Node from '@assets/Node.jsx';
-import Next from 'assets/Next.jsx';
-import Image from 'next/image.js';
+import Next from '@assets/Next';
+import Node from '@assets/Node';
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import SliderCard from '../SliderCard/SliderCard.jsx';
-import TextIcon from '../TextIcon/TextIcon.jsx';
+import SliderCard from '../SliderCard/SliderCard';
+import TextIcon from '../TextIcon/TextIcon';
 
 const Articles = () => {
 	const [isHover, setIsHover] = useState(false);
@@ -58,8 +58,6 @@ const Articles = () => {
 							></path>
 						</svg>
 					</div>
-
-					{/* @ts-ignore */}
 
 					<Image
 						alt='Section '
