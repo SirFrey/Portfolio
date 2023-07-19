@@ -33,7 +33,7 @@ const Articles = () => {
 						<h1 className={`hidden ${s.titleH1}`}>
 							Bienvenido a mi Portfolio Web
 						</h1>
-						<h2 className={'hidden'}>Frontend Developer</h2>
+						<h2 className={'hidden careerSection'}>Frontend Developer</h2>
 					</div>
 					<div className={s.wave4}>
 						<svg

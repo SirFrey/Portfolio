@@ -1,14 +1,16 @@
 'use client';
 
-import { BlurryImageLoad } from '@assets/scripts/blurry-image-load.js';
-import Articles from '@components/Articles/Articles.tsx';
-import Cursor from '@components/Cursor/Cursor';
+import { BlurryImageLoad } from '@assets/scripts/blurry-image-load';
+import Articles from '@components/Articles/Articles';
 import Footer from '@components/Footer/Footer';
 import Header from '@components/Header/Header';
-import { useEffect } from 'react';
+import Cursor from '@components/NewCursor/Cursor';
+import { useEffect, useState } from 'react';
 
 const PortfolioPage = () => {
+	const [opacityCursor, setOpacityCursor] = useState('');
 	useEffect(() => {
+		setOpacityCursor('opacityCursor');
 		const blurryImageLoad = new BlurryImageLoad();
 		blurryImageLoad.load();
 		const observer = new IntersectionObserver(entries => {
@@ -26,8 +28,8 @@ const PortfolioPage = () => {
 
 	return (
 		<>
-			<Cursor />
-			<main>
+			<main className={`${opacityCursor}`}>
+				<Cursor />
 				<Header />
 				<Articles />
 				<Footer />

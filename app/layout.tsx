@@ -1,8 +1,7 @@
-import { Metadata } from 'next';
-import '@styles/normalize.css';
-import '@styles/index.css';
-import '@styles/cursor.css';
 import '@styles/blurry-load.min.css';
+import '@styles/index.css';
+import '@styles/normalize.css';
+import { Metadata } from 'next';
 
 export const metadata: Metadata = {
 	metadataBase: new URL('https://moisesdev.vercel.app/'),
