@@ -11,7 +11,7 @@ html {
 }
 body {
 	scroll-margin-top: 100px;
-	width: 100vw - 10px;
+	/* width: 100vw - 10px; */
 }
 :root {
 	--principalColor: #495c83;

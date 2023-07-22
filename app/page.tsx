@@ -5,12 +5,10 @@ import Articles from '@components/Articles/Articles';
 import Footer from '@components/Footer/Footer';
 import Header from '@components/Header/Header';
 import Cursor from '@components/NewCursor/Cursor';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 const PortfolioPage = () => {
-	const [opacityCursor, setOpacityCursor] = useState('');
 	useEffect(() => {
-		setOpacityCursor('opacityCursor');
 		const blurryImageLoad = new BlurryImageLoad();
 		blurryImageLoad.load();
 		const observer = new IntersectionObserver(entries => {
@@ -28,7 +26,7 @@ const PortfolioPage = () => {
 
 	return (
 		<>
-			<main className={`${opacityCursor}`}>
+			<main>
 				<Cursor />
 				<Header />
 				<Articles />

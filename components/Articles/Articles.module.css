@@ -6,9 +6,11 @@
 	place-content: center;
 	align-items: center;
 }
-.knowledgeContainer {
+.knowledgeContainer li svg {
+	pointer-events: none;
 }
-.developingContainer {
+.developingContainer li svg {
+	pointer-events: none;
 }
 .bgFixed {
 	width: 100%;
@@ -22,16 +24,17 @@
 	inset: 0;
 }
 .titleH1 {
-	padding: 1rem 2rem;
-	width: clamp(min(40%) 50vw, 400px);
+	padding: 1.2rem 2rem;
+	margin: 0;
 	font-size: clamp(1.3rem, 4vw, 2.2rem);
 	text-wrap: balance;
+	/* width: clamp(min(40%), 50vw, 400px); */
 }
 :is(.lang_list, .tool_list, .other_list, .developing_list) li {
 	margin: 0 clamp(5px, 3vw, 17px);
 }
 .sectionCareer {
-	padding: 0;
+	margin: 0;
 }
 
 .lang_list li:nth-child(1) {

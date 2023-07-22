@@ -5,6 +5,10 @@ const $smallBall = document.querySelector(
 	'.cursor__ball--small'
 ) as HTMLDivElement;
 const $hoverables = document.querySelectorAll('.hoverable');
+const controller = new AbortController();
+const options: AddEventListenerOptions = {
+	signal: controller.signal,
+};
 
 // Listeners
 document.body.addEventListener('mousemove', onMouseMove);
@@ -14,20 +18,51 @@ document.body.addEventListener('touchmove', onTouchMove, {
 });
 document.body.addEventListener('touchstart', showCursor);
 document.body.addEventListener('touchend', unShowCursor);
+document.body.addEventListener('mousemove', opacityCursorMouse, options);
+document.body.addEventListener('touchmove', opacityCursorTouch, options);
 
 for (let i = 0; i < $hoverables.length; i++) {
 	$hoverables[i].addEventListener('mouseenter', onMouseHover);
 	$hoverables[i].addEventListener('mouseleave', onMouseHoverOut);
 }
 function showCursor() {
-	$bigBall.style.opacity = '1';
-	$smallBall.style.opacity = '1';
+	$bigBall.classList.add('opacityCursor');
+	$smallBall.classList.add('opacityCursor');
 }
 function unShowCursor() {
-	$bigBall.style.opacity = '0';
-	$smallBall.style.opacity = '0';
+	$bigBall.classList.remove('opacityCursor');
+	$smallBall.classList.remove('opacityCursor');
 }
-
+function opacityCursorMouse(e: MouseEvent) {
+	gsap.to($bigBall, {
+		duration: 0.4,
+		x: e.clientX - 15,
+		y: e.clientY - 15,
+	});
+	gsap.to($smallBall, {
+		duration: 0.1,
+		x: e.clientX - 5,
+		y: e.clientY - 7,
+	});
+	$bigBall.classList.add('opacityCursor');
+	$smallBall.classList.add('opacityCursor');
+	controller.abort();
+}
+function opacityCursorTouch(e: TouchEvent) {
+	gsap.to($bigBall, {
+		duration: 0,
+		x: e.touches[0].clientX,
+		y: e.touches[0].clientY,
+	});
+	gsap.to($smallBall, {
+		duration: 0,
+		x: e.touches[0].clientX,
+		y: e.touches[0].clientY,
+	});
+	$bigBall.classList.add('opacityCursor');
+	$smallBall.classList.add('opacityCursor');
+	controller.abort();
+}
 function onMouseMove(e: MouseEvent) {
 	gsap.to($bigBall, {
 		duration: 0.4,

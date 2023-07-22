@@ -1,7 +1,6 @@
 .cursor {
 	pointer-events: none;
 	transition: opacity 0.4s;
-	opacity: 0;
 }
 .cursor__ball {
 	position: fixed;
@@ -15,10 +14,10 @@
 .cursor__ball circle {
 	fill: #f7f8fa;
 }
-.opacityCursor .cursor {
+.opacityCursor {
 	opacity: 1;
 }
 
-.opacityCursor .cursor__ball {
+.opacityCursor {
 	opacity: 1;
 }
