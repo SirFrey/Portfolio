@@ -81,7 +81,7 @@ const Header = () => {
 					ref={navFixedBar}
 					className={`${s.principal_nav}`}
 				>
-					<a
+					<button
 						onClick={() => {
 							if (bgDark.current !== null) {
 								setIsSideBarShow(false);
@@ -96,7 +96,7 @@ const Header = () => {
 						className={`${s.x}`}
 					>
 						<X />
-					</a>
+					</button>
 					<ul
 						onClick={e => {
 							const target = e.target as HTMLUListElement;

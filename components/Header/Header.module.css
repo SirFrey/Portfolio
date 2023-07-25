@@ -85,12 +85,15 @@
 }
 
 .x {
-	width: fit-content;
-	height: fit-content;
+	width: min-content;
+	height: min-content;
 	margin: 20px;
+	background: none;
+	border: none;
 }
 .x svg {
 	transform: scale(1.5);
+	fill: #fff;
 }
 
 .container_bar {

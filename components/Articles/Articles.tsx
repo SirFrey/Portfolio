@@ -12,19 +12,31 @@ import s from './Articles.module.css';
 // Components
 import Next from '@assets/Next';
 import Node from '@assets/Node';
+import { BlurryImageLoad } from '@assets/scripts/blurry-image-load.js';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import SliderCard from '../SliderCard/SliderCard';
 import TextIcon from '../TextIcon/TextIcon';
-
 const Articles = () => {
-	const [isHover, setIsHover] = useState(false);
 	useEffect(() => {
 		import('./script.ts');
 	}, []);
 	useEffect(() => {
-		console.log(isHover);
-	}, [isHover]);
+		const blurryImageLoad = new BlurryImageLoad();
+		blurryImageLoad.load();
+		const observer = new IntersectionObserver(entries => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					entry.target.classList.add('show');
+				} else if (entry.target.nodeName !== 'P') {
+					entry.target.classList.remove('show');
+				}
+			});
+		});
+		const sections = document.querySelectorAll(`.hidden`);
+		sections.forEach(el => observer.observe(el));
+	}, []);
+
 	return (
 		<>
 			<article>
@@ -81,15 +93,7 @@ const Articles = () => {
 						<SliderCard />
 					</div>
 				</section>
-				<section
-					onMouseEnter={e => {
-						setIsHover((): boolean => {
-							const target = e.target as HTMLDivElement;
-							return target.nodeName === 'UL';
-						});
-					}}
-					onMouseLeave={() => setIsHover(false)}
-				>
+				<section>
 					<div className={s.wave3}>
 						<svg
 							data-name='Layer 1'

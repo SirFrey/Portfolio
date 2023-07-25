@@ -4,7 +4,7 @@ const X = () => {
 			<path
 				fill='none'
 				// fillRule='evenodd'
-				stroke='currentColor'
+				stroke='#fff'
 				strokeLinecap='round'
 				strokeLinejoin='round'
 				strokeWidth='2'
