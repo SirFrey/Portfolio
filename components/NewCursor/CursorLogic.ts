@@ -10,6 +10,7 @@ const controller = new AbortController();
 const options: AddEventListenerOptions = {
 	signal: controller.signal,
 };
+const ListHoverableEl: Array<string> = ['BUTTON', 'A', 'LI'];
 
 // Listeners
 document.body.addEventListener('mousemove', onMouseMove);
@@ -17,18 +18,32 @@ document.body.addEventListener('touchmove', onTouchMove, {
 	passive: true,
 	capture: true,
 });
-document.body.addEventListener('touchstart', showCursor);
-document.body.addEventListener('touchend', unShowCursor);
+document.body.addEventListener('touchstart', showCursorAndHover);
+document.body.addEventListener('touchend', unShowCursorAndHoverOut);
 document.body.addEventListener('mousemove', opacityCursorMouse, options);
 document.body.addEventListener('touchmove', opacityCursorTouch, options);
 document.body.addEventListener('touchcancel', () => {
-	$smallBall.style.opacity = '0';
-	$bigBall.style.opacity = '0';
+	$bigBall.classList.remove('opacityCursor');
+	$smallBall.classList.remove('opacityCursor');
 });
-// for (let i = 0; i < $hoverables.length; i++) {
-// 	$hoverables[i].addEventListener('mouseover', onMouseHover);
-// 	$hoverables[i].addEventListener('mouseout', onMouseHoverOut);
-// }
+window.addEventListener('touchstart', (e: TouchEvent) => {
+	const target = e.target as HTMLElement;
+	if (ListHoverableEl.includes(target.nodeName)) {
+		gsap.to($bigBall, {
+			duration: 0.3,
+			scale: 4,
+		});
+	}
+});
+window.addEventListener('touchend', e => {
+	const target = e.target as HTMLElement;
+	if (ListHoverableEl.includes(target.nodeName)) {
+		gsap.to($bigBall, {
+			duration: 0.3,
+			scale: 1,
+		});
+	}
+});
 window.addEventListener('pointermove', onMouseHover);
 const logicPositionCursor = (e: MouseEvent) => {
 	const posX = e.clientX;
@@ -44,23 +59,30 @@ const logicPositionCursor = (e: MouseEvent) => {
 		y: posY - 7,
 	});
 };
-function showCursor(e: TouchEvent) {
+function showCursorAndHover(e: TouchEvent) {
 	const posX = e.touches[0].clientX;
 	const posY = e.touches[0].clientY;
+	const target = e.target as HTMLElement;
 	gsap.to($bigBall, {
 		duration: 0,
-		x: posX,
-		y: posY,
+		x: posX - 15,
+		y: posY - 15,
 	});
 	gsap.to($smallBall, {
 		duration: 0,
-		x: posX,
-		y: posY,
+		x: posX - 5,
+		y: posY - 7,
 	});
 	$bigBall.classList.add('opacityCursor');
 	$smallBall.classList.add('opacityCursor');
+	if (ListHoverableEl.includes(target.nodeName)) {
+		gsap.to($bigBall, {
+			duration: 0.3,
+			scale: 4,
+		});
+	}
 }
-function unShowCursor() {
+function unShowCursorAndHoverOut(e: MouseEvent) {
 	$bigBall.classList.remove('opacityCursor');
 	$smallBall.classList.remove('opacityCursor');
 }
@@ -69,13 +91,13 @@ function opacityCursorMouse(e: MouseEvent) {
 	const posY = e.clientY;
 	gsap.to($bigBall, {
 		duration: 0.4,
-		x: posX,
-		y: posY,
+		x: posX - 15,
+		y: posY - 15,
 	});
 	gsap.to($smallBall, {
 		duration: 0.1,
-		x: posX,
-		y: posY,
+		x: posX - 5,
+		y: posY - 7,
 	});
 	$bigBall.classList.add('opacityCursor');
 	$smallBall.classList.add('opacityCursor');
@@ -86,13 +108,13 @@ function opacityCursorTouch(e: TouchEvent) {
 	const posY = e.touches[0].clientY;
 	gsap.to($bigBall, {
 		duration: 0,
-		x: posX,
-		y: posY,
+		x: posX - 15,
+		y: posY - 15,
 	});
 	gsap.to($smallBall, {
 		duration: 0,
-		x: posX,
-		y: posY,
+		x: posX - 5,
+		y: posY - 7,
 	});
 	$bigBall.classList.add('opacityCursor');
 	$smallBall.classList.add('opacityCursor');
@@ -115,7 +137,6 @@ function onTouchMove(e: TouchEvent) {
 		y: posY - 7,
 	});
 }
-
 document.body.addEventListener('mouseout', () => {
 	$bigBall.classList.remove('opacityCursor');
 	$smallBall.classList.remove('opacityCursor');
@@ -133,11 +154,9 @@ document.body.addEventListener('pointerup', (e: PointerEvent) => {
 		}, 300);
 	}
 });
-const ListHoverableEl: Array<string> = ['BUTTON', 'A', 'LI'];
 // Hover an element
 function onMouseHover(e: PointerEvent) {
 	const target = e.target as HTMLElement;
-	console.log(target.nodeName);
 	if (ListHoverableEl.includes(target.nodeName) && e.pointerType === 'mouse') {
 		gsap.to($bigBall, {
 			duration: 0.3,

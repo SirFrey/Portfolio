@@ -1,4 +1,5 @@
 import '@styles/blurry-load.min.css';
+import '@styles/fontAwesome/css/all.min.css';
 import '@styles/index.css';
 import '@styles/normalize.css';
 import { Metadata } from 'next';
@@ -37,18 +38,5 @@ export default function RootLayout({
 }: {
 	children: React.ReactNode;
 }) {
-	return (
-		<html lang='en'>
-			<head>
-				<link
-					rel=' stylesheet'
-					href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css'
-					integrity='sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=='
-					crossOrigin='anonymous'
-					referrerPolicy='no-referrer'
-				/>
-			</head>
-			<body>{children}</body>
-		</html>
-	);
+	return <body>{children}</body>;
 }

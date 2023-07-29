@@ -13,9 +13,9 @@ import s from './Articles.module.css';
 import Next from '@assets/Next';
 import Node from '@assets/Node';
 import { BlurryImageLoad } from '@assets/scripts/blurry-image-load.js';
+import ProjectCards from '@components/CardProjects/ProjectCards.tsx';
 import Image from 'next/image';
 import { useEffect } from 'react';
-import SliderCard from '../SliderCard/SliderCard';
 import TextIcon from '../TextIcon/TextIcon';
 const Articles = () => {
 	useEffect(() => {
@@ -90,7 +90,8 @@ const Articles = () => {
 						<h2 className={'hidden'} id='Portfolio'>
 							Portfolio:
 						</h2>
-						<SliderCard />
+						{/* <SliderCard /> */}
+						<ProjectCards />
 					</div>
 				</section>
 				<section>
