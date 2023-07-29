@@ -45,6 +45,7 @@ function ProjectCards() {
 						<p className={style.project_desc}>
 							Sitio supercalifragilisticoespialidoso.
 						</p>
+						<br />
 					</div>
 					<div className={`${style.project_likes}`}>
 						<div className={`${style.like_heart}`}>
