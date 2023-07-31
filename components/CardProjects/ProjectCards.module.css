@@ -1,8 +1,18 @@
 a.anchorCard {
+	width: clamp(min(calc(100vw - 10px), 370px), 20vw, 370px);
+	transition: transform 0.5s;
 	text-decoration: none;
 	color: #000;
-	height: 425px;
+	/* height: 425px; */
 	margin-bottom: 50px;
+	display: grid;
+	grid-template-rows: 300px 1fr;
+	border: 1px solid #dedcdc;
+	border-radius: 6px;
+	overflow: hidden;
+}
+a.anchorCard:hover {
+	z-index: 2;
 }
 
 .wrapper {
@@ -17,13 +27,9 @@ a.anchorCard {
 
 .card_wrapper {
 	/* width: 370px; */
-	width: clamp(min(calc(100vw - 10px), 370px), 20vw, 370px);
-	transition: transform 0.5s;
 	position: relative;
-	/* height: 430px; */
 	/* padding-bottom: 20px; */
-	border: 1px solid #dedcdc;
-	border-radius: 6px;
+
 	background: #e4f2f9;
 	display: flex;
 	flex-direction: column;
@@ -49,8 +55,6 @@ a:nth-of-type(4) .card_wrapper {
 }
 
 .project_summary {
-	margin-top: 260px;
-	position: relative;
 	padding: 0 15px;
 	padding-bottom: 15px;
 	background: #fff;
@@ -73,12 +77,20 @@ a:nth-of-type(4) .card_wrapper {
 .project_desc {
 	margin: 0;
 	font-weight: 300;
-	width: 100%;
+	overflow: hidden;
+	/* white-space: nowrap;
+	text-overflow: ellipsis; */
 }
-
+.project_desc strong {
+	color: #40f;
+}
+a.anchorCard:hover .project_desc {
+	overflow: visible;
+	white-space: normal;
+}
 .project_likes {
 	position: absolute;
-	bottom: 5px;
+	/* bottom: 5px; */
 	height: 35px;
 	right: 40px;
 	text-align: center;
@@ -101,7 +113,7 @@ a:nth-of-type(4) .card_wrapper {
 	font-weight: 300;
 }
 
-a:hover .card_wrapper {
+a.anchorCard:hover {
 	box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.09);
 	transform: scale3d(1.008, 1.008, 1);
 }
@@ -109,4 +121,9 @@ a:hover .card_wrapper {
 	/* font-size: clamp(); */
 	/* font-size: clamp(1rem, 2vw + 1rem, 2rem); */
 	font-size: clamp(0.8rem, 2vw, 1.2rem);
+}
+a.anchorCard > img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
 }
