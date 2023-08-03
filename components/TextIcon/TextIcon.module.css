@@ -14,7 +14,7 @@
 	filter: blur(3px);
 }
 
-svg:hover ~ .text {
+/* svg:hover ~ .text {
 	opacity: 1 !important;
 	filter: blur(0) !important;
-}
+} */

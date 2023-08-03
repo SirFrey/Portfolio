@@ -113,7 +113,7 @@ const Articles = () => {
 						<h4>Lenguajes, Frameworks y Librerías:</h4>
 					</div>
 					<ul className={`${s.lang_list}`}>
-						<li className={'hidden'}>
+						<li className={`hidden`}>
 							<Html />
 							<TextIcon text='HTML' />
 						</li>

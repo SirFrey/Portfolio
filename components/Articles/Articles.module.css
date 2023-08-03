@@ -267,3 +267,12 @@
 		filter: blur(5px);
 	}
 }
+:has(.developing_list, .developingContainer) span {
+	opacity: 0;
+	filter: blur(4px);
+}
+
+.textSpanIcons span {
+	opacity: 1;
+	filter: blur(0);
+}
