@@ -14,14 +14,13 @@ export const metadata: Metadata = {
 	},
 	keywords: 'portfolio, web, developer, frontend, backend, fullstack',
 	authors: [{ name: 'Moises', url: 'https://moisesdev.vercel.app' }],
-
 	openGraph: {
 		title: 'Bienvenido a mi web 🤓',
 		type: 'website',
 		siteName: 'Moises | Portfolio',
 		url: 'https://moisesdev.vercel.app',
-
 		description: 'Sientete libre de echarle un vistazo. 😎',
+		images: 'https://i.ibb.co/ScBCCz7/portfolio.jpg',
 	},
 	themeColor: '#495c83',
 	twitter: {
