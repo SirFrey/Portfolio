@@ -13,16 +13,16 @@ const options: AddEventListenerOptions = {
 const ListHoverableEl: Array<string> = ['BUTTON', 'A', 'LI'];
 
 // Listeners
-document.body.addEventListener('mousemove', onMouseMove);
-document.body.addEventListener('touchmove', onTouchMove, {
+window.addEventListener('mousemove', onMouseMove);
+window.addEventListener('touchmove', onTouchMove, {
 	passive: true,
 	capture: true,
 });
-document.body.addEventListener('touchstart', showCursorAndHover);
-document.body.addEventListener('touchend', unShowCursorAndHoverOut);
-document.body.addEventListener('mousemove', opacityCursorMouse, options);
-document.body.addEventListener('touchmove', opacityCursorTouch, options);
-document.body.addEventListener('touchcancel', () => {
+window.addEventListener('touchstart', showCursorAndHover);
+window.addEventListener('touchend', unShowCursorAndHoverOut);
+window.addEventListener('mousemove', opacityCursorMouse, options);
+window.addEventListener('touchmove', opacityCursorTouch, options);
+window.addEventListener('touchcancel', () => {
 	$bigBall.classList.remove('opacityCursor');
 	$smallBall.classList.remove('opacityCursor');
 });
@@ -137,16 +137,16 @@ function onTouchMove(e: TouchEvent) {
 		y: posY - 7,
 	});
 }
-document.body.addEventListener('mouseout', () => {
+window.addEventListener('mouseout', () => {
 	$bigBall.classList.remove('opacityCursor');
 	$smallBall.classList.remove('opacityCursor');
 });
-document.body.addEventListener('mouseover', () => {
+window.addEventListener('mouseover', () => {
 	$bigBall.classList.add('opacityCursor');
 	$smallBall.classList.add('opacityCursor');
 });
 
-document.body.addEventListener('pointerup', (e: PointerEvent) => {
+window.addEventListener('pointerup', (e: PointerEvent) => {
 	if (e.pointerType === 'touch') {
 		setTimeout(() => {
 			$bigBall.classList.remove('opacityCursor');
