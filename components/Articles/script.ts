@@ -12,7 +12,6 @@ interface PropsFnShowSpan {
 const logicShowSpanP = ({ element, counterEl }: PropsFnShowSpan) => {
 	for (const i in element) {
 		const index = parseInt(i);
-
 		if (index === counterEl) {
 			element[index].classList.add(s.textSpanIcons);
 			continue;

@@ -12,6 +12,7 @@
 	transform: translate(-50%, -50%);
 	opacity: 0;
 	filter: blur(3px);
+	z-index: 5;
 }
 
 /* svg:hover ~ .text {

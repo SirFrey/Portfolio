@@ -142,7 +142,7 @@ const Articles = () => {
 						</li>
 						<li className={'hidden'}>
 							<Terminal />
-							<TextIcon text='Linux - Terminal' />
+							<TextIcon text='Terminal' />
 						</li>
 					</ul>
 					<h4 className='hidden'>Otros:</h4>
@@ -203,15 +203,15 @@ const Articles = () => {
 				<div className={`marginContainer ${s.developingContainer}`}>
 					<h2 className='hidden'>Desarrollando...</h2>
 					<ul className={s.developing_list}>
-						<li>
+						<li className='hidden'>
 							<Next />
 							<TextIcon text='Next' />
 						</li>
-						<li>
+						<li className='hidden'>
 							<Node />
 							<TextIcon text='Node' />
 						</li>
-						<li>
+						<li className='hidden'>
 							<UsaLogo />
 							<TextIcon text='Ingles (B1-B2)' />
 						</li>

@@ -160,7 +160,7 @@ function onMouseHover(e: PointerEvent) {
 	if (ListHoverableEl.includes(target.nodeName) && e.pointerType === 'mouse') {
 		gsap.to($bigBall, {
 			duration: 0.3,
-			scale: 4,
+			scale: 3.7,
 		});
 	} else {
 		gsap.to($bigBall, {
