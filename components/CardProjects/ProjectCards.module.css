@@ -1,5 +1,5 @@
 a.anchorCard {
-	width: clamp(min(calc(100vw - 10px), 370px), 20vw, 370px);
+	width: clamp(min(calc(100vw - 10px), 330px), 10vw, 330px);
 	transition: transform 0.5s;
 	text-decoration: none;
 	color: #000;
@@ -15,13 +15,14 @@ a.anchorCard:hover {
 }
 
 .wrapper {
-	max-width: 850px;
+	max-width: 1500px;
 	margin: 20px auto;
 	height: auto;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	justify-content: space-around;
+	justify-content: center;
+	gap: 20px;
 }
 
 .card_wrapper {

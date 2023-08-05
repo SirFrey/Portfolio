@@ -14,7 +14,6 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	scroll-margin-top: 100px;
-	/* width: 100vw - 10px; */
 }
 :root {
 	--principalColor: #495c83;
@@ -90,7 +89,6 @@ h1 {
 	transform: translateX(0);
 	filter: blur(0);
 	transition: transform 1s, filter 0.5s, opacity 1s, scale 0.3s, box-shadow 0.3s;
-	/* transition: transform 1s, opacity 1s, scale 0.45s; */
 }
 
 @keyframes show {
