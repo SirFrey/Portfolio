@@ -6,12 +6,14 @@ import Header from '@components/Header/Header';
 import Cursor from '@components/NewCursor/Cursor';
 const PortfolioPage = () => {
 	return (
-		<main>
-			<Cursor />
-			<Header />
-			<Articles />
-			<Footer />
-		</main>
+		<>
+			<main>
+				<Cursor />
+				<Header />
+				<Articles />
+				<Footer />
+			</main>
+		</>
 	);
 };
 

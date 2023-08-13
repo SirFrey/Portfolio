@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 	twitter: {
 		card: 'summary_large_image',
 	},
-	viewport: 'width=device-width, initial-scale=1.0',
+	viewport: 'width=device-width, initial-scale=1.0, user-scalable=no',
 	other: {
 		'google-site-verification': 'GxY_RzqX7Z-W9_U_2_9jW6Q-VjvC-jWn-E_0Q_X_Ws',
 	},

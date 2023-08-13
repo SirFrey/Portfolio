@@ -16,8 +16,7 @@ const dataCards: ProjectCardType = [
 		project: 'Project Z',
 		stack: ['react', 'express', 'node'],
 		date: 'Noviembre 2025',
-		description:
-			'Some sample text giving project elevator pitch and blah blah and other stuff and goals and dreams and rainbows and butterflies and sunshine. ',
+		description: 'Sample text. ',
 		website: new URL('https://www.google.com'),
 		github: new URL('https://www.github.com'),
 		image: new URL(

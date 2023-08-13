@@ -1,13 +1,14 @@
 'use client';
 
 import X from '@assets/X';
-import { motion } from 'framer-motion';
+import SlideBar from '@components/NavBar/NavBar';
+import { Variants, motion } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import Typed from 'react-typed';
 import s from './Header.module.css';
 import { blockScroll, unblockScroll } from './scripts';
 
-const variants = {
+const variants: Variants = {
 	open: {
 		translate: '0',
 	},
@@ -41,11 +42,11 @@ const Header = () => {
 	return (
 		<>
 			<header>
-				<nav ref={navFixed} className={`${s.nav_fixed}`}>
+				<nav ref={navFixed} className={s.nav_fixed}>
 					<div className={s.principal_icon}>
 						<i className='fa-solid fa-code'></i>
 						<Typed
-							className={`${s.tag_title}`}
+							className={s.tag_title}
 							strings={['Moises Castellanos']}
 							typeSpeed={50}
 							backSpeed={50}
@@ -54,6 +55,7 @@ const Header = () => {
 							backDelay={2000}
 						/>
 					</div>
+					<SlideBar />
 					<button
 						disabled={!!isSideBarShow}
 						onClick={() => {
@@ -70,16 +72,29 @@ const Header = () => {
 					</button>
 				</nav>
 				<motion.aside
-					onTransitionEnd={e => {
-						const target = e.target as HTMLElement;
-						if (target.nodeName === 'ASIDE' && isSideBarShow) {
+					// onTransitionEnd={e => {
+					// 	const target = e.target as HTMLElement;
+					// 	if (target.matches('aside') && isSideBarShow) {
+					// 		setIsTransitionEnd(true);
+					// 		console.log('sds');
+					// 	}
+					// }}
+					onAnimationComplete={e => {
+						console.log(e);
+						if (isSideBarShow) {
 							setIsTransitionEnd(true);
+							console.log('sds');
 						}
 					}}
 					animate={isSideBarShow ? 'open' : ''}
 					variants={variants}
 					ref={navFixedBar}
-					className={`${s.principal_nav}`}
+					transition={{
+						type: 'spring',
+						stiffness: 240,
+						damping: 26,
+					}}
+					className={s.principal_nav}
 				>
 					<button
 						onClick={() => {
@@ -93,14 +108,14 @@ const Header = () => {
 								}, 300);
 							}
 						}}
-						className={`${s.x}`}
+						className={s.x}
 					>
 						<X />
 					</button>
 					<ul
 						onClick={e => {
 							const target = e.target as HTMLUListElement;
-							if (target.nodeName === 'A' && bgDark.current) {
+							if (target.matches('a') && bgDark.current) {
 								setIsSideBarShow(false);
 								bgDark.current.style.animation = 'unShow .2s backwards';
 								unblockScroll();
@@ -109,13 +124,16 @@ const Header = () => {
 								}, 100);
 							}
 						}}
-						className={`${s.nav_fixed_ul}`}
+						className={s.nav_fixed_ul}
 					>
 						<li className={`${s.nav_fixed_li} ${s.hiddenRight}`}>
-							<a href='#Portfolio'>Proyectos</a>
+							<a href='#Portfolio'>Portfolio</a>
 						</li>
 						<li className={`${s.nav_fixed_li} ${s.hiddenRight}`}>
-							<a href='#About_me'>Sobre mi</a>
+							<a href='#Conocimientos'>Conocimientos</a>
+						</li>
+						<li className={`${s.nav_fixed_li} ${s.hiddenRight}`}>
+							<a href='#Sobre Mí'>Sobre mi</a>
 						</li>
 						<li className={`${s.nav_fixed_li} ${s.hiddenRight}`}>
 							<a href='#Contacto'>Contacto</a>
@@ -128,6 +146,7 @@ const Header = () => {
 				style={{ pointerEvents: isTransitionEnd ? 'auto' : 'none' }}
 				onClick={() => {
 					if (bgDark.current) {
+						console.log('click!');
 						setIsSideBarShow(false);
 						setIsTransitionEnd(false);
 						bgDark.current.style.animation = 'unShow .2s backwards';
@@ -139,7 +158,7 @@ const Header = () => {
 				}}
 				ref={bgDark}
 				id='bg'
-				className={`${s.bg_dark}`}
+				className={s.bg_dark}
 			></div>
 		</>
 	);

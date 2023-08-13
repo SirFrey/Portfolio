@@ -1,19 +1,26 @@
 @import 'victormono';
+
 * {
 	cursor: none !important;
 }
 
 html {
 	all: initial;
-	scroll-behavior: smooth;
 	background: var(--principalColor);
 	user-select: none;
 	line-height: 1.15;
+	height: 100%;
+	width: 100%;
+	overflow-y: hidden;
+	/* overflow-y: hidden; */
+	/* scrollbar-gutter: stable; */
 }
 body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	scroll-margin-top: 100px;
+	height: 100%;
+	overflow-y: hidden;
 }
 :root {
 	--principalColor: #495c83;
@@ -21,6 +28,14 @@ body {
 	--secondaryColor: #7a86b6;
 	--principalColorAlpha: #495c83aa;
 	--secondaryColorAlpha: #7a86b6aa;
+	--sans: 'Inter', sans-serif, -apple-system, ui-sans-serif, system-ui,
+		blinkmacsystemfont, sego ui, roboto, helvetica neue, arial, noto sans,
+		sans-serif, monospace;
+	--transition-left: left 0.2s ease-in-out;
+	--transition-width: width 0.2s ease-in-out;
+	--transition-prop-formui: border-color, background, color, transform,
+		box-shadow;
+	--radius1: 6px;
 }
 h1,
 h2,
@@ -37,19 +52,25 @@ h6 {
 
 h2:not(section:first-child h2, footer h2) {
 	text-decoration: underline;
-	color: #0b1a38;
+	color: var(--principalColorDark);
 	padding: 0;
 	padding-block: 14px;
 }
 body {
+	width: 100%;
 	font-family: 'Victor Mono', sans-serif;
 	color: aliceblue;
 	font-size: 17px;
 	text-align: center;
-	-webkit-overflow-scrolling: touch;
-	overscroll-behavior: none;
 }
-
+main {
+	width: 100%;
+	height: 100%;
+	overflow-y: auto;
+	scrollbar-gutter: stable;
+	-webkit-overflow-scrolling: touch;
+	scroll-behavior: smooth;
+}
 h1 {
 	text-align: center;
 	font-size: clamp(1.4rem, 4vw, 1.8rem);
@@ -75,8 +96,8 @@ a {
 }
 
 h1 {
-	border: 2px solid var(--principalColorAlpha);
-	border-radius: 10px;
+	border: clamp(2px, 0.4vw, 2.9px) solid var(--principalColorAlpha);
+	border-radius: clamp(10px, 3vw, 30px);
 }
 
 .hidden {
@@ -138,14 +159,11 @@ section {
 section:nth-child(1) {
 	display: grid;
 	place-content: center;
+	width: 100%;
 	height: 100vh;
 	height: 100svh;
 	color: var(--principalColor);
 	position: relative;
-}
-
-section:first-child div.marginContainer {
-	mix-blend-mode: multiply;
 }
 
 section:nth-child(even):not(:first-child) {

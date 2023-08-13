@@ -1,3 +1,32 @@
+.articlePage {
+	width: 100%;
+}
+.articlePage section:nth-child(1) {
+	overflow: hidden;
+	background-color: var(--principalColor);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-blend-mode: screen;
+	background-attachment: fixed;
+	background-image: url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAAAAAAAAAAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAP//////////////////////////////////////////////////////////////////////////////////////2wBDAf//////////////////////////////////////////////////////////////////////////////////////wAARCAE7AnYDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAECA//EACcQAQEBAAAGAgICAgMAAAAAAAABEQISITFRYUFxofAikUKBMtHx/8QAFgEBAQEAAAAAAAAAAAAAAAAAAAEC/8QAGBEBAQEBAQAAAAAAAAAAAAAAABEBQVH/2gAMAwEAAhEDEQA/ANCAKgACgIKAgoCCgIKAgHwAKAgoCCiCAqgAgAAACgCoAIoqLDBQFQAAAAAAAAAAAAQAAAAAFRQAAGWmQAAEAAEUAAQAEAARUAAAAQdBUBQAAAAABAFAAAAT4VACigyqgIoIIoKAJUFEBVAAAEAFBYgitCCooAAA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');
+}
+/* .load + .filterMainSection {
+	backdrop-filter: blur(0);
+} */
+.filterMainSection {
+	width: 100vw;
+	height: 100vh;
+	height: 100svh;
+	display: grid;
+	mix-blend-mode: multiply;
+	place-content: center;
+	background-color: #0001;
+	backdrop-filter: blur(15px);
+	transition: backdrop-filter 1.5s;
+}
+:has(.load) .filterMainSection {
+	backdrop-filter: blur(0px);
+}
 .lang_list,
 .tool_list,
 .other_list,
@@ -26,7 +55,8 @@
 .titleH1 {
 	padding: 1.2rem 2rem;
 	margin: 0;
-	font-size: clamp(1.3rem, 4vw, 2.2rem);
+	font-size: clamp(1.6rem, 5vw, 2.5rem);
+	font-weight: bolder;
 	text-wrap: balance;
 	/* width: clamp(min(40%), 50vw, 400px); */
 }
@@ -35,6 +65,7 @@
 }
 .sectionCareer {
 	margin: 0;
+	font-size: clamp(1.3rem, 4vw, 2rem);
 }
 :is(.lang_list, .tool_list, .other_list, .developing_list) li {
 	transition-property: filter, opacity, transform, scale, box-shadow;
@@ -193,45 +224,6 @@
 	right: 0;
 	margin: auto;
 }
-/* style of the first section from the arrow indicator */
-
-.chevron {
-	width: 28px;
-	height: 8px;
-	opacity: 0;
-	transform: scale3d(0.5, 0.5, 0.5);
-	animation: move 3s ease-out infinite;
-}
-
-.chevron:first-child {
-	animation: move 3s ease-out 1s infinite;
-}
-
-.chevron:nth-child(2) {
-	animation: move 3s ease-out 2s infinite;
-}
-
-.chevron:before,
-.chevron:after {
-	content: ' ';
-	position: absolute;
-	top: 0;
-	height: 100%;
-	width: 51%;
-	background: #fff;
-}
-
-.chevron:before {
-	left: 0;
-	transform: skew(0deg, 30deg);
-}
-
-.chevron:after {
-	right: 0;
-	width: 50%;
-	transform: skew(0deg, -30deg);
-}
-
 .text {
 	display: block;
 	margin-top: 60px;
@@ -246,7 +238,7 @@
 
 :is(.developingContainer, .knowledgeContainer) li {
 	border: clamp(1px, 1vw, 4px) solid var(--secondaryColor);
-	border-radius: 20px;
+	border-radius: clamp(5px, 4vw, 20px);
 	padding: clamp(5px, 2vw, 20px);
 }
 :is(.developingContainer, .knowledgeContainer) li:hover {
@@ -271,23 +263,5 @@
 	from {
 		opacity: 0.7;
 		filter: blur(5px);
-	}
-}
-
-@keyframes move {
-	25% {
-		opacity: 1;
-	}
-	33% {
-		opacity: 1;
-		transform: translateY(30px);
-	}
-	67% {
-		opacity: 1;
-		transform: translateY(40px);
-	}
-	100% {
-		opacity: 0;
-		transform: translateY(55px) scale3d(0.5, 0.5, 0.5);
 	}
 }

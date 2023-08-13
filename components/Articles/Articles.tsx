@@ -12,18 +12,28 @@ import s from './Articles.module.css';
 // Components
 import Next from '@assets/Next';
 import Node from '@assets/Node';
-import { BlurryImageLoad } from '@assets/scripts/blurry-image-load.js';
 import ProjectCards from '@components/CardProjects/ProjectCards.tsx';
-import Image from 'next/image';
-import { useEffect } from 'react';
+import SDownComp from '@components/ScrolllDownComp/SDownComp.tsx';
+import { useEffect, useRef } from 'react';
 import TextIcon from '../TextIcon/TextIcon';
 const Articles = () => {
+	const mainSection = useRef<HTMLDivElement>(null);
+	useEffect(() => {
+		const imageSection = new Image();
+		imageSection.addEventListener('load', e => {
+			const target = e.target as HTMLImageElement;
+			if (mainSection.current) {
+				mainSection.current.style.backgroundImage = `url(${target.src})`;
+				mainSection.current.classList.add(s.load);
+			}
+		});
+		imageSection.src =
+			'https://img.freepik.com/foto-gratis/diseno-concepto-plantilla-diseno-web-html_53876-120438.jpg?w=900&t=st=1660676885~exp=1660677485~hmac=2899e1383827e6af6608d048fbba3d6958763202894ec02e3e5bb4d598f6e3b5';
+	}, []);
 	useEffect(() => {
 		import('./script.ts');
 	}, []);
 	useEffect(() => {
-		const blurryImageLoad = new BlurryImageLoad();
-		blurryImageLoad.load();
 		const observer = new IntersectionObserver(entries => {
 			entries.forEach(entry => {
 				if (entry.isIntersecting) {
@@ -33,18 +43,20 @@ const Articles = () => {
 				}
 			});
 		});
-		const sections = document.querySelectorAll(`.hidden`);
-		sections.forEach(el => observer.observe(el));
+		const hiddenElements = document.querySelectorAll(`.hidden`);
+		hiddenElements.forEach(el => observer.observe(el));
 	}, []);
 
 	return (
-		<article>
-			<section>
-				<div className='marginContainer'>
-					<h1 className={`hidden ${s.titleH1}`}>
-						Bienvenido a mi Portfolio Web
-					</h1>
-					<h2 className={`hidden ${s.sectionCareer}`}>Frontend Developer</h2>
+		<article className={s.articlePage}>
+			<section ref={mainSection} id='Inicio'>
+				<div className={s.filterMainSection}>
+					<div className='marginContainer'>
+						<h1 className={`hidden ${s.titleH1}`}>
+							Bienvenido a mi Portfolio Web
+						</h1>
+						<h2 className={`hidden ${s.sectionCareer}`}>Frontend Developer</h2>
+					</div>
 				</div>
 				<div className={s.wave4}>
 					<svg
@@ -69,20 +81,7 @@ const Articles = () => {
 						></path>
 					</svg>
 				</div>
-				<Image
-					alt='Section '
-					src='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAAAAAAAAAAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAP//////////////////////////////////////////////////////////////////////////////////////2wBDAf//////////////////////////////////////////////////////////////////////////////////////wAARCAE7AnYDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAECA//EACcQAQEBAAAGAgICAgMAAAAAAAABEQISITFRYUFxofAikUKBMtHx/8QAFgEBAQEAAAAAAAAAAAAAAAAAAAEC/8QAGBEBAQEBAQAAAAAAAAAAAAAAABEBQVH/2gAMAwEAAhEDEQA/ANCAKgACgIKAgoCCgIKAgHwAKAgoCCiCAqgAgAAACgCoAIoqLDBQFQAAAAAAAAAAAAQAAAAAFRQAAGWmQAAEAAEUAAQAEAARUAAAAQdBUBQAAAAABAFAAAAT4VACigyqgIoIIoKAJUFEBVAAAEAFBYgitCCooAAA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'
-					className={`${s.bgFixed} blurry-load`}
-					data-large='https://img.freepik.com/foto-gratis/diseno-concepto-plantilla-diseno-web-html_53876-120438.jpg?w=900&t=st=1660676885~exp=1660677485~hmac=2899e1383827e6af6608d048fbba3d6958763202894ec02e3e5bb4d598f6e3b5'
-					width={1000}
-					height={1000}
-				/>
-				<div className={s.container}>
-					<div className={s.chevron}></div>
-					<div className={s.chevron}></div>
-					<div className={s.chevron}></div>
-					<span className={s.text}>Scroll down</span>
-				</div>
+				<SDownComp />
 			</section>
 			<section>
 				<div className='marginContainer'>
@@ -109,10 +108,10 @@ const Articles = () => {
 				</div>
 				<div className={`marginContainer ${s.knowledgeContainer}`}>
 					<div className='hidden'>
-						<h2>Conocimientos:</h2>
+						<h2 id='Conocimientos'>Conocimientos:</h2>
 						<h4>Lenguajes, Frameworks y Librerías:</h4>
 					</div>
-					<ul className={`${s.lang_list}`}>
+					<ul className={s.lang_list}>
 						<li className={`hidden`}>
 							<Html />
 							<TextIcon text='HTML' />
@@ -131,7 +130,7 @@ const Articles = () => {
 						</li>
 					</ul>
 					<h4 className='hidden'>Herramientas:</h4>
-					<ul className={`${s.tool_list}`}>
+					<ul className={s.tool_list}>
 						<li className={'hidden'}>
 							<Git />
 							<TextIcon text='Git' />
@@ -146,7 +145,7 @@ const Articles = () => {
 						</li>
 					</ul>
 					<h4 className='hidden'>Otros:</h4>
-					<ul className={`${s.other_list}`}>
+					<ul className={s.other_list}>
 						<li className={'hidden'}>
 							<UsaLogo />
 							<TextIcon text='Ingles (A2)' />
@@ -170,7 +169,7 @@ const Articles = () => {
 
 			<section>
 				<div className='marginContainer'>
-					<h2 id='About_me'>Sobre Mi</h2>
+					<h2 id='Sobre Mí'>Sobre Mi</h2>
 					<p className={'hidden p'}>
 						Desarrollador Frontend con conocimientos solidos en HTML5, CSS3 y
 						JavaScript, manejo tecnologías como React, Empaquetado de
