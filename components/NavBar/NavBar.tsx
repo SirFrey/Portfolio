@@ -18,7 +18,7 @@ const NavbarButton = ({
 	setOffsets,
 	active,
 }: NavBarButtonProps) => {
-	const anchor = useRef<HTMLAnchorElement>();
+	const anchor = useRef<HTMLAnchorElement>(null);
 	const handleClick = e => {
 		const target = e.target as HTMLAnchorElement;
 		target.classList.add('navbar-link--active');
@@ -103,7 +103,7 @@ export default function SlideBar() {
 				<div
 					className='navbar nav-x-init'
 					ref={navbarRef}
-					style={{ '--x': setNavX(navbarRef.current) }}
+					style={{ '--x': setNavX(navbarRef.current) } as React.CSSProperties}
 				>
 					<div className='navbar-curr--stroke' aria-hidden='true'></div>
 					<div className='navbar-root'>
