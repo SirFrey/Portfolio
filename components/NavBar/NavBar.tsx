@@ -1,4 +1,4 @@
-// !!!!!! TODO: Make a slide bar in the header
+'use client';
 import { useEffect, useRef, useState } from 'react';
 import './NavBar.css';
 interface NavBarButtonProps {
@@ -62,12 +62,12 @@ const NavbarButton = ({
 };
 
 export default function SlideBar() {
-	const defaultLink = window.location.hash.slice(1) ?? 'Inicio';
+	// const defaultLink = window.location.hash.slice(1) ?? 'Inicio';
 
 	const NAV_LINKS = ['Inicio', 'Portfolio', 'Conocimientos', 'Contacto'];
 	const [offLeft, setOffLeft] = useState(4);
 	const [offWidth, setOffWidth] = useState(126);
-	const [activeLink, setActiveLink] = useState(defaultLink);
+	const [activeLink, setActiveLink] = useState('Inicio');
 	const [theme] = useState('dark');
 	const navbarRef = useRef(null);
 	const handleSetOffsets = (left: number, width: number) => {
