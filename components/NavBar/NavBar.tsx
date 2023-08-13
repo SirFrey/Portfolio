@@ -24,16 +24,16 @@ const NavbarButton = ({
 		target.classList.add('navbar-link--active');
 		setOffsets(target.offsetLeft, target.offsetWidth);
 	};
-	const ro = new ResizeObserver(entries => {
-		entries.forEach(entry => {
-			const target = entry.target as HTMLDivElement;
-			if (active === btnName) {
-				setOffsets(target.offsetLeft, target.offsetWidth);
-			}
-		});
-	});
 
 	useEffect(() => {
+		const ro = new ResizeObserver(entries => {
+			entries.forEach(entry => {
+				const target = entry.target as HTMLDivElement;
+				if (active === btnName) {
+					setOffsets(target.offsetLeft, target.offsetWidth);
+				}
+			});
+		});
 		if (anchor.current) {
 			ro.observe(anchor.current);
 		}
