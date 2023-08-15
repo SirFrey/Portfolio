@@ -21,11 +21,13 @@
 	mix-blend-mode: multiply;
 	place-content: center;
 	background-color: #0001;
+	-webkit-backdrop-filter: blur(15px);
 	backdrop-filter: blur(15px);
 	transition: backdrop-filter 1.5s;
 }
 :has(.load) .filterMainSection {
-	backdrop-filter: blur(0px);
+	-webkit-backdrop-filter: blur(0);
+	backdrop-filter: blur(0);
 }
 .lang_list,
 .tool_list,
