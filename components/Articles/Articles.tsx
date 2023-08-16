@@ -14,11 +14,11 @@ import Next from '@assets/Next';
 import Node from '@assets/Node';
 import ProjectCards from '@components/CardProjects/ProjectCards.tsx';
 import SDownComp from '@components/ScrolllDownComp/SDownComp.tsx';
-import { useEffect, useRef } from 'react';
+import { useLayoutEffect, useRef } from 'react';
 import TextIcon from '../TextIcon/TextIcon';
 const Articles = () => {
 	const mainSection = useRef<HTMLDivElement>(null);
-	useEffect(() => {
+	useLayoutEffect(() => {
 		const imageSection = new Image();
 		imageSection.addEventListener('load', e => {
 			const target = e.target as HTMLImageElement;
@@ -30,10 +30,10 @@ const Articles = () => {
 		imageSection.src =
 			'https://img.freepik.com/foto-gratis/diseno-concepto-plantilla-diseno-web-html_53876-120438.jpg?w=900&t=st=1660676885~exp=1660677485~hmac=2899e1383827e6af6608d048fbba3d6958763202894ec02e3e5bb4d598f6e3b5';
 	}, []);
-	useEffect(() => {
+	useLayoutEffect(() => {
 		import('./script.ts');
 	}, []);
-	useEffect(() => {
+	useLayoutEffect(() => {
 		const observer = new IntersectionObserver(entries => {
 			entries.forEach(entry => {
 				if (entry.isIntersecting) {
@@ -84,10 +84,8 @@ const Articles = () => {
 				<SDownComp />
 			</section>
 			<section>
-				<div className='marginContainer'>
-					<h2 className={'hidden'} id='Portfolio'>
-						Portfolio:
-					</h2>
+				<div id='Portfolio' className='marginContainer'>
+					<h2 className={'hidden'}>Portfolio:</h2>
 					{/* <SliderCard /> */}
 					<ProjectCards />
 				</div>
@@ -106,9 +104,12 @@ const Articles = () => {
 						/>
 					</svg>
 				</div>
-				<div className={`marginContainer ${s.knowledgeContainer}`}>
+				<div
+					id='Conocimientos'
+					className={`marginContainer ${s.knowledgeContainer}`}
+				>
 					<div className='hidden'>
-						<h2 id='Conocimientos'>Conocimientos:</h2>
+						<h2>Conocimientos:</h2>
 						<h4>Lenguajes, Frameworks y Librerías:</h4>
 					</div>
 					<ul className={s.lang_list}>
@@ -168,8 +169,8 @@ const Articles = () => {
 			</section>
 
 			<section>
-				<div className='marginContainer'>
-					<h2 id='Sobre Mí'>Sobre Mi</h2>
+				<div id='Sobre Mí' className='marginContainer'>
+					<h2>Sobre Mi</h2>
 					<p className={'hidden p'}>
 						Desarrollador Frontend con conocimientos solidos en HTML5, CSS3 y
 						JavaScript, manejo tecnologías como React, Empaquetado de

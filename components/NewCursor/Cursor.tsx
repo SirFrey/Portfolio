@@ -1,7 +1,7 @@
-import { useEffect } from 'react';
+import { useLayoutEffect } from 'react';
 import './Cursor.css';
 function Cursor() {
-	useEffect(() => {
+	useLayoutEffect(() => {
 		import('./CursorLogic');
 	}, []);
 	return (

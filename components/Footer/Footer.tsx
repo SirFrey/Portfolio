@@ -3,10 +3,8 @@
 import s from './Footer.module.css';
 const Footer = () => {
 	return (
-		<footer className={`${s.footer_final}`}>
-			<h2 id='Contacto' className='hidden'>
-				Contacto
-			</h2>
+		<footer id='Contacto' className={`${s.footer_final}`}>
+			<h2 className='hidden'>Contacto</h2>
 			<ul className={`${s.ul_footer} `}>
 				<li className='hidden'>
 					<a

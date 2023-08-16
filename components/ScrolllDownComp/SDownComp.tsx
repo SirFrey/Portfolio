@@ -1,8 +1,8 @@
 import s from './SDownStyles.module.css';
 
-function SDownComp() {
+function SDownComp({ id }: { id?: string }) {
 	return (
-		<a href='#Portfolio' className={s.anchor}>
+		<a href='#Portfolio' className={`${s.anchor}`} id={id}>
 			<div className={s.mouseScroll}>
 				<div className={s.mouse}>
 					<div className={s.mouseIn}></div>

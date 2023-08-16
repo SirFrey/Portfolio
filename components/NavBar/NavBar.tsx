@@ -1,4 +1,6 @@
 'use client';
+import { useHash } from '@assets/hooks/useHash';
+import { useScrollSpy } from '@raddix/use-scroll-spy';
 import { useEffect, useRef, useState } from 'react';
 import './NavBar.css';
 interface NavBarButtonProps {
@@ -11,6 +13,14 @@ interface NavBarButtonProps {
 	) => void;
 	active: string;
 }
+const NAV_LINKS = [
+	'Inicio',
+	'Portfolio',
+	'Conocimientos',
+	'Sobre Mí',
+	'Contacto',
+];
+
 const NavbarButton = ({
 	btnClass,
 	btnName,
@@ -18,6 +28,10 @@ const NavbarButton = ({
 	setOffsets,
 	active,
 }: NavBarButtonProps) => {
+	const [hash, setHast] = useHash();
+	const activeId = useScrollSpy(NAV_LINKS, {
+		threshold: 0.5,
+	});
 	const anchor = useRef<HTMLAnchorElement>(null);
 	const handleClick = e => {
 		const target = e.target as HTMLAnchorElement;
@@ -38,17 +52,24 @@ const NavbarButton = ({
 			ro.observe(anchor.current);
 		}
 	}, []);
+	useEffect(() => {}, [hash]);
+
+	useEffect(() => {
+		setHast(`#${activeId}`);
+		if (btnName === activeId && anchor.current) {
+			setOffsets(anchor.current.offsetLeft, anchor.current.offsetWidth);
+		}
+	}, [activeId]);
 	return (
 		<a
 			type='button'
 			className={btnClass}
 			data-scroll-to={btnName}
-			// href={`#${btnName}`}
+			href={`#${btnName}`}
 			onClick={e => {
 				if (!btnClass.includes('navbar-link--active')) {
 					setActive(btnName);
 					handleClick(e);
-					window.location.hash = `#${btnName}`;
 				}
 			}}
 			onResize={() => {
@@ -62,14 +83,17 @@ const NavbarButton = ({
 };
 
 export default function SlideBar() {
-	// const defaultLink = window.location.hash.slice(1) ?? 'Inicio';
-
-	const NAV_LINKS = ['Inicio', 'Portfolio', 'Conocimientos', 'Contacto'];
 	const [offLeft, setOffLeft] = useState(4);
-	const [offWidth, setOffWidth] = useState(126);
+	const [offWidth, setOffWidth] = useState(94);
 	const [activeLink, setActiveLink] = useState('Inicio');
 	const [theme] = useState('dark');
+	const activeId = useScrollSpy(NAV_LINKS, {
+		threshold: 0.5,
+	});
 	const navbarRef = useRef(null);
+	useEffect(() => {
+		setActiveLink(activeId);
+	}, [activeId]);
 	const handleSetOffsets = (left: number, width: number) => {
 		setOffLeft(left);
 		setOffWidth(width);
@@ -95,7 +119,6 @@ export default function SlideBar() {
 			)
 		}%`;
 	};
-
 	return (
 		<div id='body' className={theme}>
 			<aside className='lightbulb'></aside>
