@@ -1,22 +1,22 @@
 import { useCallback, useEffect, useState } from 'react';
 
 export const useHash = (): [string, (newHash: string) => void] => {
-	const [hash, setHash] = useState(() => window.location.hash);
+	const [hash, setHash] = useState(() => globalThis.window?.location.hash);
 
 	const hashChangeHandler = useCallback(() => {
-		setHash(window.location.hash);
+		setHash(globalThis.window.location.hash);
 	}, []);
 
 	useEffect(() => {
-		window.addEventListener('hashchange', hashChangeHandler);
+		globalThis.window?.addEventListener('hashchange', hashChangeHandler);
 		return () => {
-			window.removeEventListener('hashchange', hashChangeHandler);
+			globalThis.window?.removeEventListener('hashchange', hashChangeHandler);
 		};
 	}, []);
 
 	const updateHash = useCallback(
 		(newHash: string): void => {
-			if (newHash !== hash) {
+			if (newHash !== hash && typeof window === 'object') {
 				window.location.hash = newHash;
 			}
 		},

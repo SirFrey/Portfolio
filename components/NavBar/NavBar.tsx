@@ -1,6 +1,6 @@
 'use client';
 import { useHash } from '@assets/hooks/useHash';
-import { useScrollSpy } from '@raddix/use-scroll-spy';
+import { useScrollSpy } from '@assets/hooks/useScrollSpy';
 import { useEffect, useRef, useState } from 'react';
 import './NavBar.css';
 interface NavBarButtonProps {
@@ -13,13 +13,6 @@ interface NavBarButtonProps {
 	) => void;
 	active: string;
 }
-const NAV_LINKS = [
-	'Inicio',
-	'Portfolio',
-	'Conocimientos',
-	'Sobre Mí',
-	'Contacto',
-];
 
 const NavbarButton = ({
 	btnClass,
@@ -28,6 +21,13 @@ const NavbarButton = ({
 	setOffsets,
 	active,
 }: NavBarButtonProps) => {
+	const NAV_LINKS = [
+		'Inicio',
+		'Portfolio',
+		'Conocimientos',
+		'Sobre Mí',
+		'Contacto',
+	];
 	const [hash, setHast] = useHash();
 	const activeId = useScrollSpy(NAV_LINKS, {
 		threshold: 0.5,
@@ -83,6 +83,13 @@ const NavbarButton = ({
 };
 
 export default function SlideBar() {
+	const NAV_LINKS = [
+		'Inicio',
+		'Portfolio',
+		'Conocimientos',
+		'Sobre Mí',
+		'Contacto',
+	];
 	const [offLeft, setOffLeft] = useState(4);
 	const [offWidth, setOffWidth] = useState(94);
 	const [activeLink, setActiveLink] = useState('Inicio');
