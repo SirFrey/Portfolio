@@ -21,9 +21,7 @@ const Header = () => {
 	const [isTransitionEnd, setIsTransitionEnd] = useState<boolean>(false);
 
 	useLayoutEffect(() => {
-		if (navFixed.current !== null) {
-			navFixed.current.style.transform = 'translateY(-64px)translateY(64.33px)';
-		}
+		navFixed.current!.style.transform = 'translateY(-64px)translateY(64.33px)';
 	}, []);
 	useLayoutEffect(() => {
 		const observer = new IntersectionObserver(entries => {
@@ -38,7 +36,16 @@ const Header = () => {
 		const liElements = document.querySelectorAll(`.${s.hiddenRight}`);
 		liElements.forEach(el => observer.observe(el));
 	}, []);
-
+	useLayoutEffect(() => {
+		if (isSideBarShow && bgDark.current) {
+			bgDark.current.style.display = 'inline-block';
+			bgDark.current.style.animation = 'show .3s forwards';
+			blockScroll({ isBlock: true });
+		} else {
+			unblockScroll();
+			bgDark.current!.style.animation = 'unShow .2s backwards';
+		}
+	}, [isSideBarShow]);
 	return (
 		<>
 			<header>
@@ -58,55 +65,31 @@ const Header = () => {
 					<SlideBar />
 					<button
 						disabled={!!isSideBarShow}
-						onClick={() => {
-							if (bgDark.current !== null) {
-								bgDark.current.style.display = 'inline-block';
-								bgDark.current.style.animation = 'show .3s forwards';
-								blockScroll({ isBlock: true });
-								setIsSideBarShow(true);
-							}
-						}}
+						onClick={() => setIsSideBarShow(true)}
 						className={s.container_bar}
 					>
 						<i className={`fa-solid fa-bars ${s.bar}`}></i>
 					</button>
 				</nav>
 				<motion.aside
-					// onTransitionEnd={e => {
-					// 	const target = e.target as HTMLElement;
-					// 	if (target.matches('aside') && isSideBarShow) {
-					// 		setIsTransitionEnd(true);
-					// 		console.log('sds');
-					// 	}
-					// }}
-					onAnimationComplete={e => {
-						console.log(e);
+					onAnimationComplete={() => {
 						if (isSideBarShow) {
 							setIsTransitionEnd(true);
-							console.log('sds');
 						}
 					}}
 					animate={isSideBarShow ? 'open' : ''}
 					variants={variants}
 					ref={navFixedBar}
 					transition={{
-						type: 'spring',
-						stiffness: 240,
-						damping: 26,
+						type: 'tween',
+						duration: 0.5,
 					}}
 					className={s.principal_nav}
 				>
 					<button
 						onClick={() => {
-							if (bgDark.current !== null) {
-								setIsSideBarShow(false);
-								setIsTransitionEnd(false);
-								bgDark.current.style.animation = 'unShow .2s backwards';
-								unblockScroll();
-								setTimeout(() => {
-									if (bgDark.current) bgDark.current.style.display = 'none';
-								}, 300);
-							}
+							setIsSideBarShow(false);
+							setIsTransitionEnd(false);
 						}}
 						className={s.x}
 					>
@@ -115,13 +98,9 @@ const Header = () => {
 					<ul
 						onClick={e => {
 							const target = e.target as HTMLUListElement;
-							if (target.matches('a') && bgDark.current) {
+							if (target.matches('a')) {
 								setIsSideBarShow(false);
-								bgDark.current.style.animation = 'unShow .2s backwards';
-								unblockScroll();
-								setTimeout(() => {
-									if (bgDark.current) bgDark.current.style.display = 'none';
-								}, 100);
+								setIsTransitionEnd(false);
 							}
 						}}
 						className={s.nav_fixed_ul}
@@ -141,19 +120,17 @@ const Header = () => {
 					</ul>
 				</motion.aside>
 			</header>
-			{/* <!-- background dark --> */}
+			{/* <!-- Dark Background --> */}
 			<div
 				style={{ pointerEvents: isTransitionEnd ? 'auto' : 'none' }}
 				onClick={() => {
-					if (bgDark.current) {
-						console.log('click!');
-						setIsSideBarShow(false);
-						setIsTransitionEnd(false);
-						bgDark.current.style.animation = 'unShow .2s backwards';
-						unblockScroll();
-						setTimeout(() => {
-							if (bgDark.current) bgDark.current.style.display = 'none';
-						}, 300);
+					setIsSideBarShow(false);
+					setIsTransitionEnd(false);
+				}}
+				onAnimationEnd={e => {
+					const target = e.target as HTMLDivElement;
+					if (isTransitionEnd) {
+						target.style.display = 'none';
 					}
 				}}
 				ref={bgDark}

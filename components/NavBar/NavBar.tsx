@@ -1,6 +1,5 @@
 'use client';
 import { useScrollSpy } from '@assets/hooks/useScrollSpy';
-import { useRouter } from 'next/navigation';
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import './NavBar.css';
 interface NavBarButtonProps {
@@ -55,7 +54,6 @@ const NavbarButton = ({
 };
 
 export default function SlideBar() {
-	const router = useRouter();
 	const NAV_LINKS = [
 		'Inicio',
 		'Portfolio',
