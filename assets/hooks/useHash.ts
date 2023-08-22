@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useLayoutEffect, useState } from 'react';
 
 export const useHash = (): [string, (newHash: string) => void] => {
 	const [hash, setHash] = useState(() => globalThis.window?.location.hash);
@@ -7,7 +7,7 @@ export const useHash = (): [string, (newHash: string) => void] => {
 		setHash(globalThis.window.location.hash);
 	}, []);
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		globalThis.window?.addEventListener('hashchange', hashChangeHandler);
 		return () => {
 			globalThis.window?.removeEventListener('hashchange', hashChangeHandler);

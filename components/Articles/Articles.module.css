@@ -236,13 +236,16 @@
 }
 
 :is(.developingContainer, .knowledgeContainer) li {
+	background-color: #0003;
 	border: clamp(1px, 1vw, 4px) solid var(--secondaryColor);
 	border-radius: clamp(5px, 4vw, 20px);
-	padding: clamp(5px, 2vw, 20px);
+	padding: clamp(5px, 2vw, 16px);
 }
 :is(.developingContainer, .knowledgeContainer) li:hover {
 	scale: 1.1;
-	box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.3);
+	box-shadow: 6px -5px 14px 2px rgba(0, 0, 0, 0.3);
+	-webkit-box-shadow: 6px -5px 14px 2px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 6px -5px 14px 2px rgba(0, 0, 0, 0.3);
 }
 .textSpanIcons span {
 	opacity: 1;

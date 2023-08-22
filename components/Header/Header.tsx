@@ -3,7 +3,7 @@
 import X from '@assets/X';
 import SlideBar from '@components/NavBar/NavBar';
 import { Variants, motion } from 'framer-motion';
-import { useEffect, useRef, useState } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 import Typed from 'react-typed';
 import s from './Header.module.css';
 import { blockScroll, unblockScroll } from './scripts';
@@ -20,12 +20,12 @@ const Header = () => {
 	const [isSideBarShow, setIsSideBarShow] = useState<boolean>(false);
 	const [isTransitionEnd, setIsTransitionEnd] = useState<boolean>(false);
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		if (navFixed.current !== null) {
 			navFixed.current.style.transform = 'translateY(-64px)translateY(64.33px)';
 		}
 	}, []);
-	useEffect(() => {
+	useLayoutEffect(() => {
 		const observer = new IntersectionObserver(entries => {
 			entries.forEach(entry => {
 				if (entry.isIntersecting) {

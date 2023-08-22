@@ -25,6 +25,7 @@ body {
 :root {
 	--principalColor: #495c83;
 	--principalColorDark: #0b1a38;
+	--principalColorDarkAlpha: #0b1a38aa;
 	--secondaryColor: #7a86b6;
 	--principalColorAlpha: #495c83aa;
 	--secondaryColorAlpha: #7a86b6aa;
@@ -59,7 +60,7 @@ h2:not(section:first-child h2, footer h2) {
 body {
 	width: 100%;
 	font-family: 'Victor Mono', sans-serif;
-	color: aliceblue;
+	color: #f2f1ef;
 	font-size: 17px;
 	text-align: center;
 }
@@ -76,10 +77,10 @@ h1 {
 	font-size: clamp(1.4rem, 4vw, 1.8rem);
 }
 h2 {
-	font-size: clamp(1.1rem, 2.5vw, 1.8rem);
+	font-size: clamp(1.4rem, 2.7vw, 2rem);
 }
 h4 {
-	font-size: clamp(0.95rem, 2vw, 1.4rem);
+	font-size: clamp(1.1rem, 2.4vw, 1.9rem);
 }
 ul {
 	padding: 0;
@@ -143,8 +144,11 @@ a {
 /* Articles styles */
 
 section p.p {
-	width: clamp(min(400px, 70vw), 70vw, 70vw);
-	font-size: clamp(1rem, 3vw, 1.3rem);
+	width: clamp(min(400px, 80vw), 70vw, 70vw);
+	font-size: clamp(1.3rem, 3vw, 1.5rem);
+}
+strong {
+	color: var(--principalColorDark);
 }
 section {
 	display: flex;

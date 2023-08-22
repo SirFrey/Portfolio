@@ -1,7 +1,6 @@
 'use client';
-import { useHash } from '@assets/hooks/useHash';
 import { useScrollSpy } from '@assets/hooks/useScrollSpy';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import './NavBar.css';
 interface NavBarButtonProps {
 	btnClass: string;
@@ -21,25 +20,9 @@ const NavbarButton = ({
 	setOffsets,
 	active,
 }: NavBarButtonProps) => {
-	const NAV_LINKS = [
-		'Inicio',
-		'Portfolio',
-		'Conocimientos',
-		'Sobre Mí',
-		'Contacto',
-	];
-	const [hash, setHast] = useHash();
-	const activeId = useScrollSpy(NAV_LINKS, {
-		threshold: 0.5,
-	});
 	const anchor = useRef<HTMLAnchorElement>(null);
-	const handleClick = e => {
-		const target = e.target as HTMLAnchorElement;
-		target.classList.add('navbar-link--active');
-		setOffsets(target.offsetLeft, target.offsetWidth);
-	};
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		const ro = new ResizeObserver(entries => {
 			entries.forEach(entry => {
 				const target = entry.target as HTMLDivElement;
@@ -52,29 +35,19 @@ const NavbarButton = ({
 			ro.observe(anchor.current);
 		}
 	}, []);
-	useEffect(() => {}, [hash]);
 
-	useEffect(() => {
-		setHast(`#${activeId}`);
-		if (btnName === activeId && anchor.current) {
+	useLayoutEffect(() => {
+		if (btnName === active && anchor.current) {
+			anchor.current.classList.add('navbar-link--active');
 			setOffsets(anchor.current.offsetLeft, anchor.current.offsetWidth);
 		}
-	}, [activeId]);
+	}, [active]);
 	return (
 		<a
 			type='button'
 			className={btnClass}
 			data-scroll-to={btnName}
 			href={`#${btnName}`}
-			onClick={e => {
-				if (!btnClass.includes('navbar-link--active')) {
-					setActive(btnName);
-					handleClick(e);
-				}
-			}}
-			onResize={() => {
-				console.log('resize');
-			}}
 			ref={anchor}
 		>
 			{btnName}
@@ -94,10 +67,12 @@ export default function SlideBar() {
 	const [offWidth, setOffWidth] = useState(94);
 	const [activeLink, setActiveLink] = useState('Inicio');
 	const [theme] = useState('dark');
+
+	const navbarRef = useRef(null);
 	const activeId = useScrollSpy(NAV_LINKS, {
 		threshold: 0.5,
+		// rootMargin: '0px 0px -50% 0px',
 	});
-	const navbarRef = useRef(null);
 	useEffect(() => {
 		setActiveLink(activeId);
 	}, [activeId]);

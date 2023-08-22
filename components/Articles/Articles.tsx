@@ -172,16 +172,20 @@ const Articles = () => {
 				<div id='Sobre Mí' className='marginContainer'>
 					<h2>Sobre Mi</h2>
 					<p className={'hidden p'}>
-						Desarrollador Frontend con conocimientos solidos en HTML5, CSS3 y
-						JavaScript, manejo tecnologías como React, Empaquetado de
-						aplicaciones web con Webpack y Vite, control de versiones con Git y
-						manejo de proyectos en equipo con Notion y Github.
+						Desarrollador Frontend con conocimientos solidos en{' '}
+						<strong>HTML5</strong>, <strong>CSS3</strong> y{' '}
+						<strong>JavaScript</strong>, manejo tecnologías como{' '}
+						<strong>React</strong>, Empaquetado de aplicaciones web con{' '}
+						<strong>Webpack</strong> y <strong>Vite</strong>, control de
+						versiones con <strong>Git</strong> y manejo de proyectos en equipo
+						con <strong>Notion</strong> y <strong>Github</strong>.
 					</p>
 					<p className='hidden p'>
-						Provengo de Caracas-Venezuela, con aspiraciones de viajar a temprana
-						edad y tengo el objetivo de llegar a pequeñas y grandes empresas con
-						este portfolio, aceptando todo tipo de feedback por parte de los
-						visitantes para este portfolio web y también para mis perfiles.
+						Provengo de <strong>Venezuela(Caracas)</strong>, con aspiraciones de
+						viajar a temprana edad y tengo el objetivo de llegar a pequeñas y
+						grandes empresas con este portfolio, aceptando todo tipo de feedback
+						por parte de los visitantes para este portfolio web y también para
+						mis perfiles.
 					</p>
 				</div>
 				<div className={s.wave5}>
