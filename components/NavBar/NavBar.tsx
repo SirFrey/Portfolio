@@ -1,11 +1,11 @@
 'use client';
 import { useScrollSpy } from '@assets/hooks/useScrollSpy';
+import { useRouter } from 'next/navigation';
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import './NavBar.css';
 interface NavBarButtonProps {
 	btnClass: string;
 	btnName: string;
-	setActive: (nameActive: string) => void;
 	setOffsets: (
 		offsetLeft: number | undefined,
 		offsetWidth: number | undefined
@@ -16,7 +16,6 @@ interface NavBarButtonProps {
 const NavbarButton = ({
 	btnClass,
 	btnName,
-	setActive,
 	setOffsets,
 	active,
 }: NavBarButtonProps) => {
@@ -56,6 +55,7 @@ const NavbarButton = ({
 };
 
 export default function SlideBar() {
+	const router = useRouter();
 	const NAV_LINKS = [
 		'Inicio',
 		'Portfolio',
@@ -71,10 +71,10 @@ export default function SlideBar() {
 	const navbarRef = useRef(null);
 	const activeId = useScrollSpy(NAV_LINKS, {
 		threshold: 0.5,
-		// rootMargin: '0px 0px -50% 0px',
 	});
 	useEffect(() => {
 		setActiveLink(activeId);
+		history.pushState({}, '', `#${activeId}`);
 	}, [activeId]);
 	const handleSetOffsets = (left: number, width: number) => {
 		setOffLeft(left);
@@ -121,7 +121,6 @@ export default function SlideBar() {
 										? 'navbar-link navbar-link--active'
 										: 'navbar-link'
 								}
-								setActive={setActiveLink}
 								setOffsets={handleSetOffsets}
 								active={activeLink}
 							/>
