@@ -1,15 +1,15 @@
 interface Card {
-	project: string;
-	stack: Array<string>;
-	date: string;
-	description: string;
-	website: URL;
-	github: URL;
-	image: URL;
-	likes: string | number;
-	alt: string;
+	project: string
+	stack: Array<string>
+	date: string
+	description: string
+	website: URL
+	github: URL
+	image: URL
+	likes: string | number
+	alt: string
 }
-type ProjectCardType = Array<Card>;
+type ProjectCardType = Array<Card>
 
 const dataCards: ProjectCardType = [
 	{
@@ -81,5 +81,5 @@ const dataCards: ProjectCardType = [
 		project: "Mcdonald's",
 		website: new URL('https://www.mcdonalds.com.ve/'),
 	},
-];
-export default dataCards;
+]
+export default dataCards

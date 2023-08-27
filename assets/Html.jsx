@@ -19,7 +19,7 @@ function Html() {
 				d='M255 208v57h70l-7 73-63 17v59l116-32 16-174zm0-114v56h137l5-56z'
 			></path>
 		</svg>
-	);
+	)
 }
 
-export default Html;
+export default Html

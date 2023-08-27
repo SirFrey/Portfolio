@@ -1,6 +1,6 @@
-'use client';
+'use client'
 
-import s from './Footer.module.css';
+import s from './Footer.module.css'
 const Footer = () => {
 	return (
 		<footer id='Contacto' className={`${s.footer_final}`}>
@@ -33,7 +33,7 @@ const Footer = () => {
 				</li>
 			</ul>
 		</footer>
-	);
-};
+	)
+}
 
-export default Footer;
+export default Footer

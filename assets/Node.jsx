@@ -83,7 +83,7 @@ function Node() {
 				></path>
 			</g>
 		</svg>
-	);
+	)
 }
 
-export default Node;
+export default Node

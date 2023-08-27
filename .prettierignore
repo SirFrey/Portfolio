@@ -1,0 +1,10 @@
+## Folders
+.next
+node_modules
+styles/fontAwesome
+.vscode
+
+## Files
+pnpm-lock.yaml
+tsconfig.json
+vervel.json

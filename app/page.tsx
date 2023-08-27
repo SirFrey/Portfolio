@@ -1,9 +1,9 @@
-'use client';
+'use client'
 
-import Articles from '@components/Articles/Articles';
-import Footer from '@components/Footer/Footer';
-import Header from '@components/Header/Header';
-import Cursor from '@components/NewCursor/Cursor';
+import Articles from '@components/Articles/Articles'
+import Footer from '@components/Footer/Footer'
+import Header from '@components/Header/Header'
+import Cursor from '@components/NewCursor/Cursor'
 const PortfolioPage = () => {
 	return (
 		<>
@@ -14,7 +14,7 @@ const PortfolioPage = () => {
 				<Footer />
 			</main>
 		</>
-	);
-};
+	)
+}
 
-export default PortfolioPage;
+export default PortfolioPage

@@ -11,6 +11,6 @@ const X = () => {
 				d='M13 1 1 13M1 1l12 12'
 			/>
 		</svg>
-	);
-};
-export default X;
+	)
+}
+export default X

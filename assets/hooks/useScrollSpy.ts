@@ -1,20 +1,20 @@
-import { useLayoutEffect, useState } from 'react';
+import { useLayoutEffect, useState } from 'react'
 export const useScrollSpy = (items, options: IntersectionObserverInit) => {
-	const [activeId, setActiveId] = useState('');
+	const [activeId, setActiveId] = useState('')
 	useLayoutEffect(() => {
 		const observer = new IntersectionObserver(entries => {
-			entries.forEach(e => e.isIntersecting && setActiveId(e.target.id));
-		}, options);
+			entries.forEach(e => e.isIntersecting && setActiveId(e.target.id))
+		}, options)
 		items.forEach(id => {
 			if (!id) {
-				return;
+				return
 			}
-			const element = document.getElementById(id);
+			const element = document.getElementById(id)
 			if (element) {
-				observer.observe(element);
+				observer.observe(element)
 			}
-		});
-		return () => observer.disconnect();
-	}, [items, options]);
-	return activeId;
-};
+		})
+		return () => observer.disconnect()
+	}, [items, options])
+	return activeId
+}

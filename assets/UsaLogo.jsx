@@ -62,7 +62,7 @@ function UsaLogo() {
 				/>
 			</g>
 		</svg>
-	);
+	)
 }
 
-export default UsaLogo;
+export default UsaLogo

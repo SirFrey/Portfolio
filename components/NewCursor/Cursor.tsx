@@ -1,9 +1,9 @@
-import { useLayoutEffect } from 'react';
-import './Cursor.css';
+import { useLayoutEffect } from 'react'
+import './Cursor.css'
 function Cursor() {
 	useLayoutEffect(() => {
-		import('./CursorLogic');
-	}, []);
+		import('./CursorLogic')
+	}, [])
 	return (
 		<>
 			<div className='cursor'>
@@ -20,7 +20,7 @@ function Cursor() {
 				</div>
 			</div>
 		</>
-	);
+	)
 }
 
-export default Cursor;
+export default Cursor

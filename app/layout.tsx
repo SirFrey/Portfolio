@@ -1,8 +1,8 @@
-import '@styles/blurry-load.min.css';
-import '@styles/fontAwesome/css/all.min.css';
-import '@styles/index.css';
-import '@styles/normalize.css';
-import { Metadata } from 'next';
+import '@styles/blurry-load.min.css'
+import '@styles/fontAwesome/css/all.min.css'
+import '@styles/index.css'
+import '@styles/normalize.css'
+import { Metadata } from 'next'
 
 export const metadata: Metadata = {
 	metadataBase: new URL('https://moisesdev.vercel.app/'),
@@ -30,16 +30,16 @@ export const metadata: Metadata = {
 	other: {
 		'google-site-verification': 'GxY_RzqX7Z-W9_U_2_9jW6Q-VjvC-jWn-E_0Q_X_Ws',
 	},
-};
+}
 
 export default function RootLayout({
 	children,
 }: {
-	children: React.ReactNode;
+	children: React.ReactNode
 }) {
 	return (
 		<html>
 			<body>{children}</body>
 		</html>
-	);
+	)
 }

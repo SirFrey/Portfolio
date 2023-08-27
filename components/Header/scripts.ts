@@ -1,18 +1,18 @@
 interface Props {
-	isBlock: boolean;
+	isBlock: boolean
 }
 const blockScroll = ({ isBlock }: Props) => {
-	const mainPage = document.querySelector('main') as HTMLDivElement;
+	const mainPage = document.querySelector('main') as HTMLDivElement
 
 	if (isBlock) {
-		mainPage.style.cssText = `overflow-Y: hidden;`;
+		mainPage.style.cssText = `overflow-Y: hidden;`
 	}
-};
+}
 
 const unblockScroll = () => {
-	const mainPage = document.querySelector('main') as HTMLDivElement;
+	const mainPage = document.querySelector('main') as HTMLDivElement
 
-	mainPage.style.cssText = `overflow-Y: auto;`;
-};
+	mainPage.style.cssText = `overflow-Y: auto;`
+}
 
-export { blockScroll, unblockScroll };
+export { blockScroll, unblockScroll }

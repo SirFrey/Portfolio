@@ -1,51 +1,51 @@
-'use client';
+'use client'
 
-import X from '@assets/X';
-import SlideBar from '@components/NavBar/NavBar';
-import { Variants, motion } from 'framer-motion';
-import { useLayoutEffect, useRef, useState } from 'react';
-import Typed from 'react-typed';
-import s from './Header.module.css';
-import { blockScroll, unblockScroll } from './scripts';
+import X from '@assets/X'
+import SlideBar from '@components/NavBar/NavBar'
+import { Variants, motion } from 'framer-motion'
+import { useLayoutEffect, useRef, useState } from 'react'
+import Typed from 'react-typed'
+import s from './Header.module.css'
+import { blockScroll, unblockScroll } from './scripts'
 
 const variants: Variants = {
 	open: {
 		translate: '0',
 	},
-};
+}
 const Header = () => {
-	const navFixed = useRef<HTMLElement>(null);
-	const bgDark = useRef<HTMLDivElement>(null);
-	const navFixedBar = useRef<HTMLElement>(null);
-	const [isSideBarShow, setIsSideBarShow] = useState<boolean>(false);
-	const [isTransitionEnd, setIsTransitionEnd] = useState<boolean>(false);
+	const navFixed = useRef<HTMLElement>(null)
+	const bgDark = useRef<HTMLDivElement>(null)
+	const navFixedBar = useRef<HTMLElement>(null)
+	const [isSideBarShow, setIsSideBarShow] = useState<boolean>(false)
+	const [isTransitionEnd, setIsTransitionEnd] = useState<boolean>(false)
 
 	useLayoutEffect(() => {
-		navFixed.current!.style.transform = 'translateY(-64px)translateY(64.33px)';
-	}, []);
+		navFixed.current!.style.transform = 'translateY(-64px)translateY(64.33px)'
+	}, [])
 	useLayoutEffect(() => {
 		const observer = new IntersectionObserver(entries => {
 			entries.forEach(entry => {
 				if (entry.isIntersecting) {
-					entry.target.classList.add(`${s.showRight}`);
+					entry.target.classList.add(`${s.showRight}`)
 				} else {
-					entry.target.classList.remove(`${s.showRight}`);
+					entry.target.classList.remove(`${s.showRight}`)
 				}
-			});
-		});
-		const liElements = document.querySelectorAll(`.${s.hiddenRight}`);
-		liElements.forEach(el => observer.observe(el));
-	}, []);
+			})
+		})
+		const liElements = document.querySelectorAll(`.${s.hiddenRight}`)
+		liElements.forEach(el => observer.observe(el))
+	}, [])
 	useLayoutEffect(() => {
 		if (isSideBarShow && bgDark.current) {
-			bgDark.current.style.display = 'inline-block';
-			bgDark.current.style.animation = 'show .3s forwards';
-			blockScroll({ isBlock: true });
+			bgDark.current.style.display = 'inline-block'
+			bgDark.current.style.animation = 'show .3s forwards'
+			blockScroll({ isBlock: true })
 		} else {
-			unblockScroll();
-			bgDark.current!.style.animation = 'unShow .2s backwards';
+			unblockScroll()
+			bgDark.current!.style.animation = 'unShow .2s backwards'
 		}
-	}, [isSideBarShow]);
+	}, [isSideBarShow])
 	return (
 		<>
 			<header>
@@ -72,11 +72,6 @@ const Header = () => {
 					</button>
 				</nav>
 				<motion.aside
-					onAnimationComplete={() => {
-						if (isSideBarShow) {
-							setIsTransitionEnd(true);
-						}
-					}}
 					animate={isSideBarShow ? 'open' : ''}
 					variants={variants}
 					ref={navFixedBar}
@@ -86,21 +81,14 @@ const Header = () => {
 					}}
 					className={s.principal_nav}
 				>
-					<button
-						onClick={() => {
-							setIsSideBarShow(false);
-							setIsTransitionEnd(false);
-						}}
-						className={s.x}
-					>
+					<button onClick={() => setIsSideBarShow(false)} className={s.x}>
 						<X />
 					</button>
 					<ul
 						onClick={e => {
-							const target = e.target as HTMLUListElement;
+							const target = e.target as HTMLUListElement
 							if (target.matches('a')) {
-								setIsSideBarShow(false);
-								setIsTransitionEnd(false);
+								setIsSideBarShow(false)
 							}
 						}}
 						className={s.nav_fixed_ul}
@@ -122,15 +110,14 @@ const Header = () => {
 			</header>
 			{/* <!-- Dark Background --> */}
 			<div
-				style={{ pointerEvents: isTransitionEnd ? 'auto' : 'none' }}
+				style={{ pointerEvents: isSideBarShow ? 'auto' : 'none' }}
 				onClick={() => {
-					setIsSideBarShow(false);
-					setIsTransitionEnd(false);
+					setIsSideBarShow(false)
 				}}
 				onAnimationEnd={e => {
-					const target = e.target as HTMLDivElement;
-					if (isTransitionEnd) {
-						target.style.display = 'none';
+					const target = e.target as HTMLDivElement
+					if (!isSideBarShow) {
+						target.style.display = 'none'
 					}
 				}}
 				ref={bgDark}
@@ -138,7 +125,7 @@ const Header = () => {
 				className={s.bg_dark}
 			></div>
 		</>
-	);
-};
+	)
+}
 
-export default Header;
+export default Header

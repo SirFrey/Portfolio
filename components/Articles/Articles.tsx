@@ -1,51 +1,49 @@
-'use client';
+'use client'
 // Icons
-import CssLogo from '@assets/CssLogo';
-import Git from '@assets/Git';
-import Github from '@assets/GitHubLogo';
-import Html from '@assets/Html';
-import Js from '@assets/Js';
-import ReactLogo from '@assets/ReactLogo';
-import Terminal from '@assets/Terminal';
-import UsaLogo from '@assets/UsaLogo';
-import s from './Articles.module.css';
+import { motion } from 'framer-motion'
+import s from './Articles.module.css'
 // Components
-import Next from '@assets/Next';
-import Node from '@assets/Node';
-import ProjectCards from '@components/CardProjects/ProjectCards.tsx';
-import SDownComp from '@components/ScrolllDownComp/SDownComp.tsx';
-import { useLayoutEffect, useRef } from 'react';
-import TextIcon from '../TextIcon/TextIcon';
+import ProjectCards from '@components/CardProjects/ProjectCards.tsx'
+import SDownComp from '@components/ScrolllDownComp/SDownComp.tsx'
+import { useLayoutEffect, useRef } from 'react'
+import { ListItemComp } from './ListItemComp.tsx'
+import {
+	containerVariants,
+	developingData,
+	knowledgeData,
+	otherData,
+	toolsData,
+} from './dataArticles.tsx'
 const Articles = () => {
-	const mainSection = useRef<HTMLDivElement>(null);
+	const mainSection = useRef<HTMLDivElement>(null)
 	useLayoutEffect(() => {
-		const imageSection = new Image();
+		const imageSection = new Image()
 		imageSection.addEventListener('load', e => {
-			const target = e.target as HTMLImageElement;
+			const target = e.target as HTMLImageElement
 			if (mainSection.current) {
-				mainSection.current.style.backgroundImage = `url(${target.src})`;
-				mainSection.current.classList.add(s.load);
+				mainSection.current.style.backgroundImage = `url(${target.src})`
+				mainSection.current.classList.add(s.load)
 			}
-		});
+		})
 		imageSection.src =
-			'https://img.freepik.com/foto-gratis/diseno-concepto-plantilla-diseno-web-html_53876-120438.jpg?w=900&t=st=1660676885~exp=1660677485~hmac=2899e1383827e6af6608d048fbba3d6958763202894ec02e3e5bb4d598f6e3b5';
-	}, []);
+			'https://img.freepik.com/foto-gratis/diseno-concepto-plantilla-diseno-web-html_53876-120438.jpg?w=900&t=st=1660676885~exp=1660677485~hmac=2899e1383827e6af6608d048fbba3d6958763202894ec02e3e5bb4d598f6e3b5'
+	}, [])
 	useLayoutEffect(() => {
-		import('./script.ts');
-	}, []);
+		import('./script.ts')
+	}, [])
 	useLayoutEffect(() => {
 		const observer = new IntersectionObserver(entries => {
 			entries.forEach(entry => {
 				if (entry.isIntersecting) {
-					entry.target.classList.add('show');
+					entry.target.classList.add('show')
 				} else if (entry.target.nodeName !== 'P') {
-					entry.target.classList.remove('show');
+					entry.target.classList.remove('show')
 				}
-			});
-		});
-		const hiddenElements = document.querySelectorAll(`.hidden`);
-		hiddenElements.forEach(el => observer.observe(el));
-	}, []);
+			})
+		})
+		const hiddenElements = document.querySelectorAll(`.hidden`)
+		hiddenElements.forEach(el => observer.observe(el))
+	}, [])
 
 	return (
 		<article className={s.articlePage}>
@@ -112,46 +110,47 @@ const Articles = () => {
 						<h2>Conocimientos:</h2>
 						<h4>Lenguajes, Frameworks y Librerías:</h4>
 					</div>
-					<ul className={s.lang_list}>
-						<li className={`hidden`}>
-							<Html />
-							<TextIcon text='HTML' />
-						</li>
-						<li className={'hidden'}>
-							<CssLogo />
-							<TextIcon text='CSS' />
-						</li>
-						<li className={'hidden'}>
-							<Js />
-							<TextIcon text='Javascript' />
-						</li>
-						<li className={'hidden'}>
-							<ReactLogo />
-							<TextIcon text='React' />
-						</li>
-					</ul>
+					<motion.ul
+						variants={containerVariants}
+						initial='hidden'
+						whileInView='visible'
+						viewport={{
+							once: true,
+						}}
+						className={s.lang_list}
+					>
+						{knowledgeData.map(({ Icon, span }, i) => {
+							return <ListItemComp Icon={Icon} span={span} key={i} />
+						})}
+					</motion.ul>
 					<h4 className='hidden'>Herramientas:</h4>
-					<ul className={s.tool_list}>
-						<li className={'hidden'}>
-							<Git />
-							<TextIcon text='Git' />
-						</li>
-						<li className={'hidden'}>
-							<Github />
-							<TextIcon text='Github' />
-						</li>
-						<li className={'hidden'}>
-							<Terminal />
-							<TextIcon text='Terminal' />
-						</li>
-					</ul>
+					<motion.ul
+						variants={containerVariants}
+						initial='hidden'
+						whileInView='visible'
+						viewport={{
+							once: true,
+						}}
+						className={s.tool_list}
+					>
+						{toolsData.map(({ Icon, span }, i) => {
+							return <ListItemComp Icon={Icon} span={span} key={i} />
+						})}
+					</motion.ul>
 					<h4 className='hidden'>Otros:</h4>
-					<ul className={s.other_list}>
-						<li className={'hidden'}>
-							<UsaLogo />
-							<TextIcon text='Ingles (A2)' />
-						</li>
-					</ul>
+					<motion.ul
+						variants={containerVariants}
+						initial='hidden'
+						whileInView='visible'
+						viewport={{
+							once: true,
+						}}
+						className={s.other_list}
+					>
+						{otherData.map(({ Icon, span }, i) => {
+							return <ListItemComp Icon={Icon} span={span} key={i} />
+						})}
+					</motion.ul>
 				</div>
 				<div className={s.wave}>
 					<svg
@@ -206,20 +205,19 @@ const Articles = () => {
 			<section>
 				<div className={`marginContainer ${s.developingContainer}`}>
 					<h2 className='hidden'>Desarrollando...</h2>
-					<ul className={s.developing_list}>
-						<li className='hidden'>
-							<Next />
-							<TextIcon text='Next' />
-						</li>
-						<li className='hidden'>
-							<Node />
-							<TextIcon text='Node' />
-						</li>
-						<li className='hidden'>
-							<UsaLogo />
-							<TextIcon text='Ingles (B1-B2)' />
-						</li>
-					</ul>
+					<motion.ul
+						variants={containerVariants}
+						initial='hidden'
+						whileInView='visible'
+						viewport={{
+							once: true,
+						}}
+						className={s.developing_list}
+					>
+						{developingData.map(({ Icon, span }, i) => {
+							return <ListItemComp Icon={Icon} span={span} key={i} />
+						})}
+					</motion.ul>
 				</div>
 			</section>
 			<div className={s.wave2}>
@@ -246,7 +244,7 @@ const Articles = () => {
 				</svg>
 			</div>
 		</article>
-	);
-};
+	)
+}
 
-export default Articles;
+export default Articles

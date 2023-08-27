@@ -1,4 +1,4 @@
-import s from './SDownStyles.module.css';
+import s from './SDownStyles.module.css'
 
 function SDownComp({ id }: { id?: string }) {
 	return (
@@ -14,7 +14,7 @@ function SDownComp({ id }: { id?: string }) {
 				</div>
 			</div>
 		</a>
-	);
+	)
 }
 
-export default SDownComp;
+export default SDownComp

@@ -1,6 +1,5 @@
 a.anchorCard {
 	width: clamp(min(calc(100vw - 10px), 330px), 10vw, 330px);
-	transition: transform 0.5s;
 	text-decoration: none;
 	color: #000;
 	margin-bottom: 50px;
@@ -8,10 +7,6 @@ a.anchorCard {
 	grid-template-rows: 300px 1fr;
 	border: 1px solid #dedcdc;
 	border-radius: 6px;
-	overflow: hidden;
-}
-a.anchorCard:hover {
-	z-index: 2;
 }
 
 .wrapper {
@@ -100,10 +95,10 @@ a:nth-of-type(4) .card_wrapper {
 	font-weight: 300;
 }
 
-a.anchorCard:hover {
+/* a.anchorCard:hover {
 	box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.09);
 	transform: scale3d(1.008, 1.008, 1);
-}
+} */
 /* .card_wrapper p.project_desc {
 	font-size: clamp(0.8rem, 2vw, 1.2rem);
 } */

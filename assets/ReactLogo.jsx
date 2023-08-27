@@ -8,7 +8,7 @@ function ReactLogo() {
 				<ellipse rx='11' ry='4.2' transform='rotate(120)'></ellipse>
 			</g>
 		</svg>
-	);
+	)
 }
 
-export default ReactLogo;
+export default ReactLogo
