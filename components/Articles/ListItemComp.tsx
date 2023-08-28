@@ -1,6 +1,6 @@
+import { itemVariants } from '@assets/utils/props'
 import TextIcon from '@components/TextIcon/TextIcon'
 import { HTMLMotionProps, motion } from 'framer-motion'
-import { itemVariants } from './dataArticles'
 interface ListItemType extends HTMLMotionProps<'li'> {
 	Icon: JSX.Element
 	span: string

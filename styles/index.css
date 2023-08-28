@@ -9,18 +9,14 @@ html {
 	background: var(--principalColor);
 	user-select: none;
 	line-height: 1.15;
-	height: 100%;
-	width: 100%;
-	overflow-y: hidden;
-	/* overflow-y: hidden; */
-	/* scrollbar-gutter: stable; */
+	scrollbar-gutter: stable;
+	-webkit-overflow-scrolling: touch;
+	scroll-behavior: smooth;
 }
 body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	scroll-margin-top: 100px;
-	height: 100%;
-	overflow-y: hidden;
 }
 :root {
 	--principalColor: #495c83;
@@ -58,19 +54,12 @@ h2:not(section:first-child h2, footer h2) {
 	padding-block: 14px;
 }
 body {
-	width: 100%;
 	font-family: 'Victor Mono', sans-serif;
 	color: #f2f1ef;
 	font-size: 17px;
 	text-align: center;
 }
 main {
-	width: 100%;
-	height: 100%;
-	overflow-y: auto;
-	scrollbar-gutter: stable;
-	-webkit-overflow-scrolling: touch;
-	scroll-behavior: smooth;
 }
 h1 {
 	text-align: center;

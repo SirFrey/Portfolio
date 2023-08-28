@@ -1,5 +1,7 @@
 'use client'
 import { useScrollSpy } from '@assets/hooks/useScrollSpy'
+import { hrefNames } from '@assets/utils/props'
+import { links } from '@components/Header/dataHeader'
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import './NavBar.css'
 interface NavBarButtonProps {
@@ -10,6 +12,7 @@ interface NavBarButtonProps {
 		offsetWidth: number | undefined
 	) => void
 	active: string
+	href: string
 }
 
 const NavbarButton = ({
@@ -17,6 +20,7 @@ const NavbarButton = ({
 	btnName,
 	setOffsets,
 	active,
+	href,
 }: NavBarButtonProps) => {
 	const anchor = useRef<HTMLAnchorElement>(null)
 
@@ -35,7 +39,7 @@ const NavbarButton = ({
 	}, [])
 
 	useLayoutEffect(() => {
-		if (btnName === active && anchor.current) {
+		if (href === active && anchor.current) {
 			anchor.current.classList.add('navbar-link--active')
 			setOffsets(anchor.current.offsetLeft, anchor.current.offsetWidth)
 		}
@@ -45,7 +49,7 @@ const NavbarButton = ({
 			type='button'
 			className={btnClass}
 			data-scroll-to={btnName}
-			href={`#${btnName}`}
+			href={'#' + href}
 			ref={anchor}
 		>
 			{btnName}
@@ -58,16 +62,15 @@ export default function SlideBar() {
 		'Inicio',
 		'Portfolio',
 		'Conocimientos',
-		'Sobre Mí',
+		'aboutme',
 		'Contacto',
 	]
 	const [offLeft, setOffLeft] = useState(4)
 	const [offWidth, setOffWidth] = useState(94)
 	const [activeLink, setActiveLink] = useState('Inicio')
 	const [theme] = useState('dark')
-
 	const navbarRef = useRef(null)
-	const activeId = useScrollSpy(NAV_LINKS, {
+	const activeId = useScrollSpy(hrefNames, {
 		threshold: 0.5,
 	})
 	useEffect(() => {
@@ -110,12 +113,13 @@ export default function SlideBar() {
 				>
 					<div className='navbar-curr--stroke' aria-hidden='true'></div>
 					<div className='navbar-root'>
-						{NAV_LINKS.map(link => (
+						{links.map(({ name, href }) => (
 							<NavbarButton
-								key={link}
-								btnName={link}
+								href={href}
+								key={name}
+								btnName={name}
 								btnClass={
-									activeLink === link
+									activeLink === href
 										? 'navbar-link navbar-link--active'
 										: 'navbar-link'
 								}

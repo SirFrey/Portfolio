@@ -8,30 +8,9 @@ import Node from '@assets/Node'
 import ReactLogo from '@assets/ReactLogo'
 import Terminal from '@assets/Terminal'
 import UsaLogo from '@assets/UsaLogo'
-import { Variants } from 'framer-motion'
 type IconType = {
 	Icon: JSX.Element
 	span: string
-}
-export const containerVariants: Variants = {
-	visible: {
-		transition: {
-			delayChildren: 0.3,
-			staggerChildren: 0.2,
-		},
-	},
-}
-export const itemVariants: Variants = {
-	hidden: {
-		opacity: 0,
-		filter: 'blur(4px)',
-		x: '-100%',
-	},
-	visible: {
-		opacity: 1,
-		filter: 'blur(0)',
-		x: 0,
-	},
 }
 export const knowledgeData: Array<IconType> = [
 	{

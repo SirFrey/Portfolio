@@ -6,11 +6,43 @@ import { Variants, motion } from 'framer-motion'
 import { useLayoutEffect, useRef, useState } from 'react'
 import Typed from 'react-typed'
 import s from './Header.module.css'
+import { links } from './dataHeader'
 import { blockScroll, unblockScroll } from './scripts'
 
 const variants: Variants = {
+	hidden: {
+		width: '0',
+	},
 	open: {
-		translate: '0',
+		width: 'min(100vw, 350px)',
+		transition: {
+			delayChildren: 0.2,
+			staggerChildren: 0.2,
+		},
+	},
+	navVisible: {
+		height: '64px',
+		transition: {
+			type: 'spring',
+		},
+	},
+	navHidden: {
+		height: '0',
+	},
+}
+const childVariants: Variants = {
+	hidden: {
+		x: 20,
+		opacity: 0,
+		filter: 'blur(4px)',
+	},
+	open: {
+		x: 0,
+		opacity: 1,
+		filter: 'blur(0)',
+	},
+	hover: {
+		backgroundColor: '#fff3',
 	},
 }
 const Header = () => {
@@ -18,24 +50,7 @@ const Header = () => {
 	const bgDark = useRef<HTMLDivElement>(null)
 	const navFixedBar = useRef<HTMLElement>(null)
 	const [isSideBarShow, setIsSideBarShow] = useState<boolean>(false)
-	const [isTransitionEnd, setIsTransitionEnd] = useState<boolean>(false)
 
-	useLayoutEffect(() => {
-		navFixed.current!.style.transform = 'translateY(-64px)translateY(64.33px)'
-	}, [])
-	useLayoutEffect(() => {
-		const observer = new IntersectionObserver(entries => {
-			entries.forEach(entry => {
-				if (entry.isIntersecting) {
-					entry.target.classList.add(`${s.showRight}`)
-				} else {
-					entry.target.classList.remove(`${s.showRight}`)
-				}
-			})
-		})
-		const liElements = document.querySelectorAll(`.${s.hiddenRight}`)
-		liElements.forEach(el => observer.observe(el))
-	}, [])
 	useLayoutEffect(() => {
 		if (isSideBarShow && bgDark.current) {
 			bgDark.current.style.display = 'inline-block'
@@ -49,7 +64,13 @@ const Header = () => {
 	return (
 		<>
 			<header>
-				<nav ref={navFixed} className={s.nav_fixed}>
+				<motion.nav
+					initial='navHidden'
+					animate='navVisible'
+					variants={variants}
+					ref={navFixed}
+					className={s.nav_fixed}
+				>
 					<div className={s.principal_icon}>
 						<i className='fa-solid fa-code'></i>
 						<Typed
@@ -70,15 +91,12 @@ const Header = () => {
 					>
 						<i className={`fa-solid fa-bars ${s.bar}`}></i>
 					</button>
-				</nav>
+				</motion.nav>
 				<motion.aside
+					initial='hidden'
 					animate={isSideBarShow ? 'open' : ''}
 					variants={variants}
 					ref={navFixedBar}
-					transition={{
-						type: 'tween',
-						duration: 0.5,
-					}}
 					className={s.principal_nav}
 				>
 					<button onClick={() => setIsSideBarShow(false)} className={s.x}>
@@ -93,18 +111,25 @@ const Header = () => {
 						}}
 						className={s.nav_fixed_ul}
 					>
-						<li className={`${s.nav_fixed_li} ${s.hiddenRight}`}>
-							<a href='#Portfolio'>Portfolio</a>
-						</li>
-						<li className={`${s.nav_fixed_li} ${s.hiddenRight}`}>
-							<a href='#Conocimientos'>Conocimientos</a>
-						</li>
-						<li className={`${s.nav_fixed_li} ${s.hiddenRight}`}>
-							<a href='#Sobre Mí'>Sobre mi</a>
-						</li>
-						<li className={`${s.nav_fixed_li} ${s.hiddenRight}`}>
-							<a href='#Contacto'>Contacto</a>
-						</li>
+						{links.map(({ href, name }, i) => {
+							return (
+								<motion.li
+									// whileHover='hover'
+									variants={childVariants}
+									className={s.nav_fixed_li}
+									key={i}
+								>
+									<motion.a
+										whileHover={{
+											backgroundColor: '#fff3',
+										}}
+										href={'#' + href}
+									>
+										{name}
+									</motion.a>
+								</motion.li>
+							)
+						})}
 					</ul>
 				</motion.aside>
 			</header>

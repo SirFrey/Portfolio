@@ -3,12 +3,12 @@
 import { motion } from 'framer-motion'
 import s from './Articles.module.css'
 // Components
+import { containerVariants, propsHiddenElm } from '@assets/utils/props.ts'
 import ProjectCards from '@components/CardProjects/ProjectCards.tsx'
 import SDownComp from '@components/ScrolllDownComp/SDownComp.tsx'
 import { useLayoutEffect, useRef } from 'react'
 import { ListItemComp } from './ListItemComp.tsx'
 import {
-	containerVariants,
 	developingData,
 	knowledgeData,
 	otherData,
@@ -31,29 +31,18 @@ const Articles = () => {
 	useLayoutEffect(() => {
 		import('./script.ts')
 	}, [])
-	useLayoutEffect(() => {
-		const observer = new IntersectionObserver(entries => {
-			entries.forEach(entry => {
-				if (entry.isIntersecting) {
-					entry.target.classList.add('show')
-				} else if (entry.target.nodeName !== 'P') {
-					entry.target.classList.remove('show')
-				}
-			})
-		})
-		const hiddenElements = document.querySelectorAll(`.hidden`)
-		hiddenElements.forEach(el => observer.observe(el))
-	}, [])
 
 	return (
 		<article className={s.articlePage}>
-			<section ref={mainSection} id='Inicio'>
+			<section ref={mainSection} id='inicio'>
 				<div className={s.filterMainSection}>
 					<div className='marginContainer'>
-						<h1 className={`hidden ${s.titleH1}`}>
+						<motion.h1 {...propsHiddenElm} className={`${s.titleH1}`}>
 							Bienvenido a mi Portfolio Web
-						</h1>
-						<h2 className={`hidden ${s.sectionCareer}`}>Frontend Developer</h2>
+						</motion.h1>
+						<motion.h2 {...propsHiddenElm} className={`${s.sectionCareer}`}>
+							Frontend Developer
+						</motion.h2>
 					</div>
 				</div>
 				<div className={s.wave4}>
@@ -82,8 +71,8 @@ const Articles = () => {
 				<SDownComp />
 			</section>
 			<section>
-				<div id='Portfolio' className='marginContainer'>
-					<h2 className={'hidden'}>Portfolio:</h2>
+				<div id='portfolio' className='marginContainer'>
+					<motion.h2 {...propsHiddenElm}>Portfolio:</motion.h2>
 					{/* <SliderCard /> */}
 					<ProjectCards />
 				</div>
@@ -103,13 +92,13 @@ const Articles = () => {
 					</svg>
 				</div>
 				<div
-					id='Conocimientos'
+					id='conocimientos'
 					className={`marginContainer ${s.knowledgeContainer}`}
 				>
-					<div className='hidden'>
+					<motion.div {...propsHiddenElm}>
 						<h2>Conocimientos:</h2>
 						<h4>Lenguajes, Frameworks y Librerías:</h4>
-					</div>
+					</motion.div>
 					<motion.ul
 						variants={containerVariants}
 						initial='hidden'
@@ -123,7 +112,7 @@ const Articles = () => {
 							return <ListItemComp Icon={Icon} span={span} key={i} />
 						})}
 					</motion.ul>
-					<h4 className='hidden'>Herramientas:</h4>
+					<motion.h4 {...propsHiddenElm}>Herramientas:</motion.h4>
 					<motion.ul
 						variants={containerVariants}
 						initial='hidden'
@@ -137,7 +126,7 @@ const Articles = () => {
 							return <ListItemComp Icon={Icon} span={span} key={i} />
 						})}
 					</motion.ul>
-					<h4 className='hidden'>Otros:</h4>
+					<motion.h4 {...propsHiddenElm}>Otros:</motion.h4>
 					<motion.ul
 						variants={containerVariants}
 						initial='hidden'
@@ -168,9 +157,9 @@ const Articles = () => {
 			</section>
 
 			<section>
-				<div id='Sobre Mí' className='marginContainer'>
+				<div id='aboutme' className='marginContainer'>
 					<h2>Sobre Mi</h2>
-					<p className={'hidden p'}>
+					<motion.p {...propsHiddenElm} className={'p'}>
 						Desarrollador Frontend con conocimientos solidos en{' '}
 						<strong>HTML5</strong>, <strong>CSS3</strong> y{' '}
 						<strong>JavaScript</strong>, manejo tecnologías como{' '}
@@ -178,14 +167,14 @@ const Articles = () => {
 						<strong>Webpack</strong> y <strong>Vite</strong>, control de
 						versiones con <strong>Git</strong> y manejo de proyectos en equipo
 						con <strong>Notion</strong> y <strong>Github</strong>.
-					</p>
-					<p className='hidden p'>
+					</motion.p>
+					<motion.p {...propsHiddenElm} className='p'>
 						Provengo de <strong>Venezuela(Caracas)</strong>, con aspiraciones de
 						viajar a temprana edad y tengo el objetivo de llegar a pequeñas y
 						grandes empresas con este portfolio, aceptando todo tipo de feedback
 						por parte de los visitantes para este portfolio web y también para
 						mis perfiles.
-					</p>
+					</motion.p>
 				</div>
 				<div className={s.wave5}>
 					<svg
@@ -204,7 +193,7 @@ const Articles = () => {
 
 			<section>
 				<div className={`marginContainer ${s.developingContainer}`}>
-					<h2 className='hidden'>Desarrollando...</h2>
+					<motion.h2 {...propsHiddenElm}>Desarrollando...</motion.h2>
 					<motion.ul
 						variants={containerVariants}
 						initial='hidden'

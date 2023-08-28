@@ -1,37 +1,38 @@
 'use client'
 
+import { containerVariants, propsHiddenElm } from '@assets/utils/props'
+import { motion } from 'framer-motion'
 import s from './Footer.module.css'
+import { footerVariants, links } from './dataFooter'
 const Footer = () => {
 	return (
-		<footer id='Contacto' className={`${s.footer_final}`}>
-			<h2 className='hidden'>Contacto</h2>
-			<ul className={`${s.ul_footer} `}>
-				<li className='hidden'>
-					<a
-						href='https://linkedin.com/in/moisesln'
-						title='Linkedin'
-						target='_blank'
-						rel='noreferrer'
-					>
-						<i className='fa-brands fa-linkedin '></i>
-					</a>
-				</li>
-				<li className='hidden'>
-					<a href='#' title='Discord'>
-						<i className='fa-brands fa-discord'></i>
-					</a>
-				</li>
-				<li className='hidden'>
-					<a href='#' title='Instagram'>
-						<i className='fa-brands fa-github'></i>
-					</a>
-				</li>
-				<li className='hidden'>
-					<a href='#' title='Mail'>
-						<i className='fa-solid fa-envelope '></i>
-					</a>
-				</li>
-			</ul>
+		<footer id='contacto' className={s.footer_final}>
+			<motion.h2 {...propsHiddenElm}>Contacto</motion.h2>
+			<motion.ul
+				initial='hidden'
+				whileInView='visible'
+				viewport={{
+					once: true,
+				}}
+				className={s.ul_footer}
+				variants={containerVariants}
+			>
+				{links.map(({ href, iconFontAwesome, title }, i) => {
+					return (
+						<motion.li
+							key={i}
+							whileHover={{
+								scale: 1.3,
+							}}
+							variants={footerVariants}
+						>
+							<a href={href} title={title}>
+								<i className={iconFontAwesome}></i>
+							</a>
+						</motion.li>
+					)
+				})}
+			</motion.ul>
 		</footer>
 	)
 }

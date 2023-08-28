@@ -61,42 +61,13 @@
 }
 :is(.lang_list, .tool_list, .other_list, .developing_list) li {
 	margin: 0 clamp(5px, 3vw, 17px);
+	position: relative;
 }
 .sectionCareer {
 	margin: 0;
 	font-size: clamp(1.3rem, 4vw, 2rem);
 }
-/* :is(.lang_list, .tool_list, .other_list, .developing_list) li {
-	transition-property: filter, opacity, transform, scale, box-shadow;
-}
-.lang_list li:nth-child(1) {
-	transition-delay: 200ms, 200ms, 200ms, 0ms, 0ms;
-}
-.lang_list li:nth-child(2) {
-	transition-delay: 400ms, 400ms, 400ms, 0ms, 0ms;
-}
-.lang_list li:nth-child(3) {
-	transition-delay: 600ms, 600ms, 600ms, 0ms, 0ms;
-}
-.lang_list li:nth-child(4) {
-	transition-delay: 800ms, 800ms, 800ms, 0ms, 0ms;
-}
 
-.tool_list li:nth-child(1) {
-	transition-delay: 200ms, 200ms, 200ms, 0ms, 0ms;
-}
-.tool_list li:nth-child(2) {
-	transition-delay: 400ms, 400ms, 400ms, 0ms, 0ms;
-}
-.tool_list li:nth-child(3) {
-	transition-delay: 600ms, 600ms, 600ms, 0ms, 0ms;
-}
-.other_list li:nth-child(1) {
-	transition-delay: 200ms, 200ms, 200ms, 0ms, 0ms;
-} */
-.developing_list li {
-	position: relative;
-}
 .developing_list li:nth-child(3) svg {
 	animation: blink 3s infinite alternate both;
 }
