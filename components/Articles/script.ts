@@ -1,8 +1,8 @@
 import s from './Articles.module.css'
 let counter: number = 0
 let counterDevLi: number = 0
-let intervalDev: number
-let intervalKnowledge: number
+let intervalDev: NodeJS.Timeout
+let intervalKnowledge: NodeJS.Timeout
 
 interface PropsFnShowSpan {
 	element: Array<HTMLElement>
