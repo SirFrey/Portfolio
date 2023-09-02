@@ -23,14 +23,14 @@ const childVariants: Variants = {
 	},
 }
 const Header = () => {
-	const scroller = globalThis.scrollingElement as HTMLElement
 	const windowSize = useWindowSize()
 	const navFixed = useRef<HTMLElement>(null)
 	const bgDark = useRef<HTMLDivElement>(null)
 	const navFixedBar = useRef<HTMLElement>(null)
 	const [isOpen, toggleOpen] = useCycle(false, true)
 	useEffect(() => {
-		globalThis.documentElement.style.setProperty(
+		const scroller = document.scrollingElement as HTMLElement
+		document.documentElement.style.setProperty(
 			'--scrollbar-width',
 			`${window.innerWidth - scroller.clientWidth}px`
 		)
