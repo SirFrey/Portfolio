@@ -1,58 +1,42 @@
 'use client'
 
-import X from '@assets/X'
+import MenuToggle from '@components/MenuToggle/MenuToggle'
 import SlideBar from '@components/NavBar/NavBar'
-import { Variants, motion } from 'framer-motion'
-import { useLayoutEffect, useRef, useState } from 'react'
+import { Variants, motion, useCycle } from 'framer-motion'
+import { useEffect, useLayoutEffect, useRef } from 'react'
 import Typed from 'react-typed'
 import s from './Header.module.css'
-import { links } from './dataHeader'
-import { blockScroll, unblockScroll } from './scripts'
+import { links, variantsHeader } from './dataHeader'
+import { blockScroll, unblockScroll, useWindowSize } from './scripts'
 
-const variants: Variants = {
-	hidden: {
-		width: '0',
-	},
-	open: {
-		width: 'min(100vw, 350px)',
-		transition: {
-			delayChildren: 0.2,
-			staggerChildren: 0.2,
-		},
-	},
-	navVisible: {
-		height: '64px',
-		transition: {
-			type: 'spring',
-		},
-	},
-	navHidden: {
-		height: '0',
-	},
-}
 const childVariants: Variants = {
 	hidden: {
-		x: 20,
-		opacity: 0,
 		filter: 'blur(4px)',
+		opacity: 0,
 	},
 	open: {
-		x: 0,
-		opacity: 1,
 		filter: 'blur(0)',
+		opacity: 1,
 	},
 	hover: {
 		backgroundColor: '#fff3',
 	},
 }
 const Header = () => {
+	const scroller = document.scrollingElement as HTMLElement
+	const windowSize = useWindowSize()
 	const navFixed = useRef<HTMLElement>(null)
 	const bgDark = useRef<HTMLDivElement>(null)
 	const navFixedBar = useRef<HTMLElement>(null)
-	const [isSideBarShow, setIsSideBarShow] = useState<boolean>(false)
-
+	const [isOpen, toggleOpen] = useCycle(false, true)
+	useEffect(() => {
+		document.documentElement.style.setProperty(
+			'--scrollbar-width',
+			`${window.innerWidth - scroller.clientWidth}px`
+		)
+	}, [windowSize])
 	useLayoutEffect(() => {
-		if (isSideBarShow && bgDark.current) {
+		if (isOpen && bgDark.current) {
 			bgDark.current.style.display = 'inline-block'
 			bgDark.current.style.animation = 'show .3s forwards'
 			blockScroll({ isBlock: true })
@@ -60,14 +44,17 @@ const Header = () => {
 			unblockScroll()
 			bgDark.current!.style.animation = 'unShow .2s backwards'
 		}
-	}, [isSideBarShow])
+	}, [isOpen])
 	return (
 		<>
-			<header>
+			<div className={s.containerMenuToggle}>
+				<MenuToggle toggle={() => toggleOpen()} isOpen={isOpen} />
+			</div>
+			<header className={s.mainHeader}>
 				<motion.nav
 					initial='navHidden'
 					animate='navVisible'
-					variants={variants}
+					variants={variantsHeader}
 					ref={navFixed}
 					className={s.nav_fixed}
 				>
@@ -84,29 +71,24 @@ const Header = () => {
 						/>
 					</div>
 					<SlideBar />
-					<button
-						disabled={!!isSideBarShow}
+					{/* <button
 						onClick={() => setIsSideBarShow(true)}
 						className={s.container_bar}
 					>
-						<i className={`fa-solid fa-bars ${s.bar}`}></i>
-					</button>
+					</button> */}
 				</motion.nav>
 				<motion.aside
 					initial='hidden'
-					animate={isSideBarShow ? 'open' : ''}
-					variants={variants}
+					animate={isOpen ? 'open' : ''}
+					variants={variantsHeader}
 					ref={navFixedBar}
 					className={s.principal_nav}
 				>
-					<button onClick={() => setIsSideBarShow(false)} className={s.x}>
-						<X />
-					</button>
 					<ul
 						onClick={e => {
 							const target = e.target as HTMLUListElement
 							if (target.matches('a')) {
-								setIsSideBarShow(false)
+								toggleOpen()
 							}
 						}}
 						className={s.nav_fixed_ul}
@@ -135,13 +117,12 @@ const Header = () => {
 			</header>
 			{/* <!-- Dark Background --> */}
 			<div
-				style={{ pointerEvents: isSideBarShow ? 'auto' : 'none' }}
 				onClick={() => {
-					setIsSideBarShow(false)
+					toggleOpen()
 				}}
 				onAnimationEnd={e => {
 					const target = e.target as HTMLDivElement
-					if (!isSideBarShow) {
+					if (!isOpen) {
 						target.style.display = 'none'
 					}
 				}}

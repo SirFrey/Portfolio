@@ -6,7 +6,8 @@ import s from './Articles.module.css'
 import { containerVariants, propsHiddenElm } from '@assets/utils/props.ts'
 import ProjectCards from '@components/CardProjects/ProjectCards.tsx'
 import SDownComp from '@components/ScrolllDownComp/SDownComp.tsx'
-import { useLayoutEffect, useRef } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { ListCompDev } from './ListCompDev.tsx'
 import { ListItemComp } from './ListItemComp.tsx'
 import {
 	developingData,
@@ -15,6 +16,10 @@ import {
 	toolsData,
 } from './dataArticles.tsx'
 const Articles = () => {
+	const [isPausedListDev, setPauseDevList] = useState(false)
+	const [counterListDev, setCounterListDev] = useState(0)
+	const [isPausedList, setPauseList] = useState(false)
+	const [counterList, setCounterList] = useState(0)
 	const mainSection = useRef<HTMLDivElement>(null)
 	useLayoutEffect(() => {
 		const imageSection = new Image()
@@ -28,10 +33,27 @@ const Articles = () => {
 		imageSection.src =
 			'https://img.freepik.com/foto-gratis/diseno-concepto-plantilla-diseno-web-html_53876-120438.jpg?w=900&t=st=1660676885~exp=1660677485~hmac=2899e1383827e6af6608d048fbba3d6958763202894ec02e3e5bb4d598f6e3b5'
 	}, [])
-	useLayoutEffect(() => {
-		import('./script.ts')
-	}, [])
+	useEffect(() => {
+		// Interval list of list "Desarrollando..."
+		const intervalListDev = setInterval(() => {
+			setCounterListDev(counterListDev + 1)
+		}, 1500)
+		if (isPausedListDev) {
+			clearInterval(intervalListDev)
+		}
+		return () => clearInterval(intervalListDev)
+	}, [counterListDev, isPausedListDev])
 
+	useEffect(() => {
+		// Interval list of list "Conocimientos"
+		const intervalList = setInterval(() => {
+			setCounterList(counterList + 1)
+		}, 1000)
+		if (isPausedList) {
+			clearInterval(intervalList)
+		}
+		return () => clearInterval(intervalList)
+	}, [counterList, isPausedList])
 	return (
 		<article className={s.articlePage}>
 			<section ref={mainSection} id='inicio'>
@@ -109,7 +131,17 @@ const Articles = () => {
 						className={s.lang_list}
 					>
 						{knowledgeData.map(({ Icon, span }, i) => {
-							return <ListItemComp Icon={Icon} span={span} key={i} />
+							return (
+								<ListItemComp
+									Icon={Icon}
+									span={span}
+									key={i}
+									counter={counterList}
+									index={i}
+									setCounter={setCounterList}
+									setPause={setPauseList}
+								/>
+							)
 						})}
 					</motion.ul>
 					<motion.h4 {...propsHiddenElm}>Herramientas:</motion.h4>
@@ -123,7 +155,17 @@ const Articles = () => {
 						className={s.tool_list}
 					>
 						{toolsData.map(({ Icon, span }, i) => {
-							return <ListItemComp Icon={Icon} span={span} key={i} />
+							return (
+								<ListItemComp
+									Icon={Icon}
+									span={span}
+									key={i}
+									counter={counterList}
+									index={i + knowledgeData.length}
+									setCounter={setCounterList}
+									setPause={setPauseList}
+								/>
+							)
 						})}
 					</motion.ul>
 					<motion.h4 {...propsHiddenElm}>Otros:</motion.h4>
@@ -137,7 +179,17 @@ const Articles = () => {
 						className={s.other_list}
 					>
 						{otherData.map(({ Icon, span }, i) => {
-							return <ListItemComp Icon={Icon} span={span} key={i} />
+							return (
+								<ListItemComp
+									Icon={Icon}
+									span={span}
+									key={i}
+									counter={counterList}
+									index={i + knowledgeData.length + toolsData.length}
+									setCounter={setCounterList}
+									setPause={setPauseList}
+								/>
+							)
 						})}
 					</motion.ul>
 				</div>
@@ -204,7 +256,17 @@ const Articles = () => {
 						className={s.developing_list}
 					>
 						{developingData.map(({ Icon, span }, i) => {
-							return <ListItemComp Icon={Icon} span={span} key={i} />
+							return (
+								<ListCompDev
+									Icon={Icon}
+									span={span}
+									key={i}
+									index={i}
+									counter={counterListDev}
+									setCounter={setCounterListDev}
+									setPause={setPauseDevList}
+								/>
+							)
 						})}
 					</motion.ul>
 				</div>

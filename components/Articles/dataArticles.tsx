@@ -50,6 +50,9 @@ export const otherData: IconType[] = [
 		span: 'Ingles (A2)',
 	},
 ]
+export const maxListLength = [...knowledgeData, ...toolsData, ...otherData]
+	.length
+
 export const developingData: IconType[] = [
 	{
 		Icon: <Next />,
@@ -64,3 +67,4 @@ export const developingData: IconType[] = [
 		span: 'Ingles (B1-B2)',
 	},
 ]
+export const maxListLengthDev = developingData.length

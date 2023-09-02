@@ -11,14 +11,21 @@ html {
 	line-height: 1.15;
 	scrollbar-gutter: stable;
 	-webkit-overflow-scrolling: touch;
-	scroll-behavior: smooth;
 }
 body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	scroll-margin-top: 100px;
 }
+body {
+	font-family: 'Victor Mono', sans-serif;
+	color: #f2f1ef;
+	font-size: 17px;
+	text-align: center;
+}
+
 :root {
+	--scrollbar-width: 0;
 	--principalColor: #495c83;
 	--principalColorDark: #0b1a38;
 	--principalColorDarkAlpha: #0b1a38aa;
@@ -53,14 +60,7 @@ h2:not(section:first-child h2, footer h2) {
 	padding: 0;
 	padding-block: 14px;
 }
-body {
-	font-family: 'Victor Mono', sans-serif;
-	color: #f2f1ef;
-	font-size: 17px;
-	text-align: center;
-}
-main {
-}
+
 h1 {
 	text-align: center;
 	font-size: clamp(1.4rem, 4vw, 1.8rem);
@@ -154,7 +154,7 @@ section:nth-child(1) {
 	place-content: center;
 	width: 100%;
 	height: 100vh;
-	height: 100svh;
+	height: 100dvh;
 	color: var(--principalColor);
 	position: relative;
 }
