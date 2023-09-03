@@ -8,12 +8,14 @@ interface ListItemType extends HTMLMotionProps<'li'> {
 	span: string
 	index: number
 	counter: number
+	color: string
 	setCounter: Dispatch<SetStateAction<number>>
 	setPause: Dispatch<SetStateAction<boolean>>
 }
 export const ListItemComp = ({
 	Icon,
 	span,
+	color,
 	setCounter,
 	setPause,
 	counter,
@@ -42,6 +44,7 @@ export const ListItemComp = ({
 				setCounter(index + 1)
 			}}
 			variants={itemVariants}
+			style={{ borderColor: color }}
 		>
 			<div>{Icon}</div>
 			<TextIcon text={span} IsVisible={isSelected} />

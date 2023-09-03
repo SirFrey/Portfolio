@@ -130,12 +130,13 @@ const Articles = () => {
 						}}
 						className={s.lang_list}
 					>
-						{knowledgeData.map(({ Icon, span }, i) => {
+						{knowledgeData.map(({ Icon, span, color }, i) => {
 							return (
 								<ListItemComp
 									Icon={Icon}
 									span={span}
 									key={i}
+									color={color}
 									counter={counterList}
 									index={i}
 									setCounter={setCounterList}
@@ -154,12 +155,13 @@ const Articles = () => {
 						}}
 						className={s.tool_list}
 					>
-						{toolsData.map(({ Icon, span }, i) => {
+						{toolsData.map(({ Icon, span, color }, i) => {
 							return (
 								<ListItemComp
 									Icon={Icon}
 									span={span}
 									key={i}
+									color={color}
 									counter={counterList}
 									index={i + knowledgeData.length}
 									setCounter={setCounterList}
@@ -178,12 +180,13 @@ const Articles = () => {
 						}}
 						className={s.other_list}
 					>
-						{otherData.map(({ Icon, span }, i) => {
+						{otherData.map(({ Icon, span, color }, i) => {
 							return (
 								<ListItemComp
 									Icon={Icon}
 									span={span}
 									key={i}
+									color={color}
 									counter={counterList}
 									index={i + knowledgeData.length + toolsData.length}
 									setCounter={setCounterList}
@@ -255,13 +258,14 @@ const Articles = () => {
 						}}
 						className={s.developing_list}
 					>
-						{developingData.map(({ Icon, span }, i) => {
+						{developingData.map(({ Icon, span, color }, i) => {
 							return (
 								<ListCompDev
 									Icon={Icon}
 									span={span}
 									key={i}
 									index={i}
+									color={color}
 									counter={counterListDev}
 									setCounter={setCounterListDev}
 									setPause={setPauseDevList}

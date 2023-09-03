@@ -8,6 +8,7 @@ interface ListItemType extends HTMLMotionProps<'li'> {
 	span: string
 	index: number
 	counter: number
+	color: string
 	setCounter: Dispatch<SetStateAction<number>>
 	setPause: Dispatch<SetStateAction<boolean>>
 }
@@ -16,6 +17,7 @@ export const ListCompDev = ({
 	span,
 	setCounter,
 	setPause,
+	color,
 	counter,
 	index,
 	...props
@@ -51,6 +53,7 @@ export const ListCompDev = ({
 				scale: 1.1,
 			}}
 			variants={itemVariants}
+			style={{ borderColor: color }}
 		>
 			<motion.div
 				initial='blur'
