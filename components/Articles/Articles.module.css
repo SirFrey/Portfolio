@@ -68,16 +68,6 @@
 	font-size: clamp(1.3rem, 4vw, 2rem);
 }
 
-/* .developing_list li:nth-child(3) svg {
-	animation: blink 3s infinite alternate both;
-}
-.developing_list li:nth-child(2) svg {
-	animation: blink 6s infinite alternate both;
-}
-.developing_list li:nth-child(1) svg {
-	animation: blink 4s infinite alternate both;
-} */
-
 :is(.lang_list, .tool_list, .other_list, .developing_list) svg {
 	width: clamp(1.5rem, 12vw, 5rem);
 	height: clamp(1.5rem, 12vw, 5rem);
@@ -207,14 +197,10 @@
 	opacity: 1;
 	filter: blur(0);
 }
-@media (prefers-reduced-motion) {
-	.hidden {
-		transition: none;
-	}
-}
-@media (width <= 457px) {
+
+@media (width <= 632px) {
 	section h1.titleH1 {
-		max-width: 345px;
+		max-width: 90vw;
 	}
 }
 @keyframes blink {
