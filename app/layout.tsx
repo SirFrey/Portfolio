@@ -3,6 +3,12 @@ import '@styles/fontAwesome/css/all.min.css'
 import '@styles/index.css'
 import '@styles/normalize.css'
 import { Metadata } from 'next'
+import { Victor_Mono } from 'next/font/google'
+
+const victor = Victor_Mono({
+	subsets: ['latin'],
+	weight: ['100', '200', '700'],
+})
 
 export const metadata: Metadata = {
 	metadataBase: new URL('https://moisesdev.vercel.app/'),
@@ -31,14 +37,13 @@ export const metadata: Metadata = {
 		'google-site-verification': 'GxY_RzqX7Z-W9_U_2_9jW6Q-VjvC-jWn-E_0Q_X_Ws',
 	},
 }
-
 export default function RootLayout({
 	children,
 }: {
 	children: React.ReactNode
 }) {
 	return (
-		<html>
+		<html className={victor.className}>
 			<body>{children}</body>
 		</html>
 	)

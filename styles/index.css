@@ -1,4 +1,4 @@
-@import 'victormono';
+/* @import 'victormono'; */
 
 * {
 	cursor: none !important;
@@ -18,7 +18,7 @@ body {
 	scroll-margin-top: 100px;
 }
 body {
-	font-family: 'Victor Mono', sans-serif;
+	/* font-family: 'Victor Mono', sans-serif; */
 	color: #f2f1ef;
 	font-size: 17px;
 	text-align: center;
@@ -133,7 +133,7 @@ a {
 /* Articles styles */
 
 section p.p {
-	width: clamp(min(400px, 80vw), 70vw, 70vw);
+	width: clamp(min(400px, 80vw), 70vw, 800px);
 	font-size: clamp(1.3rem, 3vw, 1.5rem);
 }
 strong {
@@ -144,10 +144,6 @@ section {
 	flex-direction: column;
 	align-items: center;
 }
-/* Article */
-
-/* Scroll Bar */
-
 /* Sections */
 section:nth-child(1) {
 	display: grid;

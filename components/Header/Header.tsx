@@ -8,7 +8,6 @@ import Typed from 'react-typed'
 import s from './Header.module.css'
 import { links, variantsHeader } from './dataHeader'
 import { blockScroll, unblockScroll, useWindowSize } from './scripts'
-
 const childVariants: Variants = {
 	hidden: {
 		filter: 'blur(4px)',
