@@ -67,12 +67,6 @@ function ProjectCards() {
 									dangerouslySetInnerHTML={{ __html: description }}
 								></p>
 							</div>
-							<div className={style.project_likes}>
-								<div className={style.like_heart}>
-									<i className={`fa-regular fa-heart ${style.icon}`}></i>
-								</div>
-								<p className={style.like_count}>{likes}</p>
-							</div>
 						</article>
 					</motion.a>
 					// </div>

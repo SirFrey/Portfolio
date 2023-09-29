@@ -3,11 +3,18 @@ import '@styles/fontAwesome/css/all.min.css'
 import '@styles/index.css'
 import '@styles/normalize.css'
 import { Metadata } from 'next'
-import { Victor_Mono } from 'next/font/google'
+import localFont from 'next/font/local'
 
-const victor = Victor_Mono({
-	subsets: ['latin'],
-	weight: ['100', '200', '700'],
+const victor = localFont({
+	src: [
+		{
+			path: '../styles/fonts/VictorMono.ttf',
+		},
+		{
+			path: '../styles/fonts/VictorMono-Italic.ttf',
+		},
+	],
+	display: 'swap',
 })
 
 export const metadata: Metadata = {

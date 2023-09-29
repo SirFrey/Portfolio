@@ -53,6 +53,9 @@ export const ListCompDev = ({
 				scale: 1.1,
 			}}
 			variants={itemVariants}
+			animate={{
+				filter: `grayscale(${!isSelected ? 1 : 0})`,
+			}}
 			style={{ borderColor: color }}
 		>
 			<motion.div

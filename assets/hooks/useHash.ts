@@ -12,7 +12,7 @@ export const useHash = (): [string, (newHash: string) => void] => {
 		return () => {
 			globalThis.window?.removeEventListener('hashchange', hashChangeHandler)
 		}
-	}, [])
+	}, [hashChangeHandler])
 
 	const updateHash = useCallback(
 		(newHash: string): void => {

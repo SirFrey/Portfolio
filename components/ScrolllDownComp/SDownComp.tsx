@@ -1,8 +1,20 @@
+import { motion } from 'framer-motion'
 import s from './SDownStyles.module.css'
-
 function SDownComp({ id }: { id?: string }) {
 	return (
-		<a href='#portfolio' className={`${s.anchor}`} id={id}>
+		<motion.a
+			initial={{
+				y: 100,
+				opacity: 0,
+			}}
+			animate={{
+				y: 0,
+				opacity: 1,
+			}}
+			href='#portfolio'
+			className={`${s.anchor}`}
+			id={id}
+		>
 			<div className={s.mouseScroll}>
 				<div className={s.mouse}>
 					<div className={s.mouseIn}></div>
@@ -13,7 +25,7 @@ function SDownComp({ id }: { id?: string }) {
 					<span className={s.downArrow3}></span>
 				</div>
 			</div>
-		</a>
+		</motion.a>
 	)
 }
 

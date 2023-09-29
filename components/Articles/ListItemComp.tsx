@@ -30,7 +30,6 @@ export const ListItemComp = ({
 	}, [counter])
 	return (
 		<motion.li
-			{...props}
 			whileHover={{
 				boxShadow: '6px -5px 14px 2px rgba(0, 0, 0, 0.3)',
 				scale: 1.1,
@@ -44,7 +43,13 @@ export const ListItemComp = ({
 				setCounter(index + 1)
 			}}
 			variants={itemVariants}
-			style={{ borderColor: color }}
+			animate={{
+				filter: `grayscale(${!isSelected ? 1 : 0})`,
+			}}
+			style={{
+				borderColor: color,
+			}}
+			{...props}
 		>
 			<div>{Icon}</div>
 			<TextIcon text={span} IsVisible={isSelected} />

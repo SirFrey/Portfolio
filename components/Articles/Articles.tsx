@@ -3,23 +3,13 @@
 import { motion } from 'framer-motion'
 import s from './Articles.module.css'
 // Components
-import { containerVariants, propsHiddenElm } from '@assets/utils/props.ts'
+import { propsHiddenElm } from '@assets/utils/props.ts'
 import ProjectCards from '@components/CardProjects/ProjectCards.tsx'
+import ListContainer from '@components/ListContainer/ListContainer.tsx'
+import ListContainerDev from '@components/ListContainerDev/ListContainerDev.tsx'
 import SDownComp from '@components/ScrolllDownComp/SDownComp.tsx'
-import { useEffect, useLayoutEffect, useRef, useState } from 'react'
-import { ListCompDev } from './ListCompDev.tsx'
-import { ListItemComp } from './ListItemComp.tsx'
-import {
-	developingData,
-	knowledgeData,
-	otherData,
-	toolsData,
-} from './dataArticles.tsx'
+import { useLayoutEffect, useRef } from 'react'
 const Articles = () => {
-	const [isPausedListDev, setPauseDevList] = useState(false)
-	const [counterListDev, setCounterListDev] = useState(0)
-	const [isPausedList, setPauseList] = useState(false)
-	const [counterList, setCounterList] = useState(0)
 	const mainSection = useRef<HTMLDivElement>(null)
 	useLayoutEffect(() => {
 		const imageSection = new Image()
@@ -33,27 +23,6 @@ const Articles = () => {
 		imageSection.src =
 			'https://img.freepik.com/foto-gratis/diseno-concepto-plantilla-diseno-web-html_53876-120438.jpg?w=900&t=st=1660676885~exp=1660677485~hmac=2899e1383827e6af6608d048fbba3d6958763202894ec02e3e5bb4d598f6e3b5'
 	}, [])
-	useEffect(() => {
-		// Interval list of list "Desarrollando..."
-		const intervalListDev = setInterval(() => {
-			setCounterListDev(counterListDev + 1)
-		}, 1500)
-		if (isPausedListDev) {
-			clearInterval(intervalListDev)
-		}
-		return () => clearInterval(intervalListDev)
-	}, [counterListDev, isPausedListDev])
-
-	useEffect(() => {
-		// Interval list of list "Conocimientos"
-		const intervalList = setInterval(() => {
-			setCounterList(counterList + 1)
-		}, 1000)
-		if (isPausedList) {
-			clearInterval(intervalList)
-		}
-		return () => clearInterval(intervalList)
-	}, [counterList, isPausedList])
 	return (
 		<article className={s.articlePage}>
 			<section ref={mainSection} id='inicio'>
@@ -121,80 +90,7 @@ const Articles = () => {
 						<h2>Conocimientos:</h2>
 						<h4>Lenguajes, Frameworks y Librerías:</h4>
 					</motion.div>
-					<motion.ul
-						variants={containerVariants}
-						initial='hidden'
-						whileInView='visible'
-						viewport={{
-							once: true,
-						}}
-						className={s.lang_list}
-					>
-						{knowledgeData.map(({ Icon, span, color }, i) => {
-							return (
-								<ListItemComp
-									Icon={Icon}
-									span={span}
-									key={i}
-									color={color}
-									counter={counterList}
-									index={i}
-									setCounter={setCounterList}
-									setPause={setPauseList}
-								/>
-							)
-						})}
-					</motion.ul>
-					<motion.h4 {...propsHiddenElm}>Herramientas:</motion.h4>
-					<motion.ul
-						variants={containerVariants}
-						initial='hidden'
-						whileInView='visible'
-						viewport={{
-							once: true,
-						}}
-						className={s.tool_list}
-					>
-						{toolsData.map(({ Icon, span, color }, i) => {
-							return (
-								<ListItemComp
-									Icon={Icon}
-									span={span}
-									key={i}
-									color={color}
-									counter={counterList}
-									index={i + knowledgeData.length}
-									setCounter={setCounterList}
-									setPause={setPauseList}
-								/>
-							)
-						})}
-					</motion.ul>
-					<motion.h4 {...propsHiddenElm}>Otros:</motion.h4>
-					<motion.ul
-						variants={containerVariants}
-						initial='hidden'
-						whileInView='visible'
-						viewport={{
-							once: true,
-						}}
-						className={s.other_list}
-					>
-						{otherData.map(({ Icon, span, color }, i) => {
-							return (
-								<ListItemComp
-									Icon={Icon}
-									span={span}
-									key={i}
-									color={color}
-									counter={counterList}
-									index={i + knowledgeData.length + toolsData.length}
-									setCounter={setCounterList}
-									setPause={setPauseList}
-								/>
-							)
-						})}
-					</motion.ul>
+					<ListContainer />
 				</div>
 				<div className={s.wave}>
 					<svg
@@ -249,30 +145,7 @@ const Articles = () => {
 			<section>
 				<div className={`marginContainer ${s.developingContainer}`}>
 					<motion.h2 {...propsHiddenElm}>Desarrollando...</motion.h2>
-					<motion.ul
-						variants={containerVariants}
-						initial='hidden'
-						whileInView='visible'
-						viewport={{
-							once: true,
-						}}
-						className={s.developing_list}
-					>
-						{developingData.map(({ Icon, span, color }, i) => {
-							return (
-								<ListCompDev
-									Icon={Icon}
-									span={span}
-									key={i}
-									index={i}
-									color={color}
-									counter={counterListDev}
-									setCounter={setCounterListDev}
-									setPause={setPauseDevList}
-								/>
-							)
-						})}
-					</motion.ul>
+					<ListContainerDev />
 				</div>
 			</section>
 			<div className={s.wave2}>

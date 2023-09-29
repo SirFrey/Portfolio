@@ -1,5 +1,5 @@
 * {
-	cursor: none !important;
+	-webkit-font-smoothing: antialiased;
 }
 
 html {

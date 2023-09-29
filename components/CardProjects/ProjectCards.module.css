@@ -71,37 +71,6 @@ a:nth-of-type(4) .card_wrapper {
 	color: #40f;
 }
 
-.project_likes {
-	position: absolute;
-	height: 35px;
-	right: 40px;
-	text-align: center;
-}
-
-.icon {
-	color: inherit;
-	cursor: pointer;
-	position: absolute;
-	margin-top: 4px;
-	margin-left: 8px;
-	width: clamp(0.8rem, 2vw, 1.2rem);
-	height: 9px;
-}
-
-.like_count {
-	position: absolute;
-	padding-top: 20px;
-	margin: 0;
-	font-weight: 300;
-}
-
-/* a.anchorCard:hover {
-	box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.09);
-	transform: scale3d(1.008, 1.008, 1);
-} */
-/* .card_wrapper p.project_desc {
-	font-size: clamp(0.8rem, 2vw, 1.2rem);
-} */
 a.anchorCard > img {
 	width: 100%;
 	height: 100%;

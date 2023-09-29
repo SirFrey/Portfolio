@@ -22,7 +22,12 @@ const Footer = () => {
 						<motion.li
 							key={i}
 							whileHover={{
-								scale: 1.3,
+								scale: 1.2,
+								transition: {
+									type: 'spring',
+									stiffness: 400,
+									damping: 10,
+								},
 							}}
 							variants={footerVariants}
 						>
