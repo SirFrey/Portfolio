@@ -5,7 +5,7 @@ import { useRef, useState } from 'react'
 import './Cursor.css'
 function Cursor() {
 	const hoverables: Array<string> = ['BUTTON', 'A', 'LI']
-	const ref = useRef(null)
+	const ref = useRef<HTMLDivElement>(null)
 	const { x, y } = useFollowPointer(ref)
 	const [toogle, setToggle] = useState(false)
 	const [hidden, setHidden] = useState(true)
@@ -24,7 +24,7 @@ function Cursor() {
 		}),
 		posSmall: () => ({
 			x: x + 11,
-			y: y + 11,
+			y: y,
 			transition: {
 				type: 'tween',
 				duration: 0.1,
@@ -37,7 +37,7 @@ function Cursor() {
 			opacity: 1,
 		},
 	}
-	useEventListener('mousemove', (e: MouseEvent) => {
+	useEventListener('pointermove', e => {
 		const target = e.target as HTMLElement
 		if (hoverables.includes(target.nodeName)) {
 			setToggle(true)
@@ -45,10 +45,10 @@ function Cursor() {
 			setToggle(false)
 		}
 	})
-	useEventListener('mouseover', () => {
+	useEventListener('pointermove', () => {
 		setHidden(false)
 	})
-	useEventListener('mouseout', () => {
+	useEventListener('pointerout', () => {
 		setHidden(true)
 	})
 
@@ -56,9 +56,10 @@ function Cursor() {
 		<>
 			<div className='cursor'>
 				<motion.div
-					animate={['posBig', toogle ? 'hover' : '', hidden ? 'hidden' : '']}
+					initial='hidden'
+					animate={['posBig', toogle ? 'hover' : '', !hidden ? 'visible' : '']}
 					variants={variants}
-					className='cursor__ball cursor__ball--big '
+					className='cursor__ball cursor__ball--big'
 					ref={ref}
 				>
 					<svg height='30' width='30'>
@@ -67,7 +68,8 @@ function Cursor() {
 				</motion.div>
 
 				<motion.div
-					animate={['posSmall', hidden ? 'hidden' : '']}
+					initial='hidden'
+					animate={['posSmall', !hidden ? 'visible' : '']}
 					variants={variants}
 					className='cursor__ball cursor__ball--small'
 				>

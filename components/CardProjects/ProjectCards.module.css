@@ -45,7 +45,7 @@ a:nth-of-type(4) .card_wrapper {
 .project_summary {
 	padding: 0 15px;
 	padding-bottom: 15px;
-	background: #fff;
+	background: #dedcdc;
 	flex: 1;
 	border-bottom-left-radius: inherit;
 	border-bottom-right-radius: inherit;
@@ -54,18 +54,20 @@ a:nth-of-type(4) .card_wrapper {
 .project_title {
 	margin-bottom: 0;
 	padding-top: 15px;
-	color: #5d6771;
+	color: #fff;
 }
 
 .created_date {
 	margin: 10px 0;
+	font-size: 1.15rem;
+	font-weight: 900;
 	color: #8a8ea0;
 }
 
 .project_desc {
 	margin: 0;
-	font-weight: 300;
 	overflow: hidden;
+	font-size: 1.3rem;
 }
 .project_desc strong {
 	color: #40f;

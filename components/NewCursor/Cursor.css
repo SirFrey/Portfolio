@@ -12,14 +12,18 @@
 .cursor__ball circle {
 	fill: #f7f8fa;
 }
-.opacityCursor {
-	opacity: 1;
-}
-
-.opacityCursor {
-	opacity: 1;
-}
 html,
-a {
-	cursor: none !important;
+a,
+button {
+	cursor: none;
+}
+@media (width <= 800px) {
+	html,
+	a,
+	button {
+		cursor: default;
+	}
+	.cursor {
+		display: none;
+	}
 }

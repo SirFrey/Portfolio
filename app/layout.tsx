@@ -3,18 +3,10 @@ import '@styles/fontAwesome/css/all.min.css'
 import '@styles/index.css'
 import '@styles/normalize.css'
 import { Metadata } from 'next'
-import localFont from 'next/font/local'
-
-const victor = localFont({
-	src: [
-		{
-			path: '../styles/fonts/VictorMono.ttf',
-		},
-		{
-			path: '../styles/fonts/VictorMono-Italic.ttf',
-		},
-	],
-	display: 'swap',
+import { Poiret_One } from 'next/font/google'
+const Poiret = Poiret_One({
+	weight: ['400'],
+	subsets: ['latin'],
 })
 
 export const metadata: Metadata = {
@@ -50,7 +42,7 @@ export default function RootLayout({
 	children: React.ReactNode
 }) {
 	return (
-		<html className={victor.className}>
+		<html className={Poiret.className}>
 			<body>{children}</body>
 		</html>
 	)

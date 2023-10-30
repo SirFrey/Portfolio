@@ -9,6 +9,7 @@ export const variantsHiddenElm: Variants = {
 	visible: {
 		opacity: 1,
 		x: 0,
+
 	},
 }
 export const propsHiddenElm: HTMLMotionProps<'div'> = {
@@ -23,7 +24,7 @@ export const containerVariants: Variants = {
 	visible: {
 		transition: {
 			delayChildren: 0.3,
-			staggerChildren: 0.2,
+			staggerChildren: 0.45,
 		},
 	},
 }
@@ -36,6 +37,9 @@ export const itemVariants: Variants = {
 	visible: {
 		opacity: 1,
 		x: 0,
+		transition: {
+			duration: 1
+		}
 	},
 }
 export const hrefNames = [...links.map(link => link.href)]

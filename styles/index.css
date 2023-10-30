@@ -7,7 +7,8 @@ html {
 	background: var(--principalColor);
 	user-select: none;
 	line-height: 1.15;
-	scrollbar-gutter: stable;
+	scroll-behavior: smooth;
+	font-size: 17px;
 	-webkit-overflow-scrolling: touch;
 }
 body {
@@ -17,7 +18,7 @@ body {
 }
 body {
 	color: #f2f1ef;
-	font-size: 17px;
+	font-size: 27px;
 	text-align: center;
 }
 
@@ -60,16 +61,17 @@ h2:not(section:first-child h2, footer h2) {
 
 h1 {
 	text-align: center;
-	font-size: clamp(1.4rem, 4vw, 1.8rem);
+	font-size: clamp(1.5rem, 4vw, 1.8rem);
 }
 h2 {
-	font-size: clamp(1.4rem, 2.7vw, 2rem);
+	font-size: clamp(1.5rem, 2.7vw, 2rem);
 }
 h4 {
 	font-size: clamp(1.1rem, 2.4vw, 1.9rem);
 }
 ul {
 	padding: 0;
+	margin: 0.6rem;
 }
 li {
 	list-style: none;

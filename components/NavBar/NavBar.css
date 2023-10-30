@@ -76,6 +76,7 @@
 	justify-self: end;
 	text-rendering: optimizespeed;
 	overflow: hidden;
+	margin-inline-end: var(--scrollbar-width);
 }
 
 .header {
@@ -149,8 +150,7 @@
 	place-content: center;
 	border: 0;
 	color: var(--accents-5);
-	cursor: pointer;
-	font-size: 14px;
+	font-size: 17px;
 	font-weight: 700;
 	height: 36px;
 	padding: 0 24px;

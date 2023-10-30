@@ -55,17 +55,17 @@
 .titleH1 {
 	padding: 1.2rem 2rem;
 	margin: 0;
-	font-size: clamp(1.6rem, 5vw, 2.5rem);
-	font-weight: bolder;
+	font-size: clamp(1.8rem, 7vw, 2.8rem);
 	text-wrap: balance;
 }
 :is(.lang_list, .tool_list, .other_list, .developing_list) li {
 	margin: 0 clamp(5px, 3vw, 17px);
 	position: relative;
+	z-index: 5;
 }
 .sectionCareer {
 	margin: 0;
-	font-size: clamp(1.3rem, 4vw, 2rem);
+	font-size: clamp(1.5rem, 4vw, 2.2rem);
 }
 
 :is(.lang_list, .tool_list, .other_list, .developing_list) svg {

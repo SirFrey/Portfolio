@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react'
-export function useEventListener(
-	eventName: keyof WindowEventMap,
-	handler,
-	element = globalThis.window
+export function useEventListener<K extends keyof WindowEventMap>(
+	eventName: K,
+	listener: (this: Window, ev: WindowEventMap[K]) => any,
+	element = globalThis.window?.document?.body
 ) {
 	// Create a ref that stores handler
 	const savedHandler = useRef<any>()
@@ -11,8 +11,8 @@ export function useEventListener(
 	// ... without us needing to pass it in effect deps array ...
 	// ... and potentially cause effect to re-run every render.
 	useEffect(() => {
-		savedHandler.current = handler
-	}, [handler])
+		savedHandler.current = listener
+	}, [listener])
 	useEffect(
 		() => {
 			// Make sure element supports addEventListener
