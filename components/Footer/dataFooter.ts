@@ -1,30 +1,38 @@
+import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import {
+	faDiscord,
+	faGithub,
+	faLinkedin,
+} from '@fortawesome/free-brands-svg-icons'
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import { Variants } from 'framer-motion'
 
 type link = {
 	title: string
 	href: string
-	iconFontAwesome: string
+	iconFontAwesome: IconProp
 }
 
 export const links: link[] = [
 	{
 		href: 'https://linkedin.com/in/moisesln',
-		iconFontAwesome: 'fa-brands fa-linkedin',
+		// iconFontAwesome: 'fa-brands fa-linkedin,
+		iconFontAwesome: faLinkedin,
 		title: 'LinkedIn',
 	},
 	{
 		href: '',
-		iconFontAwesome: 'fa-brands fa-discord',
+		iconFontAwesome: faDiscord,
 		title: 'Discord',
 	},
 	{
 		href: '',
-		iconFontAwesome: 'fa-brands fa-github',
+		iconFontAwesome: faGithub,
 		title: 'Github',
 	},
 	{
 		href: '',
-		iconFontAwesome: 'fa-solid fa-envelope',
+		iconFontAwesome: faEnvelope,
 		title: 'Mail',
 	},
 ]

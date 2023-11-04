@@ -51,7 +51,7 @@ export const ListItemComp = ({
 			}}
 			{...props}
 		>
-			<div>{Icon}</div>
+			{Icon}
 			<TextIcon text={span} IsVisible={isSelected} />
 		</motion.li>
 	)

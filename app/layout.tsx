@@ -1,14 +1,21 @@
+import { config } from '@fortawesome/fontawesome-svg-core'
+import '@fortawesome/fontawesome-svg-core/styles.css'
 import '@styles/blurry-load.min.css'
-import '@styles/fontAwesome/css/all.min.css'
 import '@styles/index.css'
 import '@styles/normalize.css'
-import { Metadata } from 'next'
+import { Metadata, Viewport } from 'next'
 import { Poiret_One } from 'next/font/google'
+config.autoAddCss = false
 const Poiret = Poiret_One({
 	weight: ['400'],
 	subsets: ['latin'],
 })
-
+export const viewport: Viewport = {
+	themeColor: '#495c83',
+	width: 'device-width',
+	initialScale: 1,
+	userScalable: false,
+}
 export const metadata: Metadata = {
 	metadataBase: new URL('https://moisesdev.vercel.app/'),
 	title: 'Moises | Portfolio',
@@ -27,11 +34,9 @@ export const metadata: Metadata = {
 		description: 'Sientete libre de echarle un vistazo. 😎',
 		images: 'https://i.ibb.co/ScBCCz7/portfolio.jpg',
 	},
-	themeColor: '#495c83',
 	twitter: {
 		card: 'summary_large_image',
 	},
-	viewport: 'width=device-width, initial-scale=1.0, user-scalable=no',
 	other: {
 		'google-site-verification': 'GxY_RzqX7Z-W9_U_2_9jW6Q-VjvC-jWn-E_0Q_X_Ws',
 	},

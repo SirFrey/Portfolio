@@ -65,7 +65,7 @@ export const maxListLength = [...knowledgeData, ...toolsData, ...otherData]
 export const developingData: IconType[] = [
 	{
 		Icon: <Next />,
-		span: 'Next.js 13',
+		span: 'Next.js 14',
 		color: '#000000',
 	},
 	{

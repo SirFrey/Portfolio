@@ -1,7 +1,8 @@
 'use client'
-
 import MenuToggle from '@components/MenuToggle/MenuToggle'
 import SlideBar from '@components/NavBar/NavBar'
+import { faCode } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Variants, motion, useCycle } from 'framer-motion'
 import { useEffect, useLayoutEffect, useRef } from 'react'
 import Typed from 'react-typed'
@@ -58,7 +59,7 @@ const Header = () => {
 					className={s.nav_fixed}
 				>
 					<div className={s.principal_icon}>
-						<i className='fa-solid fa-code'></i>
+						<FontAwesomeIcon icon={faCode} className={s.codeIcon} />
 						<Typed
 							className={s.tag_title}
 							strings={['Moises Castellanos']}

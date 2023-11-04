@@ -1,6 +1,7 @@
 'use client'
 
 import { containerVariants, propsHiddenElm } from '@assets/utils/props'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { motion } from 'framer-motion'
 import s from './Footer.module.css'
 import { footerVariants, links } from './dataFooter'
@@ -32,7 +33,8 @@ const Footer = () => {
 							variants={footerVariants}
 						>
 							<a href={href} title={title}>
-								<i className={iconFontAwesome}></i>
+								{/* <i className={iconFontAwesome}></i> */}
+								<FontAwesomeIcon icon={iconFontAwesome} />
 							</a>
 						</motion.li>
 					)
