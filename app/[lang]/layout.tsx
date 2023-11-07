@@ -43,11 +43,13 @@ export const metadata: Metadata = {
 }
 export default function RootLayout({
 	children,
+	params: { lang },
 }: {
 	children: React.ReactNode
+	params: any
 }) {
 	return (
-		<html className={Poiret.className}>
+		<html lang={lang} className={Poiret.className}>
 			<body>{children}</body>
 		</html>
 	)

@@ -1,8 +1,8 @@
-import { motion } from 'framer-motion'
+import { MotionA } from '@components/FramerComps/framerCompsClients'
 import s from './SDownStyles.module.css'
 function SDownComp({ id }: { id?: string }) {
 	return (
-		<motion.a
+		<MotionA
 			initial={{
 				y: 100,
 				opacity: 0,
@@ -25,7 +25,7 @@ function SDownComp({ id }: { id?: string }) {
 					<span className={s.downArrow3}></span>
 				</div>
 			</div>
-		</motion.a>
+		</MotionA>
 	)
 }
 

@@ -1,7 +1,3 @@
-* {
-	-webkit-font-smoothing: antialiased;
-}
-
 html {
 	all: initial;
 	background: var(--principalColor);

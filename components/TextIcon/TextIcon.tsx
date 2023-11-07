@@ -1,4 +1,5 @@
 import { Variants, motion } from 'framer-motion'
+import { useEffect } from 'react'
 import s from './TextIcon.module.css'
 
 interface Props {
@@ -7,24 +8,21 @@ interface Props {
 	IsVisible: boolean
 }
 function TextIcon({ text, className, IsVisible }: Props) {
+	useEffect(() => {}, [IsVisible])
 	const variants: Variants = {
 		visible: {
 			opacity: 1,
 			filter: 'blur(0)',
-			transition: {
-				duration: 0.6,
-			},
 		},
 		hidden: {
-			opacity: 0,
+			opacity: 0.1,
 			filter: 'blur(2px)',
 		},
 	}
 	return (
 		<motion.span
 			variants={variants}
-			initial='hidden'
-			animate={IsVisible ? 'visible' : ''}
+			animate={[IsVisible ? 'visible' : 'hidden']}
 			className={`${s.text} ${className}`}
 		>
 			{text}

@@ -1,19 +1,14 @@
-'use client'
-
 import Articles from '@components/Articles/Articles'
 import Footer from '@components/Footer/Footer'
 import Header from '@components/Header/Header'
-import Cursor from '@components/NewCursor/Cursor'
-const PortfolioPage = () => {
+const PortfolioPage = ({ params: { lang } }) => {
 	return (
-		<>
-			<main>
-				<Cursor />
-				<Header />
-				<Articles />
-				<Footer />
-			</main>
-		</>
+		<main>
+			{/* <Cursor /> */}
+			<Header />
+			<Articles />
+			<Footer />
+		</main>
 	)
 }
 

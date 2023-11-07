@@ -16,7 +16,6 @@ type link = {
 export const links: link[] = [
 	{
 		href: 'https://linkedin.com/in/moisesln',
-		// iconFontAwesome: 'fa-brands fa-linkedin,
 		iconFontAwesome: faLinkedin,
 		title: 'LinkedIn',
 	},

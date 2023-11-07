@@ -26,7 +26,7 @@ export const ListCompDev = ({
 
 	const variants: Variants = {
 		blur: {
-			filter: 'blur(3px)',
+			filter: 'blur(2px)',
 		},
 		unBlur: {
 			filter: 'blur(0)',
@@ -62,6 +62,9 @@ export const ListCompDev = ({
 				initial='blur'
 				animate={isSelected ? 'unBlur' : ''}
 				variants={variants}
+				style={{
+					display: 'flex',
+				}}
 			>
 				{Icon}
 			</motion.div>

@@ -1,15 +1,17 @@
-'use client'
-
 import { containerVariants, propsHiddenElm } from '@assets/utils/props'
+import {
+	MotionH2,
+	MotionLi,
+	MotionUl,
+} from '@components/FramerComps/framerCompsClients'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { motion } from 'framer-motion'
 import s from './Footer.module.css'
 import { footerVariants, links } from './dataFooter'
 const Footer = () => {
 	return (
 		<footer id='contacto' className={s.footer_final}>
-			<motion.h2 {...propsHiddenElm}>Contacto</motion.h2>
-			<motion.ul
+			<MotionH2 {...propsHiddenElm}>Contacto</MotionH2>
+			<MotionUl
 				initial='hidden'
 				whileInView='visible'
 				viewport={{
@@ -20,7 +22,7 @@ const Footer = () => {
 			>
 				{links.map(({ href, iconFontAwesome, title }, i) => {
 					return (
-						<motion.li
+						<MotionLi
 							key={i}
 							whileHover={{
 								scale: 1.2,
@@ -36,10 +38,10 @@ const Footer = () => {
 								{/* <i className={iconFontAwesome}></i> */}
 								<FontAwesomeIcon icon={iconFontAwesome} />
 							</a>
-						</motion.li>
+						</MotionLi>
 					)
 				})}
-			</motion.ul>
+			</MotionUl>
 		</footer>
 	)
 }

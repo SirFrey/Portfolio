@@ -1,3 +1,5 @@
+'use client'
+
 import { useEventListener } from '@assets/hooks/useEventListener'
 import { useFollowPointer } from '@assets/hooks/useFollowPointer'
 import { Variants, motion } from 'framer-motion'

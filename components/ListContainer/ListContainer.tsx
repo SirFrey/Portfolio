@@ -1,3 +1,4 @@
+'use client'
 import s from '@components/Articles/Articles.module.css'
 
 import { containerVariants, propsHiddenElm } from '@assets/utils/props'
