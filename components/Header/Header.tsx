@@ -22,7 +22,7 @@ const childVariants: Variants = {
 		backgroundColor: '#fff3',
 	},
 }
-const Header = () => {
+const Header = ({ dict, lang }) => {
 	const windowSize = useWindowSize()
 	const navFixed = useRef<HTMLElement>(null)
 	const bgDark = useRef<HTMLDivElement>(null)
@@ -70,12 +70,7 @@ const Header = () => {
 							backDelay={2000}
 						/>
 					</div>
-					<SlideBar />
-					{/* <button
-						onClick={() => setIsSideBarShow(true)}
-						className={s.container_bar}
-					>
-					</button> */}
+					<SlideBar dict={dict} lang={lang} />
 				</motion.nav>
 				<motion.aside
 					initial='hidden'
@@ -93,10 +88,9 @@ const Header = () => {
 						}}
 						className={s.nav_fixed_ul}
 					>
-						{links.map(({ href, name }, i) => {
+						{links[lang].map(({ href, name }, i) => {
 							return (
 								<motion.li
-									// whileHover='hover'
 									variants={childVariants}
 									className={s.nav_fixed_li}
 									key={i}

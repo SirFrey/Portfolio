@@ -1,13 +1,17 @@
 import Articles from '@components/Articles/Articles'
 import Footer from '@components/Footer/Footer'
 import Header from '@components/Header/Header'
-const PortfolioPage = ({ params: { lang } }) => {
+import LangSwitcher from '@components/LangSwitcher/LangSwitcher'
+import { getDictionary } from './dictionaries/dictionarie'
+const PortfolioPage = async ({ params: { lang } }) => {
+	const dict = await getDictionary(lang)
 	return (
 		<main>
 			{/* <Cursor /> */}
-			<Header />
-			<Articles />
-			<Footer />
+			<Header dict={dict} lang={lang} />
+			<Articles dict={dict} lang={lang} />
+			<Footer dict={dict} />
+			<LangSwitcher lang={lang} />
 		</main>
 	)
 }

@@ -10,7 +10,7 @@ import {
 } from '@components/Articles/dataArticles'
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
-export default function ListContainer() {
+export default function ListContainer({ dict, lang }) {
 	const [isPausedList, setPauseList] = useState(false)
 	const [counterList, setCounterList] = useState(0)
 	useEffect(() => {
@@ -49,7 +49,7 @@ export default function ListContainer() {
 					)
 				})}
 			</motion.ul>
-			<motion.h4 {...propsHiddenElm}>Herramientas:</motion.h4>
+			<motion.h4 {...propsHiddenElm}>{dict.knowledgesSection.tools}</motion.h4>
 			<motion.ul
 				variants={containerVariants}
 				initial='hidden'
@@ -74,7 +74,7 @@ export default function ListContainer() {
 					)
 				})}
 			</motion.ul>
-			<motion.h4 {...propsHiddenElm}>Otros:</motion.h4>
+			<motion.h4 {...propsHiddenElm}>{dict.knowledgesSection.others}</motion.h4>
 			<motion.ul
 				variants={containerVariants}
 				initial='hidden'
@@ -84,7 +84,7 @@ export default function ListContainer() {
 				}}
 				className={s.other_list}
 			>
-				{otherData.map(({ Icon, span, color }, i) => {
+				{otherData[lang].map(({ Icon, span, color }, i) => {
 					return (
 						<ListItemComp
 							Icon={Icon}

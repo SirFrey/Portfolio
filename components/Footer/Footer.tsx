@@ -7,10 +7,10 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import s from './Footer.module.css'
 import { footerVariants, links } from './dataFooter'
-const Footer = () => {
+const Footer = ({ dict }) => {
 	return (
 		<footer id='contacto' className={s.footer_final}>
-			<MotionH2 {...propsHiddenElm}>Contacto</MotionH2>
+			<MotionH2 {...propsHiddenElm}>{dict.footer.contact}</MotionH2>
 			<MotionUl
 				initial='hidden'
 				whileInView='visible'

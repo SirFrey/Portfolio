@@ -52,31 +52,62 @@ export const toolsData: IconType[] = [
 		color: '#e6e6e6',
 	},
 ]
-export const otherData: IconType[] = [
-	{
-		Icon: <UsaLogo />,
-		span: 'Ingles (A2)',
-		color: '#f73e54',
-	},
-]
-export const maxListLength = [...knowledgeData, ...toolsData, ...otherData]
-	.length
+export const otherData = {
+	es: [
+		{
+			Icon: <UsaLogo />,
+			span: 'Ingles (A2)',
+			color: '#f73e54',
+		},
+	],
+	en: [
+		{
+			Icon: <UsaLogo />,
+			span: 'English (A2)',
+			color: '#f73e54',
+		},
+	],
+}
+export const maxListLength = [
+	...knowledgeData,
+	...toolsData,
+	...otherData['en'],
+].length
 
-export const developingData: IconType[] = [
-	{
-		Icon: <Next />,
-		span: 'Next.js 14',
-		color: '#000000',
-	},
-	{
-		Icon: <Node />,
-		span: 'Node',
-		color: '#74ab63',
-	},
-	{
-		Icon: <UsaLogo />,
-		span: 'Ingles (B1-B2)',
-		color: '#f73e54',
-	},
-]
-export const maxListLengthDev = developingData.length
+export const developingData = {
+	es: [
+		{
+			Icon: <Next />,
+			span: 'Next.js 14',
+			color: '#000000',
+		},
+		{
+			Icon: <Node />,
+			span: 'Node',
+			color: '#74ab63',
+		},
+		{
+			Icon: <UsaLogo />,
+			span: 'Ingles (B1-B2)',
+			color: '#f73e54',
+		},
+	],
+	en: [
+		{
+			Icon: <Next />,
+			span: 'Next.js 14',
+			color: '#000000',
+		},
+		{
+			Icon: <Node />,
+			span: 'Node',
+			color: '#74ab63',
+		},
+		{
+			Icon: <UsaLogo />,
+			span: 'English (B1-B2)',
+			color: '#f73e54',
+		},
+	],
+}
+export const maxListLengthDev = developingData['en'].length

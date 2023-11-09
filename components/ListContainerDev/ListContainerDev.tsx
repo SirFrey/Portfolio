@@ -6,7 +6,7 @@ import { ListCompDev } from '@components/Articles/ListCompDev'
 import { developingData } from '@components/Articles/dataArticles'
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
-function ListContainerDev() {
+function ListContainerDev({ lang }) {
 	const [isPausedListDev, setPauseDevList] = useState(false)
 	const [counterListDev, setCounterListDev] = useState(0)
 	useEffect(() => {
@@ -30,7 +30,7 @@ function ListContainerDev() {
 			}}
 			className={s.developing_list}
 		>
-			{developingData.map(({ Icon, span, color }, i) => {
+			{developingData[lang].map(({ Icon, span, color }, i) => {
 				return (
 					<ListCompDev
 						Icon={Icon}

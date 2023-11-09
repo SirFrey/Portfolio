@@ -57,20 +57,13 @@ const NavbarButton = ({
 	)
 }
 
-export default function SlideBar() {
-	const NAV_LINKS = [
-		'Inicio',
-		'Portfolio',
-		'Conocimientos',
-		'aboutme',
-		'Contacto',
-	]
+export default function SlideBar({ dict, lang }) {
 	const [offLeft, setOffLeft] = useState(4)
 	const [offWidth, setOffWidth] = useState(94)
 	const [activeLink, setActiveLink] = useState('Inicio')
 	const [theme] = useState('dark')
 	const navbarRef = useRef(null)
-	const activeId = useScrollSpy(hrefNames, {
+	const activeId = useScrollSpy(hrefNames(lang), {
 		threshold: 0.5,
 	})
 	useEffect(() => {
@@ -113,7 +106,7 @@ export default function SlideBar() {
 				>
 					<div className='navbar-curr--stroke' aria-hidden='true'></div>
 					<div className='navbar-root'>
-						{links.map(({ name, href }) => (
+						{links[lang].map(({ name, href }) => (
 							<NavbarButton
 								href={href}
 								key={name}

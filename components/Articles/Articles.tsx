@@ -1,6 +1,4 @@
-// Icons
-import s from './Articles.module.css'
-// Components
+// !!!!Todo: Add Project card slide in mobile view !!!
 import { propsHiddenElm } from '@assets/utils/props.ts'
 import ProjectCards from '@components/CardProjects/ProjectCards.tsx'
 import {
@@ -10,16 +8,18 @@ import {
 } from '@components/FramerComps/framerCompsClients'
 import ListContainer from '@components/ListContainer/ListContainer.tsx'
 import ListContainerDev from '@components/ListContainerDev/ListContainerDev.tsx'
+import s from './Articles.module.css'
 import { MainSection } from './MainSection'
-const Articles = () => {
+const Articles = ({ dict, lang }) => {
 	return (
 		<article className={s.articlePage}>
-			<MainSection />
+			<MainSection dict={dict} />
 			<section>
 				<div id='portfolio' className='marginContainer'>
-					<MotionH2 {...propsHiddenElm}>Portfolio:</MotionH2>
-					{/* <SliderCard /> */}
-					<ProjectCards />
+					<MotionH2 {...propsHiddenElm}>
+						{dict.portfolioSection.titleh2}
+					</MotionH2>
+					<ProjectCards lang={lang} />
 				</div>
 			</section>
 			<section>
@@ -41,10 +41,10 @@ const Articles = () => {
 					className={`marginContainer ${s.knowledgeContainer}`}
 				>
 					<MotionDiv {...propsHiddenElm}>
-						<h2>Conocimientos:</h2>
-						<h4>Lenguajes, Frameworks y Librerías:</h4>
+						<h2>{dict.knowledgesSection.titleh2}</h2>
+						<h4>{dict.knowledgesSection.subtitleh3}</h4>
 					</MotionDiv>
-					<ListContainer />
+					<ListContainer dict={dict} lang={lang} />
 				</div>
 				<div className={s.wave}>
 					<svg
@@ -63,23 +63,20 @@ const Articles = () => {
 
 			<section>
 				<div id='aboutme' className='marginContainer'>
-					<h2>Sobre Mi</h2>
-					<MotionP {...propsHiddenElm} className={'p'}>
-						Desarrollador Frontend con conocimientos solidos en{' '}
-						<strong>HTML5</strong>, <strong>CSS3</strong> y{' '}
-						<strong>JavaScript</strong>, manejo tecnologías como{' '}
-						<strong>React</strong>, Empaquetado de aplicaciones web con{' '}
-						<strong>Webpack</strong> y <strong>Vite</strong>, control de
-						versiones con <strong>Git</strong> y manejo de proyectos en equipo
-						con <strong>Notion</strong> y <strong>Github</strong>.
-					</MotionP>
-					<MotionP {...propsHiddenElm} className='p'>
-						Provengo de <strong>Venezuela(Caracas)</strong>, con aspiraciones de
-						viajar a temprana edad y tengo el objetivo de llegar a pequeñas y
-						grandes empresas con este portfolio, aceptando todo tipo de feedback
-						por parte de los visitantes para este portfolio web y también para
-						mis perfiles.
-					</MotionP>
+					<h2>{dict.aboutmeSection.titleh2}</h2>
+					<MotionP
+						{...propsHiddenElm}
+						className={'p'}
+						dangerouslySetInnerHTML={{
+							__html: dict.aboutmeSection.p1,
+						}}
+					/>
+
+					<MotionP
+						{...propsHiddenElm}
+						className='p'
+						dangerouslySetInnerHTML={{ __html: dict.aboutmeSection.p2 }}
+					/>
 				</div>
 				<div className={s.wave5}>
 					<svg
@@ -98,8 +95,10 @@ const Articles = () => {
 
 			<section>
 				<div className={`marginContainer ${s.developingContainer}`}>
-					<MotionH2 {...propsHiddenElm}>Desarrollando...</MotionH2>
-					<ListContainerDev />
+					<MotionH2 {...propsHiddenElm}>
+						{dict.developingSection.titleh2}
+					</MotionH2>
+					<ListContainerDev lang={lang} />
 				</div>
 			</section>
 			<div className={s.wave2}>

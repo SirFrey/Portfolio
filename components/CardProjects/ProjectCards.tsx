@@ -4,7 +4,7 @@ import CardItem from './CardItem'
 import style from './ProjectCards.module.css'
 import dataCards from './dataCards'
 
-async function ProjectCards() {
+async function ProjectCards({ lang }) {
 	return (
 		<MotionDiv className={style.wrapper}>
 			{dataCards.map((cards, i) => {
@@ -18,7 +18,7 @@ async function ProjectCards() {
 								<p className={style.created_date}>Creado: {date}</p>
 								<p
 									className={style.project_desc}
-									dangerouslySetInnerHTML={{ __html: description }}
+									dangerouslySetInnerHTML={{ __html: description[lang] }}
 								></p>
 							</div>
 						</article>

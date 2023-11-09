@@ -1,0 +1,28 @@
+{
+	"navbar": ["Home", "Portfolio", "Knowledges", "About Me", "Contact"],
+	"mainsection": {
+		"titleh1": "Welcome to my Web Portfolio",
+		"subtitleh2": "Frontend Developer"
+	},
+	"portfolioSection": {
+		"titleh2": "Portfolio"
+	},
+	"knowledgesSection": {
+		"titleh2": "Skills:",
+		"subtitleh3": "Languages, Framework and Libraries:",
+		"tools": "Tools:",
+		"others": "Others:"
+	},
+	"aboutmeSection": {
+		"titleh2": "About Me",
+		"p1": "Frontend Developer with solid knowledges in <strong>HTML5</strong>, <strong>CSS3</strong> and <strong>JavaScript</strong>, I use technologies such as <strong>React</strong>, packaging web applications with Webpack and Vite, version control with <strong>Git</strong> and project management in team with <strong>Notion</strong> and <strong>Github</strong>.",
+
+		"p2": "I'm from <strong>Venezuela(Caracas)</strong>, with aspiration to travel young and I have the objective to reach small and large companies with this portfolio, accepting all kind of feedback from visitors to this portfolio and also for my profiles."
+	},
+	"developingSection": {
+		"titleh2": "Developing..."
+	},
+	"footer": {
+		"contact": "Contact"
+	}
+}

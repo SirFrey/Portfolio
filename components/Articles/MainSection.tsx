@@ -4,9 +4,10 @@ import s from './Articles.module.css'
 import { propsHiddenElm } from '@assets/utils/props'
 import { MotionH1, MotionH2 } from '@components/FramerComps/framerCompsClients'
 import SDownComp from '@components/ScrolllDownComp/SDownComp'
+import Link from 'next/link'
 import { useLayoutEffect, useRef } from 'react'
 
-export function MainSection() {
+export function MainSection({ dict }) {
 	const mainSection = useRef<HTMLDivElement>(null)
 	useLayoutEffect(() => {
 		const imageSection = new Image()
@@ -25,11 +26,12 @@ export function MainSection() {
 			<div className={s.filterMainSection}>
 				<div className='marginContainer'>
 					<MotionH1 {...propsHiddenElm} className={`${s.titleH1}`}>
-						Bienvenido a mi Portfolio Web
+						{dict.mainsection.titleh1}
 					</MotionH1>
 					<MotionH2 {...propsHiddenElm} className={`${s.sectionCareer}`}>
-						Frontend Developer
+						{dict.mainsection.subtitleh2}
 					</MotionH2>
+					<Link href='/' locale='es'></Link>
 				</div>
 			</div>
 			<div className={s.wave4}>

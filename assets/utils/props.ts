@@ -9,7 +9,6 @@ export const variantsHiddenElm: Variants = {
 	visible: {
 		opacity: 1,
 		x: 0,
-
 	},
 }
 export const propsHiddenElm: HTMLMotionProps<'div'> = {
@@ -38,8 +37,11 @@ export const itemVariants: Variants = {
 		opacity: 1,
 		x: 0,
 		transition: {
-			duration: 1
-		}
+			duration: 1,
+		},
 	},
 }
-export const hrefNames = [...links.map(link => link.href)]
+export const hrefNames = lang => {
+	console.log(links[lang])
+	return [...links[lang].map(link => link.href)]
+}
