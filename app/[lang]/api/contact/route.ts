@@ -1,3 +1,4 @@
+import { NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
 export async function POST(req: Request) {
 	const formData = await req.formData()
@@ -7,20 +8,17 @@ export async function POST(req: Request) {
 		message: formData.get('message') as string,
 	}
 	const mail = nodemailer.createTransport({
-		host: 'smtp.gmail.com',
-		port: 465,
-		secure: true,
+		service: 'gmail',
 		auth: {
-			user: process.env.mail,
-			pass: process.env.pass,
+			user: process.env.MAIL,
+			pass: process.env.PASS,
 		},
 	})
 	let info: any = await new Promise((resolve, reject) => {
 		mail.sendMail(
 			{
-				from: process.env.mail,
-				to: data.email,
-				replyTo: process.env.mail,
+				from: process.env.MAIL,
+				to: process.env.MAIL,
 				subject: `Message from ${data.name}`,
 				html: `<p><b>Name:</b> ${data.name}</p><p><b>Email:</b> ${data.email}</p><p><b>Message:</b> ${data.message}</p>`,
 			},
@@ -34,17 +32,17 @@ export async function POST(req: Request) {
 		)
 	})
 	if (info.accepted) {
-		return Response.json(
-			{ status: 'success' },
+		return NextResponse.json(
+			{ status: 'success', info: info.response },
 			{
 				status: 200,
 			}
 		)
 	} else if (info.rejected) {
-		return Response.json(
+		return NextResponse.json(
 			{ status: 'error', info: info.response },
 			{
-				status: 500,
+				status: 400,
 			}
 		)
 	}
