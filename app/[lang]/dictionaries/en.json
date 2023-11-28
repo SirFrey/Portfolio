@@ -1,4 +1,5 @@
 {
+	"lang": "en",
 	"navbar": ["Home", "Portfolio", "Knowledges", "About Me", "Contact"],
 	"mainsection": {
 		"titleh1": "Welcome to my Web Portfolio",
@@ -23,6 +24,11 @@
 		"titleh2": "Developing..."
 	},
 	"footer": {
-		"contact": "Contact"
+		"contact": "Contact",
+		"email": "Email",
+		"name": "Name",
+		"message": "Message",
+		"send": "Send",
+		"thankyou": "Thank you for your message!"
 	}
 }

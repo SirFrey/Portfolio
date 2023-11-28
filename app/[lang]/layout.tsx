@@ -41,6 +41,9 @@ export const metadata: Metadata = {
 		'google-site-verification': 'GxY_RzqX7Z-W9_U_2_9jW6Q-VjvC-jWn-E_0Q_X_Ws',
 	},
 }
+export async function generateStaticParams() {
+	return [{ lang: 'en' }, { lang: 'es' }]
+}
 export default function RootLayout({
 	children,
 	params: { lang },

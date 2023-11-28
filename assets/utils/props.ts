@@ -42,6 +42,5 @@ export const itemVariants: Variants = {
 	},
 }
 export const hrefNames = lang => {
-	console.log(links[lang])
 	return [...links[lang].map(link => link.href)]
 }

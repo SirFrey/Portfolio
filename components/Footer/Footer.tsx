@@ -5,12 +5,15 @@ import {
 	MotionUl,
 } from '@components/FramerComps/framerCompsClients'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import ContactForm from './ContactForm'
 import s from './Footer.module.css'
 import { footerVariants, links } from './dataFooter'
+
 const Footer = ({ dict }) => {
 	return (
 		<footer id='contacto' className={s.footer_final}>
 			<MotionH2 {...propsHiddenElm}>{dict.footer.contact}</MotionH2>
+			<ContactForm dict={dict} />
 			<MotionUl
 				initial='hidden'
 				whileInView='visible'
@@ -35,7 +38,6 @@ const Footer = ({ dict }) => {
 							variants={footerVariants}
 						>
 							<a href={href} title={title}>
-								{/* <i className={iconFontAwesome}></i> */}
 								<FontAwesomeIcon icon={iconFontAwesome} />
 							</a>
 						</MotionLi>
