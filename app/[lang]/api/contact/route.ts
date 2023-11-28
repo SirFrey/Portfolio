@@ -15,14 +15,24 @@ export async function POST(req: Request) {
 			pass: process.env.pass,
 		},
 	})
-	let info = await mail.sendMail({
-		from: data.email,
-		to: process.env.mail,
-		replyTo: data.email,
-		subject: `Message from ${data.name}`,
-		html: `<p><b>Name:</b> ${data.name}</p><p><b>Email:</b> ${data.email}</p><p><b>Message:</b> ${data.message}</p>`,
+	let info: any = await new Promise((resolve, reject) => {
+		mail.sendMail(
+			{
+				from: process.env.mail,
+				to: data.email,
+				replyTo: process.env.mail,
+				subject: `Message from ${data.name}`,
+				html: `<p><b>Name:</b> ${data.name}</p><p><b>Email:</b> ${data.email}</p><p><b>Message:</b> ${data.message}</p>`,
+			},
+			(err, info) => {
+				if (err) {
+					reject(err)
+				} else {
+					resolve(info)
+				}
+			}
+		)
 	})
-	console.log('Message sent: %s', info.messageId)
 	if (info.accepted) {
 		return Response.json(
 			{ status: 'success' },
@@ -32,7 +42,7 @@ export async function POST(req: Request) {
 		)
 	} else if (info.rejected) {
 		return Response.json(
-			{ status: 'error' },
+			{ status: 'error', info: info.response },
 			{
 				status: 500,
 			}
