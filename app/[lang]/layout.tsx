@@ -16,7 +16,7 @@ export const viewport: Viewport = {
 	initialScale: 1,
 	userScalable: false,
 }
-export const spanishMetadata: Metadata = {
+const spanishMetadata: Metadata = {
 	metadataBase: new URL('https://moisesdev.vercel.app/es'),
 	title: 'Moises | Portfolio',
 	description:
