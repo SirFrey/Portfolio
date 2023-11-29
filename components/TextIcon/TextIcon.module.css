@@ -1,15 +1,17 @@
 .text {
 	position: absolute;
+	/* width: clamp(2.9rem, 16vw, 7rem); */
 	width: max-content;
+	padding-inline: clamp(2px, 2.3vw, 16px);
 	/* font-family: sans-serif; */
 	background-color: rgba(234, 234, 234, 0.673);
 	backdrop-filter: blur(30px);
 	-webkit-backdrop-filter: blur(30px);
 	color: #000;
 	font-weight: 700;
-	font-size: clamp(1rem, 2.9vw, 1.4rem);
-	border-radius: 20px;
-	padding-inline: 15px;
+	font-size: clamp(0.8rem, 2vw, 1.4rem);
+	border-radius: 7px;
+	/* padding-inline: 15px; */
 	display: block;
 	bottom: clamp(-2em, -4vw, -2.5em);
 	left: 50%;

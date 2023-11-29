@@ -51,28 +51,7 @@ export const links = {
 		},
 	],
 }
-// export const links: link[] = [
-// 	{
-// 		name: 'Inicio',
-// 		href: 'inicio',
-// 	},
-// 	{
-// 		name: 'Portfolio',
-// 		href: 'portfolio',
-// 	},
-// 	{
-// 		name: 'Conocimientos',
-// 		href: 'conocimientos',
-// 	},
-// 	{
-// 		name: 'Sobre mí',
-// 		href: 'aboutme',
-// 	},
-// 	{
-// 		name: 'Contacto',
-// 		href: 'contacto',
-// 	},
-// ]
+
 export const variantsHeader: Variants = {
 	hidden: {
 		width: '0',
@@ -86,9 +65,6 @@ export const variantsHeader: Variants = {
 	},
 	navVisible: {
 		height: '64px',
-		transition: {
-			type: 'spring',
-		},
 	},
 	navHidden: {
 		height: '0',

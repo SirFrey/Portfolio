@@ -16,6 +16,7 @@ body {
 	color: #f2f1ef;
 	font-size: 27px;
 	text-align: center;
+	overflow: hidden;
 }
 
 :root {
@@ -67,7 +68,7 @@ h4 {
 }
 ul {
 	padding: 0;
-	margin: 0.6rem;
+	margin-block: 0.6rem;
 }
 li {
 	list-style: none;
@@ -78,7 +79,8 @@ a {
 
 h1 {
 	border: clamp(2px, 0.4vw, 2.9px) solid var(--principalColorAlpha);
-	border-radius: clamp(10px, 3vw, 30px);
+	/* border-radius: clamp(10px, 3vw, 30px); */
+	border-radius: 7px;
 }
 
 @keyframes show {

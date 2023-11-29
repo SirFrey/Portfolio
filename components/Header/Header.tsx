@@ -4,7 +4,7 @@ import SlideBar from '@components/NavBar/NavBar'
 import { faCode } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Variants, motion, useCycle } from 'framer-motion'
-import { useEffect, useLayoutEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import Typed from 'react-typed'
 import s from './Header.module.css'
 import { links, variantsHeader } from './dataHeader'
@@ -35,7 +35,7 @@ const Header = ({ dict, lang }) => {
 			`${window.innerWidth - scroller.clientWidth}px`
 		)
 	}, [windowSize])
-	useLayoutEffect(() => {
+	useEffect(() => {
 		if (isOpen && bgDark.current) {
 			bgDark.current.style.display = 'inline-block'
 			bgDark.current.style.animation = 'show .3s forwards'

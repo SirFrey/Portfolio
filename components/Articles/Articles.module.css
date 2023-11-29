@@ -60,7 +60,7 @@
 }
 :is(.lang_list, .tool_list, .other_list, .developing_list) li {
 	display: grid;
-	margin: 0 clamp(5px, 2vw, 17px);
+	margin: 0 clamp(1px, 1vw, 17px);
 	position: relative;
 	z-index: 5;
 }
@@ -191,7 +191,8 @@
 :is(.developingContainer, .knowledgeContainer) li {
 	background-color: #0003;
 	border: clamp(1px, 1vw, 4px) solid var(--secondaryColor);
-	border-radius: clamp(5px, 4vw, 20px);
+	/* border-radius: clamp(5px, 4vw, 20px); */
+	border-radius: 7px;
 	padding: clamp(10px, 2.3vw, 16px);
 }
 .textSpanIcons span {
