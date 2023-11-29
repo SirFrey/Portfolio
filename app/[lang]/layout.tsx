@@ -63,7 +63,7 @@ const englishMetadata: Metadata = {
 		card: 'summary_large_image',
 	},
 }
-export async function genetateMetadata({
+export async function generateMetadata({
 	params: { lang },
 }): Promise<Metadata> {
 	return lang === 'es' ? spanishMetadata : englishMetadata
