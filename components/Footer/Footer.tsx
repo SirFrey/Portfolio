@@ -14,6 +14,7 @@ const Footer = ({ dict }) => {
 		<footer id='contacto' className={s.footer_final}>
 			<MotionH2 {...propsHiddenElm}>{dict.footer.contact}</MotionH2>
 			<ContactForm dict={dict} />
+			<div className={s.line}></div>
 			<MotionUl
 				initial='hidden'
 				whileInView='visible'

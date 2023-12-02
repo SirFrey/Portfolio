@@ -51,6 +51,11 @@ export const ListCompDev = ({
 			whileHover={{
 				boxShadow: '6px -5px 14px 2px rgba(0, 0, 0, 0.3)',
 				scale: 1.1,
+				transition: {
+					type: 'spring',
+					stiffness: 400,
+					damping: 10,
+				},
 			}}
 			variants={itemVariants}
 			animate={{

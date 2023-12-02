@@ -2,11 +2,11 @@ a.anchorCard {
 	width: clamp(min(calc(100vw - 10px), 330px), 10vw, 330px);
 	text-decoration: none;
 	color: #000;
-	margin-bottom: 50px;
 	display: grid;
 	grid-template-rows: 300px 1fr;
 	border: 1px solid #dedcdc;
-	border-radius: 6px;
+	border-radius: 7px;
+	overflow: hidden;
 }
 
 .wrapper {
