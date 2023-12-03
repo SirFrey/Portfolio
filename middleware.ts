@@ -1,6 +1,6 @@
 import { match } from '@formatjs/intl-localematcher'
 import { Negotiator } from 'negotiator'
-import { NextRequest } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 let locales = ['es', 'en']
 let defaultLocale = 'es'
 function getLocale(request: NextRequest) {
@@ -18,20 +18,23 @@ export function middleware(request: NextRequest) {
 	const pathnameHasLocale = locales.some(
 		locale => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
 	)
-	if (pathnameHasLocale) return
-
+	if (
+		pathnameHasLocale ||
+		pathname.includes('.') ||
+		pathname.startsWith('/api')
+	)
+		return
 	const locale = getLocale(request)
 	// Redirect if there is no locale
 	request.nextUrl.pathname = `/${locale}${pathname}`
 	// e.g. incoming request is /products
 	// The new URL is now /en-US/products
-	return Response.redirect(request.nextUrl)
+	return NextResponse.redirect(request.nextUrl)
 }
 export const config = {
 	matcher: [
 		// Skip all internal paths (_next)
 		'/((?!_next).*)',
 		// Optional: only run on root (/) URL
-		// '/'
 	],
 }

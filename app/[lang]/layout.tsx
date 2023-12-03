@@ -21,9 +21,7 @@ const spanishMetadata: Metadata = {
 	title: 'Moises | Portfolio',
 	description:
 		'Este es mi portfolio web, sientete libre de echarle un vistazo. 😊',
-	icons: {
-		icon: 'images/favicon.ico',
-	},
+	icons: '/images/favicon.ico',
 	keywords: 'portfolio, web, developer, frontend, backend, fullstack',
 	authors: [{ name: 'Moises', url: 'https://moisesdev.vercel.app' }],
 	openGraph: {
@@ -45,9 +43,7 @@ const englishMetadata: Metadata = {
 	metadataBase: new URL('https://moisesdev.vercel.app/en'),
 	title: 'Moises | Portfolio',
 	description: 'This is my portfolio web, feel free to take a look. 😊',
-	icons: {
-		icon: 'images/favicon.ico',
-	},
+	icons: '/images/favicon.ico',
 	keywords: 'portfolio, web, developer, frontend, backend, fullstack',
 	authors: [{ name: 'Moises', url: 'https://moisesdev.vercel.app' }],
 	openGraph: {

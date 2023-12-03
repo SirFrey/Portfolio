@@ -24,7 +24,12 @@ const nextConfig = {
 		{
 			protocol: 'https',
 			hostname: 'ca-times.brightspotcdn.com',
-		},],
+		},
+		{
+			protocol: 'https',
+			hostname: 'img.freepik.com',
+		}],
+
 	}
 }
 
