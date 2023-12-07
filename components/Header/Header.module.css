@@ -23,6 +23,7 @@
 	left: 0;
 	background: var(--secondaryColorAlpha);
 	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(7px);
 	z-index: 30;
 }
 .principal_nav a {
@@ -40,6 +41,7 @@
 	z-index: 20;
 	box-shadow: 0 0 50px 0 var(--principalColorAlpha);
 	backdrop-filter: blur(3px);
+	-webkit-backdrop-filter: blur(10px);
 }
 
 .principal_icon {

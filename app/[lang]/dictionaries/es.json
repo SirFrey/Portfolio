@@ -6,11 +6,11 @@
 		"subtitleh2": "Frontend Developer"
 	},
 	"portfolioSection": {
-		"titleh2": "Portfolio"
+		"titleh2": "Portfolio:"
 	},
 	"knowledgesSection": {
-		"titleh2": "Conocimientos",
-		"subtitleh3": "Languajes, Framework y Librerias:",
+		"titleh2": "Conocimientos:",
+		"subtitleh3": "Languajes, Frameworks y Librerias:",
 		"tools": "Herramientas:",
 		"others": "Otros:"
 	},

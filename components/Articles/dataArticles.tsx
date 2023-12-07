@@ -1,13 +1,13 @@
-import Css from '@assets/CssLogo'
-import Git from '@assets/Git'
-import GithubLogo from '@assets/GitHubLogo'
-import Html from '@assets/Html'
-import Js from '@assets/Js'
-import Next from '@assets/Next'
-import Node from '@assets/Node'
-import ReactLogo from '@assets/ReactLogo'
-import Terminal from '@assets/Terminal'
-import UsaLogo from '@assets/UsaLogo'
+import Css from '@assets/icons/CssLogo'
+import Git from '@assets/icons/Git'
+import GithubLogo from '@assets/icons/GitHubLogo'
+import Html from '@assets/icons/Html'
+import Js from '@assets/icons/Js'
+import Next from '@assets/icons/Next'
+import Node from '@assets/icons/Node'
+import ReactLogo from '@assets/icons/ReactLogo'
+import Terminal from '@assets/icons/Terminal'
+import UsaLogo from '@assets/icons/UsaLogo'
 type IconType = {
 	Icon: JSX.Element
 	span: string

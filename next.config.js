@@ -9,6 +9,7 @@ const nextConfig = {
 	},
 	images: {
 		// domains: ['img2.cgtrader.com', 's3-us-west-2.amazonaws.com', 'cdn.dribbble.com', 'ca-times.brightspotcdn.com'],
+		formats: ['image/avif', 'image/webp',],
 		remotePatterns: [{
 			protocol: 'https',
 			hostname: 'img2.cgtrader.com',

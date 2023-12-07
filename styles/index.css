@@ -5,7 +5,6 @@ html {
 	line-height: 1.15;
 	scroll-behavior: smooth;
 	font-size: 17px;
-	-webkit-overflow-scrolling: touch;
 }
 body {
 	-webkit-font-smoothing: antialiased;
@@ -21,12 +20,15 @@ body {
 
 :root {
 	--scrollbar-width: 0;
-	--principalColor: #495c83;
-	--principalColorDark: #0b1a38;
-	--principalColorDarkAlpha: #0b1a38aa;
-	--secondaryColor: #7a86b6;
-	--principalColorAlpha: #495c83aa;
-	--secondaryColorAlpha: #7a86b6aa;
+	--principal: 73, 92, 131;
+	--principalDark: 11, 26, 55;
+	--secondary: 123, 135, 183;
+	--principalColor: rgba(var(--principal));
+	--principalColorDark: rgba(var(--principalDark));
+	--secondaryColor: rgba(var(--secondary));
+	--principalColorAlpha: rgba(var(--principal), 0.667);
+	--secondaryColorAlpha: rgba(var(--secondary), 0.667);
+	--principalColorDarkAlpha: rgba(var(--principalDark), 0.667);
 	--sans: 'Inter', sans-serif, -apple-system, ui-sans-serif, system-ui,
 		blinkmacsystemfont, sego ui, roboto, helvetica neue, arial, noto sans,
 		sans-serif, monospace;
@@ -50,18 +52,23 @@ h6 {
 }
 
 h2:not(section:first-child h2, footer h2) {
-	text-decoration: underline;
+	text-decoration: double;
 	color: var(--principalColorDark);
-	padding: 0;
-	padding-block: 14px;
 }
-
+section > h2:not(section:nth-child(3) h2, section:nth-child(4) h2) {
+	padding-block: 1rem;
+}
+section:nth-child(4) h2,
+section:nth-child(3) h2 {
+	padding: 0;
+	padding-block-start: 1rem;
+}
 h1 {
 	text-align: center;
 	font-size: clamp(1.5rem, 4vw, 1.8rem);
 }
 h2 {
-	font-size: clamp(1.5rem, 2.7vw, 2rem);
+	font-size: clamp(1.5rem, 4vw, 2.8rem);
 }
 h4 {
 	font-size: clamp(1.1rem, 2.4vw, 1.9rem);
@@ -81,7 +88,11 @@ h1 {
 	border: clamp(2px, 0.4vw, 2.9px) solid var(--principalColorAlpha);
 	border-radius: 7px;
 }
-
+/* navbar */
+.typed-cursor {
+	transform: translateY(-1.4px);
+	display: inline-block;
+}
 @keyframes show {
 	0% {
 		opacity: 0;
@@ -130,6 +141,7 @@ section:nth-child(1) {
 	height: 100svh;
 	color: var(--principalColor);
 	position: relative;
+	padding: clamp(10px, 5vw, 30px);
 }
 
 section:nth-child(even):not(:first-child) {
@@ -149,7 +161,7 @@ section > h1 {
 	flex-direction: column;
 	align-items: center;
 }
-
-:is(button, a, svg) > * {
+/* TODO: fix this with custom cursor if needed */
+/* :is(button, a, svg) > * {
 	pointer-events: none;
-}
+} */

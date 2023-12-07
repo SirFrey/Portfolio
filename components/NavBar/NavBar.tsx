@@ -50,14 +50,13 @@ const NavbarButton = ({
 			className={btnClass}
 			data-scroll-to={btnName}
 			href={'#' + href}
-			ref={anchor}
-		>
+			ref={anchor}>
 			{btnName}
 		</a>
 	)
 }
 
-export default function SlideBar({ dict, lang }) {
+export default function SlideBar({ lang }) {
 	const [offLeft, setOffLeft] = useState(4)
 	const [offWidth, setOffWidth] = useState(94)
 	const [activeLink, setActiveLink] = useState('Inicio')
@@ -102,8 +101,7 @@ export default function SlideBar({ dict, lang }) {
 				<div
 					className='navbar nav-x-init'
 					ref={navbarRef}
-					style={{ '--x': setNavX(navbarRef.current) } as React.CSSProperties}
-				>
+					style={{ '--x': setNavX(navbarRef.current) } as React.CSSProperties}>
 					<div className='navbar-curr--stroke' aria-hidden='true'></div>
 					<div className='navbar-root'>
 						{links[lang].map(({ name, href }) => (
@@ -126,8 +124,7 @@ export default function SlideBar({ dict, lang }) {
 							style={{
 								transform: `translateX(${offLeft - 4}px)`,
 								width: `${offWidth}px`,
-							}}
-						></div>
+							}}></div>
 						<div
 							className='navbar-curr--glow'
 							aria-hidden='true'
@@ -135,8 +132,7 @@ export default function SlideBar({ dict, lang }) {
 								transform: `translateX(${
 									offLeft + Math.round(offWidth / 2) - 20.25
 								}px)`,
-							}}
-						></div>
+							}}></div>
 					</div>
 				</div>
 			</header>

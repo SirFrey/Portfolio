@@ -1,6 +1,5 @@
 import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
-import '@styles/blurry-load.min.css'
 import '@styles/index.css'
 import '@styles/normalize.css'
 import { Metadata, Viewport } from 'next'

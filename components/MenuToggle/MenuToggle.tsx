@@ -25,9 +25,8 @@ function MenuToggle({ toggle, isOpen }) {
 					},
 				},
 			}}
-			className={s.button}
-		>
-			<svg width='23' height='23' viewBox='0 0 23 23'>
+			className={s.button}>
+			<svg viewBox='0 0 23 23'>
 				<Path
 					variants={{
 						closed: { d: 'M 2 2.5 L 20 2.5' },

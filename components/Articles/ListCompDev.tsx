@@ -23,7 +23,6 @@ export const ListCompDev = ({
 	...props
 }: ListItemType) => {
 	const isSelected = index === counter
-
 	const variants: Variants = {
 		blur: {
 			filter: 'blur(2px)',
@@ -36,7 +35,7 @@ export const ListCompDev = ({
 		if (counter === maxListLengthDev) {
 			setCounter(0)
 		}
-	}, [counter])
+	}, [counter, setCounter])
 	return (
 		<motion.li
 			{...props}

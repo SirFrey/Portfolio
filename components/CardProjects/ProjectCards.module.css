@@ -16,6 +16,7 @@ a.anchorCard {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
+	align-items: flex-start;
 	justify-content: center;
 	gap: 20px;
 }
@@ -44,17 +45,19 @@ a:nth-of-type(4) .card_wrapper {
 
 .project_summary {
 	padding: 0 15px;
-	padding-bottom: 15px;
+	padding-block: 15px;
 	background: #dedcdc;
 	flex: 1;
+	display: grid;
 	border-bottom-left-radius: inherit;
 	border-bottom-right-radius: inherit;
 }
 
 .project_title {
+	padding-block: 0;
 	margin-bottom: 0;
-	padding-top: 15px;
 	color: #fff;
+	font-size: clamp(1.4rem, 3vw, 2rem);
 }
 
 .created_date {

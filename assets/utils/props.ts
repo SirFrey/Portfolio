@@ -1,5 +1,5 @@
 import { links } from '@components/Header/dataHeader'
-import { HTMLMotionProps, Variants } from 'framer-motion'
+import { HTMLMotionProps, SVGMotionProps, Variants } from 'framer-motion'
 
 export const variantsHiddenElm: Variants = {
 	hidden: {
@@ -37,6 +37,23 @@ export const itemVariants: Variants = {
 		opacity: 1,
 		x: 0,
 	},
+}
+const pathVariants: Variants = {
+	hidden1: {
+		translateX: '-80vw',
+	},
+	hidden2: {
+		translateX: '20vw',
+	},
+	hidden3: {
+		translateX: '20vw',
+	},
+	visible: {
+		translateX: '0',
+	},
+}
+export const propsPath: SVGMotionProps<SVGPathElement> = {
+	variants: pathVariants,
 }
 export const hrefNames = lang => {
 	return [...links[lang].map(link => link.href)]

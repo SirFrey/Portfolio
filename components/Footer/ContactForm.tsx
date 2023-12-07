@@ -14,14 +14,12 @@ const SubmitButton = ({ dict }) => {
 			initial='hiddenButton'
 			whileInView='visibleButton'
 			whileTap='tap'
-			{...formProps}
-		>
+			{...formProps}>
 			{dict.footer.send}
 			<svg
 				className={s.checkmark}
 				xmlns='http://www.w3.org/2000/svg'
-				viewBox='0 0 52 52'
-			>
+				viewBox='0 0 52 52'>
 				<path
 					className={s.checkmark__check}
 					fill='none'
@@ -38,8 +36,7 @@ export default function ContactForm({ dict }) {
 			onSubmit={e => {
 				handleSubmit(e, dict.lang)
 			}}
-			className={s.form}
-		>
+			className={s.form}>
 			<Input
 				type='text'
 				name='name'
@@ -73,7 +70,7 @@ export default function ContactForm({ dict }) {
 				whileInView='visibleBottom'
 				whileFocus='focus'
 				{...formProps}
-			></Textarea>
+			/>
 			<SubmitButton dict={dict} />
 		</form>
 	)

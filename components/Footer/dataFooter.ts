@@ -4,7 +4,6 @@ import {
 	faGithub,
 	faLinkedin,
 } from '@fortawesome/free-brands-svg-icons'
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import { Variants } from 'framer-motion'
 
 type link = {
@@ -25,14 +24,9 @@ export const links: link[] = [
 		title: 'Discord',
 	},
 	{
-		href: '',
+		href: 'https://github.com/SirFrey',
 		iconFontAwesome: faGithub,
 		title: 'Github',
-	},
-	{
-		href: '',
-		iconFontAwesome: faEnvelope,
-		title: 'Mail',
 	},
 ]
 export const footerVariants: Variants = {

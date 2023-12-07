@@ -12,3 +12,4 @@ export const MotionP = motion.p
 export const Input = motion.input
 export const Textarea = motion.textarea
 export const Button = motion.button
+export const MotionPath = motion.path

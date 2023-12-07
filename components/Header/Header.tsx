@@ -56,8 +56,7 @@ const Header = ({ dict, lang }) => {
 					animate='navVisible'
 					variants={variantsHeader}
 					ref={navFixed}
-					className={s.nav_fixed}
-				>
+					className={s.nav_fixed}>
 					<div className={s.principal_icon}>
 						<FontAwesomeIcon icon={faCode} className={s.codeIcon} />
 						<Typed
@@ -70,15 +69,14 @@ const Header = ({ dict, lang }) => {
 							backDelay={2000}
 						/>
 					</div>
-					<SlideBar dict={dict} lang={lang} />
+					<SlideBar lang={lang} />
 				</motion.nav>
 				<motion.aside
 					initial='hidden'
 					animate={isOpen ? 'open' : ''}
 					variants={variantsHeader}
 					ref={navFixedBar}
-					className={s.principal_nav}
-				>
+					className={s.principal_nav}>
 					<ul
 						onClick={e => {
 							const target = e.target as HTMLUListElement
@@ -86,21 +84,18 @@ const Header = ({ dict, lang }) => {
 								toggleOpen()
 							}
 						}}
-						className={s.nav_fixed_ul}
-					>
+						className={s.nav_fixed_ul}>
 						{links[lang].map(({ href, name }, i) => {
 							return (
 								<motion.li
 									variants={childVariants}
 									className={s.nav_fixed_li}
-									key={i}
-								>
+									key={i}>
 									<motion.a
 										whileHover={{
 											backgroundColor: '#fff3',
 										}}
-										href={'#' + href}
-									>
+										href={'#' + href}>
 										{name}
 									</motion.a>
 								</motion.li>
@@ -122,8 +117,7 @@ const Header = ({ dict, lang }) => {
 				}}
 				ref={bgDark}
 				id='bg'
-				className={s.bg_dark}
-			></div>
+				className={s.bg_dark}></div>
 		</>
 	)
 }
