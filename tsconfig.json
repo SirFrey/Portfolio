@@ -1,41 +1,57 @@
 {
-	"compilerOptions": {
-		"lib": ["dom", "ES6", "ESNext"],
-		"baseUrl": ".",
-		"paths": {
-			"@components/*": ["components/*"],
-			"@components/": ["components/"],
-			"@*": ["*"]
-		},
-		"allowJs": true,
-		"forceConsistentCasingInFileNames": true,
-		"noEmit": true,
-		"incremental": true,
-		"declaration": true,
-		"esModuleInterop": true,
-		"module": "ESNext",
-		"moduleResolution": "Node",
-		"resolveJsonModule": true,
-		"isolatedModules": true,
-		"noImplicitAny": false,
-		"noImplicitThis": true,
-		"strictNullChecks": true,
-		"allowImportingTsExtensions": true,
-		"jsx": "preserve",
-		"plugins": [
-			{
-				"name": "next"
-			}
-		],
-		"skipLibCheck": true,
-		"strict": false
-	},
-	"include": [
-		"next-env.d.ts",
-		".next/types/**/*.ts",
-		"**/*.ts",
-		"**/*.tsx",
-		"next.config.js"
-	],
-	"exclude": ["node_modules"]
+  "compilerOptions": {
+    "lib": [
+      "dom",
+      "ES6",
+      "ESNext"
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": [
+        "components/*"
+      ],
+      "@components/": [
+        "components/"
+      ],
+      "@assets/*": [
+        "assets/*"
+      ],
+      "@styles/*": [
+        "styles/*"
+      ],
+      "@public/*": ["public/*"]
+    },
+    "allowJs": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "incremental": true,
+    "declaration": true,
+    "esModuleInterop": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noImplicitAny": false,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
+    "allowImportingTsExtensions": true,
+    "jsx": "preserve",
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "skipLibCheck": true,
+    "strict": false
+  },
+  "include": [
+    "next-env.d.ts",
+    ".next/types/**/*.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "next.config.js"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

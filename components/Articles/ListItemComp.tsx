@@ -4,60 +4,61 @@ import { HTMLMotionProps, motion } from 'framer-motion'
 import { Dispatch, SetStateAction, useEffect } from 'react'
 import { maxListLength } from './dataArticles'
 interface ListItemType extends HTMLMotionProps<'li'> {
-	Icon: JSX.Element
-	span: string
-	index: number
-	counter: number
-	color: string
-	setCounter: Dispatch<SetStateAction<number>>
-	setPause: Dispatch<SetStateAction<boolean>>
+  Icon: JSX.Element
+  span: string
+  index: number
+  counter: number
+  color: string
+  setCounter: Dispatch<SetStateAction<number>>
+  setPause: Dispatch<SetStateAction<boolean>>
 }
 export const ListItemComp = ({
-	Icon,
-	span,
-	color,
-	setCounter,
-	setPause,
-	counter,
-	index,
-	...props
+  Icon,
+  span,
+  color,
+  setCounter,
+  setPause,
+  counter,
+  index,
+  ...props
 }: ListItemType) => {
-	const isSelected = index === counter
-	useEffect(() => {
-		if (counter === maxListLength) {
-			setCounter(0)
-		}
-	}, [counter])
-	return (
-		<motion.li
-			whileHover={{
-				boxShadow: '6px -5px 14px 2px rgba(0, 0, 0, 0.3)',
-				scale: 1.1,
-				transition: {
-					type: 'spring',
-					stiffness: 400,
-					damping: 10,
-				},
-			}}
-			onHoverStart={() => {
-				setPause(true)
-				setCounter(index)
-			}}
-			onHoverEnd={() => {
-				setPause(false)
-				setCounter(index + 1)
-			}}
-			variants={itemVariants}
-			animate={{
-				filter: `grayscale(${!isSelected ? 1 : 0})`,
-			}}
-			style={{
-				borderColor: color,
-			}}
-			{...props}
-		>
-			{Icon}
-			<TextIcon text={span} IsVisible={isSelected} />
-		</motion.li>
-	)
+  const isSelected = index === counter
+  useEffect(() => {
+    if (counter === maxListLength) {
+      setCounter(0)
+    }
+  }, [counter])
+  return (
+    <motion.li
+      whileHover={{
+        boxShadow: '6px -5px 14px 2px rgba(0, 0, 0, 0.3)',
+        scale: 1.1,
+        transition: {
+          type: 'spring',
+          stiffness: 400,
+          damping: 10,
+        },
+        zIndex: 2,
+      }}
+      onHoverStart={() => {
+        setPause(true)
+        setCounter(index)
+      }}
+      onHoverEnd={() => {
+        setPause(false)
+        setCounter(index + 1)
+      }}
+      variants={itemVariants}
+      animate={{
+        filter: `grayscale(${!isSelected ? 1 : 0})`,
+      }}
+      style={{
+        borderColor: color,
+        zIndex: isSelected ? 2 : 0,
+      }}
+      {...props}>
+      {Icon}
+      <TextIcon text={span} IsVisible={isSelected} />
+    </motion.li>
+  )
 }

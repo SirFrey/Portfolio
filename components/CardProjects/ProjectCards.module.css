@@ -1,83 +1,83 @@
 a.anchorCard {
-	width: clamp(min(calc(100vw - 10px), 330px), 10vw, 330px);
-	text-decoration: none;
-	color: #000;
-	display: grid;
-	grid-template-rows: 300px 1fr;
-	border: 1px solid #dedcdc;
-	border-radius: 7px;
-	overflow: hidden;
+  width: clamp(min(calc(100vw - 10px), 330px), 10vw, 330px);
+  text-decoration: none;
+  color: #000;
+  display: grid;
+  grid-template-rows: 300px 1fr;
+  border: 1px solid #dedcdc;
+  border-radius: 7px;
+  overflow: hidden;
 }
 
 .wrapper {
-	max-width: 1500px;
-	margin: 20px auto;
-	height: auto;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	align-items: flex-start;
-	justify-content: center;
-	gap: 20px;
+  max-width: 1500px;
+  margin: 20px auto;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 20px;
 }
 
 .card_wrapper {
-	position: relative;
-	background: #e4f2f9;
-	display: flex;
-	flex-direction: column;
-	background-color: #000;
-	background-size: contain;
-	background-repeat: no-repeat;
+  position: relative;
+  background: #e4f2f9;
+  display: flex;
+  flex-direction: column;
+  background-color: #000;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 a.anchorCard:nth-child(2) .card_wrapper {
-	background-color: #4f4;
+  background-color: #4f4;
 }
 
 a:nth-of-type(3) .card_wrapper {
-	background-color: #404;
+  background-color: #404;
 }
 
 a:nth-of-type(4) .card_wrapper {
-	background-color: #40f;
+  background-color: #40f;
 }
 
 .project_summary {
-	padding: 0 15px;
-	padding-block: 15px;
-	background: #dedcdc;
-	flex: 1;
-	display: grid;
-	border-bottom-left-radius: inherit;
-	border-bottom-right-radius: inherit;
+  padding: 0 15px;
+  padding-block: 15px;
+  background: #dedcdc;
+  flex: 1;
+  display: grid;
+  border-bottom-left-radius: inherit;
+  border-bottom-right-radius: inherit;
 }
 
 .project_title {
-	padding-block: 0;
-	margin-bottom: 0;
-	color: #fff;
-	font-size: clamp(1.4rem, 3vw, 2rem);
+  padding-block: 0;
+  margin-bottom: 0;
+  color: #fff;
+  font-size: clamp(1.4rem, 3vw, 2rem);
 }
 
 .created_date {
-	margin: 10px 0;
-	font-size: 1.15rem;
-	font-weight: 900;
-	color: #8a8ea0;
+  margin: 10px 0;
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: #8a8ea0;
 }
 
 .project_desc {
-	margin: 0;
-	overflow: hidden;
-	font-size: 1.3rem;
+  margin: 0;
+  overflow: hidden;
+  font-size: 1.3rem;
 }
 .project_desc strong {
-	color: #40f;
+  color: #40f;
 }
 
 a.anchorCard > img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }

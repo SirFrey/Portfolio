@@ -1,169 +1,179 @@
 .articlePage {
-	width: 100%;
+  width: 100%;
 }
 
 .filterMainSection {
-	display: grid;
-	mix-blend-mode: multiply;
-	place-content: center;
-	background-color: #0003;
-	background-clip: text;
-	-webkit-background-clip: text;
+  display: grid;
+  mix-blend-mode: multiply;
+  place-content: center;
+  background-color: #0003;
+  background-clip: text;
+  -webkit-background-clip: text;
 }
 
 .lang_list,
 .tool_list,
 .other_list,
 .developing_list {
-	display: flex;
-	place-content: center;
-	align-items: center;
+  display: flex;
+  place-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: clamp(1px, 3vw, 29px);
 }
-.knowledgeContainer li > * {
-	pointer-events: none;
-}
-.developingContainer li > * {
-	pointer-events: none;
-}
+
 .bgFixed {
-	width: 100%;
-	height: 100vh;
-	height: 100svh;
-	position: fixed;
-	z-index: -1;
-	background-color: var(--principalColor);
-	mix-blend-mode: screen;
-	object-fit: cover;
-	inset: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  position: fixed;
+  z-index: -1;
+  background-color: var(--principalColor);
+  mix-blend-mode: screen;
+  object-fit: cover;
+  inset: 0;
 }
+
 .titleH1 {
-	padding: 1.2rem 2rem;
-	margin: 0;
-	font-size: clamp(1.7rem, 6vw, 2.8rem);
-	text-wrap: balance;
+  padding: 1.2rem 2rem;
+  margin: 0;
+  font-size: clamp(1.7rem, 6vw, 2.8rem);
+  text-wrap: balance;
 }
+
 .sectionCareer {
-	margin: 0;
-	font-size: clamp(1.5rem, 5.3vw, 2.2rem);
+  margin: 0;
+  font-size: clamp(1.5rem, 5.3vw, 2.2rem);
 }
+
 :is(.lang_list, .tool_list, .other_list, .developing_list) li {
-	display: grid;
-	margin: 0 clamp(1px, 1vw, 17px);
-	position: relative;
-	z-index: 5;
+  display: grid;
+  position: relative;
+  z-index: 5;
 }
 
 :is(.lang_list, .tool_list, .other_list, .developing_list) svg {
-	width: clamp(1.5rem, 12vw, 5rem);
-	height: clamp(1.5rem, 12vw, 5rem);
+  width: clamp(1.5rem, 12vw, 5rem);
+  height: clamp(1.5rem, 12vw, 5rem);
 }
+
 .wave {
-	bottom: 0;
-	left: 0;
+  bottom: 0;
+  left: 0;
 }
+
 .wave,
 .wave2,
 .wave4,
 .wave5 {
-	width: 100%;
-	overflow: hidden;
-	line-height: 0;
-	transform: rotate(180deg);
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
 }
 
 .wave svg {
-	position: relative;
-	display: block;
-	width: calc(116% + 1.3px);
-	height: clamp(100px, 20vw, 100px);
+  position: relative;
+  display: block;
+  width: calc(116% + 1.3px);
+  height: clamp(100px, 20vw, 100px);
 }
 
 .wave,
 .wave3,
 .wave4 :is(.shapeFill) {
-	fill: var(--secondaryColor);
+  fill: var(--secondaryColor);
 }
 
 .wave2 svg {
-	position: relative;
-	display: block;
-	width: calc(100% + 1.3px);
-	height: clamp(100px, 20vw, 120px);
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: clamp(100px, 20vw, 120px);
+  background-color: var(--principalColor);
 }
 
 .wave2 .shapeFill {
-	fill: var(--principalColorDark);
+  fill: var(--principalColorDark);
 }
 
 .wave3 {
-	width: 100%;
-	overflow: hidden;
-	line-height: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
 }
 
 .wave3 svg {
-	position: relative;
-	display: block;
-	width: calc(100% + 1.3px);
-	height: 100px;
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 100px;
 }
 
 .wave4 {
-	position: absolute;
-	bottom: 0;
+  position: absolute;
+  bottom: 0;
 }
 
 .wave4 svg {
-	position: relative;
-	display: block;
-	width: calc(111% + 1.3px);
-	height: 120px;
-	transform: rotateY(180deg);
+  position: relative;
+  display: block;
+  width: calc(111% + 1.3px);
+  height: 120px;
+  transform: rotateY(180deg);
 }
 
 .wave5 {
-	overflow: hidden;
+  overflow: hidden;
 }
 
 .wave5 svg {
-	display: block;
-	width: calc(113% + 1.3px);
-	height: clamp(100px, 20vw, 100px);
-	transform: rotateY(180deg);
+  display: block;
+  width: calc(113% + 1.3px);
+  height: clamp(100px, 20vw, 100px);
+  transform: rotateY(180deg);
 }
 
 .wave5 .shapeFill {
-	fill: var(--principalColor);
+  fill: var(--principalColor);
 }
 
 .container {
-	position: absolute;
-	width: 24px;
-	height: 24px;
-	bottom: 85px;
-	left: 0;
-	right: 0;
-	margin: auto;
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  bottom: 85px;
+  left: 0;
+  right: 0;
+  margin: auto;
 }
+
 .text {
-	display: block;
-	margin-top: 60px;
-	margin-left: -30px;
-	font-family: 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
-	font-size: 12px;
-	color: #fff;
-	text-transform: uppercase;
-	white-space: nowrap;
-	opacity: 0.25;
+  display: block;
+  margin-top: 60px;
+  margin-left: -30px;
+  font-family: 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
+  font-size: 12px;
+  color: #fff;
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: 0.25;
 }
 
 :is(.developingContainer, .knowledgeContainer) li {
-	background-color: #0003;
-	border: clamp(0.3px, 1vw, 6px) solid var(--secondaryColor);
-	border-radius: 7px;
-	padding: clamp(10px, 2.3vw, 16px);
+  background-color: #0003;
+  border: clamp(0.3px, 1vw, 6px) solid var(--secondaryColor);
+  border-radius: 7px;
+  padding: clamp(10px, 2.3vw, 16px);
 }
+
 .textSpanIcons span {
-	opacity: 1;
-	filter: blur(0);
+  opacity: 1;
+  filter: blur(0);
+}
+
+@media (width <= 989px) {
+  .lang_list {
+    max-width: 650px;
+  }
 }

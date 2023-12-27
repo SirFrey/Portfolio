@@ -1,51 +1,51 @@
 .slider {
-	width: clamp(min(100vw - 30px, 500px), 20vw, 500px);
-	margin-block: 10px;
+  width: clamp(min(100vw - 30px, 500px), 20vw, 500px);
+  margin-block: 10px;
 }
 
 .slider .card {
-	width: 100%;
-	height: min(450px, 70vh);
-	background: #0003;
-	display: grid;
-	place-content: center;
-	padding: 34px;
+  width: 100%;
+  height: min(450px, 70vh);
+  background: #0003;
+  display: grid;
+  place-content: center;
+  padding: 34px;
 }
 .slider h3 {
-	padding: 0;
+  padding: 0;
 }
 
 .slider button {
-	-webkit-appearance: none;
-	background: transparent;
-	border: 0;
-	outline: 0;
+  -webkit-appearance: none;
+  background: transparent;
+  border: 0;
+  outline: 0;
 }
 
 .arrow {
-	position: absolute;
-	width: 70px;
-	height: 90px;
-	z-index: 20;
+  position: absolute;
+  width: 70px;
+  height: 90px;
+  z-index: 20;
 }
 .right {
-	right: 0;
-	bottom: calc(50% - 45px);
+  right: 0;
+  bottom: calc(50% - 45px);
 }
 .left {
-	left: 0;
-	top: calc(50% - 45px);
+  left: 0;
+  top: calc(50% - 45px);
 }
 :is(.left, .right):hover polyline,
 :is(.left, .right):focus polyline {
-	stroke-width: 3;
+  stroke-width: 3;
 }
 
 :is(.left, .right):active polyline {
-	stroke-width: 6;
-	transition: all 100ms ease-in-out;
+  stroke-width: 6;
+  transition: all 100ms ease-in-out;
 }
 
 .arrow polyline {
-	transition: all 250ms ease-in-out;
+  transition: all 250ms ease-in-out;
 }
