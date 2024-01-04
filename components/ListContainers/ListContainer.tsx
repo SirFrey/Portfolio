@@ -10,7 +10,7 @@ import {
 } from '@components/Articles/dataArticles'
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
-export default function ListContainer({ dict, lang }) {
+export function ListContainer({ dict, lang }) {
   const [isPausedList, setPauseList] = useState(false)
   const [counterList, setCounterList] = useState(0)
   useEffect(() => {

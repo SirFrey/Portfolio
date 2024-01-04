@@ -12,11 +12,6 @@
 .cursor__ball circle {
   fill: #f7f8fa;
 }
-html,
-a,
-button {
-  cursor: none;
-}
 @media (width <= 800px) {
   html,
   a,

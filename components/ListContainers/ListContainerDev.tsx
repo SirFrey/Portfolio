@@ -6,7 +6,7 @@ import { ListCompDev } from '@components/Articles/ListCompDev'
 import { developingData } from '@components/Articles/dataArticles'
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
-function ListContainerDev({ lang }) {
+export function ListContainerDev({ lang }) {
   const [isPausedListDev, setPauseDevList] = useState(false)
   const [counterListDev, setCounterListDev] = useState(0)
   useEffect(() => {
@@ -29,7 +29,7 @@ function ListContainerDev({ lang }) {
         once: true,
       }}
       className={s.developing_list}>
-      {developingData[lang].map(({ Icon, span, color }, i) => {
+      {developingData[lang].map(({ Icon, span, color }, i: number) => {
         return (
           <ListCompDev
             Icon={Icon}
@@ -46,5 +46,3 @@ function ListContainerDev({ lang }) {
     </motion.ul>
   )
 }
-
-export default ListContainerDev

@@ -3,7 +3,7 @@ import { MotionA } from '@components/FramerComps/framerCompsClients'
 import { Variants } from 'framer-motion'
 import style from './ProjectCards.module.css'
 
-function CardItem({
+export function CardItem({
   children,
   website,
   i,
@@ -53,5 +53,3 @@ function CardItem({
     </MotionA>
   )
 }
-
-export default CardItem

@@ -1,15 +1,10 @@
 // !!!!Todo: Add Project card slide in mobile view !!!
 import { propsHiddenElm } from '@assets/utils/props.ts'
-import ProjectCards from '@components/CardProjects/ProjectCards'
-import {
-  MotionDiv,
-  MotionH2,
-  MotionP,
-} from '@components/FramerComps/framerCompsClients'
-import ListContainer from '@components/ListContainer/ListContainer.tsx'
-import ListContainerDev from '@components/ListContainerDev/ListContainerDev.tsx'
-import s from './Articles.module.css'
+import { ProjectCards } from '@components/CardProjects'
+import { MotionDiv, MotionH2, MotionP } from '@components/FramerComps'
+import { ListContainer, ListContainerDev } from '@components/ListContainers'
 import { MainSection } from './MainSection'
+import s from './Articles.module.css'
 const Articles = ({ dict, lang }) => {
   return (
     <article className={s.articlePage}>

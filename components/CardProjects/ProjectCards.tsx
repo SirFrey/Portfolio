@@ -1,10 +1,10 @@
 import { MotionDiv } from '@components/FramerComps/framerCompsClients'
 import Image from 'next/image'
-import CardItem from './CardItem'
+import { CardItem } from './CardItem'
 import style from './ProjectCards.module.css'
 import dataCards from './dataCards'
 
-async function ProjectCards({ lang }) {
+export async function ProjectCards({ lang }) {
   return (
     <MotionDiv className={style.wrapper}>
       {dataCards.map((cards, i) => {
@@ -27,5 +27,3 @@ async function ProjectCards({ lang }) {
     </MotionDiv>
   )
 }
-
-export default ProjectCards
