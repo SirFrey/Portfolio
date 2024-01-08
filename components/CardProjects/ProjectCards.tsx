@@ -1,4 +1,4 @@
-import { MotionDiv } from '@components/FramerComps/framerCompsClients'
+import { MotionDiv } from '@components/FramerComps'
 import Image from 'next/image'
 import { CardItem } from './CardItem'
 import style from './ProjectCards.module.css'
