@@ -14,14 +14,14 @@ function TextIcon({ text, className, IsVisible }: Props) {
       opacity: 1,
       filter: 'blur(0)',
       transition: {
-        ease: 'backIn',
+        ease: 'linear',
       },
     },
     hidden: {
       opacity: 0.1,
       filter: 'blur(2px)',
       transition: {
-        ease: 'easeInOut',
+        ease: 'linear',
       },
     },
   }

@@ -160,7 +160,6 @@ section > h1 {
   align-items: center;
 }
 /* TODO: fix this with custom cursor if needed */
-:is(button, a, svg) > *,
-svg {
+:is(button, a, svg, li) > * {
   pointer-events: none;
 }

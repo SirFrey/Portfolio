@@ -166,13 +166,16 @@
   border-radius: 7px;
   padding: clamp(10px, 2.3vw, 16px);
 }
+.knowledgeContainer {
+  container-type: inline-size;
+  width: 100%;
+}
 
 .textSpanIcons span {
   opacity: 1;
   filter: blur(0);
 }
-
-@media (width <= 989px) {
+@container ( inline-size <= 919px ) {
   .lang_list {
     max-width: 650px;
   }
