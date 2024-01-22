@@ -3,9 +3,9 @@ import '@fortawesome/fontawesome-svg-core/styles.css'
 import '@styles/index.css'
 import '@styles/normalize.css'
 import { Metadata, Viewport } from 'next'
-import { Poiret_One } from 'next/font/google'
+import { Montserrat } from 'next/font/google'
 config.autoAddCss = false
-const Poiret = Poiret_One({
+const League = Montserrat({
   weight: ['400'],
   subsets: ['latin'],
   display: 'swap',
@@ -75,7 +75,7 @@ export default function RootLayout({
   params: any
 }) {
   return (
-    <html lang={lang} className={Poiret.className}>
+    <html lang={lang} className={League.className}>
       <body>{children}</body>
     </html>
   )
