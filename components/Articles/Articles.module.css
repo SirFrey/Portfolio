@@ -9,6 +9,7 @@
   background-color: #0003;
   background-clip: text;
   -webkit-background-clip: text;
+  pointer-events: none;
 }
 
 .lang_list,
@@ -171,6 +172,11 @@
   width: 100%;
 }
 
+.paragraphWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
 .textSpanIcons span {
   opacity: 1;
   filter: blur(0);

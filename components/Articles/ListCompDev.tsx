@@ -15,8 +15,8 @@ interface ListItemType extends HTMLMotionProps<'li'> {
 export const ListCompDev = ({
   Icon,
   span,
-  setCounter,
   setPause,
+  setCounter,
   color,
   counter,
   index,
@@ -31,11 +31,6 @@ export const ListCompDev = ({
       filter: 'blur(0)',
     },
   }
-  useEffect(() => {
-    if (counter === maxListLengthDev) {
-      setCounter(0)
-    }
-  }, [counter, setCounter])
   return (
     <motion.li
       {...props}
@@ -63,7 +58,9 @@ export const ListCompDev = ({
       style={{ borderColor: color }}>
       <motion.div
         initial='blur'
-        animate={isSelected ? 'unBlur' : ''}
+        animate={{
+          filter: `blur(${!isSelected ? 2 : 0}px)`,
+        }}
         variants={variants}
         style={{
           display: 'flex',

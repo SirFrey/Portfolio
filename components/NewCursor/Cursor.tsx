@@ -5,6 +5,7 @@ import { useFollowPointer } from '@assets/hooks/useFollowPointer'
 import { Variants, motion } from 'framer-motion'
 import { useRef, useState } from 'react'
 import './Cursor.css'
+import { MotionDiv } from '@components/FramerComps'
 function Cursor() {
   const hoverables: Array<string> = ['BUTTON', 'A', 'LI']
   const ref = useRef<HTMLDivElement>(null)
@@ -57,7 +58,7 @@ function Cursor() {
   return (
     <>
       <div className='cursor'>
-        <motion.div
+        <MotionDiv
           initial='hidden'
           animate={['posBig', toogle ? 'hover' : '', !hidden ? 'visible' : '']}
           variants={variants}
@@ -66,9 +67,9 @@ function Cursor() {
           <svg height='30' width='30'>
             <circle cx='15' cy='15' r='12' strokeWidth='0'></circle>
           </svg>
-        </motion.div>
+        </MotionDiv>
 
-        <motion.div
+        <MotionDiv
           initial='hidden'
           animate={['posSmall', !hidden ? 'visible' : '']}
           variants={variants}
@@ -76,7 +77,7 @@ function Cursor() {
           <svg height='10' width='10'>
             <circle cx='5' cy='5' r='4' strokeWidth='0'></circle>
           </svg>
-        </motion.div>
+        </MotionDiv>
       </div>
     </>
   )

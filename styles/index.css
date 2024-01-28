@@ -44,7 +44,6 @@ h4,
 h5,
 h6 {
   margin: 0;
-  padding: 1rem;
 }
 :target {
   scroll-margin-top: calc(42px + 10px);
@@ -54,14 +53,14 @@ h2:not(section:first-child h2, footer h2) {
   text-decoration: double;
   color: var(--principalColorDark);
 }
-section > h2:not(section:nth-child(3) h2, section:nth-child(4) h2) {
-  padding-block: 1rem;
-}
-section:nth-child(4) h2,
-section:nth-child(3) h2 {
-  padding: 0;
-  padding-block-start: 1rem;
-}
+/* section > h2:not(section:nth-child(3) h2, section:nth-child(4) h2) { */
+/*   padding-block: 1rem; */
+/* } */
+/* section:nth-child(4) h2, */
+/* section:nth-child(3) h2 { */
+/*   padding: 0; */
+/*   padding-block-start: 1rem; */
+/* } */
 h1 {
   text-align: center;
   font-size: clamp(1.5rem, 4vw, 1.8rem);
@@ -121,6 +120,7 @@ a {
 section p.p {
   width: clamp(min(400px, 80vw), 70vw, 800px);
   font-size: clamp(1.3rem, 3vw, 1.5rem);
+  margin: 0;
 }
 strong {
   color: var(--principalColorDark);
@@ -158,8 +158,10 @@ section > h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 1rem;
+  padding: 1rem;
 }
 /* TODO: fix this with custom cursor if needed */
-:is(button, a, svg, li) > * {
+:is(button, svg, li) > * {
   pointer-events: none;
 }
