@@ -9,11 +9,16 @@ import { useEffect, useState } from 'react'
 export function ListContainerDev({ lang }) {
   const [isPausedListDev, setPauseDevList] = useState(false)
   const [counterListDev, setCounterListDev] = useState(0)
+  const lastIndex = developingData.en.length
   useEffect(() => {
     // Interval list of list "Desarrollando..."
     const intervalListDev = setInterval(() => {
-      setCounterListDev(counterListDev + 1)
+      setCounterListDev(prevCount => prevCount + 1)
     }, 1500)
+    setCounterListDev(count => {
+      if (count === lastIndex) return 0
+      return count
+    })
     if (isPausedListDev) {
       clearInterval(intervalListDev)
     }
@@ -37,8 +42,8 @@ export function ListContainerDev({ lang }) {
             key={i}
             index={i}
             color={color}
-            counter={counterListDev}
             setCounter={setCounterListDev}
+            counter={counterListDev}
             setPause={setPauseDevList}
           />
         )

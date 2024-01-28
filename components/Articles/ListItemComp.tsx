@@ -1,8 +1,7 @@
 import { itemVariants } from '@assets/utils/props'
 import TextIcon from '@components/TextIcon/TextIcon'
 import { HTMLMotionProps, motion } from 'framer-motion'
-import { Dispatch, SetStateAction, useEffect } from 'react'
-import { maxListLength } from './dataArticles'
+import { Dispatch, SetStateAction } from 'react'
 interface ListItemType extends HTMLMotionProps<'li'> {
   Icon: JSX.Element
   span: string
@@ -23,11 +22,6 @@ export const ListItemComp = ({
   ...props
 }: ListItemType) => {
   const isSelected = index === counter
-  useEffect(() => {
-    if (counter === maxListLength) {
-      setCounter(0)
-    }
-  }, [counter])
   return (
     <motion.li
       whileHover={{

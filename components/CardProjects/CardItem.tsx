@@ -16,12 +16,10 @@ export function CardItem({
     hidden: {
       x: -40,
       opacity: 0,
-      filter: 'blur(4px)',
     },
     show: (index: number) => ({
       x: 0,
       opacity: 1,
-      filter: 'blur(0)',
       transition: {
         delay: 0.1 * index,
         duration: 0.4,

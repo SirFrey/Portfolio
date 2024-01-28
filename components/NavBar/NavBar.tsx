@@ -4,6 +4,7 @@ import { hrefNames } from '@assets/utils/props'
 import { links } from '@components/Header/dataHeader'
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import './NavBar.css'
+import { useRouter } from 'next/navigation'
 interface NavBarButtonProps {
   btnClass: string
   btnName: string
@@ -49,7 +50,10 @@ const NavbarButton = ({
       type='button'
       className={btnClass}
       data-scroll-to={btnName}
-      href={'#' + href}
+      onClick={() => {
+        const elToScroll = document.getElementById(href)
+        elToScroll?.scrollIntoView()
+      }}
       ref={anchor}>
       {btnName}
     </a>
@@ -62,22 +66,18 @@ export default function SlideBar({ lang }) {
   const [activeLink, setActiveLink] = useState('Inicio')
   const [theme] = useState('dark')
   const navbarRef = useRef(null)
+  const router = useRouter()
   const activeId = useScrollSpy(hrefNames(lang), {
     threshold: 0.5,
   })
   useEffect(() => {
     setActiveLink(activeId)
-    history.pushState({}, '', `#${activeId}`)
   }, [activeId])
+
   const handleSetOffsets = (left: number, width: number) => {
     setOffLeft(left)
     setOffWidth(width)
   }
-
-  // const handleSetTheme = e => {
-  // 	e.target.textContent = theme;
-  // 	setTheme(theme === 'dark' ? 'light' : 'dark');
-  // };
 
   const setNavX = navbar => {
     if (!navbar) return '87%'

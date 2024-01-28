@@ -5,6 +5,7 @@ import { MotionDiv, MotionH2, MotionP } from '@components/FramerComps'
 import { ListContainer, ListContainerDev } from '@components/ListContainers'
 import { MainSection } from './MainSection'
 import s from './Articles.module.css'
+import LangSwitcher from '@components/LangSwitcher/LangSwitcher'
 const Articles = ({ dict, lang }) => {
   return (
     <article className={s.articlePage}>
@@ -56,19 +57,20 @@ const Articles = ({ dict, lang }) => {
       <section>
         <div id='aboutme' className='marginContainer'>
           <h2>{dict.aboutmeSection.titleh2}</h2>
-          <MotionP
-            {...propsHiddenElm}
-            className={'p'}
-            dangerouslySetInnerHTML={{
-              __html: dict.aboutmeSection.p1,
-            }}
-          />
-
-          <MotionP
-            {...propsHiddenElm}
-            className='p'
-            dangerouslySetInnerHTML={{ __html: dict.aboutmeSection.p2 }}
-          />
+          <div className={s.paragraphWrapper}>
+            <MotionP
+              {...propsHiddenElm}
+              className={'p'}
+              dangerouslySetInnerHTML={{
+                __html: dict.aboutmeSection.p1,
+              }}
+            />
+            <MotionP
+              {...propsHiddenElm}
+              className='p'
+              dangerouslySetInnerHTML={{ __html: dict.aboutmeSection.p2 }}
+            />
+          </div>
         </div>
         <div className={s.wave5}>
           <svg

@@ -12,14 +12,12 @@ function TextIcon({ text, className, IsVisible }: Props) {
   const variants: Variants = {
     visible: {
       opacity: 1,
-      filter: 'blur(0)',
       transition: {
         ease: 'linear',
       },
     },
     hidden: {
-      opacity: 0.1,
-      filter: 'blur(2px)',
+      opacity: 0.05,
       transition: {
         ease: 'linear',
       },

@@ -15,24 +15,35 @@
     "@fortawesome/free-brands-svg-icons": "6.5.1",
     "@fortawesome/free-solid-svg-icons": "6.5.1",
     "@fortawesome/react-fontawesome": "0.2.0",
-    "@types/nodemailer": "6.4.14",
+    "@react-three/drei": "^9.96.1",
+    "@react-three/fiber": "^8.15.14",
     "framer-motion": "10.16.12",
+    "framer-motion-3d": "^10.18.0",
+    "leva": "^0.9.35",
+    "maath": "^0.10.7",
     "negotiator": "0.6.3",
-    "next": "14.0.4",
+    "next": "14.1.0",
     "nodemailer": "6.9.7",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-select": "^5.8.0",
     "react-slick": "0.29.0",
     "react-typed": "1.2.0",
-    "slick-carousel": "1.8.1"
+    "slick-carousel": "1.8.1",
+    "three": "^0.160.0"
   },
   "devDependencies": {
     "@types/node": "20.10.3",
+    "@types/nodemailer": "6.4.14",
     "@types/react": "18.2.41",
     "@types/react-dom": "18.2.17",
+    "@types/three": "^0.160.0",
+    "autoprefixer": "^10.4.17",
     "eslint": "8.55.0",
     "eslint-config-next": "14.0.3",
     "eslint-config-prettier": "^9.1.0",
+    "postcss": "^8.4.33",
+    "tailwindcss": "^3.4.1",
     "typescript": "5.3.2"
   }
 }

@@ -16,7 +16,7 @@ export function ListContainer({ dict, lang }) {
   useEffect(() => {
     // Interval list of list "Conocimientos"
     const intervalList = setInterval(() => {
-      setCounterList(counterList + 1)
+      setCounterList(prevCount => prevCount + 1)
     }, 1000)
     if (isPausedList) {
       clearInterval(intervalList)

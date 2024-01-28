@@ -50,7 +50,7 @@
     "**/*.ts",
     "**/*.tsx",
     "next.config.js"
-  ],
+, "components/Canvas/index.js"  ],
   "exclude": [
     "node_modules"
   ]
