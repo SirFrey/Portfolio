@@ -21,10 +21,9 @@ const SceneSection = () => {
       style={{
         position: 'absolute',
       }}>
-      <pointLight position={[-20, 10, 25]} />
-      <Light />
+      {/* <Light /> */}
       <ShaderPlane />
-      <Sphere />
+      {/* <Sphere /> */}
     </Canvas>
   )
 }

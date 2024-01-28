@@ -30,7 +30,7 @@ const spanishMetadata: Metadata = {
     siteName: 'Moises | Portfolio',
     url: 'https://moisesdev.vercel.app',
     description: 'Sientete libre de echarle un vistazo. 😎',
-    images: 'https://i.ibb.co/gdXnzsk/Spanishimg.png',
+    images: '/images/spanishImg.png',
   },
   twitter: {
     card: 'summary_large_image',
@@ -52,8 +52,7 @@ const englishMetadata: Metadata = {
     siteName: 'Moises | Portfolio',
     url: 'https://moisesdev.vercel.app',
     description: 'Feel free to take a look. 😎',
-    images:
-      'https://i.ibb.co/R9k2mrD/Captura-de-pantalla-2023-11-29-113809.png',
+    images: '/images/englishImg.png',
   },
   twitter: {
     card: 'summary_large_image',
