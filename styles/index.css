@@ -160,6 +160,7 @@ section > h1 {
   align-items: center;
   gap: 1rem;
   padding: 1rem;
+  scroll-margin-top: 64px;
 }
 /* TODO: fix this with custom cursor if needed */
 :is(button, svg, li) > * {
