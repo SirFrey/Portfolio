@@ -15,7 +15,7 @@ const Articles = ({ dict, lang }) => {
           <MotionH2 {...propsHiddenElm}>
             {dict.portfolioSection.titleh2}
           </MotionH2>
-          <ProjectCards lang={lang} />
+          <ProjectCards lang={lang} dict={dict}/>
         </div>
       </section>
       <section>
