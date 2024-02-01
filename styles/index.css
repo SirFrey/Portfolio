@@ -12,20 +12,25 @@ body {
   scroll-margin-top: 100px;
 }
 body {
-  color: #f2f1ef;
+  color: var(--accentColor);
   font-size: 27px;
   text-align: center;
 }
 
 :root {
   --scrollbar-width: 0;
-  --principal: 73, 92, 131;
-  --principalDark: 11, 26, 55;
-  --secondary: 123, 135, 183;
+  --principal: 19, 69, 92;
+  --principalDark: 33, 88, 115;
+  --light: #e3f6ff;
+  --secondary: 81, 138, 166;
+  --accent: 250, 250, 250;
+  --accent-2: 204, 255, 255;
   --principalColor: rgba(var(--principal));
   --principalColorDark: rgba(var(--principalDark));
   --secondaryColor: rgba(var(--secondary));
-  --principalColorAlpha: rgba(var(--principal), 0.667);
+  --accentColor: rgba(var(--accent));
+  --accent-2-Color: rgba(var(--accent-2));
+  --principalColorAlpha: rgba(var(--principal), 0.867);
   --secondaryColorAlpha: rgba(var(--secondary), 0.667);
   --principalColorDarkAlpha: rgba(var(--principalDark), 0.667);
   --sans: 'Inter', sans-serif, -apple-system, ui-sans-serif, system-ui,
@@ -51,7 +56,7 @@ h6 {
 
 h2:not(section:first-child h2, footer h2) {
   text-decoration: double;
-  color: var(--principalColorDark);
+  color: var(--accentColor);
 }
 /* section > h2:not(section:nth-child(3) h2, section:nth-child(4) h2) { */
 /*   padding-block: 1rem; */
@@ -67,9 +72,11 @@ h1 {
 }
 h2 {
   font-size: clamp(1.5rem, 4vw, 2.8rem);
+  font-weight: 600;
 }
-h4 {
+h3 {
   font-size: clamp(1.1rem, 2.4vw, 1.9rem);
+  font-weight: 100;
 }
 ul {
   padding: 0;
@@ -83,7 +90,7 @@ a {
 }
 
 h1 {
-  border: clamp(2px, 0.4vw, 2.9px) solid var(--principalColorAlpha);
+  /* border: clamp(2px, 0.4vw, 2.9px) solid var(--principalColorAlpha); */
   border-radius: 7px;
 }
 /* navbar */
@@ -137,7 +144,6 @@ section:nth-child(1) {
   width: 100%;
   height: 100vh;
   height: 100svh;
-  color: var(--principalColor);
   position: relative;
   padding: clamp(10px, 5vw, 30px);
 }
@@ -163,6 +169,6 @@ section > h1 {
   scroll-margin-top: 64px;
 }
 /* TODO: fix this with custom cursor if needed */
-:is(button, svg) > * {
+:is(button, svg, a) > * {
   pointer-events: none;
 }

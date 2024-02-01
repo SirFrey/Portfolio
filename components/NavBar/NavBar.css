@@ -1,8 +1,8 @@
 .dark {
-  --accents-8: #fafafa;
+  --accents-8: rgba(var(--accent));
   --accents-7: #eaeaea;
   --accents-6: #999;
-  --accents-5: #ddd;
+  --accents-5: rgba(var(--accent), 0.7);
   --accents-4: #666;
   --accents-3: var(--principalColorDark);
   --accents-2: var(--principalColorDark);
@@ -10,7 +10,7 @@
   --black0: #000;
   --black1: #0e0e0f;
   --black2: #0a0a0a;
-  --white1: #fff;
+  --white1: var(--accentColor);
   --white2: #cccbcb;
   --offsetblack1: hsla(0, 0%, 100%, 0.08);
   --offsetblack2: var(--principalColorDark);
@@ -93,7 +93,7 @@
 
 .navbar {
   border: 1px solid var(--accents-2);
-  border-radius: 7px;
+  border-radius: 40px;
   box-shadow: none;
   transform: scale(1);
   z-index: 10;
@@ -163,7 +163,6 @@
 .navbar-link--active,
 .navbar-link:hover {
   color: var(--accents-8);
-  text-shadow: var(--text-shadow);
 }
 
 .navbar-link:focus-visible {
@@ -209,7 +208,7 @@
     var(--accents-2)
   );
   height: 36px;
-  opacity: 0.8;
+  opacity: 1;
   transition:
     var(--transition-left),
     var(--transition-width),
@@ -219,6 +218,7 @@
 
 .navbar-curr--glow {
   background: var(--offsetwhite2);
+  opacity: 0.2;
   bottom: -52px;
   filter: blur(32px);
   height: 50px;

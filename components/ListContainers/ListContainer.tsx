@@ -48,7 +48,7 @@ export function ListContainer({ dict, lang }) {
           )
         })}
       </motion.ul>
-      <motion.h4 {...propsHiddenElm}>{dict.knowledgesSection.tools}</motion.h4>
+      <motion.h3 {...propsHiddenElm}>{dict.knowledgesSection.tools}</motion.h3>
       <motion.ul
         variants={containerVariants}
         initial='hidden'
@@ -72,7 +72,7 @@ export function ListContainer({ dict, lang }) {
           )
         })}
       </motion.ul>
-      <motion.h4 {...propsHiddenElm}>{dict.knowledgesSection.others}</motion.h4>
+      <motion.h3 {...propsHiddenElm}>{dict.knowledgesSection.others}</motion.h3>
       <motion.ul
         variants={containerVariants}
         initial='hidden'

@@ -4,12 +4,11 @@
 
 .filterMainSection {
   display: grid;
-  mix-blend-mode: multiply;
+  mix-blend-mode: difference;
   place-content: center;
-  background-color: #0003;
-  background-clip: text;
-  -webkit-background-clip: text;
   pointer-events: none;
+  color: var(--light);
+  border-radius: 40px;
 }
 
 .lang_list,
@@ -40,6 +39,8 @@
   margin: 0;
   font-size: clamp(1.7rem, 6vw, 2.8rem);
   text-wrap: balance;
+  border: clamp(4px, 1vw, 9px) solid var(--light);
+  border-radius: 50px;
 }
 
 .sectionCareer {

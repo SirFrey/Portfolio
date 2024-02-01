@@ -36,7 +36,7 @@ const Articles = ({ dict, lang }) => {
           className={`marginContainer ${s.knowledgeContainer}`}>
           <MotionDiv {...propsHiddenElm}>
             <h2>{dict.knowledgesSection.titleh2}</h2>
-            <h4>{dict.knowledgesSection.subtitleh3}</h4>
+            <h3>{dict.knowledgesSection.subtitleh3}</h3>
           </MotionDiv>
           <ListContainer dict={dict} lang={lang} />
         </div>
