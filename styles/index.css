@@ -25,6 +25,8 @@ body {
   --secondary: 81, 138, 166;
   --accent: 250, 250, 250;
   --accent-2: 204, 255, 255;
+  --accent-3: rgb(184 232 255);
+  --accent-4: #ccccccdb;
   --principalColor: rgba(var(--principal));
   --principalColorDark: rgba(var(--principalDark));
   --secondaryColor: rgba(var(--secondary));
@@ -56,7 +58,6 @@ h6 {
 
 h2:not(section:first-child h2, footer h2) {
   text-decoration: double;
-  color: var(--accentColor);
 }
 /* section > h2:not(section:nth-child(3) h2, section:nth-child(4) h2) { */
 /*   padding-block: 1rem; */
@@ -72,11 +73,13 @@ h1 {
 }
 h2 {
   font-size: clamp(1.5rem, 4vw, 2.8rem);
-  font-weight: 600;
+  color: var(--accent-3);
+  font-weight: 100;
 }
 h3 {
   font-size: clamp(1.1rem, 2.4vw, 1.9rem);
   font-weight: 100;
+  color: var(--accent-4);
 }
 ul {
   padding: 0;
@@ -132,11 +135,6 @@ section p.p {
 strong {
   color: var(--principalColorDark);
 }
-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 /* Sections */
 section:nth-child(1) {
   display: grid;
@@ -160,12 +158,12 @@ section > h1 {
   padding: 16px 30px;
 }
 .marginContainer {
-  width: auto;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  padding: 1rem;
+  padding: 2rem;
   scroll-margin-top: 64px;
 }
 /* TODO: fix this with custom cursor if needed */

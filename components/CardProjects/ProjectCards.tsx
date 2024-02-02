@@ -11,17 +11,17 @@ export async function ProjectCards({ lang, dict }) {
         const { date, description, image, likes, project, website, alt } = cards
         return (
           <CardItem key={i} i={i} website={website}>
-            <Image width={300} height={300} src={`${image}`} alt={alt} />
+            <div className={style.image_wrapper}>
+              <Image src={image} alt={alt} fill objectFit='cover' />
+            </div>
             <article className={style.card_wrapper}>
-              <div className={style.project_summary}>
-                <h2 className={style.project_title}>{project}</h2>
-                <p
-                  className={style.project_desc}
-                  dangerouslySetInnerHTML={{ __html: description[lang] }}></p>
-                <p className={style.created_date}>
-                  {dict.portfolioSection.date} {date}
-                </p>
-              </div>
+              <h2 className={style.project_title}>{project}</h2>
+              <p
+                className={style.project_desc}
+                dangerouslySetInnerHTML={{ __html: description[lang] }}></p>
+              <p className={style.created_date}>
+                {dict.portfolioSection.date} {date}
+              </p>
             </article>
           </CardItem>
         )

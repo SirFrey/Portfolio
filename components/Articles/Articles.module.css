@@ -101,7 +101,7 @@
 
 .wave3 {
   width: 100%;
-  overflow: hidden;
+  overflow: clip;
   line-height: 0;
 }
 

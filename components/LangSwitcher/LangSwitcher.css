@@ -4,3 +4,24 @@
   right: 15px;
   z-index: 100;
 }
+
+.langSelect__control {
+  border-radius: 30px !important;
+}
+
+.langSelect__menu,
+.langSelect__menu-list {
+  border-radius: 30px !important;
+}
+
+.countryLogoControl,
+.countryLogoOption {
+  width: 35px;
+  height: 20px;
+}
+.countryLogoOption {
+  margin-right: 8px;
+}
+.countryLogoControl {
+  margin-left: 8px;
+}

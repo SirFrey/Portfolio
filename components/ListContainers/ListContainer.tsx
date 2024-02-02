@@ -5,6 +5,7 @@ import { containerVariants, propsHiddenElm } from '@assets/utils/props'
 import { ListItemComp } from '@components/Articles/ListItemComp'
 import {
   knowledgeData,
+  maxListLength,
   otherData,
   toolsData,
 } from '@components/Articles/dataArticles'
@@ -13,10 +14,16 @@ import { useEffect, useState } from 'react'
 export function ListContainer({ dict, lang }) {
   const [isPausedList, setPauseList] = useState(false)
   const [counterList, setCounterList] = useState(0)
+  const lastIndex = maxListLength
+  console.log(counterList)
+
   useEffect(() => {
     // Interval list of list "Conocimientos"
     const intervalList = setInterval(() => {
-      setCounterList(prevCount => prevCount + 1)
+      setCounterList(count => {
+        if (count === lastIndex) return 0
+        return count + 1
+      })
     }, 1000)
     if (isPausedList) {
       clearInterval(intervalList)

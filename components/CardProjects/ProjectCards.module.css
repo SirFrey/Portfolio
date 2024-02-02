@@ -1,53 +1,39 @@
 a.anchorCard {
-  width: clamp(min(calc(100vw - 10px), 330px), 10vw, 330px);
+  /* width: clamp(min(calc(100vw - 10px), 330px), 10vw, 350px); */
   text-decoration: none;
   color: #000;
   display: grid;
   grid-template-rows: 300px 1fr;
   border: 1px solid #dedcdc;
-  border-radius: 7px;
-  overflow: hidden;
+  border-radius: 20px;
+  overflow: clip;
 }
 
 .wrapper {
   max-width: 1500px;
-  margin: 20px auto;
-  height: auto;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 20px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: 2rem;
 }
 
 .card_wrapper {
-  position: relative;
+  height: 175px;
   background: #e4f2f9;
+  display: grid;
+  align-items: center;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.image_wrapper {
+  position: relative;
+}
+.project_summary {
+  padding-block: 15px;
+  background: #dedcdc;
   display: flex;
   flex-direction: column;
-  background-color: #000;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-a.anchorCard:nth-child(2) .card_wrapper {
-  background-color: #4f4;
-}
-
-a:nth-of-type(3) .card_wrapper {
-  background-color: #404;
-}
-
-a:nth-of-type(4) .card_wrapper {
-  background-color: #40f;
-}
-
-.project_summary {
-  padding-block-start: 15px;
-  background: #dedcdc;
-  flex: 1;
-  display: grid;
+  gap: 1.5rem;
   padding-inline: 1rem;
   border-bottom-left-radius: inherit;
   border-bottom-right-radius: inherit;
@@ -56,21 +42,20 @@ a:nth-of-type(4) .card_wrapper {
 .project_title {
   padding-block: 0;
   margin-bottom: 0;
-  color: #fff;
+  color: var(--principalColor);
   font-size: clamp(1.4rem, 3vw, 2rem);
 }
 
 .created_date {
-  margin: 10px 0;
+  margin: 0;
   font-size: 1rem;
-  font-weight: 900;
   color: #8a8ea0;
   justify-self: end;
+  margin-inline: 20px;
 }
 
 .project_desc {
   margin: 0;
-  overflow: hidden;
   font-size: 1.3rem;
 }
 .project_desc strong {

@@ -20,6 +20,7 @@ const SceneSection = () => {
       }}
       style={{
         position: 'absolute',
+        opacity: '.6',
       }}>
       {/* <Light /> */}
       <ShaderPlane />
