@@ -4,7 +4,6 @@ import { hrefNames } from '@assets/utils/props'
 import { links } from '@components/Header/dataHeader'
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import './NavBar.css'
-import { useRouter } from 'next/navigation'
 interface NavBarButtonProps {
   btnClass: string
   btnName: string
@@ -66,7 +65,6 @@ export default function SlideBar({ lang }) {
   const [activeLink, setActiveLink] = useState('Inicio')
   const [theme] = useState('dark')
   const navbarRef = useRef(null)
-  const router = useRouter()
   const activeId = useScrollSpy(hrefNames(lang), {
     threshold: 0.5,
   })
@@ -99,7 +97,7 @@ export default function SlideBar({ lang }) {
       <aside className='lightbulb'></aside>
       <header className='header'>
         <div
-          className='navbar nav-x-init'
+          className='navbar'
           ref={navbarRef}
           style={{ '--x': setNavX(navbarRef.current) } as React.CSSProperties}>
           <div className='navbar-curr--stroke' aria-hidden='true'></div>

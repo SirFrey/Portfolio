@@ -1,25 +1,48 @@
 'use client'
 
-import Image from 'next/image'
-import Link from 'next/link'
 import './LangSwitcher.css'
-import enFlag from './spain-flag-icon.svg'
-import esFlag from './united-kingdom-flag-icon.svg'
-import { ChangeEvent, EventHandler, useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import dynamic from 'next/dynamic'
+import { components } from 'react-select'
+import enFlag from './english.svg'
+import esFlag from './spain.svg'
 const Select = dynamic(() => import('react-select'), { ssr: false })
+const Control = ({ children, getValue, ...props }) => {
+  console.log(props)
+
+  return (
+    <>
+      {/* @ts-ignore */}
+      <components.Control {...props}>
+        <img src={getValue()[0].icon.src} className='countryLogoControl' />{' '}
+        {children}
+      </components.Control>
+    </>
+  )
+}
+const Option = ({ children, data, ...props }) => {
+  return (
+    <>
+      {/* @ts-ignore */}
+      <components.Option {...props}>
+        <img src={data.icon.src} className='countryLogoOption' />
+        {children}
+      </components.Option>
+    </>
+  )
+}
 function LangSwitcher({ lang }) {
   const langList = [
     {
       value: 'en',
       icon: enFlag,
-      label: 'En',
+      label: 'en',
     },
     {
       value: 'es',
       icon: esFlag,
-      label: 'Es',
+      label: 'es',
     },
   ]
   const router = useRouter()
@@ -30,9 +53,7 @@ function LangSwitcher({ lang }) {
   const handleChange = e => {
     setCurrentLang(e)
     router.push('/' + e.value)
-    console.log(e)
   }
-  console.log(labelLang)
   return (
     <div className='langSwitcher'>
       <Select
@@ -40,6 +61,7 @@ function LangSwitcher({ lang }) {
         value={currentlang}
         options={langList}
         onChange={handleChange}
+        components={{ Control, Option }}
         menuPlacement='top'
         isSearchable={false}
         styles={{

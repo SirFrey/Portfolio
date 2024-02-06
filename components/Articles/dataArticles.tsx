@@ -10,6 +10,8 @@ import Terminal from '@assets/icons/Terminal'
 import UsaLogo from '@assets/icons/UsaLogo'
 import Typescript from '@assets/icons/Ts'
 import FramerMotion from '@assets/icons/FramerMotion'
+import Native from '@assets/icons/Native'
+import Electron from '@assets/icons/Electron'
 type IconType = {
   Icon: JSX.Element
   span: string
@@ -80,11 +82,8 @@ export const otherData = {
     },
   ],
 }
-export const maxListLength = [
-  ...knowledgeData,
-  ...toolsData,
-  ...otherData['en'],
-].length
+export const maxListLength =
+  [...knowledgeData, ...toolsData, ...otherData['en']].length - 1
 
 export const developingData = {
   es: [
@@ -103,6 +102,11 @@ export const developingData = {
       span: 'Ingles (B1-B2)',
       color: '#f73e54',
     },
+    {
+      Icon: <Native />,
+      span: 'React Native',
+      color: '#61dbfb',
+    },
   ],
   en: [
     {
@@ -120,6 +124,11 @@ export const developingData = {
       span: 'English (B1-B2)',
       color: '#f73e54',
     },
+    {
+      Icon: <Native />,
+      span: 'React Native',
+      color: '#61dbfb',
+    },
   ],
 }
-export const maxListLengthDev = developingData['en'].length
+export const maxListLengthDev = developingData['en'].length - 1

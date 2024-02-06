@@ -7,30 +7,28 @@ import { useRef, useState } from 'react'
 import './Cursor.css'
 import { MotionDiv } from '@components/FramerComps'
 function Cursor() {
-  const hoverables: Array<string> = ['BUTTON', 'A', 'LI']
+  const hoverables: Array<string> = ['BUTTON', 'A']
   const ref = useRef<HTMLDivElement>(null)
   const { x, y } = useFollowPointer(ref)
   const [toogle, setToggle] = useState(false)
   const [hidden, setHidden] = useState(true)
   const variants: Variants = {
     hover: {
-      scale: 3.5,
+      scale: 3,
+      borderWidth: '2px',
     },
     posBig: () => ({
       x: x,
       y: y,
       transition: {
-        type: 'spring',
-        stiffness: 500,
-        damping: 38,
+        duration: 0.2,
       },
     }),
     posSmall: () => ({
       x: x + 11,
       y: y,
       transition: {
-        type: 'tween',
-        duration: 0.1,
+        duration: 0.02,
       },
     }),
     hidden: {
@@ -63,11 +61,7 @@ function Cursor() {
           animate={['posBig', toogle ? 'hover' : '', !hidden ? 'visible' : '']}
           variants={variants}
           className='cursor__ball cursor__ball--big'
-          ref={ref}>
-          <svg height='30' width='30'>
-            <circle cx='15' cy='15' r='12' strokeWidth='0'></circle>
-          </svg>
-        </MotionDiv>
+          ref={ref}></MotionDiv>
 
         <MotionDiv
           initial='hidden'
