@@ -15,7 +15,6 @@ export function ListContainer({ dict, lang }) {
   const [isPausedList, setPauseList] = useState(false)
   const [counterList, setCounterList] = useState(0)
   const lastIndex = maxListLength
-  console.log(counterList)
 
   useEffect(() => {
     // Interval list of list "Conocimientos"
