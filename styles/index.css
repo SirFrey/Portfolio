@@ -146,8 +146,6 @@ section:nth-child(1) {
   width: 100%;
   height: 100vh;
   height: 100svh;
-  position: relative;
-  padding: clamp(10px, 5vw, 30px);
 }
 
 section:nth-child(even):not(:first-child) {

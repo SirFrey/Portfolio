@@ -9,8 +9,6 @@ import enFlag from './english.svg'
 import esFlag from './spain.svg'
 const Select = dynamic(() => import('react-select'), { ssr: false })
 const Control = ({ children, getValue, ...props }) => {
-  console.log(props)
-
   return (
     <>
       {/* @ts-ignore */}
