@@ -102,6 +102,11 @@ export const developingData = {
       span: 'Ingles (B1-B2)',
       color: '#f73e54',
     },
+    {
+      Icon: <Native />,
+      span: 'React Native',
+      color: '#61dbfb',
+    },
   ],
   en: [
     {
@@ -123,11 +128,6 @@ export const developingData = {
       Icon: <Native />,
       span: 'React Native',
       color: '#61dbfb',
-    },
-    {
-      Icon: <Electron />,
-      span: 'Electron',
-      color: '#a0ebf9',
     },
   ],
 }

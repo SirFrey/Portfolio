@@ -6,7 +6,7 @@ import { ListContainer, ListContainerDev } from '@components/ListContainers'
 import { MainSection } from './MainSection'
 import s from './Articles.module.css'
 import LangSwitcher from '@components/LangSwitcher/LangSwitcher'
-const Articles = ({ dict, lang }) => {
+function Articles({ dict, lang }) {
   return (
     <article className={s.articlePage}>
       <MainSection dict={dict} />
@@ -15,10 +15,8 @@ const Articles = ({ dict, lang }) => {
           <MotionH2 {...propsHiddenElm}>
             {dict.portfolioSection.titleh2}
           </MotionH2>
-          <ProjectCards lang={lang} dict={dict}/>
+          <ProjectCards lang={lang} dict={dict} />
         </div>
-      </section>
-      <section>
         <div className={s.wave3}>
           <svg
             data-name='Layer 1'
@@ -31,15 +29,22 @@ const Articles = ({ dict, lang }) => {
             />
           </svg>
         </div>
+      </section>
+      <section>
         <div
           id='conocimientos'
           className={`marginContainer ${s.knowledgeContainer}`}>
+          {' '}
           <MotionDiv {...propsHiddenElm}>
-            <h2>{dict.knowledgesSection.titleh2}</h2>
-            <h3>{dict.knowledgesSection.subtitleh3}</h3>
+            {' '}
+            <h2>{dict.knowledgesSection.titleh2}</h2>{' '}
+            <h3>{dict.knowledgesSection.subtitleh3}</h3>{' '}
           </MotionDiv>
           <ListContainer dict={dict} lang={lang} />
         </div>
+      </section>
+
+      <section>
         <div className={s.wave}>
           <svg
             data-name='Layer 1'
@@ -52,9 +57,6 @@ const Articles = ({ dict, lang }) => {
             />
           </svg>
         </div>
-      </section>
-
-      <section>
         <div id='aboutme' className='marginContainer'>
           <h2>{dict.aboutmeSection.titleh2}</h2>
           <div className={s.paragraphWrapper}>

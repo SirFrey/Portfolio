@@ -4,11 +4,12 @@
 
 .filterMainSection {
   display: grid;
-  mix-blend-mode: difference;
   place-content: center;
   pointer-events: none;
   color: var(--light);
   border-radius: 40px;
+  position: relative;
+  z-index: var(--index2);
 }
 
 .lang_list,
@@ -22,18 +23,6 @@
   gap: clamp(1px, 3vw, 29px);
 }
 
-.bgFixed {
-  width: 100%;
-  height: 100vh;
-  height: 100svh;
-  position: fixed;
-  z-index: -1;
-  background-color: var(--principalColor);
-  mix-blend-mode: screen;
-  object-fit: cover;
-  inset: 0;
-}
-
 .titleH1 {
   padding: 1.2rem 2rem;
   margin: 0;
@@ -41,11 +30,17 @@
   text-wrap: balance;
   border: clamp(4px, 1vw, 9px) solid var(--light);
   border-radius: 50px;
+  background: rgba(var(--principal), 0.4);
+  backdrop-filter: blur(25px);
 }
 
 .sectionCareer {
   margin: 0;
   font-size: clamp(1.5rem, 5.3vw, 2.2rem);
+  background: rgba(var(--principal), 0.4);
+  backdrop-filter: blur(25px);
+  border-radius: 30px;
+  padding-inline: 0.8rem;
 }
 
 :is(.lang_list, .tool_list, .other_list, .developing_list) li {
@@ -69,9 +64,13 @@
 .wave4,
 .wave5 {
   width: 100%;
-  overflow: hidden;
+  overflow: clip;
   line-height: 0;
-  transform: rotate(180deg);
+}
+.wave2,
+.wave4,
+.wave5 {
+  rotate: 180deg;
 }
 
 .wave svg {
@@ -82,9 +81,8 @@
 }
 
 .wave,
-.wave3,
-.wave4 :is(.shapeFill) {
-  fill: var(--secondaryColor);
+.wave3 :is(.shapeFill) {
+  fill: var(--principalColor);
 }
 
 .wave2 svg {
@@ -103,6 +101,7 @@
   width: 100%;
   overflow: clip;
   line-height: 0;
+  rotate: 180deg;
 }
 
 .wave3 svg {
@@ -115,14 +114,11 @@
 .wave4 {
   position: absolute;
   bottom: 0;
+  height: 200px;
+  z-index: var(--index2);
 }
-
 .wave4 svg {
-  position: relative;
-  display: block;
-  width: calc(111% + 1.3px);
-  height: 120px;
-  transform: rotateY(180deg);
+  fill: var(--secondaryColor);
 }
 
 .wave5 {

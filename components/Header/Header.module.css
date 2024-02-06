@@ -18,9 +18,9 @@
   position: fixed;
   top: 0;
   left: 0;
-  background: var(--secondaryColorAlpha);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(7px);
+  background-color: rgba(var(--secondary), 0.3);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
   z-index: 30;
 }
 .principal_nav a {
@@ -31,14 +31,14 @@
   display: grid;
   grid-template-columns: 1fr min-content;
   align-items: center;
-  background: var(--principalColorAlpha);
   padding-inline: 1rem;
-  overflow: hidden;
+  overflow: clip;
   position: fixed;
   z-index: 20;
   box-shadow: 0 0 50px 0 var(--principalColorAlpha);
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(10px);
+  background-color: rgba(var(--principal), 0.4);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
 }
 
 .principal_icon {
