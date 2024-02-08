@@ -36,6 +36,7 @@ const spanishMetadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
+    images: '/spanishImg.png',
   },
   other: {
     'google-site-verification': 'GxY_RzqX7Z-W9_U_2_9jW6Q-VjvC-jWn-E_0Q_X_Ws',
@@ -58,6 +59,7 @@ const englishMetadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
+    images: '/spanishImg.png',
   },
 }
 export async function generateMetadata({
