@@ -31,12 +31,11 @@ const spanishMetadata: Metadata = {
     type: 'website',
     siteName: 'Moises | Portfolio',
     url: 'https://moisesdev.vercel.app',
+    images: spanishImg.src,
     description: 'Sientete libre de echarle un vistazo. 😎',
-    images: '/spanishImg.png',
   },
   twitter: {
     card: 'summary_large_image',
-    images: '/spanishImg.png',
   },
   other: {
     'google-site-verification': 'GxY_RzqX7Z-W9_U_2_9jW6Q-VjvC-jWn-E_0Q_X_Ws',
@@ -55,11 +54,10 @@ const englishMetadata: Metadata = {
     siteName: 'Moises | Portfolio',
     url: 'https://moisesdev.vercel.app',
     description: 'Feel free to take a look. 😎',
-    images: '/englishImg.png',
+    images: englishImg.src,
   },
   twitter: {
     card: 'summary_large_image',
-    images: '/spanishImg.png',
   },
 }
 export async function generateMetadata({
