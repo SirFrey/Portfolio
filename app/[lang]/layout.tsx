@@ -32,7 +32,7 @@ const spanishMetadata: Metadata = {
     siteName: 'Moises | Portfolio',
     url: 'https://moisesdev.vercel.app',
     description: 'Sientete libre de echarle un vistazo. 😎',
-    images: [{ url: englishImg.src }],
+    images: '/spanishImg.png',
   },
   twitter: {
     card: 'summary_large_image',
@@ -54,11 +54,7 @@ const englishMetadata: Metadata = {
     siteName: 'Moises | Portfolio',
     url: 'https://moisesdev.vercel.app',
     description: 'Feel free to take a look. 😎',
-    images: [
-      {
-        url: spanishImg.src,
-      },
-    ],
+    images: '/englishImg.png',
   },
   twitter: {
     card: 'summary_large_image',
