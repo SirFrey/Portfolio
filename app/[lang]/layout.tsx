@@ -4,8 +4,8 @@ import '@styles/index.css'
 import '@styles/normalize.css'
 import { Metadata, Viewport } from 'next'
 import { Montserrat } from 'next/font/google'
-import englishImg from '@public/englishImg.png'
-import spanishImg from '@public/spanishImg.png'
+import englishImg from '@public/images/englishImg.png'
+import spanishImg from '@public/images/spanishImg.png'
 config.autoAddCss = false
 const League = Montserrat({
   weight: ['400'],
