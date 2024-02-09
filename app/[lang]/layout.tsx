@@ -4,8 +4,6 @@ import '@styles/index.css'
 import '@styles/normalize.css'
 import { Metadata, Viewport } from 'next'
 import { Montserrat } from 'next/font/google'
-import englishImg from '@public/images/englishImg.png'
-import spanishImg from '@public/images/spanishImg.png'
 config.autoAddCss = false
 const League = Montserrat({
   weight: ['400'],
@@ -31,7 +29,7 @@ const spanishMetadata: Metadata = {
     type: 'website',
     siteName: 'Moises | Portfolio',
     url: 'https://moisesdev.vercel.app',
-    images: spanishImg.src,
+    images: 'https://moisesdev.vercel.app/images/spanishImg.png',
     description: 'Sientete libre de echarle un vistazo. 😎',
   },
   twitter: {
@@ -54,7 +52,7 @@ const englishMetadata: Metadata = {
     siteName: 'Moises | Portfolio',
     url: 'https://moisesdev.vercel.app',
     description: 'Feel free to take a look. 😎',
-    images: englishImg.src,
+    images: 'https://moisesdev.vercel.app/images/englishImg.png',
   },
   twitter: {
     card: 'summary_large_image',
