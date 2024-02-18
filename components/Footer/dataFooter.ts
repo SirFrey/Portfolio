@@ -19,7 +19,7 @@ export const links: link[] = [
     title: 'LinkedIn',
   },
   {
-    href: 'https://discord.com/users/779708045764329503',
+    href: 'https://discord.com/users/260433172460732416',
     iconFontAwesome: faDiscord,
     title: 'Discord',
   },
