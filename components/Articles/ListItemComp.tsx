@@ -2,16 +2,16 @@ import { itemVariants } from '@assets/utils/props'
 import TextIcon from '@components/TextIcon/TextIcon'
 import { HTMLMotionProps, motion } from 'framer-motion'
 import { Dispatch, SetStateAction } from 'react'
-interface ListItemType extends HTMLMotionProps<'li'> {
+interface ListItemType<T> extends HTMLMotionProps<'li'> {
   Icon: JSX.Element
   span: string
-  index: number
-  counter: number
+  index: T
+  counter: T
   color: string
-  setCounter: Dispatch<SetStateAction<number>>
+  setCounter: Dispatch<SetStateAction<T | number>>
   setPause: Dispatch<SetStateAction<boolean>>
 }
-export const ListItemComp = ({
+export function ListItemComp<T extends number>({
   Icon,
   span,
   color,
@@ -20,18 +20,13 @@ export const ListItemComp = ({
   counter,
   index,
   ...props
-}: ListItemType) => {
+}: ListItemType<T>){
   const isSelected = index === counter
   return (
     <motion.li
       whileHover={{
         boxShadow: '6px -5px 14px 2px rgba(0, 0, 0, 0.3)',
         scale: 1.1,
-        transition: {
-          type: 'spring',
-          stiffness: 400,
-          damping: 10,
-        },
         zIndex: 2,
       }}
       onHoverStart={() => {
@@ -40,7 +35,7 @@ export const ListItemComp = ({
       }}
       onHoverEnd={() => {
         setPause(false)
-        setCounter(index + 1)
+        setCounter((prev) => prev + 1)
       }}
       variants={itemVariants}
       animate={{

@@ -7,7 +7,7 @@
   place-content: center;
   pointer-events: none;
   color: var(--light);
-  border-radius: 40px;
+  border-radius: 10vw;
   position: relative;
   z-index: var(--index2);
 }
@@ -24,28 +24,30 @@
 }
 
 .titleH1 {
-  padding: 1.2rem 2rem;
+  padding-inline: clamp(1.2rem, 3.5vw, 4rem);
+  padding-block: clamp(1.2rem, 2.5vw, 1.6rem);
   margin: 0;
-  font-size: clamp(1.7rem, 6vw, 2.8rem);
+  font-size: clamp(1.7rem, 3.5vw, 4.8rem);
   text-wrap: balance;
   border: clamp(4px, 1vw, 9px) solid var(--light);
-  border-radius: 50px;
+  border-radius: 10vw;
   background: rgba(var(--principal), 0.4);
   backdrop-filter: blur(25px);
 }
 
 .sectionCareer {
   margin: 0;
-  font-size: clamp(1.5rem, 5.3vw, 2.2rem);
+  font-size: clamp(1.5rem, 3.0vw, 3.2rem);
   background: rgba(var(--principal), 0.4);
   backdrop-filter: blur(25px);
-  border-radius: 30px;
+  border-radius: 10vw;
   padding-inline: 0.8rem;
 }
 
 :is(.lang_list, .tool_list, .other_list, .developing_list) li {
   display: grid;
   position: relative;
+  overflow: clip;
   z-index: 5;
 }
 
@@ -114,11 +116,13 @@
 .wave4 {
   position: absolute;
   bottom: 0;
-  height: 200px;
+  width: 100%;
   z-index: var(--index2);
 }
 .wave4 svg {
   fill: var(--secondaryColor);
+  height: clamp(68px, 10vw, 100px);
+  width: 100%;
 }
 
 .wave5 {
@@ -161,7 +165,7 @@
 :is(.developingContainer, .knowledgeContainer) li {
   background-color: #0003;
   border: clamp(0.3px, 1vw, 6px) solid var(--secondaryColor);
-  border-radius: 7px;
+  border-radius: 9999px;
   padding: clamp(10px, 2.3vw, 16px);
 }
 .knowledgeContainer {

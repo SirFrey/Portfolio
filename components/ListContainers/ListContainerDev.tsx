@@ -18,7 +18,7 @@ export function ListContainerDev({ lang }) {
     // Interval list of list "Desarrollando..."
     const intervalListDev = setInterval(() => {
       setCounterListDev(count => {
-        if (count === lastIndex) return 0
+        if (count >= lastIndex) return 0
         return count + 1
       })
     }, 1500)
@@ -27,7 +27,7 @@ export function ListContainerDev({ lang }) {
       clearInterval(intervalListDev)
     }
     return () => clearInterval(intervalListDev)
-  }, [counterListDev, isPausedListDev])
+  }, [isPausedListDev])
 
   return (
     <motion.ul

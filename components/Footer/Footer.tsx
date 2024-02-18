@@ -36,7 +36,7 @@ const Footer = ({ dict }) => {
                 },
               }}
               variants={footerVariants}>
-              <a href={href} title={title}>
+              <a href={href} title={title} target='_blank'>
                 <FontAwesomeIcon icon={iconFontAwesome} />
               </a>
             </MotionLi>

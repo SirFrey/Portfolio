@@ -12,6 +12,7 @@ import Typescript from '@assets/icons/Ts'
 import FramerMotion from '@assets/icons/FramerMotion'
 import Native from '@assets/icons/Native'
 import Electron from '@assets/icons/Electron'
+import Three from '@assets/icons/Three'
 type IconType = {
   Icon: JSX.Element
   span: string
@@ -62,7 +63,7 @@ export const toolsData: IconType[] = [
   },
   {
     Icon: <Terminal />,
-    span: 'Terminal',
+    span: 'CLI',
     color: '#e6e6e6',
   },
 ]
@@ -107,6 +108,16 @@ export const developingData = {
       span: 'React Native',
       color: '#61dbfb',
     },
+    {
+      Icon: <Electron />,
+      span: 'Electron',
+      color: '#a0ebf9',
+    },
+    {
+      Icon: <Three />,
+      span: 'Three.js',
+      color: '#afafaf',
+    },
   ],
   en: [
     {
@@ -128,6 +139,16 @@ export const developingData = {
       Icon: <Native />,
       span: 'React Native',
       color: '#61dbfb',
+    },
+    {
+      Icon: <Electron />,
+      span: 'Electron',
+      color: '#a0ebf9',
+    },
+    {
+      Icon: <Three />,
+      span: 'Three.js',
+      color: '#afafaf',
     },
   ],
 }

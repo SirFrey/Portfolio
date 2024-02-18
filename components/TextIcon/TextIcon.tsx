@@ -17,7 +17,7 @@ function TextIcon({ text, className, IsVisible }: Props) {
       },
     },
     hidden: {
-      opacity: 0.05,
+      opacity: 0,
       transition: {
         ease: 'linear',
       },

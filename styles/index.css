@@ -142,6 +142,7 @@ section:nth-child(1) {
 
 section:nth-child(even):not(:first-child) {
   background: var(--secondaryColor);
+  position: relative;
 }
 section:nth-child(odd):not(:first-child) {
   background: var(--principalColor);

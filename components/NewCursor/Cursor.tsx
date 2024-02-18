@@ -25,7 +25,7 @@ function Cursor() {
       },
     }),
     posSmall: () => ({
-      x: x + 11,
+      x: x,
       y: y,
       transition: {
         duration: 0.02,
@@ -62,16 +62,11 @@ function Cursor() {
           variants={variants}
           className='cursor__ball cursor__ball--big'
           ref={ref}></MotionDiv>
-
         <MotionDiv
           initial='hidden'
           animate={['posSmall', !hidden ? 'visible' : '']}
           variants={variants}
-          className='cursor__ball cursor__ball--small'>
-          <svg height='10' width='10'>
-            <circle cx='5' cy='5' r='4' strokeWidth='0'></circle>
-          </svg>
-        </MotionDiv>
+          className='cursor__ball cursor__ball--small'></MotionDiv>
       </div>
     </>
   )

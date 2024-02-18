@@ -1,18 +1,29 @@
 .cursor {
   pointer-events: none;
+  position: fixed;
+  z-index: 1000;
+  width: 30px;
+  height: 30px;
 }
 .cursor__ball {
-  position: fixed;
-  top: 0;
-  left: 0;
+  position: absolute;
+  /* top: 0; */
+  /* left: 0; */
   mix-blend-mode: difference;
-  z-index: 1000;
 }
 .cursor__ball--big {
   border: 3px solid #fff;
   border-radius: 50%;
   width: 30px;
   height: 30px;
+}
+.cursor__ball--small {
+  width: 0;
+  height: 0;
+  border: 4px solid #fff;
+  border-radius: 50%;
+  inset: 0 ;
+  margin: auto;
 }
 .cursor__ball circle {
   fill: #f7f8fa;

@@ -4,8 +4,8 @@ a.anchorCard {
   color: #000;
   display: grid;
   grid-template-rows: 300px 1fr;
-  border: 1px solid #dedcdc;
-  border-radius: 20px;
+  border: 7px solid #dedcdc;
+  border-radius: 50px;
   overflow: clip;
 }
 
@@ -19,10 +19,11 @@ a.anchorCard {
 
 .card_wrapper {
   height: 175px;
-  background: #e4f2f9;
+  background: #fff4;
+  backdrop-filter: blur(10px);
   display: grid;
   align-items: center;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr ;
 }
 
 .image_wrapper {
@@ -30,7 +31,6 @@ a.anchorCard {
 }
 .project_summary {
   padding-block: 15px;
-  background: #dedcdc;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -56,7 +56,8 @@ a.anchorCard {
 
 .project_desc {
   margin: 0;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
+  text-wrap: balance;
 }
 .project_desc strong {
   color: #40f;

@@ -34,9 +34,7 @@ function Articles({ dict, lang }) {
         <div
           id='conocimientos'
           className={`marginContainer ${s.knowledgeContainer}`}>
-          {' '}
           <MotionDiv {...propsHiddenElm}>
-            {' '}
             <h2>{dict.knowledgesSection.titleh2}</h2>{' '}
             <h3>{dict.knowledgesSection.subtitleh3}</h3>{' '}
           </MotionDiv>

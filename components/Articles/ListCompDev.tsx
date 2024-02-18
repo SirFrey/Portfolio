@@ -23,14 +23,6 @@ export const ListCompDev = ({
   ...props
 }: ListItemType) => {
   const isSelected = index === counter
-  const variants: Variants = {
-    blur: {
-      filter: 'blur(2px)',
-    },
-    unBlur: {
-      filter: 'blur(0)',
-    },
-  }
   return (
     <motion.li
       {...props}
@@ -40,16 +32,11 @@ export const ListCompDev = ({
       }}
       onHoverEnd={() => {
         setPause(false)
-        setCounter(index + 1)
+        setCounter(prev => prev + 1)
       }}
       whileHover={{
         boxShadow: '6px -5px 14px 2px rgba(0, 0, 0, 0.3)',
         scale: 1.1,
-        transition: {
-          type: 'spring',
-          stiffness: 400,
-          damping: 10,
-        },
       }}
       variants={itemVariants}
       animate={{
@@ -61,7 +48,6 @@ export const ListCompDev = ({
         animate={{
           filter: `blur(${!isSelected ? 2 : 0}px)`,
         }}
-        variants={variants}
         style={{
           display: 'flex',
         }}>

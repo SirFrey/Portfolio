@@ -1,4 +1,4 @@
-interface Card {
+type Card = {
   project: string
   stack: Array<string>
   date: string

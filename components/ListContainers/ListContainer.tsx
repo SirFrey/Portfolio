@@ -1,6 +1,5 @@
 'use client'
 import s from '@components/Articles/Articles.module.css'
-
 import { containerVariants, propsHiddenElm } from '@assets/utils/props'
 import { ListItemComp } from '@components/Articles/ListItemComp'
 import {
@@ -20,7 +19,7 @@ export function ListContainer({ dict, lang }) {
     // Interval list of list "Conocimientos"
     const intervalList = setInterval(() => {
       setCounterList(count => {
-        if (count === lastIndex) return 0
+        if (count >= lastIndex) return 0
         return count + 1
       })
     }, 1000)
@@ -28,7 +27,7 @@ export function ListContainer({ dict, lang }) {
       clearInterval(intervalList)
     }
     return () => clearInterval(intervalList)
-  }, [counterList, isPausedList])
+  }, [isPausedList])
   return (
     <>
       <motion.ul

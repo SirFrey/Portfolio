@@ -3,6 +3,7 @@
   width: 100%;
   overflow: hidden;
   height: fit-content;
+  padding-inline: 2rem;
 }
 .ul_footer li {
   display: flex;
