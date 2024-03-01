@@ -6,19 +6,27 @@
 }
 
 .langSelect__control {
-  border-radius: 10vw !important;
-  backdrop-filter: blur(10px);
-}
-
-.langSelect__menu,
-.langSelect__menu-list {
-  border-radius: 10vw !important;
+  border-radius: 30px !important;
   backdrop-filter: blur(6px);
+  font-size: 1rem;
 }
 
+.langSelect__indicator {
+  padding: 5px !important;
+}
+
+.langSelect__menu-list {
+  backdrop-filter: blur(6px);
+  font-size: 1rem;
+  border: 1px solid #fff;
+  border-radius: 20px;
+}
+.langSelect__menu {
+  border-radius: 30px !important;
+}
 .countryLogoControl,
 .countryLogoOption {
-  width: 35px;
+  width: 20px;
   height: 20px;
 }
 .countryLogoOption {

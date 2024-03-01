@@ -13,7 +13,7 @@ const Control = ({ children, getValue, ...props }) => {
     <>
       {/* @ts-ignore */}
       <components.Control {...props}>
-        <img src={getValue()[0].icon.src} className='countryLogoControl' />{' '}
+        <img src={getValue()[0].icon.src} className='countryLogoControl' alt='language image'/>
         {children}
       </components.Control>
     </>
@@ -24,7 +24,7 @@ const Option = ({ children, data, ...props }) => {
     <>
       {/* @ts-ignore */}
       <components.Option {...props}>
-        <img src={data.icon.src} className='countryLogoOption' />
+        <img src={data.icon.src} className='countryLogoOption' alt='language image'/>
         {children}
       </components.Option>
     </>
@@ -72,9 +72,9 @@ function LangSwitcher({ lang }) {
           ...theme,
           colors: {
             ...theme.colors,
-            primary: 'var(--primaryColor)',
+            primary: 'rgba(--var(primary), 0.4)',
             primary25: '#fff3',
-            neutral0: 'var(--secondaryColorAlpha)',
+            neutral0: 'rgba(--var(secondary), 0.4)',
             neutral5: '#fff',
             neutral90: '#fff',
           },

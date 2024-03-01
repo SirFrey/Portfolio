@@ -49,9 +49,12 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx",
-    "next.config.js"
-, "components/Canvas/index.js"  ],
+    "next.config.js" ],
   "exclude": [
     "node_modules"
-  ]
+  ],
+  "mdx": {
+    // Enable strict type checking in MDX files.
+    "checkMdx": true
+  }
 }

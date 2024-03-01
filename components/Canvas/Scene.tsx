@@ -3,6 +3,7 @@ import { extend, useFrame, useThree } from "@react-three/fiber"
 import { easing } from "maath"
 import { useRef } from "react"
 import { Vector2 } from "three"
+import { glsl } from "./syntax"
 
 export function Scene() {
   const ref = useRef<any>(null!)
@@ -10,7 +11,7 @@ export function Scene() {
   useFrame((state, delta) => {
     ref.current.time += delta
     // @ts-ignore
-    easing.damp3(ref.current.pointer, state.pointer, 0.2, delta)
+    easing.damp2(ref.current.pointer, state.pointer, 0.2, delta)
   })
   return (
     <mesh scale={[viewport.width, viewport.height, 1]}>
@@ -30,7 +31,7 @@ const WaveMaterial = shaderMaterial(
     resolution: new Vector2(),
     pointer: new Vector2(),
   },
-  `
+  glsl`
       varying vec2 vUv;
       void main() {
         vec4 modelPosition = modelMatrix * vec4(position, 1.0);
@@ -39,18 +40,18 @@ const WaveMaterial = shaderMaterial(
         gl_Position = projectionPosition;
         vUv = uv;
       }`,
-  /*glsl*/ `
+   glsl`
       uniform float time;
       uniform vec2 resolution;
       uniform vec2 pointer;
       varying vec2 vUv;      
 
       vec3 palette(float t) {
-        vec3 a = vec3(0.5, 0.5, 0.5);
+        vec3 a = vec3(0.3176470588, 0.5411764706, 0.6509803922);
         vec3 b = vec3(0.5, 0.5, 0.5);
         vec3 c = vec3(1.0, 1.0, 1.0);
         vec3 d = vec3(0.263, 0.416, 0.557);
-        return a + b * cos(6.28318 * (c * t + d));
+        return a + b * cos(5.28318 * (c * t + d));
       }
 
       void main() {
@@ -58,14 +59,14 @@ const WaveMaterial = shaderMaterial(
         vec2 uv0 = uv;
         vec3 finalColor = vec3(0.0);
         
-        uv = sin(uv * 0.5) - pointer;     
+        uv = sin(uv * 1.1) - pointer;     
         float d = length(uv) * exp(-length(uv0));
-        vec3 col = palette(length(uv0) + time * 0.4);
-        d = sin(d * 8.0 + time) / 8.0;
+        vec3 col = palette(length(uv0) + time * 0.5);
+        d = sin(d * 5.0 + time) / 5.0;
         d = abs(d);
         d = pow(0.02 / d, 2.0);
         finalColor += col * d;
-        gl_FragColor = vec4(finalColor, 0.0);   
+        gl_FragColor = vec4(finalColor, 0.0);
       }`
 )
 
