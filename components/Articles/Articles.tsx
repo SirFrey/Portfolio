@@ -59,7 +59,7 @@ function Articles({ dict, lang }) {
           <div className={s.paragraphWrapper}>
             <MotionP
               {...propsHiddenElm}
-              className={'p'}
+              className='p'
               dangerouslySetInnerHTML={{
                 __html: dict.aboutmeSection.p1,
               }}

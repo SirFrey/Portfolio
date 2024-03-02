@@ -1,8 +1,9 @@
+import s from './Articles.module.css'
 import { itemVariants } from '@assets/utils/props'
 import TextIcon from '@components/TextIcon/TextIcon'
-import { HTMLMotionProps, Variants, motion } from 'framer-motion'
-import { Dispatch, SetStateAction, useEffect } from 'react'
-import { maxListLengthDev } from './dataArticles'
+import { HTMLMotionProps, motion } from 'framer-motion'
+import { Dispatch, SetStateAction } from 'react'
+import { MotionDiv } from '@components/FramerComps'
 interface ListItemType extends HTMLMotionProps<'li'> {
   Icon: JSX.Element
   span: string
@@ -24,36 +25,34 @@ export const ListCompDev = ({
 }: ListItemType) => {
   const isSelected = index === counter
   return (
-    <motion.li
-      {...props}
-      onHoverStart={() => {
-        setPause(true)
-        setCounter(index)
-      }}
-      onHoverEnd={() => {
-        setPause(false)
-        setCounter(prev => prev + 1)
-      }}
-      whileHover={{
-        boxShadow: '6px -5px 14px 2px rgba(0, 0, 0, 0.3)',
-        scale: 1.1,
-      }}
-      variants={itemVariants}
-      animate={{
-        filter: `grayscale(${!isSelected ? 1 : 0})`,
-      }}
-      style={{ borderColor: color }}>
-      <motion.div
-        initial='blur'
-        animate={{
-          filter: `blur(${!isSelected ? 2 : 0}px)`,
+    <MotionDiv className={s.compListWrapper}>
+      <motion.li
+        {...props}
+        onHoverStart={() => {
+          setPause(true)
+          setCounter(index)
         }}
-        style={{
-          display: 'flex',
+        onHoverEnd={() => {
+          setPause(false)
+          setCounter(prev => prev + 1)
+        }}
+        whileHover={{
+          boxShadow: '6px -5px 14px 2px rgba(0, 0, 0, 0.3)',
+          scale: 1.1,
+        }}
+        variants={itemVariants}
+        animate={{
+          filter: `blur(${isSelected ? 6 : 0}px)`,
         }}>
-        {Icon}
-      </motion.div>
+        <motion.div
+          initial='blur'
+          style={{
+            display: 'flex',
+          }}>
+          {Icon}
+        </motion.div>
+      </motion.li>
       <TextIcon text={span} IsVisible={isSelected} />
-    </motion.li>
+    </MotionDiv>
   )
 }

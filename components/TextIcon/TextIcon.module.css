@@ -1,17 +1,15 @@
 .text {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(234, 234, 234, 0.5);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  color: #000;
+  width: fit-content;
+  height: fit-content;
+  background-color: #0005;
+  padding: .5rem;
+  color: #efefef;
   font-weight: 700;
-  font-size: clamp(0.8rem, 2vw, 60%);
-  border-radius: 7px;
-  display: grid;
-  place-content: center;
+  font-size: clamp(0.5rem, 1.3vw, 1rem);
+  border-radius: 9999px;
   inset: 0;
   margin: auto;
+  pointer-events: none;
   z-index: 5;
 }

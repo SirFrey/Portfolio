@@ -71,14 +71,14 @@ export const otherData = {
   es: [
     {
       Icon: <UsaLogo />,
-      span: 'Ingles (A2)',
+      span: 'ING(B1)',
       color: '#f73e54',
     },
   ],
   en: [
     {
       Icon: <UsaLogo />,
-      span: 'English (A2)',
+      span: 'ENG(B1)',
       color: '#f73e54',
     },
   ],
@@ -100,7 +100,7 @@ export const developingData = {
     },
     {
       Icon: <UsaLogo />,
-      span: 'Ingles (B1-B2)',
+      span: 'ING(B2)',
       color: '#f73e54',
     },
     {
@@ -132,7 +132,7 @@ export const developingData = {
     },
     {
       Icon: <UsaLogo />,
-      span: 'English (B1-B2)',
+      span: 'ENG(B2)',
       color: '#f73e54',
     },
     {

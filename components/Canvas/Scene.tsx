@@ -4,7 +4,6 @@ import { easing } from "maath"
 import { useRef } from "react"
 import { Vector2 } from "three"
 import { glsl } from "./syntax"
-
 export function Scene() {
   const ref = useRef<any>(null!)
   const { viewport, size } = useThree()

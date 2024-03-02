@@ -5,7 +5,7 @@ a.anchorCard {
   display: grid;
   grid-template-rows: 300px 1fr;
   border: 7px solid #dedcdc;
-  border-radius: 50px;
+  border-radius: 20px;
   overflow: clip;
 }
 
@@ -18,12 +18,12 @@ a.anchorCard {
 }
 
 .card_wrapper {
-  height: 175px;
+  height: auto;
   background: #fff4;
-  backdrop-filter: blur(10px);
   display: grid;
   align-items: center;
-  grid-template-rows: 1fr 1fr ;
+  grid-template-rows: repeat(2, max-content);
+  padding-bottom: 1rem;
 }
 
 .image_wrapper {
@@ -40,7 +40,7 @@ a.anchorCard {
 }
 
 .project_title {
-  padding-block: 0;
+  padding-block: 1rem;
   margin-bottom: 0;
   color: var(--principalColor);
   font-size: clamp(1.4rem, 3vw, 2rem);

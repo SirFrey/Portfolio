@@ -7,7 +7,7 @@ export async function ProjectCards({ lang, dict }) {
   return (
     <MotionDiv className={style.wrapper}>
       {dataCards.map((cards, i) => {
-        const { date, description, image, likes, project, website, alt } = cards
+        const { description, image, project, website, alt, late } = cards
         return (
           <CardItem key={i} i={i} website={website}>
             <div className={style.image_wrapper}>
@@ -25,9 +25,6 @@ export async function ProjectCards({ lang, dict }) {
               <p
                 className={style.project_desc}
                 dangerouslySetInnerHTML={{ __html: description[lang] }}></p>
-              {/* <p className={style.created_date}> */}
-              {/*   {dict.portfolioSection.date} {date} */}
-              {/* </p> */}
             </article>
           </CardItem>
         )

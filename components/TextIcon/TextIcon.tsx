@@ -11,16 +11,10 @@ function TextIcon({ text, className, IsVisible }: Props) {
   useEffect(() => {}, [IsVisible])
   const variants: Variants = {
     visible: {
-      opacity: 1,
-      transition: {
-        ease: 'linear',
-      },
+      scale: 1
     },
     hidden: {
-      opacity: 0,
-      transition: {
-        ease: 'linear',
-      },
+      scale: 0,
     },
   }
   return (

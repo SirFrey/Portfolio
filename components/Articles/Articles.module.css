@@ -52,8 +52,8 @@
 }
 
 :is(.lang_list, .tool_list, .other_list, .developing_list) svg {
-  width: clamp(1.5rem, 12vw, 5rem);
-  height: clamp(1.5rem, 12vw, 5rem);
+  width: clamp(1.5rem, 8vw, 4rem);
+  height: clamp(1.5rem, 8vw, 4rem);
 }
 
 .wave {
@@ -161,10 +161,12 @@
   white-space: nowrap;
   opacity: 0.25;
 }
-
+:is(.developingContainer, .knowledgeContainer) .compListWrapper {
+  position: relative;
+}
 :is(.developingContainer, .knowledgeContainer) li {
   background-color: #0003;
-  border: clamp(0.3px, 1vw, 6px) solid var(--secondaryColor);
+  border: clamp(0.3px, 1vw, 3px) solid var(--secondaryColor);
   border-radius: 9999px;
   padding: clamp(10px, 2.3vw, 16px);
 }
