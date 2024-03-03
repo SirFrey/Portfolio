@@ -25,7 +25,7 @@ export const ListCompDev = ({
 }: ListItemType) => {
   const isSelected = index === counter
   return (
-    <MotionDiv className={s.compListWrapper}>
+    <motion.div variants={itemVariants} className={s.compListWrapper}>
       <motion.li
         {...props}
         onHoverStart={() => {
@@ -40,7 +40,6 @@ export const ListCompDev = ({
           boxShadow: '6px -5px 14px 2px rgba(0, 0, 0, 0.3)',
           scale: 1.1,
         }}
-        variants={itemVariants}
         animate={{
           filter: `blur(${isSelected ? 6 : 0}px)`,
         }}>
@@ -53,6 +52,6 @@ export const ListCompDev = ({
         </motion.div>
       </motion.li>
       <TextIcon text={span} IsVisible={isSelected} />
-    </MotionDiv>
+    </motion.div>
   )
 }

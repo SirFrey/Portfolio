@@ -11,14 +11,18 @@ export async function ProjectCards({ lang, dict }) {
         return (
           <CardItem key={i} i={i} website={website}>
             <div className={style.image_wrapper}>
-              <Image
-                src={image}
-                alt={alt}
-                fill
-                style={{
-                  objectFit: 'cover',
-                }}
-              />
+              {late ? (
+                <SoonComp />
+              ) : (
+                <Image
+                  src={image}
+                  alt={alt}
+                  fill
+                  style={{
+                    objectFit: 'cover',
+                  }}
+                />
+              )}
             </div>
             <article className={style.card_wrapper}>
               <h2 className={style.project_title}>{project}</h2>
@@ -31,4 +35,7 @@ export async function ProjectCards({ lang, dict }) {
       })}
     </MotionDiv>
   )
+}
+export const SoonComp = () => {
+  return <div className={style.soonComponent}>Soon...</div>
 }

@@ -24,7 +24,7 @@ export function ListItemComp<T extends number>({
 }: ListItemType<T>) {
   const isSelected = index === counter
   return (
-    <div className={s.compListWrapper}>
+    <motion.div className={s.compListWrapper} variants={itemVariants}>
       <motion.li
         whileHover={{
           boxShadow: '6px -5px 14px 2px rgba(0, 0, 0, 0.3)',
@@ -39,7 +39,6 @@ export function ListItemComp<T extends number>({
           setPause(false)
           setCounter(prev => prev + 1)
         }}
-        variants={itemVariants}
         animate={{
           filter: `blur(${isSelected ? 8 : 0}px)`,
         }}
@@ -47,6 +46,6 @@ export function ListItemComp<T extends number>({
         {Icon}
       </motion.li>
       <TextIcon text={span} IsVisible={isSelected} />
-    </div>
+    </motion.div>
   )
 }
