@@ -2,14 +2,17 @@
 import { MotionA } from '@components/FramerComps/framerCompsClients'
 import { Variants } from 'framer-motion'
 import style from './ProjectCards.module.css'
+import { motion } from 'framer-motion'
 
 export function CardItem({
   children,
   website,
+  disabled,
   i,
 }: {
   children: React.ReactNode
   website: string
+  disabled: boolean
   i: number
 }) {
   const item: Variants = {
@@ -37,17 +40,15 @@ export function CardItem({
     },
   }
   return (
-    <MotionA
+    <motion.button
       initial='hidden'
       variants={item}
-      href={website}
-      className={style.anchorCard}
-      target='__blank__'
+      className={style.containerCard}
       whileInView='show'
       whileHover='hover'
       custom={i}
       viewport={{ once: true }}>
       {children}
-    </MotionA>
+    </motion.button>
   )
 }

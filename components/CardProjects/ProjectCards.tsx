@@ -9,7 +9,7 @@ export async function ProjectCards({ lang, dict }) {
       {dataCards.map((cards, i) => {
         const { description, image, project, website, alt, late } = cards
         return (
-          <CardItem key={i} i={i} website={website}>
+          <CardItem disabled={late} key={i} i={i} website={website}>
             <div className={style.image_wrapper}>
               {late ? (
                 <SoonComp />
@@ -25,10 +25,10 @@ export async function ProjectCards({ lang, dict }) {
               )}
             </div>
             <article className={style.card_wrapper}>
-              <h2 className={style.project_title}>{project}</h2>
+              <h2 className={style.project_title}>{ late ? 'Soon...' : project}</h2>
               <p
                 className={style.project_desc}
-                dangerouslySetInnerHTML={{ __html: description[lang] }}></p>
+                dangerouslySetInnerHTML={{ __html: late ? 'Soon...' : description[lang] }}></p>
             </article>
           </CardItem>
         )

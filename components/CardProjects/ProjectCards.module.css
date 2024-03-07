@@ -1,12 +1,11 @@
-a.anchorCard {
-  /* width: clamp(min(calc(100vw - 10px), 330px), 10vw, 350px); */
-  text-decoration: none;
+.containerCard {
   color: #000;
   display: grid;
   grid-template-rows: 300px 1fr;
   border: 7px solid #dedcdc;
   border-radius: 20px;
   overflow: clip;
+  background: #fff3;
 }
 
 .wrapper {
@@ -28,6 +27,10 @@ a.anchorCard {
 
 .image_wrapper {
   position: relative;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-content: center;
 }
 .project_summary {
   padding-block: 15px;
@@ -63,15 +66,9 @@ a.anchorCard {
   color: #40f;
 }
 
-a.anchorCard > img {
+.anchorCard > img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.soonComponent {
-  width: 100%;
-  height: 100%;
-  display: grid;
-  place-content: center;
-}

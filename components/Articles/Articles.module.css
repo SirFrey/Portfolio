@@ -37,7 +37,7 @@
 
 .sectionCareer {
   margin: 0;
-  font-size: clamp(1.5rem, 3.0vw, 3.2rem);
+  font-size: clamp(1.5rem, 3vw, 3.2rem);
   background: rgba(var(--principal), 0.4);
   backdrop-filter: blur(25px);
   border-radius: 10vw;
@@ -168,6 +168,8 @@
   border: clamp(0.3px, 1vw, 3px) solid var(--secondaryColor);
   border-radius: 9999px;
   padding: clamp(10px, 2.3vw, 16px);
+  backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
 }
 .knowledgeContainer {
   container-type: inline-size;

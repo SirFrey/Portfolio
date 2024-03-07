@@ -4,7 +4,6 @@ import '@styles/index.css'
 import '@styles/normalize.css'
 import { Metadata, Viewport } from 'next'
 import { Montserrat } from 'next/font/google'
-config.autoAddCss = false
 const League = Montserrat({
   weight: ['400'],
   subsets: ['latin'],

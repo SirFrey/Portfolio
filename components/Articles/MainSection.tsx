@@ -10,14 +10,13 @@ import {
 import SDownComp from '@components/ScrolllDownComp/SDownComp'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
-import { Leva } from 'leva'
 const SceneSection = dynamic(() => import('@components/Canvas/SceneSection'), {
   ssr: false,
 })
 export function MainSection({ dict }) {
   return (
     <section id='inicio'>
-      <Leva hidden />
+      {/* <Leva hidden /> */}
       <SceneSection />
       <div className={s.filterMainSection}>
         <div className='marginContainer'>
