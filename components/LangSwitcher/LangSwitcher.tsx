@@ -64,11 +64,15 @@ function LangSwitcher({ lang }) {
               className={s.itemSelect}
               key={list.label}
               transition={{ duration: 0.2 }}
-              onClick={() => setOpen(!isOpen)}
+              onClick={() => setOpen(false)}
               whileHover={{
                 backgroundColor: '#fff3',
               }}>
-              <Link href={'/' + list.value}>
+              <Link
+                href={'/' + list.value}
+                style={{
+                  pointerEvents: isOpen ? 'auto' : 'none',
+                }}>
                 <img src={list.icon.src} alt={list.label} />
               </Link>
             </motion.li>
