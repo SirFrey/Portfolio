@@ -47,7 +47,6 @@
 :is(.lang_list, .tool_list, .other_list, .developing_list) li {
   display: grid;
   position: relative;
-  overflow: clip;
   z-index: 5;
 }
 

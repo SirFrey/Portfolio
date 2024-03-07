@@ -1,0 +1,51 @@
+.langSwitcher {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  z-index: 100;
+  font-size: 1.3rem;
+  color: white;
+}
+.containerItems {
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: blur(15px);
+  border: 2px solid #fafafa;
+  overflow: clip;
+}
+.containerItems a{
+  padding: 0.5rem 1rem;
+}
+.menuSelect {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #fff;
+  backdrop-filter: blur(15px);
+  border: 2px solid #fafafa;
+  border-radius: 999px;
+  background: #fff2;
+  padding: 0.3rem 1rem;
+  gap: 10px;
+}
+.menuSelect img,
+.itemSelect img {
+  width: 1.8rem;
+}
+.itemSelect a {
+  display: flex;
+  color: #fff;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  pointer-events: all;
+}
+
+.itemSelect:not(:last-child) {
+  border-bottom: 2px solid #fff2;
+}
+.arrow {
+  font-size: 1rem;
+}

@@ -1,36 +1,26 @@
 'use client'
 
-import './LangSwitcher.css'
-import { useState } from 'react'
+import s from './LangSwitcher.module.css'
+import { useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import dynamic from 'next/dynamic'
-import { components } from 'react-select'
 import enFlag from './english.svg'
 import esFlag from './spain.svg'
-const Select = dynamic(() => import('react-select'), { ssr: false })
-const Control = ({ children, getValue, ...props }) => {
-  return (
-    <>
-      {/* @ts-ignore */}
-      <components.Control {...props}>
-        <img src={getValue()[0].icon.src} className='countryLogoControl' alt='language image'/>
-        {children}
-      </components.Control>
-    </>
-  )
-}
-const Option = ({ children, data, ...props }) => {
-  return (
-    <>
-      {/* @ts-ignore */}
-      <components.Option {...props}>
-        <img src={data.icon.src} className='countryLogoOption' alt='language image'/>
-        {children}
-      </components.Option>
-    </>
-  )
-}
+import { AnimatePresence, Variants, motion } from 'framer-motion'
+import Link from 'next/link'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 function LangSwitcher({ lang }) {
+  const variants: Variants = {}
+  const itemVariants: Variants = {
+    closed: {
+      y: 50,
+      opacity: 0,
+    },
+    open: {
+      y: 0,
+      opacity: 1,
+    },
+  }
   const langList = [
     {
       value: 'en',
@@ -48,39 +38,54 @@ function LangSwitcher({ lang }) {
     return li.value === lang
   })[0]
   const [currentlang, setCurrentLang] = useState(labelLang)
+  const listRef = useRef<HTMLLIElement>(null)
+  const [isOpen, setOpen] = useState(false)
   const handleChange = e => {
     setCurrentLang(e)
     router.push('/' + e.value)
   }
   return (
-    <div className='langSwitcher'>
-      <Select
-        classNamePrefix='langSelect'
-        value={currentlang}
-        options={langList}
-        onChange={handleChange}
-        components={{ Control, Option }}
-        menuPlacement='top'
-        isSearchable={false}
-        styles={{
-          singleValue: provided => ({
-            ...provided,
-            color: '#fff',
-          }),
-        }}
-        theme={theme => ({
-          ...theme,
-          colors: {
-            ...theme.colors,
-            primary: 'rgba(--var(primary), 0.4)',
-            primary25: '#fff3',
-            neutral0: 'rgba(--var(secondary), 0.4)',
-            neutral5: '#fff',
-            neutral90: '#fff',
-          },
-        })}
-      />
-    </div>
+    <motion.div
+      className={s.langSwitcher}
+      variants={variants}
+      animate={isOpen ? 'open' : 'closed'}>
+      <AnimatePresence>
+        <motion.ul
+          initial='closed'
+          variants={itemVariants}
+          animate={isOpen ? 'open' : 'closed'}
+          style={{
+            pointerEvents: isOpen ? 'auto' : 'none',
+          }}
+          className={s.containerItems}>
+          {langList.map(list => (
+            <motion.li
+              ref={listRef}
+              className={s.itemSelect}
+              key={list.label}
+              transition={{ duration: 0.2 }}
+              onClick={() => setOpen(!isOpen)}
+              whileHover={{
+                backgroundColor: '#fff3',
+              }}>
+              <Link href={'/' + list.value}>
+                <img src={list.icon.src} alt={list.label} />
+              </Link>
+            </motion.li>
+          ))}
+        </motion.ul>
+      </AnimatePresence>
+      <motion.button onClick={() => setOpen(!isOpen)} className={s.menuSelect}>
+        <img alt={currentlang.label} src={currentlang.icon.src} />
+        <motion.div
+          variants={{
+            open: { rotate: 180 },
+            closed: { rotate: 0 },
+          }}>
+          <FontAwesomeIcon className={s.arrow} icon={faChevronDown} />
+        </motion.div>
+      </motion.button>
+    </motion.div>
   )
 }
 

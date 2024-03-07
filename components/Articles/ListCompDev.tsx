@@ -3,7 +3,6 @@ import { itemVariants } from '@assets/utils/props'
 import TextIcon from '@components/TextIcon/TextIcon'
 import { HTMLMotionProps, motion } from 'framer-motion'
 import { Dispatch, SetStateAction } from 'react'
-import { MotionDiv } from '@components/FramerComps'
 interface ListItemType extends HTMLMotionProps<'li'> {
   Icon: JSX.Element
   span: string
@@ -41,7 +40,7 @@ export const ListCompDev = ({
           scale: 1.1,
         }}
         animate={{
-          filter: `blur(${isSelected ? 6 : 0}px)`,
+          filter: `blur(${isSelected ? 5 : 0}px)`,
         }}>
         <motion.div
           initial='blur'
