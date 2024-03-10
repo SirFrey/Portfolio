@@ -44,6 +44,9 @@ export function CardItem({
       initial='hidden'
       variants={item}
       className={style.containerCard}
+      style={{
+        cursor: 'not-allowed',
+      }}
       whileInView='show'
       whileHover='hover'
       custom={i}

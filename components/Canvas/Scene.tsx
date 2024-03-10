@@ -43,7 +43,7 @@ const WaveMaterial = shaderMaterial(
       uniform float time;
       uniform vec2 resolution;
       uniform vec2 pointer;
-      varying vec2 vUv;      
+      varying vec2 vUv;
 
       vec3 palette(float t) {
         vec3 a = vec3(0.3176470588, 0.5411764706, 0.6509803922);
@@ -61,9 +61,9 @@ const WaveMaterial = shaderMaterial(
         uv = sin(uv * 1.1) - pointer;     
         float d = length(uv) * exp(-length(uv0));
         vec3 col = palette(length(uv0) + time * 0.5);
-        d = sin(d * 5.0 + time) / 5.0;
+        d = sin(d * 5.0 + time) / 6.0;
         d = abs(d);
-        d = pow(0.02 / d, 2.0);
+        d = pow(0.024 / d, 2.0);
         finalColor += col * d;
         gl_FragColor = vec4(finalColor, 0.0);
       }`
