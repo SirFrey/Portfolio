@@ -2,35 +2,18 @@
 
 import { useEventListener } from '@assets/hooks/useEventListener'
 import { useFollowPointer } from '@assets/hooks/useFollowPointer'
-import { Variants, motion } from 'framer-motion'
+import { type Variants, useWillChange } from 'framer-motion'
 import { useRef, useState } from 'react'
-import './Cursor.css'
+import './cursor.css'
 import { MotionDiv } from '@components/FramerComps'
 function Cursor() {
   const hoverables: Array<string> = ['BUTTON', 'A']
   const ref = useRef<HTMLDivElement>(null)
-  const { x, y } = useFollowPointer(ref)
+  const [x, y] = useFollowPointer(ref)
   const [toogle, setToggle] = useState(false)
   const [hidden, setHidden] = useState(true)
+
   const variants: Variants = {
-    hover: {
-      scale: 3,
-      borderWidth: '2px',
-    },
-    posBig: () => ({
-      x: x,
-      y: y,
-      transition: {
-        duration: 0.2,
-      },
-    }),
-    posSmall: () => ({
-      x: x,
-      y: y,
-      transition: {
-        duration: 0.02,
-      },
-    }),
     hidden: {
       opacity: 0,
     },
@@ -40,34 +23,38 @@ function Cursor() {
   }
   useEventListener('pointermove', e => {
     const target = e.target as HTMLElement
-    if (hoverables.includes(target.nodeName)) {
-      setToggle(true)
-    } else {
-      setToggle(false)
-    }
-  })
-  useEventListener('pointermove', () => {
-    setHidden(false)
+    const isHoverable = hoverables.includes(target.nodeName)
+    setToggle(isHoverable)
   })
   useEventListener('pointerout', () => {
     setHidden(true)
   })
+  useEventListener('pointerover', () => {
+    setHidden(false)
+  })
 
   return (
     <>
-      <div className='cursor'>
+      <MotionDiv
+        variants={variants} initial='hidden' animate={[!hidden ? 'visible' : '']} className='cursor'>
         <MotionDiv
-          initial='hidden'
-          animate={['posBig', toogle ? 'hover' : '', !hidden ? 'visible' : '']}
+          animate={[!hidden ? 'visible' : '']}
+          style={{
+            translate: `${x}px ${y}px`,
+            scale: toogle ? 3 : 1,
+            borderWidth: toogle ? '2px' : '1px',
+          }}
           variants={variants}
           className='cursor__ball cursor__ball--big'
-          ref={ref}></MotionDiv>
+          ref={ref} />
         <MotionDiv
-          initial='hidden'
-          animate={['posSmall', !hidden ? 'visible' : '']}
+          animate={[!hidden ? 'visible' : '']}
+          style={{
+            translate: `${x}px ${y}px`,
+          }}
           variants={variants}
-          className='cursor__ball cursor__ball--small'></MotionDiv>
-      </div>
+          className='cursor__ball cursor__ball--small' />
+      </MotionDiv>
     </>
   )
 }

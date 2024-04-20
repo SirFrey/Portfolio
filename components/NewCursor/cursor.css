@@ -5,35 +5,44 @@
   width: 30px;
   height: 30px;
 }
+
 .cursor__ball {
   position: absolute;
-  /* top: 0; */
-  /* left: 0; */
-  mix-blend-mode: difference;
+  transition: cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  transition-property: translate scale;
+  will-change: translate;
 }
+
 .cursor__ball--big {
   border: 3px solid #fff;
   border-radius: 50%;
   width: 30px;
   height: 30px;
+  transition-duration: .3s;
 }
+
 .cursor__ball--small {
   width: 0;
   height: 0;
   border: 4px solid #fff;
   border-radius: 50%;
-  inset: 0 ;
+  inset: 0;
   margin: auto;
+  transition-duration: 0s;
 }
+
 .cursor__ball circle {
   fill: #f7f8fa;
 }
-@media (width <= 800px) {
+
+@media (width <=800px) {
+
   html,
   a,
   button {
     cursor: default;
   }
+
   .cursor {
     display: none;
   }

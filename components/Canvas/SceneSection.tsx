@@ -1,6 +1,7 @@
 'use client'
 import { Canvas } from '@react-three/fiber'
 import { Scene } from './Scene'
+
 const worker = new Worker(new URL('./worker.tsx', import.meta.url), {
   type: 'module',
 })
@@ -8,13 +9,10 @@ const worker = new Worker(new URL('./worker.tsx', import.meta.url), {
 const SceneSection = () => {
   return (
     <Canvas
-      gl={{ antialias: false, stencil: false, depth:false, powerPreference: 'high-performance' }}
-      camera={{
-        fov: 45,
-      }}
+      gl={{ antialias: false, stencil: false, depth:false, powerPreference: 'low-power', alpha: false, preserveDrawingBuffer: false }}
       style={{
         position: 'absolute',
-        opacity: '.7',
+        opacity: '.70',
         zIndex: '1',
       }}>
       <Scene />
