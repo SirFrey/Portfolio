@@ -3,7 +3,10 @@ import Image from 'next/image'
 import { CardItem } from './CardItem'
 import style from './ProjectCards.module.css'
 import dataCards from './dataCards'
-export async function ProjectCards({ lang, dict }) {
+import { LanguagesTypes } from 'types/paramsTypes'
+import { Dictionary } from 'app/[lang]/dictionaries/dictionarie'
+
+export async function ProjectCards({ lang, dict }: { lang: LanguagesTypes['lang'], dict: Dictionary }) {
   return (
     <MotionDiv className={style.wrapper}>
       {dataCards.map((cards, i) => {
@@ -12,7 +15,7 @@ export async function ProjectCards({ lang, dict }) {
           <CardItem disabled={late} key={i} i={i} website={website}>
             <div className={style.image_wrapper}>
               {late ? (
-                <SoonComp />
+                <SoonComp dict={dict} />
               ) : (
                 <Image
                   src={image}
@@ -25,10 +28,10 @@ export async function ProjectCards({ lang, dict }) {
               )}
             </div>
             <article className={style.card_wrapper}>
-              <h2 className={style.project_title}>{ late ? 'Soon...' : project}</h2>
+              <h2 className={style.project_title}>{late ? dict.portfolioSection.soon : project}</h2>
               <p
                 className={style.project_desc}
-                dangerouslySetInnerHTML={{ __html: late ? 'Soon...' : description[lang] }}></p>
+                dangerouslySetInnerHTML={{ __html: late ? dict.portfolioSection.soon : description[lang] }}></p>
             </article>
           </CardItem>
         )
@@ -36,6 +39,6 @@ export async function ProjectCards({ lang, dict }) {
     </MotionDiv>
   )
 }
-export const SoonComp = () => {
-  return <div className={style.soonComponent}>Soon...</div>
+export const SoonComp = ({ dict }: { dict: Dictionary }) => {
+  return <div className={style.soonComponent}>{dict.portfolioSection.soon}</div>
 }

@@ -19,7 +19,9 @@
       "@styles/*": [
         "styles/*"
       ],
-      "@public/*": ["public/*"]
+      "@public/*": [
+        "public/*"
+      ]
     },
     "allowJs": true,
     "forceConsistentCasingInFileNames": true,
@@ -42,14 +44,16 @@
       }
     ],
     "skipLibCheck": true,
-    "strict": false
+    "strict": false,
+    "target": "ES2017"
   },
   "include": [
     "next-env.d.ts",
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx",
-    "next.config.js" ],
+    "next.config.js"
+  ],
   "exclude": [
     "node_modules"
   ]

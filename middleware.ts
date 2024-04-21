@@ -1,5 +1,6 @@
 import { match } from '@formatjs/intl-localematcher'
 import { Negotiator } from 'negotiator'
+
 import { NextRequest, NextResponse } from 'next/server'
 let locales = ['es', 'en']
 let defaultLocale = 'es'

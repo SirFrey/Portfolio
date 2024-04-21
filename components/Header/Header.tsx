@@ -5,10 +5,12 @@ import { faCode } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Variants, motion, useCycle } from 'framer-motion'
 import { useEffect, useRef } from 'react'
-import { ReactTyped as Typed } from 'react-typed'
+import { ReactTyped } from 'react-typed'
 import s from './Header.module.css'
 import { links, variantsHeader } from './dataHeader'
 import { blockScroll, unblockScroll, useWindowSize } from './scripts'
+import { LanguagesTypes } from 'types/paramsTypes'
+import { Dictionary } from 'app/[lang]/dictionaries/dictionarie'
 const childVariants: Variants = {
   hidden: {
     filter: 'blur(4px)',
@@ -22,7 +24,7 @@ const childVariants: Variants = {
     backgroundColor: '#fff3',
   },
 }
-const Header = ({ dict, lang }) => {
+const Header = ({ dict, lang }: { lang: LanguagesTypes['lang'], dict: Dictionary }) => {
   const windowSize = useWindowSize()
   const navFixed = useRef<HTMLElement>(null)
   const bgDark = useRef<HTMLDivElement>(null)
@@ -35,6 +37,7 @@ const Header = ({ dict, lang }) => {
       `${window.innerWidth - scroller.clientWidth}px`
     )
   }, [windowSize])
+
   useEffect(() => {
     if (isOpen && bgDark.current) {
       bgDark.current.style.display = 'inline-block'
@@ -59,14 +62,14 @@ const Header = ({ dict, lang }) => {
           className={s.nav_fixed}>
           <div className={s.principal_icon}>
             <FontAwesomeIcon icon={faCode} className={s.codeIcon} />
-            <Typed
+            <ReactTyped
               className={s.tag_title}
               strings={['Moises Castellanos']}
               typeSpeed={50}
               backSpeed={50}
-              loop={true}
               startDelay={2000}
               backDelay={2000}
+              loop
             />
           </div>
           <SlideBar lang={lang} />
@@ -106,9 +109,7 @@ const Header = ({ dict, lang }) => {
       </header>
       {/* <!-- Dark Background --> */}
       <div
-        onClick={() => {
-          toggleOpen()
-        }}
+        onClick={() => toggleOpen()}
         onAnimationEnd={e => {
           const target = e.target as HTMLDivElement
           if (!isOpen) {

@@ -2,9 +2,10 @@ import Articles from '@components/Articles/Articles'
 import Footer from '@components/Footer/Footer'
 import Header from '@components/Header/Header'
 import LangSwitcher from '@components/LangSwitcher/LangSwitcher'
-import { getDictionary } from './dictionaries/dictionarie'
 import Cursor from '@components/NewCursor/Cursor'
-const PortfolioPage = async ({ params: { lang } }) => {
+import { LanguagesTypes } from 'types/paramsTypes'
+import { getDictionary } from './dictionaries/dictionarie'
+const PortfolioPage = async ({ params: { lang } }: { params: LanguagesTypes }) => {
   const dict = await getDictionary(lang)
   return (
     <main>
@@ -16,5 +17,4 @@ const PortfolioPage = async ({ params: { lang } }) => {
     </main>
   )
 }
-
 export default PortfolioPage

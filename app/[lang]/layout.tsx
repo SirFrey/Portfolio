@@ -1,9 +1,9 @@
-import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import '@styles/index.css'
 import '@styles/normalize.css'
 import { Metadata, Viewport } from 'next'
 import { Montserrat } from 'next/font/google'
+import { LanguagesTypes } from 'types/paramsTypes'
 const League = Montserrat({
   weight: ['400'],
   subsets: ['latin'],
@@ -58,19 +58,22 @@ const englishMetadata: Metadata = {
   },
 }
 export async function generateMetadata({
-  params: { lang },
-}): Promise<Metadata> {
+  params: { lang }
+}: { params: LanguagesTypes })
+  : Promise<Metadata> {
   return lang === 'es' ? spanishMetadata : englishMetadata
 }
+
 export async function generateStaticParams() {
   return [{ lang: 'en' }, { lang: 'es' }]
 }
+
 export default function RootLayout({
   children,
   params: { lang },
 }: {
   children: React.ReactNode
-  params: any
+  params: LanguagesTypes
 }) {
   return (
     <html lang={lang} className={League.className}>
