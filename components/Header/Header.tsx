@@ -25,11 +25,13 @@ const childVariants: Variants = {
   },
 }
 const Header = ({ dict, lang }: { lang: LanguagesTypes['lang'], dict: Dictionary }) => {
+
   const windowSize = useWindowSize()
   const navFixed = useRef<HTMLElement>(null)
   const bgDark = useRef<HTMLDivElement>(null)
   const navFixedBar = useRef<HTMLElement>(null)
   const [isOpen, toggleOpen] = useCycle(false, true)
+
   useEffect(() => {
     const scroller = document.scrollingElement as HTMLElement
     document.documentElement.style.setProperty(
