@@ -36,11 +36,11 @@ importers:
         specifier: ^0.0.8
         version: 0.0.8(@react-three/fiber@8.16.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(three@0.160.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(three@0.160.0)
       framer-motion:
-        specifier: 11.1.7
-        version: 11.1.7(@emotion/is-prop-valid@0.8.8)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        specifier: 11.3.29
+        version: 11.3.29(@emotion/is-prop-valid@0.8.8)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       framer-motion-3d:
-        specifier: ^11.1.7
-        version: 11.1.7(@emotion/is-prop-valid@0.8.8)(@react-three/fiber@8.16.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(three@0.160.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(three@0.160.0)
+        specifier: ^11.3.29
+        version: 11.3.29(@emotion/is-prop-valid@0.8.8)(@react-three/fiber@8.16.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(three@0.160.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(three@0.160.0)
       leva:
         specifier: ^0.9.35
         version: 0.9.35(@types/react-dom@18.2.17)(@types/react@18.2.41)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -1044,16 +1044,16 @@ packages:
     resolution: {integrity: sha512-7EwmXrOjyL+ChxMhmG5lnW9MPt1aIeZEwKhQzoBUdTV0N3zuwWDZYVJatDvZ2OyzPUvdIAZDsCetk3coyMfcnQ==}
     engines: {node: '>=0.10.0'}
 
-  framer-motion-3d@11.1.7:
-    resolution: {integrity: sha512-14UiHr0qqKNWtIZ6Ak8WSW4sAo0kMmArIH3sJTsnW1nd3AIr2tlLm2zDFqBBXyib+wjAc8JHbSo7HuKdvj3W3w==}
+  framer-motion-3d@11.3.29:
+    resolution: {integrity: sha512-nisIO2T6WSy3acDdCZzdsaYnnvcY0KbM1mJELozVi0u8dXADr5EsY9mwgpqr1d7vycjYljoJds3pL/UFFz816Q==}
     peerDependencies:
       '@react-three/fiber': ^8.2.2
       react: '>=18.0'
       react-dom: '>=18.0'
       three: '>=0.133'
 
-  framer-motion@11.1.7:
-    resolution: {integrity: sha512-cW11Pu53eDAXUEhv5hEiWuIXWhfkbV32PlgVISn7jRdcAiVrJ1S03YQQ0/DzoswGYYwKi4qYmHHjCzAH52eSdQ==}
+  framer-motion@11.3.29:
+    resolution: {integrity: sha512-uyDuUOeOElJEA3kbkbyoTNEf75Jih1EUg0ouLKYMlGDdt/LaJPmO+FyOGAGxM2HwKhHcAoKFNveR5A8peb7yhw==}
     peerDependencies:
       '@emotion/is-prop-valid': '*'
       react: ^18.0.0
@@ -2764,8 +2764,8 @@ snapshots:
       '@typescript-eslint/parser': 6.5.0(eslint@8.55.0)(typescript@5.3.2)
       eslint: 8.55.0
       eslint-import-resolver-node: 0.3.9
-      eslint-import-resolver-typescript: 3.6.0(@typescript-eslint/parser@6.5.0(eslint@8.55.0)(typescript@5.3.2))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.28.1)(eslint@8.55.0)
-      eslint-plugin-import: 2.28.1(@typescript-eslint/parser@6.5.0(eslint@8.55.0)(typescript@5.3.2))(eslint-import-resolver-typescript@3.6.0)(eslint@8.55.0)
+      eslint-import-resolver-typescript: 3.6.0(@typescript-eslint/parser@6.5.0(eslint@8.55.0)(typescript@5.3.2))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.28.1(eslint@8.55.0))(eslint@8.55.0)
+      eslint-plugin-import: 2.28.1(@typescript-eslint/parser@6.5.0(eslint@8.55.0)(typescript@5.3.2))(eslint-import-resolver-typescript@3.6.0(@typescript-eslint/parser@6.5.0(eslint@8.55.0)(typescript@5.3.2))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.28.1(eslint@8.55.0))(eslint@8.55.0))(eslint@8.55.0)
       eslint-plugin-jsx-a11y: 6.7.1(eslint@8.55.0)
       eslint-plugin-react: 7.33.2(eslint@8.55.0)
       eslint-plugin-react-hooks: 4.6.0(eslint@8.55.0)
@@ -2787,13 +2787,13 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-import-resolver-typescript@3.6.0(@typescript-eslint/parser@6.5.0(eslint@8.55.0)(typescript@5.3.2))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.28.1)(eslint@8.55.0):
+  eslint-import-resolver-typescript@3.6.0(@typescript-eslint/parser@6.5.0(eslint@8.55.0)(typescript@5.3.2))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.28.1(eslint@8.55.0))(eslint@8.55.0):
     dependencies:
       debug: 4.3.4
       enhanced-resolve: 5.15.0
       eslint: 8.55.0
-      eslint-module-utils: 2.8.0(@typescript-eslint/parser@6.5.0(eslint@8.55.0)(typescript@5.3.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.0(@typescript-eslint/parser@6.5.0(eslint@8.55.0)(typescript@5.3.2))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.28.1)(eslint@8.55.0))(eslint@8.55.0)
-      eslint-plugin-import: 2.28.1(@typescript-eslint/parser@6.5.0(eslint@8.55.0)(typescript@5.3.2))(eslint-import-resolver-typescript@3.6.0)(eslint@8.55.0)
+      eslint-module-utils: 2.8.0(@typescript-eslint/parser@6.5.0(eslint@8.55.0)(typescript@5.3.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.0(@typescript-eslint/parser@6.5.0(eslint@8.55.0)(typescript@5.3.2))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.28.1(eslint@8.55.0))(eslint@8.55.0))(eslint@8.55.0)
+      eslint-plugin-import: 2.28.1(@typescript-eslint/parser@6.5.0(eslint@8.55.0)(typescript@5.3.2))(eslint-import-resolver-typescript@3.6.0(@typescript-eslint/parser@6.5.0(eslint@8.55.0)(typescript@5.3.2))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.28.1(eslint@8.55.0))(eslint@8.55.0))(eslint@8.55.0)
       fast-glob: 3.3.1
       get-tsconfig: 4.7.0
       is-core-module: 2.13.0
@@ -2804,18 +2804,18 @@ snapshots:
       - eslint-import-resolver-webpack
       - supports-color
 
-  eslint-module-utils@2.8.0(@typescript-eslint/parser@6.5.0(eslint@8.55.0)(typescript@5.3.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.0(@typescript-eslint/parser@6.5.0(eslint@8.55.0)(typescript@5.3.2))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.28.1)(eslint@8.55.0))(eslint@8.55.0):
+  eslint-module-utils@2.8.0(@typescript-eslint/parser@6.5.0(eslint@8.55.0)(typescript@5.3.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.0(@typescript-eslint/parser@6.5.0(eslint@8.55.0)(typescript@5.3.2))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.28.1(eslint@8.55.0))(eslint@8.55.0))(eslint@8.55.0):
     dependencies:
       debug: 3.2.7
     optionalDependencies:
       '@typescript-eslint/parser': 6.5.0(eslint@8.55.0)(typescript@5.3.2)
       eslint: 8.55.0
       eslint-import-resolver-node: 0.3.9
-      eslint-import-resolver-typescript: 3.6.0(@typescript-eslint/parser@6.5.0(eslint@8.55.0)(typescript@5.3.2))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.28.1)(eslint@8.55.0)
+      eslint-import-resolver-typescript: 3.6.0(@typescript-eslint/parser@6.5.0(eslint@8.55.0)(typescript@5.3.2))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.28.1(eslint@8.55.0))(eslint@8.55.0)
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-import@2.28.1(@typescript-eslint/parser@6.5.0(eslint@8.55.0)(typescript@5.3.2))(eslint-import-resolver-typescript@3.6.0)(eslint@8.55.0):
+  eslint-plugin-import@2.28.1(@typescript-eslint/parser@6.5.0(eslint@8.55.0)(typescript@5.3.2))(eslint-import-resolver-typescript@3.6.0(@typescript-eslint/parser@6.5.0(eslint@8.55.0)(typescript@5.3.2))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.28.1(eslint@8.55.0))(eslint@8.55.0))(eslint@8.55.0):
     dependencies:
       array-includes: 3.1.6
       array.prototype.findlastindex: 1.2.3
@@ -2825,7 +2825,7 @@ snapshots:
       doctrine: 2.1.0
       eslint: 8.55.0
       eslint-import-resolver-node: 0.3.9
-      eslint-module-utils: 2.8.0(@typescript-eslint/parser@6.5.0(eslint@8.55.0)(typescript@5.3.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.0(@typescript-eslint/parser@6.5.0(eslint@8.55.0)(typescript@5.3.2))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.28.1)(eslint@8.55.0))(eslint@8.55.0)
+      eslint-module-utils: 2.8.0(@typescript-eslint/parser@6.5.0(eslint@8.55.0)(typescript@5.3.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.0(@typescript-eslint/parser@6.5.0(eslint@8.55.0)(typescript@5.3.2))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.28.1(eslint@8.55.0))(eslint@8.55.0))(eslint@8.55.0)
       has: 1.0.3
       is-core-module: 2.13.0
       is-glob: 4.0.3
@@ -3014,10 +3014,10 @@ snapshots:
 
   for-in@1.0.2: {}
 
-  framer-motion-3d@11.1.7(@emotion/is-prop-valid@0.8.8)(@react-three/fiber@8.16.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(three@0.160.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(three@0.160.0):
+  framer-motion-3d@11.3.29(@emotion/is-prop-valid@0.8.8)(@react-three/fiber@8.16.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(three@0.160.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(three@0.160.0):
     dependencies:
       '@react-three/fiber': 8.16.2(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(three@0.160.0)
-      framer-motion: 11.1.7(@emotion/is-prop-valid@0.8.8)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      framer-motion: 11.3.29(@emotion/is-prop-valid@0.8.8)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       react-merge-refs: 2.1.1
@@ -3025,7 +3025,7 @@ snapshots:
     transitivePeerDependencies:
       - '@emotion/is-prop-valid'
 
-  framer-motion@11.1.7(@emotion/is-prop-valid@0.8.8)(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
+  framer-motion@11.3.29(@emotion/is-prop-valid@0.8.8)(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
       tslib: 2.5.2
     optionalDependencies:

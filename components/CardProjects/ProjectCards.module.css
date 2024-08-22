@@ -2,7 +2,7 @@
   color: #000;
   display: grid;
   grid-template-rows: 300px 1fr;
-  border: 7px solid #dedcdc;
+  border: none; 
   border-radius: 20px;
   overflow: clip;
   background: #fff3;
