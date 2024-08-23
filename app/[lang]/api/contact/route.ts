@@ -1,11 +1,13 @@
+import { verifyToken } from '@assets/utils/server'
 import { NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
 export async function POST(req: Request) {
-  const formData = await req.formData()
+  const reqData = await req.formData()
   let data = {
-    name: formData.get('name') as string,
-    email: formData.get('email') as string,
-    message: formData.get('message') as string,
+    name: reqData.get('name') as string,
+    email: reqData.get('email') as string,
+    message: reqData.get('message') as string,
+    turnstile: reqData.get('cf-turnstile-response') as string,
   }
   const mail = nodemailer.createTransport({
     service: 'gmail',
@@ -14,6 +16,17 @@ export async function POST(req: Request) {
       pass: process.env.PASS,
     },
   })
+  let formData = new FormData()
+  formData.append('secret', process.env.TURNSTILE_SECRET_KEY as string)
+  formData.append('response', data.turnstile)
+
+  const isValidToken = await verifyToken(formData)
+  if (!isValidToken) {
+    return NextResponse.json(
+      { status: 'error', info: 'invalid turnstile' },
+      { status: 400 }
+    )
+  }
   let info: any = await new Promise((resolve, reject) => {
     mail.sendMail(
       {
@@ -34,16 +47,12 @@ export async function POST(req: Request) {
   if (info.accepted) {
     return NextResponse.json(
       { status: 'success', info: info.response },
-      {
-        status: 200,
-      }
+      { status: 200 }
     )
   } else if (info.rejected) {
     return NextResponse.json(
       { status: 'error', info: info.response },
-      {
-        status: 400,
-      }
+      { status: 400 }
     )
   }
 }

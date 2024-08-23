@@ -7,6 +7,8 @@ import {
 import s from './Footer.module.css'
 import { handleSubmit } from './actions'
 import { formProps } from './dataFooter'
+import { Turnstile } from '@marsidev/react-turnstile'
+import { useState } from 'react'
 const SubmitButton = ({ dict }) => {
   return (
     <Button
@@ -31,6 +33,7 @@ const SubmitButton = ({ dict }) => {
 }
 
 export default function ContactForm({ dict }) {
+  const [status, setStatus] = useState<string>()
   return (
     <form
       onSubmit={e => {
@@ -70,6 +73,12 @@ export default function ContactForm({ dict }) {
         whileInView='visibleBottom'
         whileFocus='focus'
         {...formProps}
+      />
+      <Turnstile
+        siteKey='0x4AAAAAAAhyrefK4vgW5bfq'
+        onSuccess={() => setStatus('success')}
+        onError={() => setStatus('error')}
+        onExpire={() => setStatus('expired')}
       />
       <SubmitButton dict={dict} />
     </form>
