@@ -36,6 +36,7 @@ export async function handleSubmit(e: FormEvent<HTMLFormElement>, lang) {
       button.disabled = false
       button.innerText = 'Send'
       button.classList.remove(s.bounce)
+      form.reset()
     }, 3000)
     console.error(await res.text())
   }
