@@ -1,3 +1,4 @@
 ---
-// Root index required by Astro i18n — redirectToDefaultLocale handles the actual 302 to /es.
+export const prerender = false
+return Astro.redirect('/es/', 302)
 ---
