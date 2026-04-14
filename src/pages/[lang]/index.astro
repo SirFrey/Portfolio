@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import { dicts, type Lang } from '../../i18n/loader'
+import Cursor from '@components/NewCursor/Cursor'
+import Header from '@components/Header/Header'
+import Articles from '@components/Articles/Articles.astro'
+import Footer from '@components/Footer/Footer.astro'
+import LangSwitcher from '@components/LangSwitcher/LangSwitcher'
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'es' } }, { params: { lang: 'en' } }]
+}
+
+const lang = Astro.params.lang as Lang
+const dict = dicts[lang]
+---
+
+<BaseLayout lang={lang}>
+  <main>
+    <Cursor client:load />
+    <Header dict={dict} lang={lang} client:load />
+    <Articles dict={dict} lang={lang} />
+    <Footer dict={dict} />
+    <LangSwitcher lang={lang} client:load />
+  </main>
+</BaseLayout>

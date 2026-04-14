@@ -1,0 +1,22 @@
+---
+import s from './SDownStyles.module.css'
+
+interface Props {
+  id?: string
+}
+
+const { id } = Astro.props
+---
+
+<a href="#portfolio" class={s.anchor} id={id} data-reveal="bottom">
+  <div class={s.mouseScroll}>
+    <div class={s.mouse}>
+      <div class={s.mouseIn}></div>
+    </div>
+    <div>
+      <span class={s.downArrow1}></span>
+      <span class={s.downArrow2}></span>
+      <span class={s.downArrow3}></span>
+    </div>
+  </div>
+</a>

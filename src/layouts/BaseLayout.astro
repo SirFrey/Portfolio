@@ -1,0 +1,70 @@
+---
+import '@fortawesome/fontawesome-svg-core/styles.css'
+import '@fontsource-variable/montserrat'
+import '@styles/normalize.css'
+import '@styles/index.css'
+import type { Lang } from '../i18n/loader'
+
+interface Props {
+  lang: Lang
+}
+
+const { lang } = Astro.props
+
+const meta =
+  lang === 'es'
+    ? {
+        title: 'Moises | Portfolio',
+        description: 'Este es mi portfolio web, sientete libre de echarle un vistazo. 😊',
+        ogTitle: 'Bienvenido a mi web 🤓',
+        ogDescription: 'Sientete libre de echarle un vistazo. 😎',
+        ogImage: 'https://moisesdev.vercel.app/images/spanishImg.png',
+        url: 'https://moisesdev.vercel.app/es',
+      }
+    : {
+        title: 'Moises | Portfolio',
+        description: 'This is my portfolio web, feel free to take a look. 😊',
+        ogTitle: 'Welcome to my web 🤓',
+        ogDescription: 'Feel free to take a look. 😎',
+        ogImage: 'https://moisesdev.vercel.app/images/englishImg.png',
+        url: 'https://moisesdev.vercel.app/en',
+      }
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="theme-color" content="#495c83" />
+    <meta name="keywords" content="portfolio, web, developer, frontend, backend, fullstack" />
+    <meta name="author" content="Moises" />
+    <link rel="icon" href="/images/favicon.ico" />
+    <title>{meta.title}</title>
+    <meta name="description" content={meta.description} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Moises | Portfolio" />
+    <meta property="og:title" content={meta.ogTitle} />
+    <meta property="og:description" content={meta.ogDescription} />
+    <meta property="og:url" content={meta.url} />
+    <meta property="og:image" content={meta.ogImage} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+
+    {
+      lang === 'es' && (
+        <meta
+          name="google-site-verification"
+          content="GxY_RzqX7Z-W9_U_2_9jW6Q-VjvC-jWn-E_0Q_X_Ws"
+        />
+      )
+    }
+  </head>
+  <body>
+    <slot />
+    <script>
+      import '../scripts/reveal.ts'
+    </script>
+  </body>
+</html>

@@ -1,0 +1,213 @@
+html {
+  all: initial;
+  background: var(--principalColor);
+  line-height: 1.15;
+  scroll-behavior: smooth;
+  font-size: 17px;
+}
+body {
+  font-family: 'Montserrat Variable', 'Montserrat', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-margin-top: 100px;
+  color: var(--accentColor);
+  font-size: 27px;
+  text-align: center;
+}
+
+:root {
+  --scrollbar-width: 0;
+  --principal: 19, 69, 92;
+  --principalDark: 33, 88, 115;
+  --light: #e3f6ff;
+  --secondary: 81, 138, 166;
+  --accent: 250, 250, 250;
+  --accent-2: 204, 255, 255;
+  --accent-3: rgb(184 232 255);
+  --accent-4: #ccccccdb;
+  --principalColor: rgba(var(--principal));
+  --principalColorDark: rgba(var(--principalDark));
+  --secondaryColor: rgba(var(--secondary));
+  --accentColor: rgba(var(--accent));
+  --accent-2-Color: rgba(var(--accent-2));
+  --principalColorAlpha: rgba(var(--principal), 0.867);
+  --secondaryColorAlpha: rgba(var(--secondary), 0.667);
+  --principalColorDarkAlpha: rgba(var(--principalDark), 0.667);
+  --sans: 'Inter', sans-serif, -apple-system, ui-sans-serif, system-ui,
+    blinkmacsystemfont, sego ui, roboto, helvetica neue, arial, noto sans,
+    sans-serif, monospace;
+  --transition-left: left 0.2s ease-in-out;
+  --transition-width: width 0.2s ease-in-out;
+  --transition-prop-formui: border-color, background, color, transform,
+    box-shadow;
+  --radius1: 6px;
+  --index1: 1;
+  --index2: 2;
+  --index4: 4;
+  --index3: 3;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+:target {
+  scroll-margin-top: calc(42px + 10px);
+}
+
+h2:not(section:first-child h2, footer h2) {
+  text-decoration: double;
+}
+h1 {
+  text-align: center;
+  font-size: clamp(1.5rem, 4vw, 1.8rem);
+  font-weight: 400;
+}
+h2 {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  color: var(--accent-3);
+  font-weight: 400;
+}
+h3 {
+  font-size: clamp(1.1rem, 2.4vw, 1.9rem);
+  font-weight: 400;
+  color: var(--accent-4);
+}
+ul {
+  padding: 0;
+  margin-block: 0.6rem;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+
+h1 {
+  border-radius: 7px;
+}
+/* navbar */
+.typed-cursor {
+  display: inline-block;
+}
+input,
+textarea,
+button,
+select,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Articles styles */
+section p.p {
+  width: clamp(min(400px, 80vw), 70vw, 800px);
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  margin: 0;
+}
+strong {
+  color: var(--principalColorDark);
+}
+/* Sections */
+section:nth-child(1) {
+  display: grid;
+  place-content: center;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+}
+
+section:nth-child(even):not(:first-child) {
+  background: var(--secondaryColor);
+  position: relative;
+}
+section:nth-child(odd):not(:first-child) {
+  background: var(--principalColor);
+}
+
+section > h1 {
+  margin: 0;
+  padding: 16px 30px;
+}
+
+button {
+  padding: 0
+}
+
+.marginContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+  scroll-margin-top: 64px;
+}
+/* TODO: fix this with custom cursor if needed */
+:is(button, svg, a) > * {
+  pointer-events: none;
+}
+
+@media not all and (min-resolution: 0.001dpcm) {
+  @supports (-webkit-appearance: none) {
+    body {
+      letter-spacing: -0.1rem;
+    }
+  }
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes unShow {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Reveal-on-scroll utility — IntersectionObserver in src/scripts/reveal.ts toggles .is-visible */
+[data-reveal] {
+  opacity: 0;
+  transform: translateX(20px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+  will-change: opacity, transform;
+}
+[data-reveal='bottom'] {
+  transform: translateY(40px);
+}
+[data-reveal='right'] {
+  transform: translateX(-20px);
+}
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Header wave paths — slide in on load (replaces framer-motion propsPath) */
+.wave-path {
+  transition: transform 0.8s ease-out;
+}
+.wave-path.wave-path-1 {
+  transform: translateX(-80vw);
+}
+.wave-path.wave-path-2,
+.wave-path.wave-path-3 {
+  transform: translateX(20vw);
+}
+.wave-path.wave-path-animate {
+  transform: translateX(0);
+}

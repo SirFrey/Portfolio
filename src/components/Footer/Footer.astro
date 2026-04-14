@@ -1,0 +1,44 @@
+---
+import ContactForm from './ContactForm'
+import type { Dictionary } from '../../i18n/loader'
+import { links } from './dataFooter'
+import s from './Footer.module.css'
+// NOTE: FontAwesome SVG icons are inlined statically; their raw SVG is generated
+// via `icon()` from the core package so we don't need the React wrapper here.
+import { icon } from '@fortawesome/fontawesome-svg-core'
+
+interface Props {
+  dict: Dictionary
+}
+
+const { dict } = Astro.props
+
+const socialIcons = links.map(link => ({
+  ...link,
+  svg: icon(link.iconFontAwesome as any).html.join(''),
+}))
+---
+
+<footer id="contacto" class={s.footer_final}>
+  <h2 data-reveal>{dict.footer.contact}</h2>
+  <ContactForm dict={dict} client:load />
+  <div class={s.line}></div>
+  <ul class={s.ul_footer} data-reveal="bottom">
+    {
+      socialIcons.map(({ href, title, svg }) => (
+        <li class="footer-social-item">
+          <a href={href} title={title} target="_blank" rel="noopener noreferrer" set:html={svg} />
+        </li>
+      ))
+    }
+  </ul>
+</footer>
+
+<style>
+  .footer-social-item {
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .footer-social-item:hover {
+    transform: scale(1.2);
+  }
+</style>

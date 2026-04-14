@@ -1,0 +1,38 @@
+---
+import { CardItem } from './CardItem'
+import dataCards from './dataCards'
+import type { Lang, Dictionary } from '../../i18n/loader'
+import style from './ProjectCards.module.css'
+
+interface Props {
+  lang: Lang
+  dict: Dictionary
+}
+
+const { lang, dict } = Astro.props
+---
+
+<div class={style.wrapper}>
+  {
+    dataCards.map((card, i) => {
+      const { description, image, project, alt, late, website } = card
+      return (
+        <CardItem disabled={late} i={i} website={website} client:visible>
+          <div class={style.image_wrapper}>
+            {late ? (
+              <div class={style.soonComponent}>{dict.portfolioSection.soon}</div>
+            ) : (
+              <img src={image} alt={alt} loading="lazy" decoding="async" style="object-fit:cover;width:100%;height:100%;" />
+            )}
+          </div>
+          <article class={style.card_wrapper}>
+            <h2 class={style.project_title}>
+              {late ? dict.portfolioSection.soon : project}
+            </h2>
+            <p class={style.project_desc} set:html={late ? dict.portfolioSection.soon : description[lang]}></p>
+          </article>
+        </CardItem>
+      )
+    })
+  }
+</div>
