@@ -1,33 +1,30 @@
-import { Canvas } from '@react-three/fiber'
-import { useCallback } from 'react'
+import { Canvas, useThree } from '@react-three/fiber'
+import { useEffect, useRef } from 'react'
 import { Scene } from './Scene'
 
-const SceneSection = () => {
-  const handleCreated = useCallback(({ gl }) => {
-    gl.setClearColor(0x134558, 0)
-
-    // Reveal only after shader has painted real pixels
-    requestAnimationFrame(() => {
+function RevealCanvas({ wrapperRef }: { wrapperRef: React.RefObject<HTMLDivElement | null> }) {
+  const gl = useThree((s) => s.gl)
+  useEffect(() => {
+    const raf1 = requestAnimationFrame(() => {
       requestAnimationFrame(() => {
-        gl.domElement.style.opacity = '0.7'
+        wrapperRef.current?.classList.add('r3f-ready')
       })
     })
-  }, [])
+    return () => cancelAnimationFrame(raf1)
+  }, [gl, wrapperRef])
+  return null
+}
+
+const SceneSection = () => {
+  const wrapperRef = useRef<HTMLDivElement>(null)
 
   return (
-    <div style={{ position: 'absolute', inset: 0, zIndex: 1 }}>
+    <div ref={wrapperRef} className="scene-root" style={{ position: 'absolute', inset: 0, zIndex: 1 }}>
       <Canvas
-        gl={{
-          antialias: false,
-          stencil: false,
-          depth: false,
-          powerPreference: 'low-power',
-          alpha: true,
-          premultipliedAlpha: false,
-        }}
-        style={{ width: '100%', height: '100%', opacity: 0, transition: 'opacity 0.4s ease' }}
-        onCreated={handleCreated}>
+        gl={{ alpha: true }}
+        style={{ width: '100%', height: '100%' }}>
         <Scene />
+        <RevealCanvas wrapperRef={wrapperRef} />
       </Canvas>
     </div>
   )
