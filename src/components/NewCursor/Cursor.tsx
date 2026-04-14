@@ -2,7 +2,7 @@
 
 import { useEventListener } from '@assets/hooks/useEventListener'
 import { useFollowPointer } from '@assets/hooks/useFollowPointer'
-import { type Variants, useWillChange } from 'framer-motion'
+import type { Variants } from 'framer-motion'
 import { useRef, useState } from 'react'
 import './cursor.css'
 import { MotionDiv } from '@components/FramerComps'

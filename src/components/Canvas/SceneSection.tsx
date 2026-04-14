@@ -1,10 +1,5 @@
-'use client'
 import { Canvas } from '@react-three/fiber'
 import { Scene } from './Scene'
-
-const worker = new Worker(new URL('./worker.tsx', import.meta.url), {
-  type: 'module',
-})
 
 const SceneSection = () => {
   return (
