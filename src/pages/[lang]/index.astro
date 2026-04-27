@@ -18,7 +18,7 @@ const dict = dicts[lang]
 <BaseLayout lang={lang}>
   <main>
     <Cursor client:load />
-    <Header dict={dict} lang={lang} client:load />
+    <Header lang={lang} client:load />
     <Articles dict={dict} lang={lang} />
     <Footer dict={dict} />
     <LangSwitcher lang={lang} client:load />

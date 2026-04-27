@@ -2,6 +2,7 @@ export const prerender = false
 
 import type { APIRoute } from 'astro'
 import nodemailer from 'nodemailer'
+import type SMTPTransport from 'nodemailer/lib/smtp-transport'
 import { verifyToken } from '@assets/utils/server'
 
 export const POST: APIRoute = async ({ request }) => {
@@ -32,7 +33,7 @@ export const POST: APIRoute = async ({ request }) => {
     },
   })
 
-  const info: any = await new Promise((resolve, reject) => {
+  const info = await new Promise<SMTPTransport.SentMessageInfo>((resolve, reject) => {
     mail.sendMail(
       {
         from: import.meta.env.MAIL,

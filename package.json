@@ -7,7 +7,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "@astrojs/react": "^5.0.3",
@@ -33,14 +35,23 @@
     "three": "0.183.2"
   },
   "devDependencies": {
+    "@eslint/js": "^9.39.4",
+    "@react-three/eslint-plugin": "^0.1.2",
     "@types/node": "20.10.3",
     "@types/nodemailer": "6.4.14",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "@types/three": "^0.183.1",
-    "eslint": "8.55.0",
+    "astro-eslint-parser": "^1.4.0",
+    "eslint": "9.39.4",
     "eslint-config-prettier": "^9.1.0",
-    "typescript": "5.3.2"
+    "eslint-plugin-astro": "^1.7.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^17.5.0",
+    "typescript": "5.3.2",
+    "typescript-eslint": "^8.59.1"
   },
   "packageManager": "pnpm@10.33.0+sha512.10568bb4a6afb58c9eb3630da90cc9516417abebd3fabbe6739f0ae795728da1491e9db5a544c76ad8eb7570f5c4bb3d6c637b2cb41bfdcdb47fa823c8649319"
 }

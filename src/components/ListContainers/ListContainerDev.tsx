@@ -27,7 +27,7 @@ export function ListContainerDev({ lang }) {
       clearInterval(intervalListDev)
     }
     return () => clearInterval(intervalListDev)
-  }, [isPausedListDev])
+  }, [isPausedListDev, lastIndex])
 
   return (
     <motion.ul

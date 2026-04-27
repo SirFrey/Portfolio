@@ -27,7 +27,7 @@ export function ListContainer({ dict, lang }) {
       clearInterval(intervalList)
     }
     return () => clearInterval(intervalList)
-  }, [isPausedList])
+  }, [isPausedList, lastIndex])
   return (
     <>
       <motion.ul

@@ -5,7 +5,7 @@ import { links } from './dataFooter'
 import s from './Footer.module.css'
 // NOTE: FontAwesome SVG icons are inlined statically; their raw SVG is generated
 // via `icon()` from the core package so we don't need the React wrapper here.
-import { icon } from '@fortawesome/fontawesome-svg-core'
+import { icon, type IconDefinition } from '@fortawesome/fontawesome-svg-core'
 
 interface Props {
   dict: Dictionary
@@ -15,7 +15,7 @@ const { dict } = Astro.props
 
 const socialIcons = links.map(link => ({
   ...link,
-  svg: icon(link.iconFontAwesome as any).html.join(''),
+  svg: icon(link.iconFontAwesome as IconDefinition).html.join(''),
 }))
 ---
 

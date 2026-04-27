@@ -4,8 +4,8 @@ import style from './ProjectCards.module.css'
 
 export function CardItem({
   children,
-  website,
-  disabled,
+  website: _website,
+  disabled: _disabled,
   i,
 }: {
   children: React.ReactNode

@@ -1,5 +1,7 @@
 ## Folders
-.next
+.vercel
+.astro
+dist
 node_modules
 styles/fontAwesome
 .vscode

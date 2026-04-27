@@ -33,7 +33,7 @@ const SubmitButton = ({ dict }) => {
 }
 
 export default function ContactForm({ dict }) {
-  const [status, setStatus] = useState<string>()
+  const [, setStatus] = useState<string>()
   return (
     <form
       onSubmit={e => {

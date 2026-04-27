@@ -15,7 +15,7 @@ interface ListItemType<T> extends HTMLMotionProps<'li'> {
 export function ListItemComp<T extends number>({
   Icon,
   span,
-  color,
+  color: _color,
   setCounter,
   setPause,
   counter,

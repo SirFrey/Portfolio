@@ -9,7 +9,7 @@ import { ReactTyped } from 'react-typed'
 import s from './Header.module.css'
 import { links, variantsHeader } from './dataHeader'
 import { blockScroll, unblockScroll, useWindowSize } from './scripts'
-import type { Lang, Dictionary } from '../../i18n/loader'
+import type { Lang } from '../../i18n/loader'
 const childVariants: Variants = {
   hidden: {
     filter: 'blur(4px)',
@@ -23,11 +23,11 @@ const childVariants: Variants = {
     backgroundColor: '#fff3',
   },
 }
-const Header = ({ dict, lang }: { lang: Lang; dict: Dictionary }) => {
+const Header = ({ lang }: { lang: Lang }) => {
 
   const windowSize = useWindowSize()
   const navFixed = useRef<HTMLElement>(null)
-  const bgDark = useRef<HTMLDivElement>(null)
+  const bgDark = useRef<HTMLButtonElement>(null)
   const navFixedBar = useRef<HTMLElement>(null)
   const [isOpen, toggleOpen] = useCycle(false, true)
 
@@ -81,14 +81,7 @@ const Header = ({ dict, lang }: { lang: Lang; dict: Dictionary }) => {
           variants={variantsHeader}
           ref={navFixedBar}
           className={s.principal_nav}>
-          <ul
-            onClick={e => {
-              const target = e.target as HTMLUListElement
-              if (target.matches('a')) {
-                toggleOpen()
-              }
-            }}
-            className={s.nav_fixed_ul}>
+          <ul className={s.nav_fixed_ul}>
             {links[lang].map(({ href, name }, i) => {
               return (
                 <motion.li
@@ -99,7 +92,8 @@ const Header = ({ dict, lang }: { lang: Lang; dict: Dictionary }) => {
                     whileHover={{
                       backgroundColor: '#fff3',
                     }}
-                    href={'#' + href}>
+                    href={'#' + href}
+                    onClick={() => toggleOpen()}>
                     {name}
                   </motion.a>
                 </motion.li>
@@ -109,17 +103,21 @@ const Header = ({ dict, lang }: { lang: Lang; dict: Dictionary }) => {
         </motion.aside>
       </header>
       {/* <!-- Dark Background --> */}
-      <div
+      <button
+        type='button'
+        aria-label='Close menu'
+        aria-hidden={!isOpen}
+        tabIndex={isOpen ? 0 : -1}
         onClick={() => toggleOpen()}
         onAnimationEnd={e => {
-          const target = e.target as HTMLDivElement
+          const target = e.currentTarget
           if (!isOpen) {
             target.style.display = 'none'
           }
         }}
         ref={bgDark}
         id='bg'
-        className={s.bg_dark}></div>
+        className={s.bg_dark}></button>
     </>
   )
 }

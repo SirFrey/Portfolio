@@ -17,7 +17,7 @@ export const ListCompDev = ({
   span,
   setPause,
   setCounter,
-  color,
+  color: _color,
   counter,
   index,
   ...props
