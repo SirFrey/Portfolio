@@ -2,7 +2,7 @@ import s from './Articles.module.css'
 import { itemVariants } from '@assets/utils/props'
 import TextIcon from '@components/TextIcon/TextIcon'
 import { type HTMLMotionProps, motion } from 'framer-motion'
-import type { Dispatch, SetStateAction } from 'react'
+import type { Dispatch, JSX, SetStateAction } from 'react'
 interface ListItemType extends HTMLMotionProps<'li'> {
   Icon: JSX.Element
   span: string

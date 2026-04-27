@@ -13,6 +13,7 @@ import FramerMotion from '@assets/icons/FramerMotion'
 import Native from '@assets/icons/Native'
 import Electron from '@assets/icons/Electron'
 import Three from '@assets/icons/Three'
+import type { JSX } from 'react'
 type IconType = {
   Icon: JSX.Element
   span: string

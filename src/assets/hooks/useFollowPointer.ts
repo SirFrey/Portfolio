@@ -1,6 +1,6 @@
 import { type RefObject, useEffect, useState } from 'react'
 
-export function useFollowPointer(ref: RefObject<HTMLElement>) {
+export function useFollowPointer(ref: RefObject<HTMLElement | null>) {
   const [point, setPoint] = useState([0, 0])
 
   useEffect(() => {
