@@ -1,12 +1,13 @@
 export async function verifyToken(formData: FormData) {
   const url = 'https://challenges.cloudflare.com/turnstile/v0/siteverify'
-  const firstResult = await fetch(url, {
-    body: formData,
-    method: 'POST',
-  })
-  const firstOutcome = await firstResult.json()
-  if (!firstOutcome.success) {
+  try {
+    const result = await fetch(url, {
+      body: formData,
+      method: 'POST',
+    })
+    const outcome = await result.json()
+    return outcome.success === true
+  } catch {
     return false
   }
-  return true
 }
