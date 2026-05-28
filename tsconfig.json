@@ -3,13 +3,12 @@
   "compilerOptions": {
     "jsx": "preserve",
     "jsxImportSource": "react",
-    "baseUrl": ".",
     "paths": {
-      "@components/*": ["src/components/*"],
-      "@assets/*": ["src/assets/*"],
-      "@styles/*": ["src/styles/*"],
-      "@public/*": ["public/*"],
-      "types/*": ["src/types/*"]
+      "@components/*": ["./src/components/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@styles/*": ["./src/styles/*"],
+      "@public/*": ["./public/*"],
+      "types/*": ["./src/types/*"]
     },
     "allowJs": true,
     "strict": false,
