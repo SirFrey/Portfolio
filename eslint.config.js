@@ -56,13 +56,19 @@ export default defineConfig(
   ...astro.configs.recommended,
 
   {
-    files: ['src/components/Canvas/**/*.{ts,tsx}'],
+    files: [
+      'src/components/Canvas/**/*.{ts,tsx}',
+      'src/components/Divider/Shape3D.tsx',
+    ],
     plugins: { '@react-three': reactThree },
     rules: {
       ...reactThree.configs.recommended.rules,
       'react/no-unknown-property': 'off',
+      // R3F is imperative by design — mutating three.js scene/geometry/material
+      // objects obtained from hooks is the intended pattern here.
+      'react-hooks/immutability': 'off',
     },
   },
 
-  prettier,
+  prettier
 )
