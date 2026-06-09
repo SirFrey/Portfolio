@@ -31,16 +31,19 @@ body {
   --secondaryColor: rgba(var(--secondary));
   --accentColor: rgba(var(--accent));
   --accent-2-Color: rgba(var(--accent-2));
+  --glow-rgb: 127, 233, 255;
+  --glow: rgb(var(--glow-rgb));
   --principalColorAlpha: rgba(var(--principal), 0.867);
   --secondaryColorAlpha: rgba(var(--secondary), 0.667);
   --principalColorDarkAlpha: rgba(var(--principalDark), 0.667);
-  --sans: 'Inter', sans-serif, -apple-system, ui-sans-serif, system-ui,
+  --sans:
+    'Inter', sans-serif, -apple-system, ui-sans-serif, system-ui,
     blinkmacsystemfont, sego ui, roboto, helvetica neue, arial, noto sans,
     sans-serif, monospace;
   --transition-left: left 0.2s ease-in-out;
   --transition-width: width 0.2s ease-in-out;
-  --transition-prop-formui: border-color, background, color, transform,
-    box-shadow;
+  --transition-prop-formui:
+    border-color, background, color, transform, box-shadow;
   --radius1: 6px;
   --index1: 1;
   --index2: 2;
@@ -59,9 +62,6 @@ h6 {
   scroll-margin-top: calc(42px + 10px);
 }
 
-h2:not(section:first-child h2, footer h2) {
-  text-decoration: double;
-}
 h1 {
   text-align: center;
   font-size: clamp(1.5rem, 4vw, 1.8rem);
@@ -119,6 +119,8 @@ section:nth-child(1) {
   width: 100%;
   height: 100vh;
   height: 100svh;
+  position: relative;
+  overflow: hidden;
 }
 
 section:nth-child(even):not(:first-child) {
@@ -135,7 +137,7 @@ section > h1 {
 }
 
 button {
-  padding: 0
+  padding: 0;
 }
 
 .marginContainer {

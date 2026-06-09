@@ -2,174 +2,57 @@
   width: 100%;
 }
 
-.filterMainSection {
+/* skill cards — labels always visible, hover lift + accent glow */
+.skillCards {
+  width: 100%;
+  max-width: 920px;
+  margin-inline: auto;
   display: grid;
-  place-content: center;
-  pointer-events: none;
-  color: var(--light);
-  border-radius: 10vw;
-  position: relative;
-  z-index: var(--index2);
+  grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+  gap: 1rem;
 }
-
-.lang_list,
-.tool_list,
-.other_list,
-.developing_list {
+.skillCard {
   display: flex;
-  place-content: center;
   align-items: center;
-  flex-wrap: wrap;
-  gap: clamp(1px, 3vw, 29px);
+  gap: 0.85rem;
+  padding: 0.9rem 1.2rem;
+  min-width: 0;
+  border-radius: 16px;
+  background: rgba(0, 0, 0, 0.16);
+  border: 1px solid rgba(var(--glow-rgb), 0.16);
+  transition:
+    transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.28s,
+    border-color 0.28s,
+    background 0.28s;
 }
-
-.titleH1 {
-  padding-inline: clamp(1.2rem, 3.5vw, 4rem);
-  padding-block: clamp(1.2rem, 2.5vw, 1.6rem);
-  margin: 0;
-  font-size: clamp(1.7rem, 3.5vw, 4.8rem);
-  text-wrap: balance;
-  border: clamp(4px, 1vw, 9px) solid var(--light);
-  border-radius: 10vw;
-  background: rgba(var(--principal), 0.4);
-  backdrop-filter: blur(25px);
+.skillCard:hover {
+  transform: translateY(-4px);
+  border-color: var(--glow);
+  background: rgba(var(--glow-rgb), 0.08);
+  box-shadow: 0 12px 30px -14px var(--glow);
 }
-
-.sectionCareer {
-  margin: 0;
-  font-size: clamp(1.5rem, 3vw, 3.2rem);
-  background: rgba(var(--principal), 0.4);
-  backdrop-filter: blur(25px);
-  border-radius: 10vw;
-  padding-inline: 0.8rem;
-}
-
-:is(.lang_list, .tool_list, .other_list, .developing_list) li {
+.scIcon {
   display: grid;
-  position: relative;
-  z-index: 5;
+  place-content: center;
+  width: 40px;
+  height: 40px;
+  flex: none;
 }
-
-:is(.lang_list, .tool_list, .other_list, .developing_list) svg {
-  width: clamp(1.5rem, 8vw, 4rem);
-  height: clamp(1.5rem, 8vw, 4rem);
-}
-
-.wave {
-  bottom: 0;
-  left: 0;
-}
-
-.wave,
-.wave2,
-.wave4,
-.wave5 {
-  width: 100%;
-  overflow: clip;
-  line-height: 0;
-}
-.wave2,
-.wave4,
-.wave5 {
-  rotate: 180deg;
-}
-
-.wave svg {
-  position: relative;
+.scIcon svg {
+  width: 34px;
+  height: 34px;
   display: block;
-  width: calc(116% + 1.3px);
-  height: clamp(100px, 20vw, 100px);
+  transition: transform 0.28s;
 }
-
-.wave,
-.wave3 :is(.shapeFill) {
-  fill: var(--principalColor);
+.skillCard:hover .scIcon svg {
+  transform: scale(1.12);
 }
-
-.wave2 svg {
-  position: relative;
-  display: block;
-  width: calc(100% + 1.3px);
-  height: clamp(100px, 20vw, 120px);
-  background-color: var(--principalColor);
-}
-
-.wave2 .shapeFill {
-  fill: var(--principalColorDark);
-}
-
-.wave3 {
-  width: 100%;
-  overflow: clip;
-  line-height: 0;
-  rotate: 180deg;
-}
-
-.wave3 svg {
-  position: relative;
-  display: block;
-  width: calc(100% + 1.3px);
-  height: 100px;
-}
-
-.wave4 {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  z-index: var(--index2);
-}
-.wave4 svg {
-  fill: var(--secondaryColor);
-  height: clamp(68px, 10vw, 100px);
-  width: 100%;
-}
-
-.wave5 {
-  overflow: hidden;
-}
-
-.wave5 svg {
-  display: block;
-  width: calc(113% + 1.3px);
-  height: clamp(100px, 20vw, 100px);
-  transform: rotateY(180deg);
-}
-
-.wave5 .shapeFill {
-  fill: var(--principalColor);
-}
-
-.container {
-  position: absolute;
-  width: 24px;
-  height: 24px;
-  bottom: 85px;
-  left: 0;
-  right: 0;
-  margin: auto;
-}
-
-.text {
-  display: block;
-  margin-top: 60px;
-  margin-left: -30px;
-  font-family: 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
-  font-size: 12px;
-  color: #fff;
-  text-transform: uppercase;
-  white-space: nowrap;
-  opacity: 0.25;
-}
-:is(.developingContainer, .knowledgeContainer) .compListWrapper {
-  position: relative;
-}
-:is(.developingContainer, .knowledgeContainer) li {
-  background-color: #0003;
-  border: clamp(0.3px, 1vw, 3px) solid var(--secondaryColor);
-  border-radius: 9999px;
-  padding: clamp(10px, 2.3vw, 16px);
-  backface-visibility: hidden;
-  -webkit-transform: translate3d(0, 0, 0);
+.scLabel {
+  font-size: clamp(0.92rem, 1.6vw, 1.05rem);
+  font-weight: 500;
+  color: var(--light);
+  text-align: left;
 }
 .knowledgeContainer {
   container-type: inline-size;
@@ -180,13 +63,4 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
-}
-.textSpanIcons span {
-  opacity: 1;
-  filter: blur(0);
-}
-@container ( inline-size <= 919px ) {
-  .lang_list {
-    max-width: 650px;
-  }
 }

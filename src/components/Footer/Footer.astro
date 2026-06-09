@@ -6,6 +6,7 @@ import s from './Footer.module.css'
 // NOTE: FontAwesome SVG icons are inlined statically; their raw SVG is generated
 // via `icon()` from the core package so we don't need the React wrapper here.
 import { icon, type IconDefinition } from '@fortawesome/fontawesome-svg-core'
+import { faCode } from '@fortawesome/free-solid-svg-icons'
 
 interface Props {
   dict: Dictionary
@@ -17,28 +18,39 @@ const socialIcons = links.map(link => ({
   ...link,
   svg: icon(link.iconFontAwesome as IconDefinition).html.join(''),
 }))
+const codeSvg = icon(faCode).html.join('')
 ---
 
 <footer id="contacto" class={s.footer_final}>
-  <h2 data-reveal>{dict.footer.contact}</h2>
-  <ContactForm dict={dict} client:load />
-  <div class={s.line}></div>
-  <ul class={s.ul_footer} data-reveal="bottom">
-    {
-      socialIcons.map(({ href, title, svg }) => (
-        <li class="footer-social-item">
-          <a href={href} title={title} target="_blank" rel="noopener noreferrer" set:html={svg} />
-        </li>
-      ))
-    }
-  </ul>
-</footer>
+  <div class={s.contactCard} data-reveal>
+    <div class={s.contactHead}>
+      <h2 class={s.contactTitle}>{dict.footer.title}</h2>
+      <p class={s.contactSub}>{dict.footer.subtitle}</p>
+    </div>
 
-<style>
-  .footer-social-item {
-    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  }
-  .footer-social-item:hover {
-    transform: scale(1.2);
-  }
-</style>
+    <ContactForm dict={dict} client:load />
+
+    <div class={s.contactLinks}>
+      <span class={s.contactLinksLabel}>{dict.footer.findme}</span>
+      <div class={s.contactLinksRow}>
+        {
+          socialIcons.map(({ href, title, svg }) => (
+            <a
+              href={href}
+              title={title}
+              target="_blank"
+              rel="noopener noreferrer"
+              class={s.contactLink}>
+              <span class={s.clIc} set:html={svg} />
+              {title}
+            </a>
+          ))
+        }
+        <a href="#portfolio" class={s.contactLink}>
+          <span class={s.clIc} set:html={codeSvg} />
+          {dict.footer.viewProjects}
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>

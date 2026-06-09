@@ -1,57 +1,23 @@
 'use client'
 import s from '@components/Articles/Articles.module.css'
-
-import { containerVariants } from '@assets/utils/props'
-import { ListCompDev } from '@components/Articles/ListCompDev'
-import {
-  developingData,
-  maxListLengthDev,
-} from '@components/Articles/dataArticles'
+import { containerVariants, itemVariants } from '@assets/utils/props'
+import { developingData } from '@components/Articles/dataArticles'
 import { motion } from 'framer-motion'
-import { useEffect, useState } from 'react'
-export function ListContainerDev({ lang }) {
-  const [isPausedListDev, setPauseDevList] = useState(false)
-  const [counterListDev, setCounterListDev] = useState(0)
-  const lastIndex = maxListLengthDev
 
-  useEffect(() => {
-    // Interval list of list "Desarrollando..."
-    const intervalListDev = setInterval(() => {
-      setCounterListDev(count => {
-        if (count >= lastIndex) return 0
-        return count + 1
-      })
-    }, 1500)
-
-    if (isPausedListDev) {
-      clearInterval(intervalListDev)
-    }
-    return () => clearInterval(intervalListDev)
-  }, [isPausedListDev, lastIndex])
-
+export function ListContainerDev({ lang }: { lang: 'es' | 'en' }) {
   return (
-    <motion.ul
+    <motion.div
       variants={containerVariants}
       initial='hidden'
       whileInView='visible'
-      viewport={{
-        once: true,
-      }}
-      className={s.developing_list}>
-      {developingData[lang].map(({ Icon, span, color }, i: number) => {
-        return (
-          <ListCompDev
-            Icon={Icon}
-            span={span}
-            key={i}
-            index={i}
-            color={color}
-            setCounter={setCounterListDev}
-            counter={counterListDev}
-            setPause={setPauseDevList}
-          />
-        )
-      })}
-    </motion.ul>
+      viewport={{ once: true }}
+      className={s.skillCards}>
+      {developingData[lang].map(({ Icon, span }, i: number) => (
+        <motion.div className={s.skillCard} variants={itemVariants} key={i}>
+          <span className={s.scIcon}>{Icon}</span>
+          <span className={s.scLabel}>{span}</span>
+        </motion.div>
+      ))}
+    </motion.div>
   )
 }

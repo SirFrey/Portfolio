@@ -1,14 +1,20 @@
 {
   "lang": "es",
-  "navbar": ["Inicio", "Portfolio", "Conocimientos", "Sobre Mí", "Contacto"],
+  "navbar": ["Inicio", "Proyectos", "Conocimientos", "Sobre Mí", "Contacto"],
   "mainsection": {
     "titleh1": "Bienvenido a mi Portfolio Web",
-    "subtitleh2": "Frontend Developer"
+    "subtitleh2": "Frontend Developer",
+    "roles": ["Frontend Developer", "Desarrollador React", "Desarrollador Web"]
+  },
+  "cta": {
+    "projects": "Ver proyectos",
+    "contact": "Contacto"
   },
   "portfolioSection": {
-    "titleh2": "Portfolio:",
+    "titleh2": "Proyectos:",
     "date": "Creado:",
-    "soon": "Proximamente..."
+    "soon": "Próximamente",
+    "placeholder": "Sección en construcción, los proyectos reales se añadirán pronto."
   },
   "knowledgesSection": {
     "titleh2": "Conocimientos:",
@@ -27,10 +33,14 @@
   },
   "footer": {
     "contact": "Contacto",
+    "title": "¿Trabajamos juntos?",
+    "subtitle": "Cuéntame sobre tu proyecto o solo saluda, respondo en menos de 24 horas.",
     "email": "Email",
     "name": "Nombre",
     "message": "Mensaje",
-    "send": "Enviar",
-    "thankyou": "Gracias por su mensaje!"
+    "send": "Enviar mensaje",
+    "thankyou": "¡Gracias por su mensaje!",
+    "findme": "O encuéntrame en",
+    "viewProjects": "Ver proyectos"
   }
 }

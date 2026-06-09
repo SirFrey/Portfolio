@@ -7,7 +7,7 @@ export const links = {
       href: 'inicio',
     },
     {
-      name: 'Portfolio',
+      name: 'Proyectos',
       href: 'portfolio',
     },
     {
@@ -29,7 +29,7 @@ export const links = {
       href: 'inicio',
     },
     {
-      name: 'Portfolio',
+      name: 'Projects',
       href: 'portfolio',
     },
     {

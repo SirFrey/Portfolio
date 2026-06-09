@@ -1,14 +1,20 @@
 {
   "lang": "en",
-  "navbar": ["Home", "Portfolio", "Knowledges", "About Me", "Contact"],
+  "navbar": ["Home", "Projects", "Knowledges", "About Me", "Contact"],
   "mainsection": {
     "titleh1": "Welcome to my Web Portfolio",
-    "subtitleh2": "Frontend Developer"
+    "subtitleh2": "Frontend Developer",
+    "roles": ["Frontend Developer", "React Developer", "Web Developer"]
+  },
+  "cta": {
+    "projects": "View projects",
+    "contact": "Contact"
   },
   "portfolioSection": {
-    "titleh2": "Portfolio",
+    "titleh2": "Projects:",
     "date": "Date:",
-    "soon": "Soon..."
+    "soon": "Coming soon",
+    "placeholder": "Section under construction, real projects will be added soon."
   },
   "knowledgesSection": {
     "titleh2": "Skills:",
@@ -27,10 +33,14 @@
   },
   "footer": {
     "contact": "Contact",
+    "title": "Shall we work together?",
+    "subtitle": "Tell me about your project or just say hi, I reply within 24 hours.",
     "email": "Email",
     "name": "Name",
     "message": "Message",
-    "send": "Send",
-    "thankyou": "Thank you for your message!"
+    "send": "Send message",
+    "thankyou": "Thank you for your message!",
+    "findme": "Or find me on",
+    "viewProjects": "View projects"
   }
 }

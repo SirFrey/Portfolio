@@ -1,74 +1,157 @@
-.containerCard {
-  color: #000;
+.wrapper {
+  width: 100%;
+  max-width: 1180px;
+  margin-inline: auto;
   display: grid;
-  grid-template-rows: 300px 1fr;
-  border: none; 
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 1.8rem;
+}
+
+.card {
+  display: grid;
+  grid-template-rows: 230px 1fr;
   border-radius: 20px;
   overflow: clip;
-  background: #fff3;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  text-align: left;
 }
 
-.wrapper {
-  max-width: 1500px;
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
-  gap: 2rem;
+.note {
+  margin: 0 auto 1.6rem;
+  max-width: 620px;
+  font-size: clamp(0.9rem, 1.6vw, 1.05rem);
+  color: rgba(227, 246, 255, 0.6);
+  text-wrap: pretty;
 }
 
-.card_wrapper {
-  height: auto;
-  background: #fff4;
-  display: grid;
-  align-items: center;
-  grid-template-rows: repeat(2, max-content);
-  padding-bottom: 1rem;
-}
-
-.image_wrapper {
+.cardImg {
   position: relative;
-  width: 100%;
-  height: 100%;
   display: grid;
   place-content: center;
+  overflow: clip;
 }
-.project_summary {
-  padding-block: 15px;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  padding-inline: 1rem;
-  border-bottom-left-radius: inherit;
-  border-bottom-right-radius: inherit;
+.cardImgPlaceholder {
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, 0.04) 0 12px,
+    rgba(255, 255, 255, 0.07) 12px 24px
+  );
 }
-
-.project_title {
-  padding-block: 1rem;
-  margin-bottom: 0;
-  color: var(--principalColor);
-  font-size: clamp(1.4rem, 3vw, 2rem);
+.soonBadge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--light);
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(var(--glow-rgb), 0.12);
+  border: 1px solid rgba(var(--glow-rgb), 0.3);
 }
-
-.created_date {
-  margin: 0;
-  font-size: 1rem;
-  color: #8a8ea0;
-  justify-self: end;
-  margin-inline: 20px;
+/* skeleton bars — signal "content pending" in placeholder cards */
+.skel {
+  display: block;
+  height: 0.7rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
 }
-
-.project_desc {
-  margin: 0;
-  font-size: 1.2rem;
-  text-wrap: balance;
+.skelTitle {
+  height: 1.1rem;
+  width: 55%;
 }
-.project_desc strong {
-  color: #40f;
+.skelShort {
+  width: 70%;
 }
-
-.anchorCard > img {
+.cardImg img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
+.cardImgTag {
+  font-family: ui-monospace, 'SFMono-Regular', 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  color: rgba(19, 69, 92, 0.7);
+  background: rgba(255, 255, 255, 0.55);
+  padding: 0.35rem 0.7rem;
+  border-radius: 6px;
+}
 
+.cardBody {
+  padding: 1.1rem 1.2rem 1.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  background: rgba(255, 255, 255, 0.08);
+}
+.cardTop {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+.cardTitle {
+  color: var(--light);
+  font-size: clamp(1.2rem, 2.4vw, 1.5rem);
+  font-weight: 600;
+  margin: 0;
+}
+.cardDate {
+  font-size: 0.8rem;
+  color: rgba(227, 246, 255, 0.6);
+  white-space: nowrap;
+}
+.cardDesc {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.5;
+  color: rgba(240, 248, 252, 0.86);
+  text-wrap: pretty;
+}
+.cardDesc strong {
+  color: var(--light);
+  font-weight: 600;
+}
+.cardFoot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 0.4rem;
+}
+.cardStack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.chip {
+  font-size: 0.72rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(var(--glow-rgb), 0.14);
+  color: #cdeefb;
+  border: 1px solid rgba(var(--glow-rgb), 0.18);
+}
+.cardLinks {
+  display: flex;
+  gap: 0.5rem;
+}
+.cardIc {
+  display: grid;
+  place-content: center;
+  color: #cfe9f5;
+  opacity: 0.85;
+  transition:
+    opacity 0.25s,
+    color 0.25s;
+}
+.cardIc:hover {
+  opacity: 1;
+  color: #fff;
+}
+.cardIc svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+}

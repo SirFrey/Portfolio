@@ -3,6 +3,8 @@ import { CardItem } from './CardItem'
 import dataCards from './dataCards'
 import type { Lang, Dictionary } from '../../i18n/loader'
 import style from './ProjectCards.module.css'
+import { icon } from '@fortawesome/fontawesome-svg-core'
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
 
 interface Props {
   lang: Lang
@@ -10,27 +12,73 @@ interface Props {
 }
 
 const { lang, dict } = Astro.props
+const githubSvg = icon(faGithub).html.join('')
+const hasPlaceholders = dataCards.some(c => c.late)
 ---
+
+{
+  hasPlaceholders && (
+    <p class={style.note} data-reveal>
+      {dict.portfolioSection.placeholder}
+    </p>
+  )
+}
 
 <div class={style.wrapper}>
   {
     dataCards.map((card, i) => {
-      const { description, image, project, alt, late, website } = card
+      const { description, image, project, alt, github, date, stack, late } = card
+
+      if (late) {
+        return (
+          <CardItem i={i} client:visible>
+            <div class={`${style.cardImg} ${style.cardImgPlaceholder}`}>
+              <span class={style.soonBadge}>{dict.portfolioSection.soon}</span>
+            </div>
+            <div class={style.cardBody}>
+              <span class={`${style.skel} ${style.skelTitle}`} />
+              <span class={style.skel} />
+              <span class={`${style.skel} ${style.skelShort}`} />
+            </div>
+          </CardItem>
+        )
+      }
+
       return (
-        <CardItem disabled={late} i={i} website={website} client:visible>
-          <div class={style.image_wrapper}>
-            {late ? (
-              <div class={style.soonComponent}>{dict.portfolioSection.soon}</div>
+        <CardItem i={i} client:visible>
+          <div class={style.cardImg}>
+            {image ? (
+              <img src={image} alt={alt} loading="lazy" decoding="async" />
             ) : (
-              <img src={image} alt={alt} loading="lazy" decoding="async" style="object-fit:cover;width:100%;height:100%;" />
+              <span class={style.cardImgTag}>{project}</span>
             )}
           </div>
-          <article class={style.card_wrapper}>
-            <h2 class={style.project_title}>
-              {late ? dict.portfolioSection.soon : project}
-            </h2>
-            <p class={style.project_desc} set:html={late ? dict.portfolioSection.soon : description[lang]}></p>
-          </article>
+          <div class={style.cardBody}>
+            <div class={style.cardTop}>
+              <h3 class={style.cardTitle}>{project}</h3>
+              {date && <span class={style.cardDate}>{dict.portfolioSection.date} {date}</span>}
+            </div>
+            <p class={style.cardDesc} set:html={description[lang]} />
+            <div class={style.cardFoot}>
+              <div class={style.cardStack}>
+                {stack.map(tech => (
+                  <span class={style.chip}>{tech}</span>
+                ))}
+              </div>
+              {github && (
+                <div class={style.cardLinks}>
+                  <a
+                    class={style.cardIc}
+                    href={github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${project} on GitHub`}
+                    set:html={githubSvg}
+                  />
+                </div>
+              )}
+            </div>
+          </div>
         </CardItem>
       )
     })

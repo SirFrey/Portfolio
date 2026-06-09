@@ -1,106 +1,52 @@
 'use client'
 import s from '@components/Articles/Articles.module.css'
-import { containerVariants, propsHiddenElm } from '@assets/utils/props'
-import { ListItemComp } from '@components/Articles/ListItemComp'
+import {
+  containerVariants,
+  itemVariants,
+  propsHiddenElm,
+} from '@assets/utils/props'
 import {
   knowledgeData,
-  maxListLength,
   otherData,
   toolsData,
 } from '@components/Articles/dataArticles'
 import { motion } from 'framer-motion'
-import { useEffect, useState } from 'react'
-export function ListContainer({ dict, lang }) {
-  const [isPausedList, setPauseList] = useState(false)
-  const [counterList, setCounterList] = useState(0)
-  const lastIndex = maxListLength
+import type { JSX } from 'react'
 
-  useEffect(() => {
-    // Interval list of list "Conocimientos"
-    const intervalList = setInterval(() => {
-      setCounterList(count => {
-        if (count >= lastIndex) return 0
-        return count + 1
-      })
-    }, 1000)
-    if (isPausedList) {
-      clearInterval(intervalList)
-    }
-    return () => clearInterval(intervalList)
-  }, [isPausedList, lastIndex])
+type SkillItem = { Icon: JSX.Element; span: string; color: string }
+
+function SkillCardGrid({ items }: { items: SkillItem[] }) {
+  return (
+    <motion.div
+      variants={containerVariants}
+      initial='hidden'
+      whileInView='visible'
+      viewport={{ once: true }}
+      className={s.skillCards}>
+      {items.map(({ Icon, span }, i) => (
+        <motion.div className={s.skillCard} variants={itemVariants} key={i}>
+          <span className={s.scIcon}>{Icon}</span>
+          <span className={s.scLabel}>{span}</span>
+        </motion.div>
+      ))}
+    </motion.div>
+  )
+}
+
+export function ListContainer({
+  dict,
+  lang,
+}: {
+  dict: { knowledgesSection: { tools: string; others: string } }
+  lang: 'es' | 'en'
+}) {
   return (
     <>
-      <motion.ul
-        variants={containerVariants}
-        initial='hidden'
-        whileInView='visible'
-        viewport={{
-          once: true,
-        }}
-        className={s.lang_list}>
-        {knowledgeData.map(({ Icon, span, color }, i) => {
-          return (
-            <ListItemComp
-              Icon={Icon}
-              span={span}
-              key={i}
-              color={color}
-              counter={counterList}
-              index={i}
-              setCounter={setCounterList}
-              setPause={setPauseList}
-            />
-          )
-        })}
-      </motion.ul>
+      <SkillCardGrid items={knowledgeData} />
       <motion.h3 {...propsHiddenElm}>{dict.knowledgesSection.tools}</motion.h3>
-      <motion.ul
-        variants={containerVariants}
-        initial='hidden'
-        whileInView='visible'
-        viewport={{
-          once: true,
-        }}
-        className={s.tool_list}>
-        {toolsData.map(({ Icon, span, color }, i) => {
-          return (
-            <ListItemComp
-              Icon={Icon}
-              span={span}
-              key={i}
-              color={color}
-              counter={counterList}
-              index={i + knowledgeData.length}
-              setCounter={setCounterList}
-              setPause={setPauseList}
-            />
-          )
-        })}
-      </motion.ul>
+      <SkillCardGrid items={toolsData} />
       <motion.h3 {...propsHiddenElm}>{dict.knowledgesSection.others}</motion.h3>
-      <motion.ul
-        variants={containerVariants}
-        initial='hidden'
-        whileInView='visible'
-        viewport={{
-          once: true,
-        }}
-        className={s.other_list}>
-        {otherData[lang].map(({ Icon, span, color }, i) => {
-          return (
-            <ListItemComp
-              Icon={Icon}
-              span={span}
-              key={i}
-              color={color}
-              counter={counterList}
-              index={i + knowledgeData.length + toolsData.length}
-              setCounter={setCounterList}
-              setPause={setPauseList}
-            />
-          )
-        })}
-      </motion.ul>
+      <SkillCardGrid items={otherData[lang]} />
     </>
   )
 }
