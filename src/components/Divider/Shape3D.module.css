@@ -1,0 +1,50 @@
+.shape3d {
+  position: absolute;
+  top: 50%;
+  width: 140px;
+  height: 140px;
+  margin-top: -70px;
+  z-index: 4;
+  pointer-events: none;
+  animation: bob3d 7s ease-in-out infinite alternate;
+}
+/* soft accent halo so the object reads as part of the divider's glow */
+.shape3d::before {
+  content: '';
+  position: absolute;
+  inset: -22%;
+  border-radius: 50%;
+  z-index: -1;
+  background: radial-gradient(
+    circle,
+    rgba(var(--glow-rgb), 0.26) 0%,
+    transparent 64%
+  );
+  filter: blur(8px);
+  opacity: 0.55;
+  pointer-events: none;
+}
+.sideRight {
+  right: clamp(8px, 6vw, 90px);
+}
+.sideLeft {
+  left: clamp(8px, 6vw, 90px);
+}
+.canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+@keyframes bob3d {
+  from {
+    transform: translateY(-9px);
+  }
+  to {
+    transform: translateY(9px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .shape3d {
+    animation: none !important;
+  }
+}
