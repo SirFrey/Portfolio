@@ -9,7 +9,7 @@ import s from './Shape3D.module.css'
 // Flip to 'glass' for the uniform cyan-glass finish (abstract, palette-matched)
 // if brand colors ever feel wrong — see the design spec.
 type Finish = 'brand' | 'glass'
-const FINISH: Finish = 'brand'
+const FINISH: Finish = 'glass'
 const GLOW = '#7fe9ff'
 
 // Procedural equirectangular gradient — gives the materials something teal to reflect.
