@@ -171,6 +171,7 @@ export default function Shape3D({
     () => window.matchMedia('(prefers-reduced-motion: reduce)').matches
   )
   const envTexture = useMemo(() => makeEnvTexture(), [])
+  useEffect(() => () => envTexture.dispose(), [envTexture])
 
   useEffect(() => {
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
