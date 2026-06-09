@@ -4,7 +4,7 @@
   overflow: hidden;
   height: fit-content;
   padding-block: clamp(4rem, 8vw, 7rem);
-  padding-inline: 2rem;
+  padding-inline: clamp(1rem, 4vw, 2rem);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,8 +12,8 @@
 
 /* ---------- glass contact card ---------- */
 .contactCard {
-  width: min(640px, 94vw);
-  padding: clamp(1.6rem, 4vw, 2.8rem);
+  width: min(640px, 100%);
+  padding: clamp(1.1rem, 4vw, 2.8rem);
   border-radius: 24px;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(var(--glow-rgb), 0.16);
@@ -58,6 +58,9 @@
 @media (width < 520px) {
   .formGrid {
     grid-template-columns: 1fr;
+  }
+  .sendBtn {
+    align-self: stretch;
   }
 }
 /* ---------- underline fields, labels above ---------- */

@@ -1,9 +1,10 @@
 .shape3d {
+  --size: clamp(72px, 22vw, 140px);
   position: absolute;
   top: 50%;
-  width: 140px;
-  height: 140px;
-  margin-top: -70px;
+  width: var(--size);
+  height: var(--size);
+  margin-top: calc(var(--size) / -2);
   z-index: 4;
   pointer-events: none;
   animation: bob3d 7s ease-in-out infinite alternate;

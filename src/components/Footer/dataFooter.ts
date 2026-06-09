@@ -14,7 +14,7 @@ type link = {
 
 export const links: link[] = [
   {
-    href: 'https://linkedin.com/in/moisesln',
+    href: 'https://www.linkedin.com/in/sirfrey/',
     iconFontAwesome: faLinkedin,
     title: 'LinkedIn',
   },

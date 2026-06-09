@@ -150,10 +150,12 @@ function LogoMesh({ logo, reduced }: { logo: LogoName; reduced: boolean }) {
       mesh.rotation.set(-0.1, 0, 0)
       return
     }
+    // bounded sway — a flat extruded logo reads as a stick when edge-on,
+    // so it never turns more than ~±35° away from the viewer
     const t = state.clock.elapsedTime
     const scroll = window.scrollY || 0
-    mesh.rotation.y = t * 0.3 + scroll * 0.0016
-    mesh.rotation.x = -0.1 + scroll * 0.0004
+    mesh.rotation.y = Math.sin(t * 0.5 + scroll * 0.002) * 0.6
+    mesh.rotation.x = -0.1 + Math.sin(t * 0.3) * 0.06
   })
 
   return <mesh ref={meshRef} geometry={geometry} material={material} />
