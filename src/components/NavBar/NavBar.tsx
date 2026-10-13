@@ -10,6 +10,7 @@ interface NavBarButtonProps {
   btnClass: string
   btnName: string
   setOffsets: (offsetLeft: number, offsetWidth: number) => void
+  onHover: (offsetLeft: number, offsetWidth: number) => void
   active: string
   href: string
 }
@@ -18,6 +19,7 @@ const NavbarButton = ({
   btnClass,
   btnName,
   setOffsets,
+  onHover,
   active,
   href,
 }: NavBarButtonProps) => {
@@ -56,6 +58,9 @@ const NavbarButton = ({
       type='button'
       className={btnClass}
       data-scroll-to={btnName}
+      onMouseEnter={e =>
+        onHover(e.currentTarget.offsetLeft, e.currentTarget.offsetWidth)
+      }
       onClick={() => {
         const elToScroll = document.getElementById(href)
         elToScroll?.scrollIntoView()
@@ -69,6 +74,9 @@ const NavbarButton = ({
 export default function SlideBar({ lang }: { lang: Lang }) {
   const [offLeft, setOffLeft] = useState(4)
   const [offWidth, setOffWidth] = useState(94)
+  const [hover, setHover] = useState<{ left: number; width: number } | null>(
+    null
+  )
   const [theme] = useState('dark')
   const navbarRef = useRef<HTMLDivElement>(null)
   // A thin band at viewport center: isIntersecting stays true for sections
@@ -82,6 +90,11 @@ export default function SlideBar({ lang }: { lang: Lang }) {
     setOffWidth(width)
   }
 
+  const handleHover = (left: number, width: number) => setHover({ left, width })
+
+  const pillLeft = hover?.left ?? offLeft
+  const pillWidth = hover?.width ?? offWidth
+
   useLayoutEffect(() => {
     const navbar = navbarRef.current
     if (!navbar) return
@@ -92,13 +105,13 @@ export default function SlideBar({ lang }: { lang: Lang }) {
     const x = `${
       100 -
       Math.round(
-        (Math.round(offLeft + Math.round(offWidth / 2) + 60) /
+        (Math.round(pillLeft + Math.round(pillWidth / 2) + 60) /
           navbar.offsetWidth) *
           100
       )
     }%`
     navbar.style.setProperty('--x', x)
-  }, [offLeft, offWidth])
+  }, [pillLeft, pillWidth])
 
   return (
     <div id='body' className={theme}>
@@ -106,7 +119,7 @@ export default function SlideBar({ lang }: { lang: Lang }) {
       <header className='header'>
         <div className='navbar' ref={navbarRef}>
           <div className='navbar-curr--stroke' aria-hidden='true'></div>
-          <div className='navbar-root'>
+          <div className='navbar-root' onMouseLeave={() => setHover(null)}>
             {links[lang].map(({ name, href }) => (
               <NavbarButton
                 href={href}
@@ -118,6 +131,7 @@ export default function SlideBar({ lang }: { lang: Lang }) {
                     : 'navbar-link'
                 }
                 setOffsets={handleSetOffsets}
+                onHover={handleHover}
                 active={activeLink}
               />
             ))}
@@ -125,15 +139,15 @@ export default function SlideBar({ lang }: { lang: Lang }) {
               className='navbar-curr--pill'
               aria-hidden='true'
               style={{
-                transform: `translateX(${offLeft - 4}px)`,
-                width: `${offWidth}px`,
+                transform: `translateX(${pillLeft - 4}px)`,
+                width: `${pillWidth}px`,
               }}></div>
             <div
               className='navbar-curr--glow'
               aria-hidden='true'
               style={{
                 transform: `translateX(${
-                  offLeft + Math.round(offWidth / 2) - 20.25
+                  pillLeft + Math.round(pillWidth / 2) - 20.25
                 }px)`,
               }}></div>
           </div>
