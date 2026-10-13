@@ -4,7 +4,11 @@ import vercel from '@astrojs/vercel'
 
 export default defineConfig({
   integrations: [react()],
-  adapter: vercel(),
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true,
+    },
+  }),
   output: 'static',
   i18n: {
     locales: ['es', 'en'],
