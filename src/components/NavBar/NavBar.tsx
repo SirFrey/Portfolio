@@ -34,14 +34,14 @@ const NavbarButton = ({
     const ro = new ResizeObserver(entries => {
       entries.forEach(entry => {
         const target = entry.target as HTMLButtonElement
-        if (active === btnName) {
+        if (active === href) {
           setOffsetsRef.current(target.offsetLeft, target.offsetWidth)
         }
       })
     })
     ro.observe(el)
     return () => ro.disconnect()
-  }, [active, btnName])
+  }, [active, href])
 
   useLayoutEffect(() => {
     const el = anchor.current
@@ -71,8 +71,10 @@ export default function SlideBar({ lang }: { lang: Lang }) {
   const [offWidth, setOffWidth] = useState(94)
   const [theme] = useState('dark')
   const navbarRef = useRef<HTMLDivElement>(null)
+  // A thin band at viewport center: isIntersecting stays true for sections
+  // partially visible, so a ratio threshold re-activates sections as they leave.
   const activeLink = useScrollSpy(hrefNames(lang), {
-    threshold: 0.5,
+    rootMargin: '-50% 0px -49% 0px',
   })
 
   const handleSetOffsets = (left: number, width: number) => {
