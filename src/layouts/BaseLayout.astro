@@ -3,6 +3,7 @@ import '@fortawesome/fontawesome-svg-core/styles.css'
 import '@fontsource-variable/montserrat'
 import '@styles/normalize.css'
 import '@styles/index.css'
+import Analytics from '@vercel/analytics/astro'
 import type { Lang } from '../i18n/loader'
 
 interface Props {
@@ -66,6 +67,7 @@ const meta =
         />
       )
     }
+    <Analytics />
   </head>
   <body>
     <slot />
