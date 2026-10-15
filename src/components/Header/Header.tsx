@@ -6,7 +6,7 @@ import SlideBar from '@components/NavBar/NavBar'
 import { type Variants, motion, useCycle } from 'framer-motion'
 import { type CSSProperties, useEffect, useMemo, useRef, useState } from 'react'
 import s from './Header.module.css'
-import { links, variantsHeader } from './dataHeader'
+import { headerLabels, links, variantsHeader } from './dataHeader'
 import { blockScroll, unblockScroll, useWindowSize } from './scripts'
 import type { Lang } from '../../i18n/loader'
 const childVariants: Variants = {
@@ -87,7 +87,13 @@ const Header = ({ lang }: { lang: Lang }) => {
   return (
     <>
       <div className={s.containerMenuToggle}>
-        <MenuToggle toggle={() => toggleOpen()} isOpen={isOpen} />
+        <MenuToggle
+          toggle={() => toggleOpen()}
+          isOpen={isOpen}
+          label={
+            isOpen ? headerLabels[lang].closeMenu : headerLabels[lang].openMenu
+          }
+        />
       </div>
       <header className={s.mainHeader}>
         <motion.nav
@@ -98,8 +104,7 @@ const Header = ({ lang }: { lang: Lang }) => {
           className={s.nav_fixed}>
           <a
             href='#inicio'
-            className={`${s.logo}${showName ? ` ${s.logoExpanded}` : ''}`}
-            aria-label='Moises Castellanos'>
+            className={`${s.logo}${showName ? ` ${s.logoExpanded}` : ''}`}>
             M
             <span className={s.logoRest}>
               <span>oises&nbsp;</span>
