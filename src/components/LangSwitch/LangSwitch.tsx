@@ -8,7 +8,16 @@ const LANGS: { code: Lang; label: string; name: string }[] = [
   { code: 'en', label: 'EN', name: 'English' },
 ]
 
-// Section ids are shared across locales, so switching keeps the reader's place.
+/**
+ * ES | EN text switch. The current language is plain text; the other is a link.
+ *
+ * Section ids are the same in both locales, so the link carries the current
+ * section as a hash: switching while reading "Sobre mí" lands on "About me".
+ *
+ * @param lang Current locale.
+ * @param active Id of the section in view; empty or `"inicio"` adds no hash.
+ * @param className Extra class for placement (header vs mobile menu).
+ */
 export default function LangSwitch({
   lang,
   active,

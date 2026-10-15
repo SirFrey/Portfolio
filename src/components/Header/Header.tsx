@@ -22,12 +22,23 @@ const childVariants: Variants = {
     backgroundColor: 'rgba(238, 242, 248, 0.08)',
   },
 }
-// A thin band at viewport center: isIntersecting stays true for sections
-// partially visible, so a ratio threshold re-activates sections as they leave.
+// Shrinks the observer's viewport to a 1%-tall band just above the middle of
+// the screen (the margins cut 50% off the top and 49% off the bottom). A
+// section counts as "current" while it crosses that line, so exactly one
+// section is active at a time, whichever direction you scroll.
 const SPY_OPTIONS: IntersectionObserverInit = {
   rootMargin: '-50% 0px -49% 0px',
 }
 
+/**
+ * Fixed header: the logo, the desktop tabs, the language switch and the
+ * slide-out mobile menu.
+ *
+ * Owns the one scroll spy for the page and passes the current section to
+ * both the desktop tabs and the mobile menu, so they always agree.
+ *
+ * @param lang Current locale.
+ */
 const Header = ({ lang }: { lang: Lang }) => {
   // one tracker feeds both the desktop tabs and the mobile menu
   const sectionIds = useMemo(() => links[lang].map(l => l.href), [lang])

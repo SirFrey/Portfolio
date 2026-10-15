@@ -3,20 +3,39 @@ import { smoothFollow } from '@assets/utils/follow'
 import { useEffect, useRef } from 'react'
 import s from './Cursor.module.css'
 
+/** Verb shown for each `data-cursor` kind, e.g. `{ go: 'Ir', open: 'Abrir' }`. */
 export type CursorLabels = Record<string, string>
 
-// A small dot that opens into a pill naming what a click will do.
-// Interactive elements declare a kind with data-cursor ("go", "open", "view",
-// "scroll"); the verb for each kind comes from the dictionary. A
-// data-cursor-label attribute overrides the verb verbatim (the language
-// switch names the target language). Other links and buttons just grow the
-// dot. Form fields and iframes (Turnstile) hand back to the system cursor.
 const INTERACTIVE = '[data-cursor], a, button, iframe, input, textarea, select'
 const NATIVE = 'iframe, input, textarea, select, [data-cursor="native"]'
 
 const STIFF_DOT = 40 // locked to the pointer
 const STIFF_PILL = 16 // the open pill trails a little, so it reads as a tag
 
+/**
+ * Custom cursor: a small dot that opens into a pill naming what a click will
+ * do.
+ *
+ * How an element gets a verb:
+ * - `data-cursor="go" | "open" | "view" | "scroll"` picks the verb for that
+ *   kind from `labels` (the `cursor` block of the i18n dictionaries).
+ * - `data-cursor-label="…"` shows that text verbatim instead (the language
+ *   switch uses it to name the target language).
+ * - Any other link or button just grows the dot a little.
+ * - Form fields, iframes (the Turnstile check) and `data-cursor="native"`
+ *   hide the dot and hand back to the system cursor.
+ *
+ * Only active with a precise hovering pointer and no reduced-motion request
+ * (see `useHoverMotion`). While active it adds `has-custom-cursor` to `<html>`,
+ * which is what hides the system pointer (rule in `src/styles/index.css`), so
+ * touch visitors never lose their pointer.
+ *
+ * Performance: the dot is moved with `transform` from a `smoothFollow` loop,
+ * and the element under the pointer is only re-read when `event.target`
+ * changes, not on every move.
+ *
+ * @param labels Verbs by kind, from the current locale's dictionary.
+ */
 export default function Cursor({ labels }: { labels: CursorLabels }) {
   const rootRef = useRef<HTMLDivElement>(null)
   const textRef = useRef<HTMLSpanElement>(null)
@@ -39,6 +58,8 @@ export default function Cursor({ labels }: { labels: CursorLabels }) {
     const show = (on: boolean) => {
       el.classList.toggle(s.on, on)
     }
+    // Re-reads the element under the pointer: which verb to show (if any),
+    // whether it is a native-cursor element, and how tightly to follow.
     const read = (from: Element | null) => {
       const target = from?.closest(INTERACTIVE) as HTMLElement | null
       native = !!target && target.matches(NATIVE)

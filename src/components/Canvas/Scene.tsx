@@ -31,10 +31,15 @@ const fragmentShader = `
     return mix(indigo, cobalt, t);
   }
 
+  // Runs once per pixel. uv0 is the pixel's position with (0,0) at the
+  // centre and y from -1 to 1; l is its distance from the centre.
   void main() {
     vec2 uv0 = (gl_FragCoord.xy * 2.0 - resolution.xy) / resolution.y;
     float l = length(uv0);
 
+    // The ring: d measures how close this pixel is to a wavy band that bends
+    // toward the pointer; 0.024 / d peaks sharply on the band, and squaring
+    // it tightens the glow.
     vec2 uv = sin(uv0 * 1.1) - pointer;
     float d = length(uv) * exp(-l);
     d = abs(sin(d * 5.0 + ringPhase)) / 6.0;
@@ -56,8 +61,16 @@ const fragmentShader = `
   }
 `
 
-// Raw sRGB components, no colour management: the shader writes gl_FragColor
-// directly, so these must be the CSS hex values as-is.
+/**
+ * Read a hex colour token from `:root` as a shader-ready RGB vector (0 to 1).
+ *
+ * Raw sRGB components, no colour management: the shader writes
+ * `gl_FragColor` directly, so these must be the CSS hex values as-is.
+ *
+ * @param token CSS custom property holding a `#rrggbb` colour.
+ * @param fallback Used if the token is missing.
+ * @example cssVec3('--cobalt', '#3d6bff') // Vector3(0.24, 0.42, 1)
+ */
 function cssVec3(token: string, fallback: string) {
   const hex = (
     getComputedStyle(document.documentElement).getPropertyValue(token).trim() ||
@@ -71,6 +84,13 @@ function cssVec3(token: string, fallback: string) {
   )
 }
 
+/**
+ * Full-screen shader behind the hero: a soft cobalt/indigo ring that bends
+ * toward the pointer, over a faint centred haze.
+ *
+ * @param startTime Seconds to start the animation at, so it doesn't always
+ *   open on the same frame.
+ */
 export function Scene({ startTime = 0 }: { startTime?: number }) {
   const palette = useMemo(
     () => ({

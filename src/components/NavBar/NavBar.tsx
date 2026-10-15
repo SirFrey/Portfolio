@@ -4,8 +4,20 @@ import { useCallback, useLayoutEffect, useRef, useState } from 'react'
 import type { Lang } from '../../i18n/loader'
 import './NavBar.css'
 
+/** A link's position inside the track, in px. */
 type Box = { left: number; width: number }
 
+/**
+ * Desktop section tabs.
+ *
+ * Two marks sit behind the links: a chroma-stripe bar under the section in
+ * view (`active`, from the header's scroll spy) and a soft highlight that
+ * follows the hovered tab. They're separate on purpose, so hovering never
+ * hides where you are on the page.
+ *
+ * @param lang Current locale; picks the link names and the nav's label.
+ * @param active Id of the section in view, e.g. `"portfolio"`.
+ */
 export default function SlideBar({
   lang,
   active,

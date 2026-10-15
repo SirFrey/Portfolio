@@ -5,6 +5,13 @@ import { Turnstile, type TurnstileInstance } from '@marsidev/react-turnstile'
 import { useRef, useState } from 'react'
 import type { Dictionary } from '../../i18n/loader'
 
+/**
+ * Contact form: email, name, message, a Cloudflare Turnstile check and the
+ * striped send button.
+ *
+ * Turnstile runs in `interaction-only` mode, so most visitors never see it;
+ * it only appears when Cloudflare wants a click.
+ */
 export default function ContactForm({ dict }: { dict: Dictionary }) {
   const [, setStatus] = useState<string>()
   const turnstile = useRef<TurnstileInstance | undefined>(undefined)

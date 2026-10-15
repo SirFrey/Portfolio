@@ -11,8 +11,16 @@ interface Props {
   ctaContact: string
 }
 
-// Hero-scoped pointer tracking: events only fire while the pointer is over
-// the section, so nothing runs once the visitor has scrolled past it.
+/**
+ * Listen for pointer moves on one section only, so nothing runs once the
+ * visitor has scrolled past it (window-level listeners would keep firing,
+ * and each move reads layout).
+ *
+ * @param section The element to listen on (here the hero `<section>`).
+ * @param onMove Called on every pointer move inside it.
+ * @param onLeave Called when the pointer leaves it (ease back to rest here).
+ * @returns A function that removes both listeners.
+ */
 function trackPointer(
   section: HTMLElement,
   onMove: (e: PointerEvent) => void,
@@ -32,7 +40,14 @@ const MAGNET_MAX_X = 10
 const MAGNET_MAX_Y = 6
 const LABEL_LEAD = 0.4 // label travels further than the button, for depth
 
-// pulls slightly toward the cursor
+/**
+ * A link that leans toward the pointer as it approaches.
+ *
+ * The pull fades in over `MAGNET_RANGE` px outside the button's edge, follows
+ * `MAGNET_PULL` of the pointer's offset from the centre, and is capped at
+ * `MAGNET_MAX_X` / `MAGNET_MAX_Y`. The label moves `LABEL_LEAD` further than
+ * the button, which gives a little depth. Off on touch and reduced motion.
+ */
 function MagneticButton({
   href,
   className,
@@ -88,6 +103,13 @@ function MagneticButton({
   )
 }
 
+/**
+ * Hero content: the name, the intro line and the two calls to action.
+ *
+ * The whole block drifts a few px toward the pointer (8 px x, 6 px y at the
+ * window's edges) on top of the WebGL shader, and each button has its own
+ * magnetic pull. Both stop when the pointer leaves the hero.
+ */
 export default function Hero({ title, intro, ctaProjects, ctaContact }: Props) {
   const contentRef = useRef<HTMLDivElement>(null)
   const motionOk = useHoverMotion()
