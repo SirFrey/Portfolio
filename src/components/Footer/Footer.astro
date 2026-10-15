@@ -47,6 +47,7 @@ const socialIcons = links.map(link => ({
       </div>
     </div>
 
-    <ContactForm dict={dict} client:load />
+    <!-- client:visible: the Turnstile script (~140 KB) loads only when the form nears the screen -->
+    <ContactForm dict={dict} client:visible />
   </div>
 </footer>

@@ -146,6 +146,10 @@ export default function Shape3D({
     () => window.matchMedia('(prefers-reduced-motion: reduce)').matches
   )
   const [onScreen, setOnScreen] = useState(false)
+  // Each canvas is a WebGL context plus geometry and shader setup; creating
+  // all four at page load cost main-thread time on phones. Mount on approach
+  // and keep it mounted afterwards.
+  const [mounted, setMounted] = useState(false)
   const [paper, ink] = useMemo(
     () => [cssColor('--paper', '#eef2f8'), cssColor('--ink', '#14203a')],
     []
@@ -163,9 +167,12 @@ export default function Shape3D({
     const el = wrapRef.current
     if (!el) return
     const io = new IntersectionObserver(
-      ([e]) => setOnScreen(e.isIntersecting),
+      ([e]) => {
+        setOnScreen(e.isIntersecting)
+        if (e.isIntersecting) setMounted(true)
+      },
       {
-        rootMargin: '100px 0px',
+        rootMargin: '300px 0px',
       }
     )
     io.observe(el)
@@ -177,18 +184,20 @@ export default function Shape3D({
       ref={wrapRef}
       className={`${s.shape3d} ${side === 'left' ? s.sideLeft : s.sideRight}`}
       aria-hidden='true'>
-      <Canvas
-        className={s.canvas}
-        frameloop={reduced ? 'demand' : onScreen ? 'always' : 'never'}
-        // no tone mapping: the palette must render as the exact CSS colours
-        flat
-        gl={{ alpha: true, antialias: true }}
-        dpr={[1, 2]}
-        camera={{ fov: 34, position: [0, 0, 4.8] }}>
-        <hemisphereLight args={[paper, ink, 1.2]} />
-        <directionalLight position={[1, 1.5, 4]} intensity={2.2} />
-        <LogoMesh logo={logo} reduced={reduced} />
-      </Canvas>
+      {mounted && (
+        <Canvas
+          className={s.canvas}
+          frameloop={reduced ? 'demand' : onScreen ? 'always' : 'never'}
+          // no tone mapping: the palette must render as the exact CSS colours
+          flat
+          gl={{ alpha: true, antialias: true }}
+          dpr={[1, 2]}
+          camera={{ fov: 34, position: [0, 0, 4.8] }}>
+          <hemisphereLight args={[paper, ink, 1.2]} />
+          <directionalLight position={[1, 1.5, 4]} intensity={2.2} />
+          <LogoMesh logo={logo} reduced={reduced} />
+        </Canvas>
+      )}
     </div>
   )
 }
