@@ -5,7 +5,7 @@ import '@fontsource-variable/unbounded'
 import '@styles/normalize.css'
 import '@styles/index.css'
 import Analytics from '@vercel/analytics/astro'
-import type { Lang } from '../i18n/loader'
+import { dicts, type Lang } from '../i18n/loader'
 
 interface Props {
   lang: Lang
@@ -13,24 +13,18 @@ interface Props {
 
 const { lang } = Astro.props
 
-const meta =
-  lang === 'es'
-    ? {
-        title: 'Moises | Portfolio',
-        description: 'Este es mi portfolio web, sientete libre de echarle un vistazo. 😊',
-        ogTitle: 'Bienvenido a mi web 🤓',
-        ogDescription: 'Sientete libre de echarle un vistazo. 😎',
-        ogImage: 'https://moisesdev.vercel.app/images/spanishImg.png',
-        url: 'https://moisesdev.vercel.app/es',
-      }
-    : {
-        title: 'Moises | Portfolio',
-        description: 'This is my portfolio web, feel free to take a look. 😊',
-        ogTitle: 'Welcome to my web 🤓',
-        ogDescription: 'Feel free to take a look. 😎',
-        ogImage: 'https://moisesdev.vercel.app/images/englishImg.png',
-        url: 'https://moisesdev.vercel.app/en',
-      }
+const SITE = 'https://moisesdev.vercel.app'
+const name = 'Moises Castellanos'
+const role = lang === 'es' ? 'Desarrollador frontend' : 'Frontend developer'
+// The share text is the hero's intro line, so the two can't drift apart.
+const meta = {
+  title: `${name} | ${role}`,
+  description: dicts[lang].mainsection.intro,
+  // New filenames on purpose: LinkedIn and WhatsApp cache previews by URL.
+  ogImage: `${SITE}/images/og-${lang}.png`,
+  ogImageAlt: `${name}, ${role.toLowerCase()}`,
+  url: `${SITE}/${lang}/`,
+}
 ---
 
 <!doctype html>
@@ -39,24 +33,28 @@ const meta =
     <meta charset="UTF-8" />
     <meta name="color-scheme" content="dark" />
     <meta name="theme-color" content="#14203a" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style is:inline>
       html, body { background: #14203a; margin: 0; color: #eef2f8; }
       .scene-root { visibility: hidden !important; }
       .scene-root.r3f-ready { visibility: visible !important; opacity: 0.7; }
     </style>
     <meta name="keywords" content="portfolio, web, developer, frontend, backend, fullstack" />
-    <meta name="author" content="Moises" />
+    <meta name="author" content="Moises Castellanos" />
     <link rel="icon" href="/images/favicon.ico" />
     <title>{meta.title}</title>
     <meta name="description" content={meta.description} />
 
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Moises | Portfolio" />
-    <meta property="og:title" content={meta.ogTitle} />
-    <meta property="og:description" content={meta.ogDescription} />
+    <meta property="og:site_name" content={name} />
+    <meta property="og:locale" content={lang === 'es' ? 'es_VE' : 'en_US'} />
+    <meta property="og:title" content={meta.title} />
+    <meta property="og:description" content={meta.description} />
     <meta property="og:url" content={meta.url} />
     <meta property="og:image" content={meta.ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={meta.ogImageAlt} />
 
     <meta name="twitter:card" content="summary_large_image" />
 
