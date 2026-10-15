@@ -26,7 +26,7 @@ export const links: link[] = [
   {
     href: 'https://github.com/SirFrey',
     iconFontAwesome: faGithub,
-    title: 'Github',
+    title: 'GitHub',
   },
 ]
 export const footerVariants: Variants = {
