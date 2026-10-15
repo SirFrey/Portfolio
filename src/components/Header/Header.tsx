@@ -1,11 +1,10 @@
 'use client'
+import { useScrollSpy } from '@assets/hooks/useScrollSpy'
 import MenuToggle from '@components/MenuToggle/MenuToggle'
+import LangSwitch from '@components/LangSwitch/LangSwitch'
 import SlideBar from '@components/NavBar/NavBar'
-import { faCode } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { type Variants, motion, useCycle } from 'framer-motion'
-import { useEffect, useRef } from 'react'
-import { ReactTyped } from 'react-typed'
+import { type CSSProperties, useEffect, useMemo, useRef, useState } from 'react'
 import s from './Header.module.css'
 import { links, variantsHeader } from './dataHeader'
 import { blockScroll, unblockScroll, useWindowSize } from './scripts'
@@ -20,16 +19,41 @@ const childVariants: Variants = {
     opacity: 1,
   },
   hover: {
-    backgroundColor: '#fff3',
+    backgroundColor: 'rgba(238, 242, 248, 0.08)',
   },
 }
+// A thin band at viewport center: isIntersecting stays true for sections
+// partially visible, so a ratio threshold re-activates sections as they leave.
+const SPY_OPTIONS: IntersectionObserverInit = {
+  rootMargin: '-50% 0px -49% 0px',
+}
+
 const Header = ({ lang }: { lang: Lang }) => {
+  // one tracker feeds both the desktop tabs and the mobile menu
+  const sectionIds = useMemo(() => links[lang].map(l => l.href), [lang])
+  const active = useScrollSpy(sectionIds, SPY_OPTIONS)
 
   const windowSize = useWindowSize()
   const navFixed = useRef<HTMLElement>(null)
   const bgDark = useRef<HTMLButtonElement>(null)
   const navFixedBar = useRef<HTMLElement>(null)
   const [isOpen, toggleOpen] = useCycle(false, true)
+  // The hero already shows the name in large type, so the header logo stays
+  // an "MC" monogram until that headline has scrolled out of view.
+  const [showName, setShowName] = useState(false)
+
+  useEffect(() => {
+    // every page carries the hero headline (single-page site), so there is
+    // no "no hero" fallback to set here
+    const heroName = document.querySelector('#inicio h1')
+    if (!heroName) return
+    const io = new IntersectionObserver(
+      ([entry]) => setShowName(!entry.isIntersecting),
+      { rootMargin: '-64px 0px 0px 0px' }
+    )
+    io.observe(heroName)
+    return () => io.disconnect()
+  }, [])
 
   useEffect(() => {
     const scroller = document.scrollingElement as HTMLElement
@@ -61,26 +85,31 @@ const Header = ({ lang }: { lang: Lang }) => {
           variants={variantsHeader}
           ref={navFixed}
           className={s.nav_fixed}>
-          <div className={s.principal_icon}>
-            <FontAwesomeIcon icon={faCode} className={s.codeIcon} />
-            <ReactTyped
-              className={s.tag_title}
-              strings={['Moises Castellanos']}
-              typeSpeed={50}
-              backSpeed={50}
-              startDelay={2000}
-              backDelay={2000}
-              loop
-            />
-          </div>
-          <SlideBar lang={lang} />
+          <a
+            href='#inicio'
+            className={`${s.logo}${showName ? ` ${s.logoExpanded}` : ''}`}
+            aria-label='Moises Castellanos'>
+            M
+            <span className={s.logoRest}>
+              <span>oises&nbsp;</span>
+            </span>
+            C
+            <span className={s.logoRest}>
+              <span>astellanos</span>
+            </span>
+          </a>
+          <SlideBar lang={lang} active={active} />
+          <LangSwitch lang={lang} active={active} className={s.langDesktop} />
         </motion.nav>
         <motion.aside
           initial='hidden'
           animate={isOpen ? 'open' : ''}
           variants={variantsHeader}
           ref={navFixedBar}
-          className={s.principal_nav}>
+          // closed, the panel is only squeezed to ~0 width; inert keeps its
+          // links out of the tab order and the accessibility tree
+          inert={!isOpen}
+          className={`${s.principal_nav}${isOpen ? ` ${s.menuOpen}` : ''}`}>
           <ul className={s.nav_fixed_ul}>
             {links[lang].map(({ href, name }, i) => {
               return (
@@ -90,16 +119,20 @@ const Header = ({ lang }: { lang: Lang }) => {
                   key={i}>
                   <motion.a
                     whileHover={{
-                      backgroundColor: '#fff3',
+                      backgroundColor: 'rgba(238, 242, 248, 0.08)',
                     }}
                     href={'#' + href}
+                    className={active === href ? s.isActive : undefined}
+                    style={{ '--i': i } as CSSProperties}
+                    aria-current={active === href ? 'location' : undefined}
                     onClick={() => toggleOpen()}>
-                    {name}
+                    <span className={s.menuLabel}>{name}</span>
                   </motion.a>
                 </motion.li>
               )
             })}
           </ul>
+          <LangSwitch lang={lang} active={active} className={s.langMobile} />
         </motion.aside>
       </header>
       {/* <!-- Dark Background --> */}

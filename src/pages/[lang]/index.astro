@@ -5,7 +5,6 @@ import Cursor from '@components/NewCursor/Cursor'
 import Header from '@components/Header/Header'
 import Articles from '@components/Articles/Articles.astro'
 import Footer from '@components/Footer/Footer.astro'
-import LangSwitcher from '@components/LangSwitcher/LangSwitcher'
 
 export function getStaticPaths() {
   return [{ params: { lang: 'es' } }, { params: { lang: 'en' } }]
@@ -21,6 +20,5 @@ const dict = dicts[lang]
     <Header lang={lang} client:load />
     <Articles dict={dict} lang={lang} />
     <Footer dict={dict} />
-    <LangSwitcher lang={lang} client:load />
   </main>
 </BaseLayout>
