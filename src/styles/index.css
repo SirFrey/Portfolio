@@ -175,10 +175,6 @@ button {
   padding: clamp(3rem, 7vw, 5.5rem) clamp(1rem, 4vw, 2rem);
   scroll-margin-top: 64px;
 }
-/* TODO: fix this with custom cursor if needed */
-:is(button, svg, a) > * {
-  pointer-events: none;
-}
 
 @media not all and (min-resolution: 0.001dpcm) {
   @supports (-webkit-appearance: none) {
@@ -203,6 +199,17 @@ button {
   100% {
     opacity: 0;
   }
+}
+
+/* Custom cursor (Cursor island): the system pointer hides only while the
+   island is active, so touch and reduced-motion visitors keep it. Form
+   fields and iframes keep theirs too; the island hides itself over them. */
+html.has-custom-cursor,
+html.has-custom-cursor :is(a, button, [role='button'], label, summary) {
+  cursor: none;
+}
+html.has-custom-cursor :is(input, textarea, select, [data-cursor='native']) {
+  cursor: auto;
 }
 
 /* Thin parallel colour lines after Carlos Cruz-Diez's chromatic floor at

@@ -40,5 +40,11 @@
     "send": "Send message",
     "thankyou": "Thank you for your message!",
     "findme": "Or find me on"
+  },
+  "cursor": {
+    "go": "Go",
+    "open": "Open",
+    "view": "View",
+    "scroll": "Scroll"
   }
 }

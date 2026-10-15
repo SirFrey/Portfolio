@@ -1,0 +1,67 @@
+.cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  will-change: transform;
+}
+.on {
+  opacity: 1;
+}
+
+/* the dot and the open pill are one element, so the verb grows out of the dot */
+.pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 8px;
+  min-width: 8px;
+  padding: 0;
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--ink);
+  /* keeps the dot visible while it crosses the paper headline */
+  box-shadow: 0 0 0 1px rgba(var(--ink-rgb), 0.35);
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 0.72rem;
+  line-height: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  transform: translate(-50%, -50%);
+  transition:
+    height 0.22s cubic-bezier(0.2, 0.8, 0.2, 1),
+    min-width 0.22s cubic-bezier(0.2, 0.8, 0.2, 1),
+    padding 0.22s cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 0.15s ease;
+}
+.pill span {
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+.active .pill {
+  height: 12px;
+  min-width: 12px;
+}
+.open .pill {
+  height: 34px;
+  padding: 0 14px;
+}
+.open .pill span {
+  opacity: 1;
+  transition-delay: 0.08s;
+}
+.press .pill {
+  transform: translate(-50%, -50%) scale(0.85);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor,
+  .pill,
+  .pill span {
+    transition: none;
+  }
+}

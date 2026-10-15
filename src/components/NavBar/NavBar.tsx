@@ -76,6 +76,7 @@ export default function SlideBar({
             key={href}
             href={`#${href}`}
             data-id={href}
+            data-cursor='go'
             className={`site-nav__link${active === href ? ' is-active' : ''}`}
             aria-current={active === href ? 'location' : undefined}
             onPointerEnter={() => setHovered(href)}

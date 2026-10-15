@@ -16,7 +16,7 @@ const dict = dicts[lang]
 
 <BaseLayout lang={lang}>
   <main>
-    <Cursor client:load />
+    <Cursor client:load labels={dict.cursor} />
     <Header lang={lang} client:load />
     <Articles dict={dict} lang={lang} />
     <Footer dict={dict} />

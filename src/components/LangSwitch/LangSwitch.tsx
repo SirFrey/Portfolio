@@ -39,6 +39,8 @@ export default function LangSwitch({
             className={s.option}
             href={`/${code}/${hash}`}
             hrefLang={code}
+            data-cursor='switch'
+            data-cursor-label={name}
             lang={code}
             title={name}
             aria-label={name}>

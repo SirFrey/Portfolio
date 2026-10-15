@@ -58,6 +58,11 @@
 .skelShort {
   width: 70%;
 }
+.cardImg a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
 .cardImg img {
   width: 100%;
   height: 100%;

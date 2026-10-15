@@ -40,5 +40,11 @@
     "send": "Enviar mensaje",
     "thankyou": "¡Gracias por su mensaje!",
     "findme": "O encuéntrame en"
+  },
+  "cursor": {
+    "go": "Ir",
+    "open": "Abrir",
+    "view": "Ver",
+    "scroll": "Bajar"
   }
 }
