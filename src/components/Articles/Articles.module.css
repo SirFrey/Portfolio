@@ -5,34 +5,25 @@
 /* skill cards — labels always visible, hover lift + accent glow */
 .skillCards {
   width: 100%;
-  max-width: 920px;
-  margin-inline: auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
   gap: 1rem;
 }
 .skillCard {
   display: flex;
   align-items: center;
   gap: 0.85rem;
-  padding: 0.9rem 1.2rem;
+  padding: 0.85rem 1.1rem;
   min-width: 0;
-  border-radius: 16px;
-  background: rgba(0, 0, 0, 0.16);
-  border: 1px solid rgba(var(--glow-rgb), 0.16);
-  transition:
-    transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
-    box-shadow 0.28s,
-    border-color 0.28s,
-    background 0.28s;
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  transition: background 0.2s;
 }
 .skillCard:hover {
-  transform: translateY(-4px);
-  border-color: var(--glow);
-  background: rgba(var(--glow-rgb), 0.08);
-  box-shadow: 0 12px 30px -14px var(--glow);
+  background: var(--surface-hover);
 }
 .scIcon {
+  color: var(--paper);
   display: grid;
   place-content: center;
   width: 40px;
@@ -40,27 +31,26 @@
   flex: none;
 }
 .scIcon svg {
-  width: 34px;
-  height: 34px;
+  width: 32px;
+  height: 32px;
   display: block;
-  transition: transform 0.28s;
-}
-.skillCard:hover .scIcon svg {
-  transform: scale(1.12);
 }
 .scLabel {
-  font-size: clamp(0.92rem, 1.6vw, 1.05rem);
+  font-size: clamp(0.95rem, 1.6vw, 1.05rem);
   font-weight: 500;
-  color: var(--light);
+  color: var(--paper);
   text-align: left;
 }
 .knowledgeContainer {
   container-type: inline-size;
-  width: 100%;
 }
 
 .paragraphWrapper {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+}
+
+.groupLabel {
+  margin-top: 1.5rem;
 }

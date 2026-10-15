@@ -1,7 +1,5 @@
 .wrapper {
   width: 100%;
-  max-width: 1180px;
-  margin-inline: auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
   gap: 1.8rem;
@@ -10,19 +8,18 @@
 .card {
   display: grid;
   grid-template-rows: 230px 1fr;
-  border-radius: 20px;
+  border-radius: var(--radius-card);
   overflow: clip;
-  background: rgba(255, 255, 255, 0.16);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: var(--surface);
   text-align: left;
   z-index: 9;
 }
 
 .note {
-  margin: 0 auto 1.6rem;
-  max-width: 620px;
-  font-size: clamp(0.9rem, 1.6vw, 1.05rem);
-  color: rgba(227, 246, 255, 0.6);
+  margin: 0 0 1rem;
+  max-width: 62ch;
+  font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+  color: var(--mist);
   text-wrap: pretty;
 }
 
@@ -35,27 +32,24 @@
 .cardImgPlaceholder {
   background: repeating-linear-gradient(
     -45deg,
-    rgba(255, 255, 255, 0.04) 0 12px,
-    rgba(255, 255, 255, 0.07) 12px 24px
+    rgba(var(--paper-rgb), 0.025) 0 12px,
+    rgba(var(--paper-rgb), 0.05) 12px 24px
   );
 }
 .soonBadge {
-  font-size: 0.72rem;
+  font-size: 0.85rem;
   font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--light);
-  padding: 0.4rem 0.9rem;
-  border-radius: 999px;
-  background: rgba(var(--glow-rgb), 0.12);
-  border: 1px solid rgba(var(--glow-rgb), 0.3);
+  color: var(--marigold);
+  padding: 0.35rem 0.8rem;
+  border-radius: 6px;
+  background: rgba(var(--marigold-rgb), 0.12);
 }
 /* skeleton bars — signal "content pending" in placeholder cards */
 .skel {
   display: block;
   height: 0.7rem;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(var(--paper-rgb), 0.08);
 }
 .skelTitle {
   height: 1.1rem;
@@ -73,8 +67,8 @@
   font-family: ui-monospace, 'SFMono-Regular', 'JetBrains Mono', monospace;
   font-size: 0.8rem;
   letter-spacing: 0.04em;
-  color: rgba(19, 69, 92, 0.7);
-  background: rgba(255, 255, 255, 0.55);
+  color: var(--ink);
+  background: rgba(var(--paper-rgb), 0.7);
   padding: 0.35rem 0.7rem;
   border-radius: 6px;
 }
@@ -84,7 +78,6 @@
   display: flex;
   flex-direction: column;
   gap: 0.9rem;
-  background: rgba(255, 255, 255, 0.08);
 }
 .cardTop {
   display: flex;
@@ -93,25 +86,25 @@
   gap: 0.8rem;
 }
 .cardTitle {
-  color: var(--light);
+  color: var(--paper);
   font-size: clamp(1.2rem, 2.4vw, 1.5rem);
   font-weight: 600;
   margin: 0;
 }
 .cardDate {
   font-size: 0.8rem;
-  color: rgba(227, 246, 255, 0.6);
+  color: var(--mist);
   white-space: nowrap;
 }
 .cardDesc {
   margin: 0;
   font-size: 0.98rem;
   line-height: 1.5;
-  color: rgba(240, 248, 252, 0.86);
+  color: var(--mist);
   text-wrap: pretty;
 }
 .cardDesc strong {
-  color: var(--light);
+  color: var(--paper);
   font-weight: 600;
 }
 .cardFoot {
@@ -127,12 +120,11 @@
   gap: 0.4rem;
 }
 .chip {
-  font-size: 0.72rem;
-  padding: 0.25rem 0.6rem;
-  border-radius: 999px;
-  background: rgba(var(--glow-rgb), 0.14);
-  color: #cdeefb;
-  border: 1px solid rgba(var(--glow-rgb), 0.18);
+  font-size: 0.78rem;
+  padding: 0.25rem 0.55rem;
+  border-radius: 6px;
+  background: var(--surface-hover);
+  color: var(--paper);
 }
 .cardLinks {
   display: flex;
@@ -141,15 +133,11 @@
 .cardIc {
   display: grid;
   place-content: center;
-  color: #cfe9f5;
-  opacity: 0.85;
-  transition:
-    opacity 0.25s,
-    color 0.25s;
+  color: var(--mist);
+  transition: color 0.2s;
 }
 .cardIc:hover {
-  opacity: 1;
-  color: #fff;
+  color: var(--paper);
 }
 .cardIc svg {
   width: 20px;

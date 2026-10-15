@@ -1,7 +1,6 @@
 ---
-// Professional section divider: a thin luminous seam (near-white core wrapped in a
-// cyan glow halo) sitting on the color handoff between two sections. Replaces the
-// old layered SVG waves. Static — needs no client JS.
+// Section divider: the .chroma-stripes band on the handoff between two sections.
+// Static — needs no client JS.
 // The optional default slot is for a seam object (e.g. the Shape3D R3F island),
 // rendered outside the clipped band so it can float across the seam.
 interface Props {
@@ -20,8 +19,7 @@ const { top, bottom, height = 96 } = Astro.props
   <div
     class="divider"
     style={`height:${height}px;background:linear-gradient(${top} 0 50%, ${bottom} 50% 100%)`}>
-    <div class="d-halo"></div>
-    <div class="d-core"></div>
+    <div class="d-stripes chroma-stripes"></div>
   </div>
   <slot />
 </div>
@@ -35,35 +33,12 @@ const { top, bottom, height = 96 } = Astro.props
     width: 100%;
     overflow: hidden;
   }
-  .d-halo,
-  .d-core {
+  .d-stripes {
     position: absolute;
-    left: 50%;
+    left: 0;
+    right: 0;
     top: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 999px;
-  }
-  .d-halo {
-    width: min(62%, 780px);
-    height: 4px;
-    filter: blur(4px);
-    opacity: 0.9;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(var(--glow-rgb), 0.95) 50%,
-      transparent
-    );
-  }
-  .d-core {
-    width: min(60%, 760px);
-    height: 1.5px;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(232, 250, 255, 0.97) 50%,
-      transparent
-    );
-    box-shadow: 0 0 6px rgba(255, 255, 255, 0.55);
+    height: 14px;
+    transform: translateY(-50%);
   }
 </style>
