@@ -95,7 +95,7 @@ function MagneticButton({
   }, [motionOk])
 
   return (
-    <a ref={ref} href={href} className={className} data-cursor='go'>
+    <a ref={ref} href={href} className={className}>
       <span ref={labelRef} className={s.btnLabel}>
         {children}
       </span>

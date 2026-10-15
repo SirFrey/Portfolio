@@ -9,6 +9,11 @@ export type CursorLabels = Record<string, string>
 const INTERACTIVE = '[data-cursor], a, button, iframe, input, textarea, select'
 const NATIVE = 'iframe, input, textarea, select, [data-cursor="native"]'
 
+// Past these distances from the right/bottom edge, the open pill flips to the
+// other side of the pointer instead of being cut off by the viewport.
+const FLIP_X = 160
+const FLIP_Y = 90
+
 const STIFF_DOT = 40 // locked to the pointer
 const STIFF_PILL = 16 // the open pill trails a little, so it reads as a tag
 
@@ -17,8 +22,13 @@ const STIFF_PILL = 16 // the open pill trails a little, so it reads as a tag
  * do.
  *
  * How an element gets a verb:
- * - `data-cursor="go" | "open" | "view" | "scroll"` picks the verb for that
- *   kind from `labels` (the `cursor` block of the i18n dictionaries).
+ * - `data-cursor="open" | "view" | "scroll"` picks the verb for that kind
+ *   from `labels` (the `cursor` block of the i18n dictionaries). Verbs go
+ *   only where they add information: external links, project cards and the
+ *   scroll cue. A button or tab already says what it does, so it keeps the
+ *   plain dot.
+ * - The open pill hangs below-right of the pointer so it never covers the
+ *   word being pointed at, and flips left or up near the viewport's edges.
  * - `data-cursor-label="…"` shows that text verbatim instead (the language
  *   switch uses it to name the target language).
  * - Any other link or button just grows the dot a little.
@@ -76,6 +86,8 @@ export default function Cursor({ labels }: { labels: CursorLabels }) {
     }
 
     const onMove = (e: PointerEvent) => {
+      el.classList.toggle(s.flipX, e.clientX > window.innerWidth - FLIP_X)
+      el.classList.toggle(s.flipY, e.clientY > window.innerHeight - FLIP_Y)
       if (!shown) {
         shown = true
         follow.jump(e.clientX, e.clientY)

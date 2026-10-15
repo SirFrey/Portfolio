@@ -98,7 +98,6 @@ const Header = ({ lang }: { lang: Lang }) => {
           className={s.nav_fixed}>
           <a
             href='#inicio'
-            data-cursor='go'
             className={`${s.logo}${showName ? ` ${s.logoExpanded}` : ''}`}
             aria-label='Moises Castellanos'>
             M

@@ -12,8 +12,13 @@
   opacity: 1;
 }
 
-/* the dot and the open pill are one element, so the verb grows out of the dot */
+/* The dot and the open pill are one element, so the verb grows out of the
+   dot. The dot sits centred on the pointer; the open pill hangs below-right
+   of it (flipped near the edges) so it never covers the target's text. */
 .pill {
+  --ox: -50%;
+  --oy: -50%;
+  --s: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -31,12 +36,12 @@
   line-height: 1;
   white-space: nowrap;
   overflow: hidden;
-  transform: translate(-50%, -50%);
+  transform: translate(var(--ox), var(--oy)) scale(var(--s));
   transition:
     height 0.22s cubic-bezier(0.2, 0.8, 0.2, 1),
     min-width 0.22s cubic-bezier(0.2, 0.8, 0.2, 1),
     padding 0.22s cubic-bezier(0.2, 0.8, 0.2, 1),
-    transform 0.15s ease;
+    transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 /* The label keeps its last word while closed, so it can fade out in place.
    A 0fr grid track gives that hidden word zero width; without it the closed
@@ -57,8 +62,16 @@
   min-width: 12px;
 }
 .open .pill {
+  --ox: 14px;
+  --oy: 16px;
   height: 34px;
   padding: 0 14px;
+}
+.open.flipX .pill {
+  --ox: calc(-100% - 10px);
+}
+.open.flipY .pill {
+  --oy: calc(-100% - 10px);
 }
 .open .label {
   grid-template-columns: 1fr;
@@ -68,7 +81,7 @@
   transition-delay: 0.08s;
 }
 .press .pill {
-  transform: translate(-50%, -50%) scale(0.85);
+  --s: 0.85;
 }
 
 @media (prefers-reduced-motion: reduce) {
