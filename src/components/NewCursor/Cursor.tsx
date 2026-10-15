@@ -127,7 +127,9 @@ export default function Cursor({ labels }: { labels: CursorLabels }) {
   return (
     <div ref={rootRef} className={s.cursor} aria-hidden='true'>
       <div className={s.pill}>
-        <span ref={textRef} />
+        <span className={s.label}>
+          <span ref={textRef} />
+        </span>
       </div>
     </div>
   )

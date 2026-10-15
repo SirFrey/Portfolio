@@ -38,7 +38,17 @@
     padding 0.22s cubic-bezier(0.2, 0.8, 0.2, 1),
     transform 0.15s ease;
 }
-.pill span {
+/* The label keeps its last word while closed, so it can fade out in place.
+   A 0fr grid track gives that hidden word zero width; without it the closed
+   dot stretched to the previous verb's width. Same trick as the header logo. */
+.label {
+  display: inline-grid;
+  grid-template-columns: 0fr;
+  transition: grid-template-columns 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.label > span {
+  min-width: 0;
+  overflow: hidden;
   opacity: 0;
   transition: opacity 0.15s ease;
 }
@@ -50,7 +60,10 @@
   height: 34px;
   padding: 0 14px;
 }
-.open .pill span {
+.open .label {
+  grid-template-columns: 1fr;
+}
+.open .label > span {
   opacity: 1;
   transition-delay: 0.08s;
 }
@@ -61,7 +74,8 @@
 @media (prefers-reduced-motion: reduce) {
   .cursor,
   .pill,
-  .pill span {
+  .label,
+  .label > span {
     transition: none;
   }
 }
