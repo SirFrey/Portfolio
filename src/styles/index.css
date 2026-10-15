@@ -18,33 +18,51 @@ body {
 
 :root {
   --scrollbar-width: 0;
-  --principal: 19, 69, 92;
-  --principalDark: 33, 88, 115;
-  --light: #e3f6ff;
-  --secondary: 81, 138, 166;
-  --accent: 250, 250, 250;
-  --accent-2: 204, 255, 255;
-  --accent-3: rgb(184 232 255);
-  --accent-4: #ccccccdb;
-  --principalColor: rgba(var(--principal));
-  --principalColorDark: rgba(var(--principalDark));
-  --secondaryColor: rgba(var(--secondary));
-  --accentColor: rgba(var(--accent));
-  --accent-2-Color: rgba(var(--accent-2));
-  --glow-rgb: 127, 233, 255;
-  --glow: rgb(var(--glow-rgb));
-  --principalColorAlpha: rgba(var(--principal), 0.867);
-  --secondaryColorAlpha: rgba(var(--secondary), 0.667);
-  --principalColorDarkAlpha: rgba(var(--principalDark), 0.667);
-  --sans:
-    'Inter', sans-serif, -apple-system, ui-sans-serif, system-ui,
-    blinkmacsystemfont, sego ui, roboto, helvetica neue, arial, noto sans,
-    sans-serif, monospace;
+  /* palette — rgb triplets so they work inside rgba() */
+  --ink-rgb: 20, 32, 58;
+  --ink-2-rgb: 27, 42, 74;
+  --ink-deep-rgb: 15, 24, 44;
+  --paper-rgb: 238, 242, 248;
+  --marigold-rgb: 255, 197, 61;
+  --ink: rgb(var(--ink-rgb));
+  --ink-2: rgb(var(--ink-2-rgb));
+  --ink-deep: rgb(var(--ink-deep-rgb));
+  --paper: rgb(var(--paper-rgb));
+  --mist: #a3aec8;
+  --line: rgba(var(--paper-rgb), 0.16);
+  --surface: rgba(var(--paper-rgb), 0.05);
+  --surface-hover: rgba(var(--paper-rgb), 0.09);
+  --marigold: rgb(var(--marigold-rgb));
+  --cobalt: #3d6bff;
+  --carmine: #e8475f;
+  --indigo: #4d3dc7;
+  --marigold-hover: #ffd36b;
+  --chroma-stripes: repeating-linear-gradient(
+    90deg,
+    var(--marigold) 0 2px,
+    transparent 2px 6px,
+    var(--cobalt) 6px 8px,
+    transparent 8px 12px,
+    var(--carmine) 12px 14px,
+    transparent 14px 18px
+  );
+  --display: 'Unbounded Variable', 'Unbounded', sans-serif;
+
+  /* legacy names, kept so older component styles follow the palette */
+  --principal: var(--ink-rgb);
+  --principalDark: var(--ink-deep-rgb);
+  --secondary: var(--ink-2-rgb);
+  --accent: var(--paper-rgb);
+  --light: var(--paper);
+  --principalColor: var(--ink);
+  --principalColorDark: var(--ink-deep);
+  --secondaryColor: var(--ink-2);
+  --accentColor: var(--paper);
+  --principalColorAlpha: rgba(var(--ink-rgb), 0.867);
   --transition-left: left 0.2s ease-in-out;
   --transition-width: width 0.2s ease-in-out;
-  --transition-prop-formui:
-    border-color, background, color, transform, box-shadow;
-  --radius1: 6px;
+  --radius-control: 10px;
+  --radius-card: 14px;
   --index1: 1;
   --index2: 2;
   --index4: 4;
@@ -68,14 +86,18 @@ h1 {
   font-weight: 400;
 }
 h2 {
-  font-size: clamp(2rem, 4vw, 2.8rem);
-  color: var(--accent-3);
-  font-weight: 400;
+  font-family: var(--display);
+  font-size: clamp(1.9rem, 4vw, 2.75rem);
+  color: var(--paper);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
 }
 h3 {
-  font-size: clamp(1.1rem, 2.4vw, 1.9rem);
-  font-weight: 400;
-  color: var(--accent-4);
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  font-weight: 500;
+  color: var(--mist);
+  line-height: 1.4;
 }
 ul {
   padding: 0;
@@ -88,13 +110,6 @@ a {
   text-decoration: none;
 }
 
-h1 {
-  border-radius: 7px;
-}
-/* navbar */
-.typed-cursor {
-  display: inline-block;
-}
 input,
 textarea,
 button,
@@ -105,12 +120,20 @@ a {
 
 /* Articles styles */
 section p.p {
-  width: clamp(min(400px, 80vw), 70vw, 800px);
-  font-size: clamp(1rem, 3vw, 1.5rem);
+  max-width: 62ch;
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  line-height: 1.65;
+  color: var(--mist);
+  text-align: left;
   margin: 0;
 }
 strong {
-  color: var(--principalColorDark);
+  color: var(--paper);
+  font-weight: 600;
+}
+:focus-visible {
+  outline: 2px solid var(--marigold);
+  outline-offset: 3px;
 }
 /* Sections */
 section:nth-child(1) {
@@ -141,12 +164,15 @@ button {
 }
 
 .marginContainer {
-  width: 100%;
+  width: min(100%, 1180px);
+  margin-inline: auto;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+  text-align: left;
   gap: 1rem;
-  padding: 2rem;
+  padding: clamp(3rem, 7vw, 5.5rem) clamp(1rem, 4vw, 2rem);
   scroll-margin-top: 64px;
 }
 /* TODO: fix this with custom cursor if needed */
@@ -179,20 +205,24 @@ button {
   }
 }
 
+/* Thin parallel colour lines after Carlos Cruz-Diez's chromatic floor at
+   Maiquetía airport (Caracas) — the site's one decorative motif. */
+.chroma-stripes {
+  background: var(--chroma-stripes);
+}
+
 /* Reveal-on-scroll utility — IntersectionObserver in src/scripts/reveal.ts toggles .is-visible */
+/* vertical offsets only: a sideways one pushed past the viewport edge on phones */
 [data-reveal] {
   opacity: 0;
-  transform: translateX(20px);
+  transform: translateY(14px);
   transition:
     opacity 0.6s ease,
     transform 0.6s ease;
   will-change: opacity, transform;
 }
 [data-reveal='bottom'] {
-  transform: translateY(40px);
-}
-[data-reveal='right'] {
-  transform: translateX(-20px);
+  transform: translateY(32px);
 }
 [data-reveal].is-visible {
   opacity: 1;

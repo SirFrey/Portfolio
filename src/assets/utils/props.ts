@@ -1,14 +1,14 @@
-import { links } from '@components/Header/dataHeader'
 import type { HTMLMotionProps, SVGMotionProps, Variants } from 'framer-motion'
 
+// Vertical offsets only: a sideways one pushed tiles past the viewport edge on phones.
 export const variantsHiddenElm: Variants = {
   hidden: {
     opacity: 0,
-    x: 20,
+    y: 14,
   },
   visible: {
     opacity: 1,
-    x: 0,
+    y: 0,
   },
 }
 export const propsHiddenElm: HTMLMotionProps<'div'> = {
@@ -31,11 +31,11 @@ export const containerVariants: Variants = {
 export const itemVariants: Variants = {
   hidden: {
     opacity: 0,
-    x: 20,
+    y: 14,
   },
   visible: {
     opacity: 1,
-    x: 0,
+    y: 0,
   },
 }
 const pathVariants: Variants = {
@@ -54,7 +54,4 @@ const pathVariants: Variants = {
 }
 export const propsPath: SVGMotionProps<SVGPathElement> = {
   variants: pathVariants,
-}
-export const hrefNames = lang => {
-  return [...links[lang].map(link => link.href)]
 }
