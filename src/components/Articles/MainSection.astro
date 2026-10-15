@@ -15,17 +15,18 @@ const { dict } = Astro.props
   <SceneSection client:only="react" />
   <Hero
     title={dict.mainsection.titleh1}
-    roles={dict.mainsection.roles}
+    intro={dict.mainsection.intro}
     ctaProjects={dict.cta.projects}
     ctaContact={dict.cta.contact}
     client:load
   />
   <div class="hero-fade"></div>
-  <SDownComp />
+  <div class="hero-stripes chroma-stripes" aria-hidden="true"></div>
+  <SDownComp label={dict.cta.projects} />
 </section>
 
 <style>
-  /* clean gradient fade into the next (lighter teal) section — replaces the old SVG wave */
+  /* gradient fade into the next section */
   .hero-fade {
     position: absolute;
     left: 0;
@@ -40,5 +41,13 @@ const { dict } = Astro.props
       var(--secondaryColor) 100%
     );
     pointer-events: none;
+  }
+  .hero-stripes {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 14px;
+    z-index: 2;
   }
 </style>

@@ -1,103 +1,103 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useSyncExternalStore } from 'react'
 import type { ReactNode } from 'react'
-import ReactLogo from '@assets/icons/ReactLogo'
-import Three from '@assets/icons/Three'
-import Git from '@assets/icons/Git'
-import GitHubLogo from '@assets/icons/GitHubLogo'
-import FramerMotion from '@assets/icons/FramerMotion'
-import Terminal from '@assets/icons/Terminal'
 import s from './Hero.module.css'
 
 interface Props {
   title: string
-  roles: string[]
+  intro: string
   ctaProjects: string
   ctaContact: string
 }
 
-// only shape-based marks — filled-square logos (JS/TS/CSS) don't silhouette cleanly
-const FLOAT_ICONS: {
-  Icon: () => ReactNode
-  x: string
-  y: string
-  size: number
-  dur: number
-  delay: number
-  depth: 'near' | 'far'
-}[] = [
-  {
-    Icon: ReactLogo,
-    x: '9%',
-    y: '26%',
-    size: 54,
-    dur: 15,
-    delay: 0,
-    depth: 'near',
-  },
-  {
-    Icon: Three,
-    x: '88%',
-    y: '19%',
-    size: 40,
-    dur: 18,
-    delay: 1.5,
-    depth: 'far',
-  },
-  {
-    Icon: Git,
-    x: '90%',
-    y: '66%',
-    size: 44,
-    dur: 20,
-    delay: 2.2,
-    depth: 'near',
-  },
-  {
-    Icon: GitHubLogo,
-    x: '6%',
-    y: '78%',
-    size: 36,
-    dur: 15,
-    delay: 3,
-    depth: 'far',
-  },
-  {
-    Icon: FramerMotion,
-    x: '74%',
-    y: '83%',
-    size: 38,
-    dur: 19,
-    delay: 1.1,
-    depth: 'far',
-  },
-  {
-    Icon: Terminal,
-    x: '94%',
-    y: '42%',
-    size: 34,
-    dur: 21,
-    delay: 2.6,
-    depth: 'far',
-  },
-]
-
-// rotating roles — fade in / hold / fade out crossfade
-function useFadeRotate(words: string[], hold = 2200, fade = 600) {
-  const [i, setI] = useState(0)
-  const [visible, setVisible] = useState(true)
-  useEffect(() => {
-    const out = setTimeout(() => setVisible(false), hold)
-    const next = setTimeout(() => {
-      setI(v => (v + 1) % words.length)
-      setVisible(true)
-    }, hold + fade)
-    return () => {
-      clearTimeout(out)
-      clearTimeout(next)
-    }
-  }, [i, words, hold, fade])
-  return [words[i], visible] as const
+// Pointer-driven motion only makes sense with a hovering fine pointer, and
+// only when the visitor hasn't asked for reduced motion. Subscribed, so a
+// change mid-visit (docking a mouse, toggling the OS setting) takes effect.
+const HOVER_QUERY = '(hover: hover) and (pointer: fine)'
+const REDUCE_QUERY = '(prefers-reduced-motion: reduce)'
+const subscribeMotion = (onChange: () => void) => {
+  const lists = [HOVER_QUERY, REDUCE_QUERY].map(q => window.matchMedia(q))
+  lists.forEach(l => l.addEventListener('change', onChange))
+  return () => lists.forEach(l => l.removeEventListener('change', onChange))
 }
+const readMotion = () =>
+  window.matchMedia(HOVER_QUERY).matches &&
+  !window.matchMedia(REDUCE_QUERY).matches
+const useHoverMotion = () =>
+  useSyncExternalStore(subscribeMotion, readMotion, () => false)
+
+// Frame-rate-independent exponential smoothing toward a moving target.
+// Pointer-driven motion runs through this instead of a CSS transition: a
+// transition restarts on every pointermove, which reads as lag and stutter.
+function smoothFollow(
+  apply: (x: number, y: number) => void,
+  stiffness: number
+) {
+  let x = 0
+  let y = 0
+  let tx = 0
+  let ty = 0
+  let raf = 0
+  let last = 0
+  const tick = (t: number) => {
+    const dt = last ? Math.min((t - last) / 1000, 0.05) : 1 / 60
+    last = t
+    const k = 1 - Math.exp(-dt * stiffness)
+    x += (tx - x) * k
+    y += (ty - y) * k
+    const settled = Math.abs(tx - x) < 0.01 && Math.abs(ty - y) < 0.01
+    if (settled) {
+      x = tx
+      y = ty
+    }
+    apply(x, y)
+    if (settled) {
+      raf = 0
+      last = 0
+    } else {
+      raf = requestAnimationFrame(tick)
+    }
+  }
+  return {
+    get x() {
+      return x
+    },
+    get y() {
+      return y
+    },
+    set(nx: number, ny: number) {
+      if (nx === tx && ny === ty) return
+      tx = nx
+      ty = ny
+      if (!raf) raf = requestAnimationFrame(tick)
+    },
+    stop() {
+      cancelAnimationFrame(raf)
+    },
+  }
+}
+
+// Hero-scoped pointer tracking: events only fire while the pointer is over
+// the section, so nothing runs once the visitor has scrolled past it.
+function trackPointer(
+  section: HTMLElement,
+  onMove: (e: PointerEvent) => void,
+  onLeave: () => void
+) {
+  section.addEventListener('pointermove', onMove, { passive: true })
+  section.addEventListener('pointerleave', onLeave)
+  return () => {
+    section.removeEventListener('pointermove', onMove)
+    section.removeEventListener('pointerleave', onLeave)
+  }
+}
+
+const clamp = (v: number, max: number) => Math.max(-max, Math.min(max, v))
+
+const MAGNET_RANGE = 40 // px outside the button where the pull fades in
+const MAGNET_PULL = 0.3 // share of the pointer offset the button follows
+const MAGNET_MAX_X = 10
+const MAGNET_MAX_Y = 6
+const LABEL_LEAD = 0.4 // label travels further than the button, for depth
 
 // pulls slightly toward the cursor
 function MagneticButton({
@@ -110,127 +110,86 @@ function MagneticButton({
   children: ReactNode
 }) {
   const ref = useRef<HTMLAnchorElement>(null)
-  const onMove = (e: React.MouseEvent) => {
+  const labelRef = useRef<HTMLSpanElement>(null)
+  const motionOk = useHoverMotion()
+
+  useEffect(() => {
     const el = ref.current
-    if (!el) return
-    const r = el.getBoundingClientRect()
-    const mx = e.clientX - (r.left + r.width / 2)
-    const my = e.clientY - (r.top + r.height / 2)
-    el.style.transform = `translate(${mx * 0.28}px, ${my * 0.4}px)`
-  }
-  const onLeave = () => {
-    if (ref.current) ref.current.style.transform = ''
-  }
+    const label = labelRef.current
+    const section = el?.closest('section')
+    if (!el || !label || !section || !motionOk) return
+    const follow = smoothFollow((x, y) => {
+      el.style.transform = `translate3d(${x}px, ${y}px, 0)`
+      label.style.transform = `translate3d(${x * LABEL_LEAD}px, ${y * LABEL_LEAD}px, 0)`
+    }, 12)
+    const onMove = (e: PointerEvent) => {
+      const r = el.getBoundingClientRect()
+      // the rect includes the current pull; remove it so the pull can't feed back on itself
+      const dx = e.clientX - (r.left - follow.x + r.width / 2)
+      const dy = e.clientY - (r.top - follow.y + r.height / 2)
+      const edge = Math.hypot(
+        Math.max(0, Math.abs(dx) - r.width / 2),
+        Math.max(0, Math.abs(dy) - r.height / 2)
+      )
+      const weight = Math.max(0, 1 - edge / MAGNET_RANGE)
+      follow.set(
+        clamp(dx * MAGNET_PULL, MAGNET_MAX_X) * weight,
+        clamp(dy * MAGNET_PULL, MAGNET_MAX_Y) * weight
+      )
+    }
+    const untrack = trackPointer(section, onMove, () => follow.set(0, 0))
+    return () => {
+      untrack()
+      follow.stop()
+      el.style.transform = ''
+      label.style.transform = ''
+    }
+  }, [motionOk])
+
   return (
-    <a
-      ref={ref}
-      href={href}
-      className={className}
-      onMouseMove={onMove}
-      onMouseLeave={onLeave}>
-      {children}
+    <a ref={ref} href={href} className={className}>
+      <span ref={labelRef} className={s.btnLabel}>
+        {children}
+      </span>
     </a>
   )
 }
 
-function FloatingIcons() {
-  const layerRef = useRef<HTMLDivElement>(null)
-  useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-    const layer = layerRef.current
-    if (!layer) return
-    const icons = [...layer.querySelectorAll<HTMLElement>(`.${s.floatIcon}`)]
-    let raf = 0
-    const onMove = (e: PointerEvent) => {
-      const dx = (e.clientX / window.innerWidth) * 2 - 1
-      const dy = (e.clientY / window.innerHeight) * 2 - 1
-      cancelAnimationFrame(raf)
-      raf = requestAnimationFrame(() => {
-        icons.forEach(ic => {
-          const f = ic.classList.contains(s.near) ? 26 : 11
-          ic.style.transform = `translate(${dx * f}px, ${dy * f}px)`
-        })
-      })
-    }
-    const onLeave = () => icons.forEach(ic => (ic.style.transform = ''))
-    window.addEventListener('pointermove', onMove)
-    window.addEventListener('pointerleave', onLeave)
-    return () => {
-      window.removeEventListener('pointermove', onMove)
-      window.removeEventListener('pointerleave', onLeave)
-      cancelAnimationFrame(raf)
-    }
-  }, [])
-  return (
-    <div ref={layerRef} className={s.floatLayer} aria-hidden='true'>
-      {FLOAT_ICONS.map(({ Icon, x, y, size, dur, delay, depth }, i) => (
-        <span
-          key={i}
-          className={`${s.floatIcon} ${depth === 'near' ? s.near : s.far}`}
-          style={{ left: x, top: y, width: size, height: size }}>
-          <span
-            className={s.fiInner}
-            style={{
-              animationDuration: `${dur}s`,
-              animationDelay: `${delay}s`,
-            }}>
-            <Icon />
-          </span>
-        </span>
-      ))}
-    </div>
-  )
-}
-
-export default function Hero({ title, roles, ctaProjects, ctaContact }: Props) {
-  const [role, roleVisible] = useFadeRotate(roles)
+export default function Hero({ title, intro, ctaProjects, ctaContact }: Props) {
   const contentRef = useRef<HTMLDivElement>(null)
+  const motionOk = useHoverMotion()
 
-  // cursor parallax — the title block tilts toward the pointer (on top of the shader)
+  // cursor parallax — the title block drifts toward the pointer (on top of the
+  // shader). Translate only: a 3D tilt blurred the type and compounded with
+  // the buttons' own pull.
   useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     const el = contentRef.current
-    if (!el) return
-    let raf = 0
+    const section = el?.closest('section')
+    if (!el || !section || !motionOk) return
+    const follow = smoothFollow((x, y) => {
+      el.style.transform = `translate3d(${x}px, ${y}px, 0)`
+    }, 5)
     const onMove = (e: PointerEvent) => {
       const cx = window.innerWidth / 2
       const cy = window.innerHeight / 2
-      const dx = (e.clientX - cx) / cx
-      const dy = (e.clientY - cy) / cy
-      cancelAnimationFrame(raf)
-      raf = requestAnimationFrame(() => {
-        el.style.transform = `perspective(900px) rotateY(${dx * 4}deg) rotateX(${-dy * 4}deg) translate(${dx * 10}px, ${dy * 8}px)`
-      })
+      follow.set(((e.clientX - cx) / cx) * 8, ((e.clientY - cy) / cy) * 6)
     }
-    const onLeave = () => {
+    const untrack = trackPointer(section, onMove, () => follow.set(0, 0))
+    return () => {
+      untrack()
+      follow.stop()
       el.style.transform = ''
     }
-    window.addEventListener('pointermove', onMove)
-    window.addEventListener('pointerleave', onLeave)
-    return () => {
-      window.removeEventListener('pointermove', onMove)
-      window.removeEventListener('pointerleave', onLeave)
-      cancelAnimationFrame(raf)
-    }
-  }, [])
+  }, [motionOk])
 
   return (
     <>
-      <FloatingIcons />
-      <div className={s.hudLayer} aria-hidden='true'>
-        <span className={`${s.hud} ${s.tl}`} />
-        <span className={`${s.hud} ${s.tr}`} />
-        <span className={`${s.hud} ${s.bl}`} />
-        <span className={`${s.hud} ${s.br}`} />
-      </div>
       <div className={s.heroContent} ref={contentRef}>
         <h1 className={s.title} style={{ animationDelay: '.12s' }}>
           {title}
         </h1>
         <p className={s.sub} style={{ animationDelay: '.26s' }}>
-          <span className={`${s.role}${roleVisible ? ` ${s.roleShow}` : ''}`}>
-            {role}
-          </span>
+          {intro}
         </p>
         <div className={s.cta} style={{ animationDelay: '.4s' }}>
           <MagneticButton
