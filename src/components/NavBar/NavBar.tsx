@@ -1,158 +1,108 @@
 'use client'
-import { useScrollSpy } from '@assets/hooks/useScrollSpy'
-import { hrefNames } from '@assets/utils/props'
-import { links } from '@components/Header/dataHeader'
-import { useLayoutEffect, useRef, useState } from 'react'
+import { headerLabels, links } from '@components/Header/dataHeader'
+import { useCallback, useLayoutEffect, useRef, useState } from 'react'
 import type { Lang } from '../../i18n/loader'
 import './NavBar.css'
 
-interface NavBarButtonProps {
-  btnClass: string
-  btnName: string
-  setOffsets: (offsetLeft: number, offsetWidth: number) => void
-  onHover: (offsetLeft: number, offsetWidth: number) => void
-  active: string
-  href: string
-}
+/** A link's position inside the track, in px. */
+type Box = { left: number; width: number }
 
-const NavbarButton = ({
-  btnClass,
-  btnName,
-  setOffsets,
-  onHover,
+/**
+ * Desktop section tabs.
+ *
+ * Two marks sit behind the links: a chroma-stripe bar under the section in
+ * view (`active`, from the header's scroll spy) and a soft highlight that
+ * follows the hovered tab. They're separate on purpose, so hovering never
+ * hides where you are on the page.
+ *
+ * @param lang Current locale; picks the link names and the nav's label.
+ * @param active Id of the section in view, e.g. `"portfolio"`.
+ */
+export default function SlideBar({
+  lang,
   active,
-  href,
-}: NavBarButtonProps) => {
-  const anchor = useRef<HTMLButtonElement>(null)
-  const setOffsetsRef = useRef(setOffsets)
+}: {
+  lang: Lang
+  active: string
+}) {
+  const items = links[lang]
+  const [hovered, setHovered] = useState<string | null>(null)
+  const trackRef = useRef<HTMLDivElement>(null)
+  const hoverRef = useRef<HTMLSpanElement>(null)
+  const markRef = useRef<HTMLSpanElement>(null)
 
-  useLayoutEffect(() => {
-    setOffsetsRef.current = setOffsets
-  }, [setOffsets])
-
-  useLayoutEffect(() => {
-    const el = anchor.current
-    if (!el) return
-    const ro = new ResizeObserver(entries => {
-      entries.forEach(entry => {
-        const target = entry.target as HTMLButtonElement
-        if (active === href) {
-          setOffsetsRef.current(target.offsetLeft, target.offsetWidth)
-        }
-      })
-    })
-    ro.observe(el)
-    return () => ro.disconnect()
-  }, [active, href])
-
-  useLayoutEffect(() => {
-    const el = anchor.current
-    if (href === active && el) {
-      el.classList.add('navbar-link--active')
-      setOffsetsRef.current(el.offsetLeft, el.offsetWidth)
+  // The two marks are positioned straight on the DOM: their place depends on
+  // rendered text width, which is only known after layout, and routing that
+  // through state would render twice per change.
+  const place = useCallback(() => {
+    const track = trackRef.current
+    if (!track) return
+    const boxFor = (id: string | null): Box | null => {
+      const el = id
+        ? track.querySelector<HTMLElement>(`[data-id="${id}"]`)
+        : null
+      return el ? { left: el.offsetLeft, width: el.offsetWidth } : null
     }
-  }, [active, href])
-
-  return (
-    <button
-      type='button'
-      className={btnClass}
-      data-scroll-to={btnName}
-      onMouseEnter={e =>
-        onHover(e.currentTarget.offsetLeft, e.currentTarget.offsetWidth)
+    const put = (el: HTMLElement | null, box: Box | null, show: boolean) => {
+      if (!el) return
+      // keep the last position while hidden, so it fades out in place
+      if (box) {
+        el.style.width = `${box.width}px`
+        el.style.transform = `translateX(${box.left}px)`
       }
-      onClick={() => {
-        const elToScroll = document.getElementById(href)
-        elToScroll?.scrollIntoView()
-      }}
-      ref={anchor}>
-      {btnName}
-    </button>
-  )
-}
-
-export default function SlideBar({ lang }: { lang: Lang }) {
-  const [offLeft, setOffLeft] = useState(4)
-  const [offWidth, setOffWidth] = useState(94)
-  const [hover, setHover] = useState<{ left: number; width: number } | null>(
-    null
-  )
-  const [theme] = useState('dark')
-  const navbarRef = useRef<HTMLDivElement>(null)
-  // A thin band at viewport center: isIntersecting stays true for sections
-  // partially visible, so a ratio threshold re-activates sections as they leave.
-  const activeLink = useScrollSpy(hrefNames(lang), {
-    rootMargin: '-50% 0px -49% 0px',
-  })
-
-  const handleSetOffsets = (left: number, width: number) => {
-    setOffLeft(left)
-    setOffWidth(width)
-  }
-
-  const handleHover = (left: number, width: number) => setHover({ left, width })
-
-  const pillLeft = hover?.left ?? offLeft
-  const pillWidth = hover?.width ?? offWidth
-
-  useLayoutEffect(() => {
-    const navbar = navbarRef.current
-    if (!navbar) return
-    if (navbar.classList.contains('nav-x-init')) {
-      navbar.classList.remove('nav-x-init')
-      navbar.classList.add('nav-x-post')
+      el.style.opacity = show && box ? '1' : '0'
     }
-    const x = `${
-      100 -
-      Math.round(
-        (Math.round(pillLeft + Math.round(pillWidth / 2) + 60) /
-          navbar.offsetWidth) *
-          100
-      )
-    }%`
-    navbar.style.setProperty('--x', x)
-  }, [pillLeft, pillWidth])
+    put(markRef.current, boxFor(active), true)
+    put(hoverRef.current, boxFor(hovered), hovered !== null)
+  }, [active, hovered])
+
+  useLayoutEffect(place, [place])
+
+  // Re-place on resize and once the web font has loaded (the fallback font is
+  // narrower). Set up once; the ref keeps it pointing at the latest place.
+  const placeRef = useRef(place)
+  useLayoutEffect(() => {
+    placeRef.current = place
+  }, [place])
+  useLayoutEffect(() => {
+    const ro = new ResizeObserver(() => placeRef.current())
+    if (trackRef.current) ro.observe(trackRef.current)
+    document.fonts?.ready.then(() => placeRef.current())
+    return () => ro.disconnect()
+  }, [])
 
   return (
-    <div id='body' className={theme}>
-      <aside className='lightbulb'></aside>
-      <header className='header'>
-        <div className='navbar' ref={navbarRef}>
-          <div className='navbar-curr--stroke' aria-hidden='true'></div>
-          <div className='navbar-root' onMouseLeave={() => setHover(null)}>
-            {links[lang].map(({ name, href }) => (
-              <NavbarButton
-                href={href}
-                key={name}
-                btnName={name}
-                btnClass={
-                  activeLink === href
-                    ? 'navbar-link navbar-link--active'
-                    : 'navbar-link'
-                }
-                setOffsets={handleSetOffsets}
-                onHover={handleHover}
-                active={activeLink}
-              />
-            ))}
-            <div
-              className='navbar-curr--pill'
-              aria-hidden='true'
-              style={{
-                transform: `translateX(${pillLeft - 4}px)`,
-                width: `${pillWidth}px`,
-              }}></div>
-            <div
-              className='navbar-curr--glow'
-              aria-hidden='true'
-              style={{
-                transform: `translateX(${
-                  pillLeft + Math.round(pillWidth / 2) - 20.25
-                }px)`,
-              }}></div>
-          </div>
-        </div>
-      </header>
-    </div>
+    <nav className='site-nav' aria-label={headerLabels[lang].sections}>
+      <div
+        className='site-nav__track'
+        ref={trackRef}
+        onPointerLeave={() => setHovered(null)}>
+        <span
+          ref={hoverRef}
+          className='site-nav__hover'
+          aria-hidden='true'
+          style={{ opacity: 0 }}
+        />
+        {items.map(({ name, href }) => (
+          <a
+            key={href}
+            href={`#${href}`}
+            data-id={href}
+            className={`site-nav__link${active === href ? ' is-active' : ''}`}
+            aria-current={active === href ? 'location' : undefined}
+            onPointerEnter={() => setHovered(href)}
+            onFocus={() => setHovered(href)}
+            onBlur={() => setHovered(null)}>
+            {name}
+          </a>
+        ))}
+        <span
+          ref={markRef}
+          className='site-nav__mark chroma-stripes'
+          aria-hidden='true'
+          style={{ opacity: 0 }}
+        />
+      </div>
+    </nav>
   )
 }

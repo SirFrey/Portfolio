@@ -6,7 +6,6 @@ import s from './Footer.module.css'
 // NOTE: FontAwesome SVG icons are inlined statically; their raw SVG is generated
 // via `icon()` from the core package so we don't need the React wrapper here.
 import { icon, type IconDefinition } from '@fortawesome/fontawesome-svg-core'
-import { faCode } from '@fortawesome/free-solid-svg-icons'
 
 interface Props {
   dict: Dictionary
@@ -18,39 +17,37 @@ const socialIcons = links.map(link => ({
   ...link,
   svg: icon(link.iconFontAwesome as IconDefinition).html.join(''),
 }))
-const codeSvg = icon(faCode).html.join('')
 ---
 
 <footer id="contacto" class={s.footer_final}>
-  <div class={s.contactCard} data-reveal>
-    <div class={s.contactHead}>
-      <h2 class={s.contactTitle}>{dict.footer.title}</h2>
+  <div class={s.contactGrid} data-reveal>
+    <div class={s.contactIntro}>
+      <h2>{dict.footer.title}</h2>
       <p class={s.contactSub}>{dict.footer.subtitle}</p>
-    </div>
 
-    <ContactForm dict={dict} client:load />
-
-    <div class={s.contactLinks}>
-      <span class={s.contactLinksLabel}>{dict.footer.findme}</span>
-      <div class={s.contactLinksRow}>
-        {
-          socialIcons.map(({ href, title, svg }) => (
-            <a
-              href={href}
-              title={title}
-              target="_blank"
-              rel="noopener noreferrer"
-              class={s.contactLink}>
-              <span class={s.clIc} set:html={svg} />
-              {title}
-            </a>
-          ))
-        }
-        <a href="#portfolio" class={s.contactLink}>
-          <span class={s.clIc} set:html={codeSvg} />
-          {dict.footer.viewProjects}
-        </a>
+      <div class={s.contactLinks}>
+        <span class={s.contactLinksLabel}>{dict.footer.findme}</span>
+        <ul class={s.contactList}>
+          {
+            socialIcons.map(({ href, title, svg }) => (
+              <li>
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-cursor="open"
+                  class={s.contactLink}>
+                  <span class={s.clIc} set:html={svg} />
+                  {title}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
       </div>
     </div>
+
+    <!-- client:visible: the Turnstile script (~140 KB) loads only when the form nears the screen -->
+    <ContactForm dict={dict} client:visible />
   </div>
 </footer>

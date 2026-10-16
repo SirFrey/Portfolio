@@ -14,45 +14,88 @@
   height: 100dvh;
   display: grid;
   overflow: clip;
-  grid-template-rows: 1fr;
+  grid-template-rows: 1fr auto;
   position: fixed;
   top: 0;
   left: 0;
-  background-color: rgba(var(--secondary), 0.3);
+  background-color: rgba(var(--ink-2-rgb), 0.92);
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
   z-index: 30;
 }
 .principal_nav a {
-  color: #fff;
+  color: var(--mist);
+  transition: color 0.2s ease;
+}
+.principal_nav a.isActive,
+.principal_nav a:hover {
+  color: var(--paper);
 }
 .nav_fixed {
   width: 100vw;
   display: grid;
-  grid-template-columns: 1fr min-content;
+  grid-template-columns: 1fr auto auto;
   align-items: center;
   padding-inline: 1rem;
   overflow: clip;
   position: fixed;
   z-index: 20;
-  box-shadow: 0 0 50px 0 var(--principalColorAlpha);
-  background-color: rgba(var(--principal), 0.4);
+  background-color: rgba(var(--ink-rgb), 0.72);
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
 }
 
-.principal_icon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/* Logo: an "MC" monogram that unfolds into the full name once the hero
+   headline is out of view. Each hidden run of letters sits in a grid track
+   animated 0fr -> 1fr, which tweens to the text's natural width. */
+.logo {
   justify-self: start;
-  font-size: clamp(1.3rem, 4vw, 1.5rem);
+  display: inline-flex;
+  align-items: baseline;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(1rem, 3.4vw, 1.15rem);
+  letter-spacing: -0.01em;
+  color: var(--paper);
+  white-space: nowrap;
+  padding: 6px 2px;
+}
+.logoRest {
+  display: inline-grid;
+  grid-template-columns: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-columns 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
+    opacity 0.3s ease;
+}
+.logoRest > span {
+  min-width: 0;
+  overflow: hidden;
+}
+.logoExpanded .logoRest {
+  grid-template-columns: 1fr;
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .logoRest {
+    transition: none;
+  }
 }
 
-.tag_title {
-  margin: 0 0.4rem;
-  font-weight: bold;
-  font-size: clamp(1.3rem, 4vw, 1.5rem);
+.langDesktop {
+  margin-left: 12px;
+  padding-left: 12px;
+  margin-inline-end: var(--scrollbar-width);
+  border-left: 1px solid var(--line);
+}
+.langMobile {
+  align-self: end;
+  margin: 0 28px 32px;
+}
+@media (width < 985px) {
+  .langDesktop {
+    display: none;
+  }
 }
 
 .nav_fixed_ul {
@@ -67,14 +110,42 @@
 .nav_fixed_li a {
   width: 100%;
   display: inline-block;
-  padding: 20px;
-  border-radius: 5px;
+  padding: 18px 28px;
+  text-align: left;
+}
+/* current section: the chroma-stripe band under the label, as on desktop.
+   It draws in just after its own item fades in (items are staggered by
+   variantsHeader: 0.2s delay + 0.2s per item, so --i is the item index). */
+.menuLabel {
+  position: relative;
+  display: inline-block;
+}
+.isActive .menuLabel::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -8px;
+  height: 6px;
+  background: var(--chroma-stripes);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.menuOpen .isActive .menuLabel::after {
+  transform: scaleX(1);
+  transition-delay: calc(0.45s + var(--i, 0) * 0.2s);
+}
+@media (prefers-reduced-motion: reduce) {
+  .isActive .menuLabel::after {
+    transition: none;
+  }
 }
 
 .bg_dark {
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(var(--ink-deep-rgb), 0.75);
   position: fixed;
   top: 0;
   left: 0;

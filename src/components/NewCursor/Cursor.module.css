@@ -1,0 +1,94 @@
+.cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  will-change: transform;
+}
+.on {
+  opacity: 1;
+}
+
+/* The dot and the open pill are one element, so the verb grows out of the
+   dot. The dot sits centred on the pointer; the open pill hangs below-right
+   of it (flipped near the edges) so it never covers the target's text. */
+.pill {
+  --ox: -50%;
+  --oy: -50%;
+  --s: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 8px;
+  min-width: 8px;
+  padding: 0;
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--ink);
+  /* keeps the dot visible while it crosses the paper headline */
+  box-shadow: 0 0 0 1px rgba(var(--ink-rgb), 0.35);
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 0.72rem;
+  line-height: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  transform: translate(var(--ox), var(--oy)) scale(var(--s));
+  transition:
+    height 0.22s cubic-bezier(0.2, 0.8, 0.2, 1),
+    min-width 0.22s cubic-bezier(0.2, 0.8, 0.2, 1),
+    padding 0.22s cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+/* The label keeps its last word while closed, so it can fade out in place.
+   A 0fr grid track gives that hidden word zero width; without it the closed
+   dot stretched to the previous verb's width. Same trick as the header logo. */
+.label {
+  display: inline-grid;
+  grid-template-columns: 0fr;
+  transition: grid-template-columns 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.label > span {
+  min-width: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+.active .pill {
+  height: 12px;
+  min-width: 12px;
+}
+.open .pill {
+  --ox: 14px;
+  --oy: 16px;
+  height: 34px;
+  padding: 0 14px;
+}
+.open.flipX .pill {
+  --ox: calc(-100% - 10px);
+}
+.open.flipY .pill {
+  --oy: calc(-100% - 10px);
+}
+.open .label {
+  grid-template-columns: 1fr;
+}
+.open .label > span {
+  opacity: 1;
+  transition-delay: 0.08s;
+}
+.press .pill {
+  --s: 0.85;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor,
+  .pill,
+  .label,
+  .label > span {
+    transition: none;
+  }
+}

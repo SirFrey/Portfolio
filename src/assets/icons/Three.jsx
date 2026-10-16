@@ -9,7 +9,7 @@ function Three() {
     >
       <g
         fillRule="evenodd"
-        stroke="#000"
+        stroke="currentColor"
         strokeLinecap="butt"
         strokeLinejoin="round"
         strokeWidth="4"

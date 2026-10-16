@@ -17,8 +17,7 @@ export function CardItem({
       transition: { delay: 0.1 * index, duration: 0.4 },
     }),
     hover: {
-      y: -6,
-      boxShadow: '0 18px 40px rgba(0, 0, 0, 0.32)',
+      y: -4,
       transition: { type: 'spring', stiffness: 400, damping: 24 },
     },
   }

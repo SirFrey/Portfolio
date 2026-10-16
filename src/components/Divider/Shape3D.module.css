@@ -9,22 +9,6 @@
   pointer-events: none;
   animation: bob3d 7s ease-in-out infinite alternate;
 }
-/* soft accent halo so the object reads as part of the divider's glow */
-.shape3d::before {
-  content: '';
-  position: absolute;
-  inset: -22%;
-  border-radius: 50%;
-  z-index: -1;
-  background: radial-gradient(
-    circle,
-    rgba(var(--glow-rgb), 0.26) 0%,
-    transparent 64%
-  );
-  filter: blur(8px);
-  opacity: 0.55;
-  pointer-events: none;
-}
 .sideRight {
   right: clamp(8px, 6vw, 90px);
 }

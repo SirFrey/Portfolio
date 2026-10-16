@@ -2,34 +2,33 @@
   "lang": "es",
   "navbar": ["Inicio", "Proyectos", "Conocimientos", "Sobre Mí", "Contacto"],
   "mainsection": {
-    "titleh1": "Bienvenido a mi Portfolio Web",
-    "subtitleh2": "Frontend Developer",
-    "roles": ["Frontend Developer", "Desarrollador React", "Desarrollador Web"]
+    "titleh1": "Moises Castellanos",
+    "intro": "Desarrollador frontend de Caracas, Venezuela. Construyo interfaces web rápidas y animadas con React y TypeScript."
   },
   "cta": {
     "projects": "Ver proyectos",
     "contact": "Contacto"
   },
   "portfolioSection": {
-    "titleh2": "Proyectos:",
+    "titleh2": "Proyectos",
     "date": "Creado:",
     "soon": "Próximamente",
     "placeholder": "Sección en construcción, los proyectos reales se añadirán pronto."
   },
   "knowledgesSection": {
-    "titleh2": "Conocimientos:",
-    "subtitleh3": "Languajes, Frameworks y Librerias:",
-    "tools": "Herramientas:",
-    "others": "Otros:"
+    "titleh2": "Conocimientos",
+    "subtitleh3": "Lenguajes, frameworks y librerías",
+    "tools": "Herramientas",
+    "others": "Otros"
   },
   "aboutmeSection": {
-    "titleh2": "Sobre Mi",
+    "titleh2": "Sobre mí",
     "p1": "Desarrollador Frontend con conocimientos solidos en <strong>HTML5</strong>, <strong>CSS3</strong> y <strong>JavaScript</strong>, manejo tecnologías como <strong>React</strong>, Empaquetado de aplicaciones web con <strong>Webpack</strong> y <strong>Vite</strong>, control de versiones con <strong>Git</strong> y manejo de proyectos en equipo con <strong>Notion</strong> y <strong>Github</strong>.",
 
     "p2": "Provengo de <strong>Venezuela(Caracas)</strong>, con aspiraciones de viajar a temprana edad y tengo el objetivo de llegar a pequeñas y grandes empresas con este portfolio, aceptando todo tipo de feedback por parte de los visitantes para este portfolio web y también para mis perfiles."
   },
   "developingSection": {
-    "titleh2": "Desarrollando..."
+    "titleh2": "Aprendiendo ahora"
   },
   "footer": {
     "contact": "Contacto",
@@ -40,7 +39,11 @@
     "message": "Mensaje",
     "send": "Enviar mensaje",
     "thankyou": "¡Gracias por su mensaje!",
-    "findme": "O encuéntrame en",
-    "viewProjects": "Ver proyectos"
+    "findme": "O encuéntrame en"
+  },
+  "cursor": {
+    "open": "Abrir",
+    "view": "Ver",
+    "scroll": "Bajar"
   }
 }

@@ -27,7 +27,7 @@ const hasPlaceholders = dataCards.some(c => c.late)
 <div class={style.wrapper}>
   {
     dataCards.map((card, i) => {
-      const { description, image, project, alt, github, date, stack, late } = card
+      const { description, image, project, alt, github, website, date, stack, late } = card
 
       if (late) {
         return (
@@ -47,7 +47,20 @@ const hasPlaceholders = dataCards.some(c => c.late)
       return (
         <CardItem i={i} client:visible>
           <div class={style.cardImg}>
-            {image ? (
+            {website ? (
+              <a
+                href={website}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={project}
+                data-cursor="view">
+                {image ? (
+                  <img src={image} alt={alt} loading="lazy" decoding="async" />
+                ) : (
+                  <span class={style.cardImgTag}>{project}</span>
+                )}
+              </a>
+            ) : image ? (
               <img src={image} alt={alt} loading="lazy" decoding="async" />
             ) : (
               <span class={style.cardImgTag}>{project}</span>
@@ -73,6 +86,7 @@ const hasPlaceholders = dataCards.some(c => c.late)
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`${project} on GitHub`}
+                    data-cursor="open"
                     set:html={githubSvg}
                   />
                 </div>

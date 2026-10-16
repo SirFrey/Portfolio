@@ -43,9 +43,9 @@ export function ListContainer({
   return (
     <>
       <SkillCardGrid items={knowledgeData} />
-      <motion.h3 {...propsHiddenElm}>{dict.knowledgesSection.tools}</motion.h3>
+      <motion.h3 {...propsHiddenElm} className={s.groupLabel}>{dict.knowledgesSection.tools}</motion.h3>
       <SkillCardGrid items={toolsData} />
-      <motion.h3 {...propsHiddenElm}>{dict.knowledgesSection.others}</motion.h3>
+      <motion.h3 {...propsHiddenElm} className={s.groupLabel}>{dict.knowledgesSection.others}</motion.h3>
       <SkillCardGrid items={otherData[lang]} />
     </>
   )

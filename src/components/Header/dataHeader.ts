@@ -1,4 +1,5 @@
 import type { Variants } from 'framer-motion'
+import type { Lang } from '../../i18n/loader'
 
 export const links = {
   es: [
@@ -63,5 +64,25 @@ export const variantsHeader: Variants = {
   },
   navHidden: {
     height: '0.5px',
+  },
+}
+
+// Accessible names for the header's landmarks. Kept here with the nav links so
+// every header string lives in one place.
+export const headerLabels: Record<
+  Lang,
+  { sections: string; language: string; openMenu: string; closeMenu: string }
+> = {
+  es: {
+    sections: 'Secciones',
+    language: 'Idioma',
+    openMenu: 'Abrir menú',
+    closeMenu: 'Cerrar menú',
+  },
+  en: {
+    sections: 'Sections',
+    language: 'Language',
+    openMenu: 'Open menu',
+    closeMenu: 'Close menu',
   },
 }

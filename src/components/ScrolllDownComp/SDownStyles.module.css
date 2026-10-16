@@ -1,91 +1,54 @@
+/* Scroll cue: a hairline with a short segment travelling down it, like a
+   scrollbar thumb pointing at the content below. */
 .anchor {
   position: absolute;
   left: 50%;
-  bottom: 10px;
+  bottom: 34px;
+  translate: -50% 0;
   z-index: var(--index2);
-}
-
-.mouseScroll {
-  margin: auto;
-  -webkit-transform: translateX(-50%);
-  transform: translateX(-50%);
-}
-.mouseScroll span {
   display: block;
-  width: 5px;
-  height: 5px;
-  -ms-transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
-  transform: rotate(45deg);
-  border-right: 2px solid #fff;
-  border-bottom: 2px solid #fff;
-  margin: 0 0 3px 5px;
+  padding: 10px 14px;
 }
-.mouseScroll .mouse {
-  height: 21px;
-  width: 14px;
-  border-radius: 10px;
-  -webkit-transform: none;
-  -ms-transform: none;
-  transform: none;
-  border: 2px solid #ffffff;
-  top: 170px;
-}
-.mouseScroll .downArrow1 {
-  margin-top: 6px;
-}
-.mouseScroll .downArrow1,
-.mouseScroll .downArrow2,
-.mouseScroll .downArrow3 {
-  animation: mouse-scroll 1s infinite;
-}
-.mouse-croll .downArrow1 {
-  animation-delay: 0.1s;
-  animation-direction: alternate;
-}
-.mouseScroll .downArrow2 {
-  animation-delay: 0.2s;
-  animation-direction: alternate;
-}
-.mouseScroll .downArrow3 {
-  animation-delay: 0.3s;
-  animation-direction: alternate;
-}
-.mouseScroll .mouseIn {
-  height: 5px;
-  width: 2px;
-  display: block;
-  margin: 5px auto;
-  background: #ffffff;
+.track {
   position: relative;
+  display: block;
+  width: 1px;
+  height: 44px;
+  overflow: hidden;
+  background: rgba(var(--paper-rgb), 0.18);
+  transition: background 0.2s ease;
 }
-.mouseScroll .mouseIn {
-  animation: animated-mouse 1.2s ease infinite;
+.anchor:hover .track {
+  background: rgba(var(--paper-rgb), 0.35);
 }
-
-@keyframes animated-mouse {
+.thumb {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 14px;
+  background: var(--paper);
+  animation: travel 2.4s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+@keyframes travel {
   0% {
+    transform: translateY(-14px);
+    opacity: 0;
+  }
+  20% {
     opacity: 1;
-    -webkit-transform: translateY(0);
-    -ms-transform: translateY(0);
-    transform: translateY(0);
+  }
+  80% {
+    opacity: 1;
   }
   100% {
+    transform: translateY(44px);
     opacity: 0;
-    -webkit-transform: translateY(6px);
-    -ms-transform: translateY(6px);
-    transform: translateY(6px);
   }
 }
-
-@keyframes mouse-scroll {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 0.5;
-  }
-  100% {
-    opacity: 1;
+@media (prefers-reduced-motion: reduce) {
+  .thumb {
+    animation: none;
+    transform: translateY(15px);
   }
 }
