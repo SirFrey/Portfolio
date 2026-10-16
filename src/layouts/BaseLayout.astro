@@ -13,7 +13,7 @@ interface Props {
 
 const { lang } = Astro.props
 
-const SITE = 'https://moisesdev.vercel.app'
+const SITE = 'https://sirfrey.com'
 const name = 'Moises Castellanos'
 const role = lang === 'es' ? 'Desarrollador frontend' : 'Frontend developer'
 // The share text is the hero's intro line, so the two can't drift apart.
@@ -41,7 +41,8 @@ const meta = {
     </style>
     <meta name="keywords" content="portfolio, web, developer, frontend, backend, fullstack" />
     <meta name="author" content="Moises Castellanos" />
-    <link rel="icon" href="/images/favicon.ico" />
+    <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <title>{meta.title}</title>
     <meta name="description" content={meta.description} />
 
