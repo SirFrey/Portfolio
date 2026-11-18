@@ -102,6 +102,14 @@
 .turnstile {
   width: 100% !important;
 }
+.formNote {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--mist);
+}
+.formNote:empty {
+  display: none;
+}
 
 /* ---------- send button ----------
    Same treatment as the hero's primary button: a band of chroma stripes

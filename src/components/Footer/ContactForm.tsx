@@ -10,18 +10,29 @@ import type { Dictionary } from '../../i18n/loader'
  * striped send button.
  *
  * Turnstile runs in `interaction-only` mode, so most visitors never see it;
- * it only appears when Cloudflare wants a click.
+ * it only appears when Cloudflare wants a click. Because a failed check is
+ * otherwise invisible, the form refuses to send without a token and says why.
  */
 export default function ContactForm({ dict }: { dict: Dictionary }) {
-  const [, setStatus] = useState<string>()
+  const [check, setCheck] = useState<
+    'pending' | 'interactive' | 'ready' | 'failed'
+  >('pending')
+  const [triedEarly, setTriedEarly] = useState(false)
   const turnstile = useRef<TurnstileInstance | undefined>(undefined)
   return (
     <form
       // Turnstile tokens are single-use: reset after every attempt so a second
       // send in the same page load gets a fresh one instead of a 400
-      onSubmit={e =>
+      onSubmit={e => {
+        if (check !== 'ready') {
+          // without a token the API answers 400 "invalid turnstile"
+          e.preventDefault()
+          setTriedEarly(true)
+          return
+        }
+        setCheck('pending')
         handleSubmit(e).finally(() => turnstile.current?.reset())
-      }
+      }}
       className={s.form}>
       <div className={s.formGrid}>
         <div className={s.field}>
@@ -54,9 +65,17 @@ export default function ContactForm({ dict }: { dict: Dictionary }) {
       <Turnstile
         ref={turnstile}
         siteKey={import.meta.env.PUBLIC_TURNSTILE_SITE_KEY}
-        onSuccess={() => setStatus('success')}
-        onError={() => setStatus('error')}
-        onExpire={() => setStatus('expired')}
+        onSuccess={() => {
+          setCheck('ready')
+          setTriedEarly(false)
+        }}
+        onError={() => setCheck('failed')}
+        onUnsupported={() => setCheck('failed')}
+        onExpire={() => setCheck('pending')}
+        // Cloudflare wants a click: the checkbox is now visible above the note
+        onBeforeInteractive={() => setCheck('interactive')}
+        onAfterInteractive={() => setCheck('pending')}
+        onTimeout={() => setCheck('interactive')}
         // stays invisible unless Cloudflare needs the visitor to interact
         options={{
           appearance: 'interaction-only',
@@ -65,6 +84,15 @@ export default function ContactForm({ dict }: { dict: Dictionary }) {
         }}
         className={s.turnstile}
       />
+      <p className={s.formNote} role='status' aria-live='polite'>
+        {check === 'failed'
+          ? dict.footer.checkFailed
+          : check === 'interactive'
+            ? dict.footer.checkClick
+            : check === 'pending' && triedEarly
+              ? dict.footer.checking
+              : null}
+      </p>
       <button type='submit' className={s.sendBtn}>
         <span className={s.sendFill} aria-hidden='true' />
         <span className={s.sendLabel}>{dict.footer.send}</span>

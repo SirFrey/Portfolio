@@ -24,7 +24,6 @@
   "aboutmeSection": {
     "titleh2": "About me",
     "p1": "Frontend Developer with solid knowledges in <strong>HTML5</strong>, <strong>CSS3</strong> and <strong>JavaScript</strong>, I use technologies such as <strong>React</strong>, packaging web applications with Webpack and Vite, version control with <strong>Git</strong> and project management in team with <strong>Notion</strong> and <strong>Github</strong>.",
-
     "p2": "I'm from <strong>Venezuela(Caracas)</strong>, with aspiration to travel young and I have the objective to reach small and large companies with this portfolio, accepting all kind of feedback from visitors to this portfolio and also for my profiles."
   },
   "developingSection": {
@@ -39,7 +38,10 @@
     "message": "Message",
     "send": "Send message",
     "thankyou": "Thank you for your message!",
-    "findme": "Or find me on"
+    "findme": "Or find me on",
+    "checking": "Checking you're not a bot, one second…",
+    "checkFailed": "The spam check failed. Reload the page and try again.",
+    "checkClick": "Tick the box above to send your message."
   },
   "cursor": {
     "open": "Open",

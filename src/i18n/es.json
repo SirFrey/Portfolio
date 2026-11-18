@@ -24,7 +24,6 @@
   "aboutmeSection": {
     "titleh2": "Sobre mí",
     "p1": "Desarrollador Frontend con conocimientos solidos en <strong>HTML5</strong>, <strong>CSS3</strong> y <strong>JavaScript</strong>, manejo tecnologías como <strong>React</strong>, Empaquetado de aplicaciones web con <strong>Webpack</strong> y <strong>Vite</strong>, control de versiones con <strong>Git</strong> y manejo de proyectos en equipo con <strong>Notion</strong> y <strong>Github</strong>.",
-
     "p2": "Provengo de <strong>Venezuela(Caracas)</strong>, con aspiraciones de viajar a temprana edad y tengo el objetivo de llegar a pequeñas y grandes empresas con este portfolio, aceptando todo tipo de feedback por parte de los visitantes para este portfolio web y también para mis perfiles."
   },
   "developingSection": {
@@ -39,7 +38,10 @@
     "message": "Mensaje",
     "send": "Enviar mensaje",
     "thankyou": "¡Gracias por su mensaje!",
-    "findme": "O encuéntrame en"
+    "findme": "O encuéntrame en",
+    "checking": "Comprobando que no eres un bot, un segundo…",
+    "checkFailed": "La verificación anti-spam falló. Recarga la página e inténtalo de nuevo.",
+    "checkClick": "Marca la casilla de arriba para enviar tu mensaje."
   },
   "cursor": {
     "open": "Abrir",
