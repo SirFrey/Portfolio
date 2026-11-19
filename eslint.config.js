@@ -56,10 +56,7 @@ export default defineConfig(
   ...astro.configs.recommended,
 
   {
-    files: [
-      'src/components/Canvas/**/*.{ts,tsx}',
-      'src/components/Divider/Shape3D.tsx',
-    ],
+    files: ['src/components/Divider/Logo3D.tsx'],
     plugins: { '@react-three': reactThree },
     rules: {
       ...reactThree.configs.recommended.rules,
