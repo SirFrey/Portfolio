@@ -19,6 +19,14 @@
   background: var(--surface);
   transition: background 0.2s;
 }
+/* entrance: cards rise in one after another; the hover background keeps its own timing */
+.skillCard[data-reveal] {
+  --delay: calc(0.1s + var(--i, 0) * 0.08s);
+  transition:
+    opacity 0.45s ease var(--delay),
+    transform 0.45s ease var(--delay),
+    background 0.2s;
+}
 .skillCard:hover {
   background: var(--surface-hover);
 }

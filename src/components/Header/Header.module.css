@@ -22,10 +22,21 @@
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
   z-index: 30;
+  /* closed: squeezed to a hairline; .menuOpen slides it out */
+  width: 0.5px;
+  transition: width 0.3s cubic-bezier(0.25, 0.1, 0.35, 1);
+}
+.principal_nav.menuOpen {
+  width: min(100vw, 350px);
 }
 .principal_nav a {
   color: var(--mist);
-  transition: color 0.2s ease;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
+}
+.principal_nav a:hover {
+  background-color: rgba(var(--paper-rgb), 0.08);
 }
 .principal_nav a.isActive,
 .principal_nav a:hover {
@@ -43,6 +54,13 @@
   background-color: rgba(var(--ink-rgb), 0.72);
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
+  height: 64px;
+  animation: navIn 0.3s cubic-bezier(0.25, 0.1, 0.35, 1) backwards;
+}
+@keyframes navIn {
+  from {
+    height: 0.5px;
+  }
 }
 
 /* Logo: an "MC" monogram that unfolds into the full name once the hero
@@ -107,6 +125,19 @@
   font-size: 1.4em;
   user-select: none;
 }
+/* items fade in one after another once the panel is open (--i is the item index) */
+.nav_fixed_li {
+  opacity: 0;
+  filter: blur(4px);
+  transition:
+    opacity 0.3s ease,
+    filter 0.3s ease;
+}
+.menuOpen .nav_fixed_li {
+  opacity: 1;
+  filter: none;
+  transition-delay: calc(0.2s + var(--i, 0) * 0.2s);
+}
 .nav_fixed_li a {
   width: 100%;
   display: inline-block;
@@ -137,8 +168,13 @@
   transition-delay: calc(0.45s + var(--i, 0) * 0.2s);
 }
 @media (prefers-reduced-motion: reduce) {
-  .isActive .menuLabel::after {
+  .isActive .menuLabel::after,
+  .principal_nav,
+  .nav_fixed_li {
     transition: none;
+  }
+  .nav_fixed {
+    animation: none;
   }
 }
 

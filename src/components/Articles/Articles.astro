@@ -35,7 +35,7 @@ const { dict, lang } = Astro.props
         <h2>{dict.knowledgesSection.titleh2}</h2>
         <h3>{dict.knowledgesSection.subtitleh3}</h3>
       </div>
-      <ListContainer dict={dict} lang={lang} client:visible />
+      <ListContainer dict={dict} lang={lang} />
     </div>
   </section>
 
@@ -58,7 +58,7 @@ const { dict, lang } = Astro.props
   <section>
     <div class={`marginContainer ${s.developingContainer}`}>
       <h2 data-reveal>{dict.developingSection.titleh2}</h2>
-      <ListContainerDev lang={lang} client:visible />
+      <ListContainerDev lang={lang} />
     </div>
   </section>
 

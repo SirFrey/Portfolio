@@ -1,4 +1,3 @@
-import type { Variants } from 'framer-motion'
 import type { Lang } from '../../i18n/loader'
 
 export const links = {
@@ -46,25 +45,6 @@ export const links = {
       href: 'contacto',
     },
   ],
-}
-
-export const variantsHeader: Variants = {
-  hidden: {
-    width: '0.5px',
-  },
-  open: {
-    width: 'min(100vw, 350px)',
-    transition: {
-      delayChildren: 0.2,
-      staggerChildren: 0.2,
-    },
-  },
-  navVisible: {
-    height: '64px',
-  },
-  navHidden: {
-    height: '0.5px',
-  },
 }
 
 // Accessible names for the header's landmarks. Kept here with the nav links so

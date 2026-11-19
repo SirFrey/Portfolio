@@ -1,13 +1,12 @@
-import { type SVGMotionProps, motion } from 'framer-motion'
 import s from './MenuToggle.module.css'
-const Path = (props: SVGMotionProps<SVGPathElement>) => (
-  <motion.path
-    strokeWidth='3'
-    stroke='currentColor'
-    strokeLinecap='round'
-    {...props}
-  />
-)
+
+// The top and bottom lines swap their path between these two shapes; the
+// browser tweens `d` where CSS supports it and switches instantly elsewhere.
+const LINES = {
+  closed: { top: 'M 2 2.5 L 20 2.5', bottom: 'M 2 16.346 L 20 16.346' },
+  open: { top: 'M 3 16.5 L 17 2.5', bottom: 'M 3 2.5 L 17 16.346' },
+}
+
 /**
  * Hamburger button for the mobile menu; its three lines morph into an X.
  *
@@ -24,49 +23,20 @@ function MenuToggle({
   isOpen: boolean
   label: string
 }) {
+  const lines = isOpen ? LINES.open : LINES.closed
   return (
-    <motion.button
+    <button
       type='button'
       aria-label={label}
       aria-expanded={isOpen}
-      initial={['closed', 'hidden']}
-      animate={[isOpen ? 'open' : '', 'visible']}
       onClick={toggle}
-      variants={{
-        hidden: {
-          y: -64,
-        },
-        visible: {
-          y: 0,
-          transition: {
-            type: 'spring',
-          },
-        },
-      }}
       className={s.button}>
       <svg viewBox='0 0 23 23' aria-hidden='true'>
-        <Path
-          variants={{
-            closed: { d: 'M 2 2.5 L 20 2.5' },
-            open: { d: 'M 3 16.5 L 17 2.5' },
-          }}
-        />
-        <Path
-          d='M 2 9.423 L 20 9.423'
-          variants={{
-            closed: { opacity: 1 },
-            open: { opacity: 0 },
-          }}
-          transition={{ duration: 0.1 }}
-        />
-        <Path
-          variants={{
-            closed: { d: 'M 2 16.346 L 20 16.346' },
-            open: { d: 'M 3 2.5 L 17 16.346' },
-          }}
-        />
+        <path d={lines.top} style={{ d: `path('${lines.top}')` }} />
+        <path d='M 2 9.423 L 20 9.423' style={{ opacity: isOpen ? 0 : 1 }} />
+        <path d={lines.bottom} style={{ d: `path('${lines.bottom}')` }} />
       </svg>
-    </motion.button>
+    </button>
   )
 }
 

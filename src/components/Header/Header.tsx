@@ -3,25 +3,11 @@ import { useScrollSpy } from '@assets/hooks/useScrollSpy'
 import MenuToggle from '@components/MenuToggle/MenuToggle'
 import LangSwitch from '@components/LangSwitch/LangSwitch'
 import SlideBar from '@components/NavBar/NavBar'
-import { type Variants, motion, useCycle } from 'framer-motion'
 import { type CSSProperties, useEffect, useMemo, useRef, useState } from 'react'
 import s from './Header.module.css'
-import { headerLabels, links, variantsHeader } from './dataHeader'
+import { headerLabels, links } from './dataHeader'
 import { blockScroll, unblockScroll, useWindowSize } from './scripts'
 import type { Lang } from '../../i18n/loader'
-const childVariants: Variants = {
-  hidden: {
-    filter: 'blur(4px)',
-    opacity: 0,
-  },
-  open: {
-    filter: 'blur(0)',
-    opacity: 1,
-  },
-  hover: {
-    backgroundColor: 'rgba(238, 242, 248, 0.08)',
-  },
-}
 // Shrinks the observer's viewport to a 1%-tall band just above the middle of
 // the screen (the margins cut 50% off the top and 49% off the bottom). A
 // section counts as "current" while it crosses that line, so exactly one
@@ -48,7 +34,8 @@ const Header = ({ lang }: { lang: Lang }) => {
   const navFixed = useRef<HTMLElement>(null)
   const bgDark = useRef<HTMLButtonElement>(null)
   const navFixedBar = useRef<HTMLElement>(null)
-  const [isOpen, toggleOpen] = useCycle(false, true)
+  const [isOpen, setOpen] = useState(false)
+  const toggleOpen = () => setOpen(open => !open)
   // The hero already shows the name in large type, so the header logo stays
   // an "MC" monogram until that headline has scrolled out of view.
   const [showName, setShowName] = useState(false)
@@ -96,12 +83,7 @@ const Header = ({ lang }: { lang: Lang }) => {
         />
       </div>
       <header className={s.mainHeader}>
-        <motion.nav
-          initial='navHidden'
-          animate='navVisible'
-          variants={variantsHeader}
-          ref={navFixed}
-          className={s.nav_fixed}>
+        <nav ref={navFixed} className={s.nav_fixed}>
           <a
             href='#inicio'
             className={`${s.logo}${showName ? ` ${s.logoExpanded}` : ''}`}>
@@ -116,11 +98,8 @@ const Header = ({ lang }: { lang: Lang }) => {
           </a>
           <SlideBar lang={lang} active={active} />
           <LangSwitch lang={lang} active={active} className={s.langDesktop} />
-        </motion.nav>
-        <motion.aside
-          initial='hidden'
-          animate={isOpen ? 'open' : ''}
-          variants={variantsHeader}
+        </nav>
+        <aside
           ref={navFixedBar}
           // closed, the panel is only squeezed to ~0 width; inert keeps its
           // links out of the tab order and the accessibility tree
@@ -129,27 +108,24 @@ const Header = ({ lang }: { lang: Lang }) => {
           <ul className={s.nav_fixed_ul}>
             {links[lang].map(({ href, name }, i) => {
               return (
-                <motion.li
-                  variants={childVariants}
+                <li
                   className={s.nav_fixed_li}
+                  style={{ '--i': i } as CSSProperties}
                   key={i}>
-                  <motion.a
-                    whileHover={{
-                      backgroundColor: 'rgba(238, 242, 248, 0.08)',
-                    }}
+                  <a
                     href={'#' + href}
                     className={active === href ? s.isActive : undefined}
                     style={{ '--i': i } as CSSProperties}
                     aria-current={active === href ? 'location' : undefined}
                     onClick={() => toggleOpen()}>
                     <span className={s.menuLabel}>{name}</span>
-                  </motion.a>
-                </motion.li>
+                  </a>
+                </li>
               )
             })}
           </ul>
           <LangSwitch lang={lang} active={active} className={s.langMobile} />
-        </motion.aside>
+        </aside>
       </header>
       {/* <!-- Dark Background --> */}
       <button
