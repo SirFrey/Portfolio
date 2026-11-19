@@ -22,7 +22,7 @@ const { dict, lang } = Astro.props
   <section>
     <div id="portfolio" class="marginContainer">
       <h2 data-reveal>{dict.portfolioSection.titleh2}</h2>
-      <ProjectCards lang={lang} dict={dict} />
+      <ProjectCards lang={lang} />
     </div>
     <Divider top="var(--secondaryColor)" bottom="var(--principalColor)">
       <Shape3D logo="react" side="right" client:only="react" />

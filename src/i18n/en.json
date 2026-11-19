@@ -10,10 +10,7 @@
     "contact": "Contact"
   },
   "portfolioSection": {
-    "titleh2": "Projects",
-    "date": "Date:",
-    "soon": "Coming soon",
-    "placeholder": "Section under construction, real projects will be added soon."
+    "titleh2": "Projects"
   },
   "knowledgesSection": {
     "titleh2": "Skills",

@@ -1,0 +1,50 @@
+---
+import type { Card } from './dataCards'
+import type { Lang } from '../../i18n/loader'
+import { copy, host } from './shared'
+
+interface Props {
+  card: Card
+  lang: Lang
+}
+const { card, lang } = Astro.props
+const t = copy[lang]
+---
+
+{
+  card.website ? (
+    <p class="link">
+      <a href={card.website} target="_blank" rel="noopener noreferrer" data-cursor="open">
+        {t.visit} {host(card.website)}
+      </a>
+    </p>
+  ) : (
+    <p class="link">
+      <span>{card.id === 'messaging' ? t.internal : t.client}</span>
+    </p>
+  )
+}
+
+<style>
+  .link {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.3rem 0.8rem;
+    font-size: 0.92rem;
+    line-height: 1.4;
+    color: var(--mist);
+  }
+  a {
+    color: var(--paper);
+    font-weight: 600;
+    padding-bottom: 0.2rem;
+    background: linear-gradient(var(--c, var(--marigold)), var(--c, var(--marigold))) 0 100% / 100% 2px no-repeat;
+    transition: background-size 0.2s;
+  }
+  a:hover {
+    background-size: 100% 100%;
+    color: var(--ink);
+  }
+</style>

@@ -10,10 +10,7 @@
     "contact": "Contacto"
   },
   "portfolioSection": {
-    "titleh2": "Proyectos",
-    "date": "Creado:",
-    "soon": "Próximamente",
-    "placeholder": "Sección en construcción, los proyectos reales se añadirán pronto."
+    "titleh2": "Proyectos"
   },
   "knowledgesSection": {
     "titleh2": "Conocimientos",
