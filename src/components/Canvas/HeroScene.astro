@@ -1,0 +1,27 @@
+---
+// Hero background shader. Static markup plus a small script: no React, no three.js.
+---
+
+<div class="scene-root" aria-hidden="true">
+  <canvas></canvas>
+</div>
+
+<script>
+  import { startHeroScene } from './heroScene'
+
+  const root = document.querySelector<HTMLElement>('.scene-root')
+  if (root) startHeroScene(root)
+</script>
+
+<style>
+  .scene-root {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+  canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+</style>

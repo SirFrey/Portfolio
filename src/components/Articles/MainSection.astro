@@ -1,6 +1,6 @@
 ---
 import SDownComp from '@components/ScrolllDownComp/SDownComp.astro'
-import SceneSection from '@components/Canvas/SceneSection'
+import HeroScene from '@components/Canvas/HeroScene.astro'
 import Hero from '@components/Hero/Hero'
 import type { Dictionary } from '../../i18n/loader'
 
@@ -12,7 +12,7 @@ const { dict } = Astro.props
 ---
 
 <section id="inicio">
-  <SceneSection client:only="react" />
+  <HeroScene />
   <Hero
     title={dict.mainsection.titleh1}
     intro={dict.mainsection.intro}

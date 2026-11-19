@@ -250,3 +250,12 @@ html.has-custom-cursor :is(input, textarea, select, [data-cursor='native']) {
 .wave-path.wave-path-animate {
   transform: translateX(0);
 }
+
+/* The only Font Awesome rule the site needs (footer icons, rendered at build
+   time). Importing the package's full stylesheet cost ~16 kB for this. */
+.svg-inline--fa {
+  display: inline-block;
+  height: 1em;
+  overflow: visible;
+  vertical-align: -0.125em;
+}
